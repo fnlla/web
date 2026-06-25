@@ -375,6 +375,74 @@ async function inspectDocsPage(client, url, expectedTitle, expectedCurrentLabel,
   return failures;
 }
 
+/* Inspect the loading showcase in docs/components.html for motion and layout regressions. */
+async function inspectLoadingDocsPage(client, url) {
+  await client.send("Page.navigate", { url });
+  await waitForDocumentReady(client, 10000);
+  await delay(200);
+
+  const evaluation = await client.send("Runtime.evaluate", {
+    expression: `(() => {
+      const showcase = document.querySelector(".loading-showcase");
+      const spinner = showcase ? showcase.querySelector(".spinner") : null;
+      const progressBar = showcase ? showcase.querySelector(".progress-indeterminate .progress-bar") : null;
+      const skeletonLine = showcase ? showcase.querySelector(".skeleton-line") : null;
+      const skeletonCard = showcase ? showcase.querySelector(".skeleton-card") : null;
+      const spinnerStyles = spinner ? getComputedStyle(spinner) : null;
+      const progressStyles = progressBar ? getComputedStyle(progressBar) : null;
+      const skeletonLineAfter = skeletonLine ? getComputedStyle(skeletonLine, "::after") : null;
+      const skeletonCardStyles = skeletonCard ? getComputedStyle(skeletonCard) : null;
+
+      return {
+        hasShowcase: !!showcase,
+        spinnerAnimation: spinnerStyles ? spinnerStyles.animationName : "",
+        progressAnimation: progressStyles ? progressStyles.animationName : "",
+        skeletonAnimation: skeletonLineAfter ? skeletonLineAfter.animationName : "",
+        skeletonCardDisplay: skeletonCardStyles ? skeletonCardStyles.display : "",
+        docsCurrentLabel: (() => {
+          const currentLink = document.querySelector(".doc-nav [aria-current='page']");
+          return currentLink ? currentLink.textContent.trim() : "";
+        })()
+      };
+    })()`,
+    returnByValue: true
+  });
+
+  const payload = evaluation?.result?.value;
+  const failures = [];
+
+  if (!payload) {
+    failures.push(`Could not inspect ${url}.`);
+    return failures;
+  }
+
+  if (!payload.hasShowcase) {
+    failures.push(`${url}: missing .loading-showcase demo.`);
+  }
+
+  if (payload.docsCurrentLabel !== "Components") {
+    failures.push(`${url}: current docs navigation label should be 'Components'.`);
+  }
+
+  if (!payload.spinnerAnimation.includes("fw-spin")) {
+    failures.push(`${url}: loading showcase spinner lost its motion in docs.`);
+  }
+
+  if (!payload.progressAnimation.includes("fw-progress-indeterminate")) {
+    failures.push(`${url}: loading showcase indeterminate progress lost its motion in docs.`);
+  }
+
+  if (!payload.skeletonAnimation.includes("fw-skeleton-wave")) {
+    failures.push(`${url}: loading showcase skeleton shimmer lost its motion in docs.`);
+  }
+
+  if (payload.skeletonCardDisplay !== "grid") {
+    failures.push(`${url}: loading showcase skeleton card lost its structured layout.`);
+  }
+
+  return failures;
+}
+
 /* Inspect one generated guide page for docs-shell and sidebar regressions. */
 async function inspectGuidePage(client, url, expectedTitle, expectedGuideLabel, expectedRootCurrentLabel, minimumRootNavLinks, minimumGuideNavLinks) {
   await client.send("Page.navigate", { url });
@@ -498,8 +566,10 @@ export async function runBrowserSmokeTest({ repoRoot, browserPath }) {
 
     if (result.result === "pass") {
       docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/index.html`, "FNLLA UI Docs", "Overview", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`, "FNLLA UI Components", "Components", minimumRootNavLinks));
       docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/distribution.html`, "FNLLA UI Distribution", "Distribution", minimumRootNavLinks));
       docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/guides.html`, "FNLLA UI Guides", "Guides", minimumRootNavLinks));
+      docsFailures.push(...await inspectLoadingDocsPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`));
       for (const guidePage of manifest.docs.guidePages) {
         docsFailures.push(...await inspectGuidePage(
           client,
