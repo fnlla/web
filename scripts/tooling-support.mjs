@@ -5,7 +5,7 @@
   Purpose:
   - centralize path, text and filesystem helpers for publish and validation
   - keep line-ending normalization consistent across generated repository files
-  - provide Chromium browser discovery for local smoke-test tooling
+  - provide local browser discovery for smoke-test tooling
 */
 
 import fs from "node:fs";
@@ -103,7 +103,8 @@ function getEnvironmentBrowserCandidates() {
   const envMappings = [
     { name: "Configured browser", value: process.env.BROWSER_PATH },
     { name: "Configured browser", value: process.env.CHROME_BIN },
-    { name: "Configured browser", value: process.env.CHROMIUM_BIN }
+    { name: "Configured browser", value: process.env.CHROMIUM_BIN },
+    { name: "Configured browser", value: process.env.FIREFOX_BIN }
   ];
 
   return envMappings
@@ -128,7 +129,15 @@ function findBrowserOnPath(commandName) {
   return resolvedPath || null;
 }
 
-/* Collect Chromium-family browsers discoverable from PATH. */
+function annotateBrowserFamily(candidate) {
+  const fingerprint = `${candidate.name} ${candidate.path}`.toLowerCase();
+  return {
+    ...candidate,
+    family: fingerprint.includes("firefox") ? "firefox" : "chromium"
+  };
+}
+
+/* Collect supported browser executables discoverable from PATH. */
 function getPathBrowserCandidates() {
   return [
     { name: "Microsoft Edge", command: "msedge" },
@@ -137,7 +146,8 @@ function getPathBrowserCandidates() {
     { name: "Google Chrome", command: "google-chrome-stable" },
     { name: "Google Chrome", command: "chrome" },
     { name: "Chromium", command: "chromium" },
-    { name: "Chromium", command: "chromium-browser" }
+    { name: "Chromium", command: "chromium-browser" },
+    { name: "Mozilla Firefox", command: "firefox" }
   ]
     .map((candidate) => {
       const resolvedPath = findBrowserOnPath(candidate.command);
@@ -146,14 +156,16 @@ function getPathBrowserCandidates() {
     .filter(Boolean);
 }
 
-/* Provide common default install locations for Chromium-family browsers. */
+/* Provide common default install locations for supported browsers. */
 function getPlatformBrowserCandidates() {
   if (process.platform === "win32") {
     return [
       { name: "Microsoft Edge", path: "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" },
       { name: "Microsoft Edge", path: "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe" },
       { name: "Google Chrome", path: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" },
-      { name: "Google Chrome", path: "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe" }
+      { name: "Google Chrome", path: "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe" },
+      { name: "Mozilla Firefox", path: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" },
+      { name: "Mozilla Firefox", path: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" }
     ];
   }
 
@@ -162,7 +174,8 @@ function getPlatformBrowserCandidates() {
       { name: "Google Chrome", path: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" },
       { name: "Google Chrome", path: path.join(os.homedir(), "Applications", "Google Chrome.app", "Contents", "MacOS", "Google Chrome") },
       { name: "Microsoft Edge", path: "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge" },
-      { name: "Chromium", path: "/Applications/Chromium.app/Contents/MacOS/Chromium" }
+      { name: "Chromium", path: "/Applications/Chromium.app/Contents/MacOS/Chromium" },
+      { name: "Mozilla Firefox", path: "/Applications/Firefox.app/Contents/MacOS/firefox" }
     ];
   }
 
@@ -171,23 +184,28 @@ function getPlatformBrowserCandidates() {
     { name: "Google Chrome", path: "/usr/bin/google-chrome-stable" },
     { name: "Chromium", path: "/usr/bin/chromium" },
     { name: "Chromium", path: "/usr/bin/chromium-browser" },
-    { name: "Microsoft Edge", path: "/usr/bin/microsoft-edge" }
+    { name: "Microsoft Edge", path: "/usr/bin/microsoft-edge" },
+    { name: "Mozilla Firefox", path: "/usr/bin/firefox" }
   ];
 }
 
-/* Build the full ordered list of Chromium candidates used by smoke tests. */
-export function getChromiumBrowserCandidates() {
+/* Build the full ordered list of supported browser candidates used by smoke tests. */
+export function getSmokeBrowserCandidates() {
   return [
     ...getEnvironmentBrowserCandidates(),
     ...getPathBrowserCandidates(),
     ...getPlatformBrowserCandidates()
-  ];
+  ].map(annotateBrowserFamily);
+}
+
+export function getBrowserFamily(browserPath = "") {
+  return annotateBrowserFamily({ name: "", path: browserPath }).family;
 }
 
 /* Keep only real browser executables and remove duplicate paths. */
-export function detectChromiumBrowsers() {
+export function detectSmokeBrowsers() {
   const seen = new Set();
-  return getChromiumBrowserCandidates().filter((candidate) => {
+  return getSmokeBrowserCandidates().filter((candidate) => {
     if (!pathExists(candidate.path) || seen.has(candidate.path.toLowerCase())) {
       return false;
     }
@@ -197,7 +215,27 @@ export function detectChromiumBrowsers() {
   });
 }
 
+/* Build the ordered list of Chromium candidates used by validation and one-browser smoke checks. */
+export function getChromiumBrowserCandidates() {
+  return getSmokeBrowserCandidates().filter((candidate) => candidate.family === "chromium");
+}
+
+/* Keep only real Chromium executables and remove duplicate paths. */
+export function detectChromiumBrowsers() {
+  return detectSmokeBrowsers().filter((candidate) => candidate.family === "chromium");
+}
+
+/* Keep only real Firefox executables and remove duplicate paths. */
+export function detectFirefoxBrowsers() {
+  return detectSmokeBrowsers().filter((candidate) => candidate.family === "firefox");
+}
+
 /* Return the first preferred Chromium browser for one-off smoke tests. */
 export function getPreferredChromiumBrowser() {
   return detectChromiumBrowsers()[0] || null;
+}
+
+/* Return the first preferred supported browser for broader local sweep tooling. */
+export function getPreferredSmokeBrowser() {
+  return detectSmokeBrowsers()[0] || null;
 }

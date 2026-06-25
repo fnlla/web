@@ -3,28 +3,28 @@
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
 
   Purpose:
-  - replay the same smoke flow across every detected supported Chromium browser
+  - replay the same smoke flow across every detected supported local browser
   - surface environment-specific regressions without changing the base test logic
 */
 
 import path from "node:path";
 import { spawnSync } from "node:child_process";
-import { detectChromiumBrowsers, getRepoRoot, isDirectExecution } from "./tooling-support.mjs";
+import { detectSmokeBrowsers, getRepoRoot, isDirectExecution } from "./tooling-support.mjs";
 
 export function runBrowserMatrix(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const scriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser.mjs");
-  const browsers = detectChromiumBrowsers();
+  const browsers = detectSmokeBrowsers();
 
   if (!browsers.length) {
-    throw new Error("No supported Chromium-based browsers were found for the FNLLA UI browser matrix smoke test");
+    throw new Error("No supported local browsers were found for the FNLLA UI browser matrix smoke test");
   }
 
   const failures = [];
 
   browsers.forEach((browser) => {
     console.log(`Running FNLLA UI smoke test in ${browser.name}: ${browser.path}`);
-    const result = spawnSync(process.execPath, [scriptPath, "--browser", browser.path, "--repo-root", repoRoot], {
+    const result = spawnSync(process.execPath, [scriptPath, "--browser", browser.path, "--browser-family", browser.family, "--repo-root", repoRoot], {
       encoding: "utf8",
       cwd: repoRoot
     });
