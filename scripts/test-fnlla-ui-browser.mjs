@@ -4,12 +4,12 @@
 
   Purpose:
   - expose a small CLI around the shared browser smoke runner
-  - choose a preferred local Chromium browser when one is not passed explicitly
+  - choose a preferred local smoke-test browser when one is not passed explicitly
   - keep the one-browser smoke flow easy to run during maintenance
 */
 
 import { runBrowserSmokeTest } from "./browser-smoke-runner.mjs";
-import { getPreferredChromiumBrowser, getRepoRoot, isDirectExecution } from "./tooling-support.mjs";
+import { getBrowserFamily, getPreferredChromiumBrowser, getRepoRoot, isDirectExecution } from "./tooling-support.mjs";
 
 function parseCliArguments(argv) {
   const options = {};
@@ -27,6 +27,12 @@ function parseCliArguments(argv) {
     if (current === "--repo-root" && next) {
       options.repoRoot = next;
       index += 1;
+      continue;
+    }
+
+    if (current === "--browser-family" && next) {
+      options.browserFamily = next;
+      index += 1;
     }
   }
 
@@ -37,14 +43,16 @@ function parseCliArguments(argv) {
 export async function runCli(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const browser = options.browserPath ? { path: options.browserPath } : getPreferredChromiumBrowser();
+  const browserFamily = options.browserFamily || getBrowserFamily(browser?.path || "");
 
   if (!browser?.path) {
-    throw new Error("A Chromium-based browser is required to run the FNLLA UI browser smoke test");
+    throw new Error("A supported browser is required to run the FNLLA UI browser smoke test");
   }
 
   const passed = await runBrowserSmokeTest({
     repoRoot,
-    browserPath: browser.path
+    browserPath: browser.path,
+    browserFamily
   });
 
   if (!passed) {

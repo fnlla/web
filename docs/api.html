@@ -394,7 +394,7 @@
           <p class="card-text">That same publish flow now refreshes <code>dist/fnlla-ui/</code>, the runtime-only handoff package for downstream projects.</p>
           <p class="card-text">Use the browser smoke test when runtime behavior or runtime publishing changes:</p>
           <pre><code>node .\scripts\test-fnlla-ui-browser.mjs</code></pre>
-          <p class="card-text">Use the local browser matrix when you want the same smoke flow replayed across every detected supported Chromium browser:</p>
+          <p class="card-text">Use the local browser matrix when you want the same smoke flow replayed across every detected supported local browser, including Firefox when available:</p>
           <pre><code>node .\scripts\test-fnlla-ui-browser-matrix.mjs</code></pre>
           <p class="card-text">The browser smoke coverage now includes mixed modal or offcanvas stacking, programmatic lower-layer close flows, fallback focus targeting for CSS-hidden or fieldset-disabled preferred targets, docs shell checks and runtime API behavior.</p>
           <p class="card-text">The repository also ships a GitHub Actions gate at <code>.github/workflows/fnlla-ui-hardening.yml</code> so publish, validation and browser hardening can run automatically on GitHub before release-oriented merges.</p>

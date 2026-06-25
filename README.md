@@ -136,7 +136,7 @@ Authoritative maintainer scripts:
 - `scripts/build-guides.mjs` turns maintainer-authored Markdown guides into published HTML pages.
 - `scripts/validate-fnlla-ui.mjs` checks repository structure, docs sync, runtime export generation and release metadata.
 - `scripts/test-fnlla-ui-browser.mjs` runs the real browser smoke test against the published runtime.
-- `scripts/test-fnlla-ui-browser-matrix.mjs` replays the smoke flow across every detected supported Chromium browser.
+- `scripts/test-fnlla-ui-browser-matrix.mjs` replays the smoke flow across every detected supported local browser, including Firefox when available.
 
 Recommended maintainer sequence:
 
