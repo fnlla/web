@@ -1,0 +1,13 @@
+# Local diagnostics and generated logs
+gcm-diagnose.log
+*.log
+
+# OS noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor-local settings
+.idea/
+.vscode/
+*.swp

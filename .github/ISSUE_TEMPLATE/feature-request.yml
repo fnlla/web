@@ -1,0 +1,39 @@
+name: Feature request
+description: Propose a new component, utility, interaction or release capability.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: Explain what delivery, design-system or docs need is not currently covered.
+      placeholder: We need a documented compact account-summary shell for authenticated service dashboards.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the shape of the new capability.
+      placeholder: Add a lightweight summary card pattern with status chips, metadata rows and one compact action area.
+    validations:
+      required: true
+  - type: dropdown
+    id: contract-impact
+    attributes:
+      label: Runtime contract impact
+      description: Estimate how much of the public runtime surface this changes.
+      options:
+        - Small additive change
+        - Moderate extension of existing patterns
+        - Large feature or API expansion
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+      description: Explain how the change should be validated once built.
+      placeholder: Add docs example coverage, browser smoke verification and a dist handoff check.

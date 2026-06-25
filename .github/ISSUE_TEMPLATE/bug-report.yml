@@ -1,0 +1,66 @@
+name: Bug report
+description: Report a runtime, docs or browser behavior that is not working correctly.
+title: "[Bug]: "
+labels:
+  - bug
+  - testing
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the failure in one or two direct sentences.
+      placeholder: The offcanvas close flow leaves the page scroll-locked after Escape on Edge.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      description: Pick the closest primary surface.
+      options:
+        - Runtime CSS
+        - Runtime JavaScript
+        - Docs example
+        - Dist handoff
+        - Icons
+        - Release tooling
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      description: Include browser family and version when the issue is visible in a browser.
+      placeholder: Firefox 140, Edge 137, Chrome 137
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reliable sequence that reproduces the issue.
+      placeholder: |
+        1. Open docs/components.html
+        2. Scroll to the loading showcase
+        3. Observe that the spinner does not animate
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: The documented loading examples should animate consistently across supported browsers.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      placeholder: The skeleton pulses, but the spinner and progress indicators stay static.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact and risk
+      description: Explain whether this affects release readiness, runtime trust or only docs polish.
+      placeholder: This affects docs credibility because the showcase no longer demonstrates the shipped motion contract.

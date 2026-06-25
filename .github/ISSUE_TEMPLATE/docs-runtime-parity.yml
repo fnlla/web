@@ -1,0 +1,49 @@
+name: Docs and runtime parity
+description: Report a mismatch between documented patterns and the shipped CSS or JS contract.
+title: "[Parity]: "
+labels:
+  - docs-parity
+  - documentation
+  - testing
+body:
+  - type: input
+    id: docs-page
+    attributes:
+      label: Docs page
+      description: Name the docs route or file where the mismatch appears.
+      placeholder: docs/components.html
+    validations:
+      required: true
+  - type: input
+    id: runtime-surface
+    attributes:
+      label: Runtime surface
+      description: Identify the production CSS or JS surface that should match the docs.
+      placeholder: assets/css/fnlla-ui.css or assets/js/fnlla-ui.js
+    validations:
+      required: true
+  - type: textarea
+    id: mismatch
+    attributes:
+      label: What is out of sync
+      description: Describe the exact mismatch between docs and runtime.
+      placeholder: The docs show a footer spacing rule that is not available in the shipped runtime stylesheet.
+    validations:
+      required: true
+  - type: textarea
+    id: source-of-truth
+    attributes:
+      label: Intended source of truth
+      description: State whether the docs should change, the runtime should change, or both need adjustment.
+      placeholder: Runtime should adopt the docs treatment because the docs are intended to demo shipped framework capability.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Verification
+      options:
+        - label: I checked the current README/runtime contract before opening this issue.
+          required: true
+        - label: I checked whether the mismatch is already tracked in an open issue.
+          required: true

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: FNLLA UI README
+    url: https://github.com/fnlla/ui/blob/main/README.md
+    about: Review the runtime contract, docs routes and repository structure before opening an issue.
+  - name: FNLLA UI v1.0.0 release notes
+    url: https://github.com/fnlla/ui/releases/tag/v1.0.0
+    about: Check the current stable release scope before reporting a regression or release gap.
