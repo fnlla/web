@@ -196,6 +196,56 @@
     </section>
 
     <section class="smoke-block">
+      <h2>Loading</h2>
+      <div class="loading-showcase" id="smoke-loading-showcase">
+        <div class="loading-panel">
+          <div class="progress-field">
+            <div class="progress-meta">
+              <span class="progress-label">Import progress</span>
+              <span class="progress-value">72%</span>
+            </div>
+            <div class="progress" role="progressbar" aria-label="Import progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72">
+              <span class="progress-bar" style="width: 72%;"></span>
+            </div>
+          </div>
+          <div class="progress-field">
+            <div class="progress-meta">
+              <span class="progress-label">Background indexing</span>
+              <span class="progress-value">18/25 files</span>
+            </div>
+            <div class="progress progress-indeterminate" id="smoke-progress-indeterminate" role="progressbar" aria-label="Background indexing in progress" aria-valuetext="In progress">
+              <span class="progress-bar" id="smoke-progress-bar"></span>
+            </div>
+          </div>
+        </div>
+        <div class="loading-panel">
+          <div class="loading-spinner-row">
+            <span class="spinner" id="smoke-spinner" aria-hidden="true"></span>
+            <span class="spinner spinner-sm spinner-current" id="smoke-spinner-current" aria-hidden="true"></span>
+            <button class="btn btn-primary btn-sm is-loading" type="button" aria-busy="true" disabled>
+              <span class="spinner spinner-sm spinner-current" aria-hidden="true"></span>
+              Saving...
+            </button>
+          </div>
+        </div>
+        <div class="loading-panel">
+          <div class="loading-skeleton-grid">
+            <div class="skeleton-card" id="smoke-skeleton-card" aria-hidden="true">
+              <div class="skeleton-media">
+                <span class="skeleton skeleton-avatar"></span>
+                <div class="skeleton-copy">
+                  <span class="skeleton-line" id="smoke-skeleton-line" style="width: 48%;"></span>
+                  <span class="skeleton-line" style="width: 76%;"></span>
+                </div>
+              </div>
+              <span class="skeleton-block" id="smoke-skeleton-block" style="min-height: 4.75rem;"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="smoke-block">
       <h2>Range output</h2>
       <div class="range-field">
         <div class="range-meta">
@@ -369,6 +419,36 @@
           tooltipTrigger.dispatchEvent(new FocusEvent("blur"));
           await wait(80);
           assert(!!tooltipPanel && tooltipPanel.hidden === true, "Tooltip should hide its panel on blur.", failures);
+
+          var loadingShowcase = document.getElementById("smoke-loading-showcase");
+          var progressBar = document.getElementById("smoke-progress-bar");
+          var spinner = document.getElementById("smoke-spinner");
+          var currentSpinner = document.getElementById("smoke-spinner-current");
+          var skeletonCard = document.getElementById("smoke-skeleton-card");
+          var skeletonLine = document.getElementById("smoke-skeleton-line");
+          var skeletonBlock = document.getElementById("smoke-skeleton-block");
+          var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          var progressBarStyles = getComputedStyle(progressBar);
+          var spinnerStyles = getComputedStyle(spinner);
+          var currentSpinnerStyles = getComputedStyle(currentSpinner);
+          var skeletonLineAfterStyles = getComputedStyle(skeletonLine, "::after");
+          var skeletonBlockAfterStyles = getComputedStyle(skeletonBlock, "::after");
+          assert(getComputedStyle(loadingShowcase).display === "grid", "Loading showcase should keep its grid layout in the public runtime.", failures);
+          assert(progressBarStyles.width !== "0px", "Indeterminate progress bars should keep a visible runtime width.", failures);
+          assert(spinnerStyles.borderTopColor !== spinnerStyles.borderRightColor, "Spinners should keep a contrasting leading edge.", failures);
+          assert(currentSpinnerStyles.borderTopColor === currentSpinnerStyles.color, "spinner-current should inherit the current text color for its leading edge.", failures);
+          assert(getComputedStyle(skeletonCard).display === "grid", "Skeleton cards should preserve their structured layout.", failures);
+          if (prefersReducedMotion) {
+            assert(progressBarStyles.animationName === "none", "Indeterminate progress bars should pause when reduced motion is requested.", failures);
+            assert(spinnerStyles.animationName === "none", "Spinners should pause when reduced motion is requested.", failures);
+            assert(skeletonLineAfterStyles.animationName === "none", "Skeleton lines should pause when reduced motion is requested.", failures);
+            assert(skeletonBlockAfterStyles.animationName === "none", "Skeleton blocks should pause when reduced motion is requested.", failures);
+          } else {
+            assert(progressBarStyles.animationName.indexOf("fw-progress-indeterminate") !== -1, "Indeterminate progress bars should keep their runtime animation.", failures);
+            assert(spinnerStyles.animationName.indexOf("fw-spin") !== -1, "Spinners should keep their runtime rotation animation.", failures);
+            assert(skeletonLineAfterStyles.animationName.indexOf("fw-skeleton-wave") !== -1, "Skeleton lines should keep their shimmer animation.", failures);
+            assert(skeletonBlockAfterStyles.animationName.indexOf("fw-skeleton-wave") !== -1, "Skeleton blocks should keep their shimmer animation.", failures);
+          }
 
           var smokeRangeInput = document.getElementById("smoke-range-input");
           var smokeRangeOutput = document.getElementById("smoke-range-output");

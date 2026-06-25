@@ -1,0 +1,38 @@
+name: FNLLA UI Hardening
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hardening:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Publish runtime and generated docs
+        shell: pwsh
+        run: node .\scripts\publish-fnlla-ui.mjs
+
+      - name: Run browser smoke coverage
+        shell: pwsh
+        run: node .\scripts\test-fnlla-ui-browser.mjs
+
+      - name: Validate release contract
+        shell: pwsh
+        run: node .\scripts\validate-fnlla-ui.mjs
