@@ -54,6 +54,23 @@ Use the browser docs based on the question you are answering:
 - `docs/team-usage-and-maintenance.html` for workflow and maintenance guidance
 - `docs/guides.html` for the guide index and reading order
 
+## Issue and release workflow
+
+Use the repository-level GitHub templates when work moves from implementation into maintenance:
+
+- bug reports should go through the bug template when runtime, docs or browser behavior regresses
+- docs-to-runtime mismatches should go through the parity template when the demo surface and shipped contract drift apart
+- additive capability proposals should go through the feature template so scope and runtime impact are explicit early
+- pull requests should use the repository PR template to confirm runtime, docs, dist and accessibility checks
+
+For releases, keep the flow lightweight but repeatable:
+
+1. Align `README.md`, `VERSION` and `LICENSE.md`.
+2. Validate runtime assets, docs parity and browser behavior.
+3. Publish the release commit to `main`.
+4. Create the version tag and GitHub release notes.
+5. Open post-release follow-up work in the next milestone when cleanup or regression hardening remains.
+
 ## Folder structure
 
 ```text
@@ -103,8 +120,13 @@ fnlla-ui/
       team-usage-and-maintenance-en.md
     guides.html
   .github/
-    workflows/
-      fnlla-ui-hardening.yml
+    CODEOWNERS
+    pull_request_template.md
+    ISSUE_TEMPLATE/
+      bug-report.yml
+      config.yml
+      docs-runtime-parity.yml
+      feature-request.yml
   scripts/
     browser-smoke-runner.mjs
     build-guides.mjs
