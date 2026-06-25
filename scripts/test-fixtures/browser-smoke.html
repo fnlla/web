@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FNLLA UI Browser Smoke Test</title>
+  <link rel="stylesheet" href="../../assets/css/fnlla-ui.css">
+  <style>
+    body {
+      padding: 1rem;
+    }
+
+    .smoke-shell {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .smoke-block {
+      display: grid;
+      gap: 0.75rem;
+      padding: 1rem;
+      border: 1px solid var(--fnlla-color-border);
+      border-radius: var(--fnlla-radius-md);
+      background: var(--fnlla-color-surface);
+    }
+
+    .smoke-spacer {
+      height: 1rem;
+    }
+
+    .smoke-scroll-section {
+      min-height: 30rem;
+      padding: 1rem;
+      border: 1px solid var(--fnlla-color-border);
+      border-radius: var(--fnlla-radius-md);
+      background: var(--fnlla-color-bg-alt);
+    }
+  </style>
+</head>
+<body data-fnlla-theme="default">
+  <main class="smoke-shell" id="main-content">
+    <section class="smoke-block">
+      <h1>FNLLA UI Browser Smoke Test</h1>
+      <p id="test-status" data-result="pending">Pending</p>
+      <ul id="failure-list"></ul>
+    </section>
+
+    <section class="smoke-block">
+      <h2>Navigation</h2>
+      <nav class="navbar" aria-label="Smoke navigation">
+        <a class="navbar-brand" href="#">Smoke</a>
+        <button
+          class="btn btn-outline btn-sm navbar-toggle"
+          type="button"
+          data-fnlla-nav-toggle
+          aria-controls="smoke-nav-panel"
+          aria-expanded="false"
+          aria-label="Toggle smoke navigation"
+        >
+          Menu
+        </button>
+        <div class="navbar-panel" id="smoke-nav-panel">
+          <ul class="navbar-menu">
+            <li><a href="#section-a">Section A</a></li>
+            <li><a href="#section-b">Section B</a></li>
+          </ul>
+          <div class="navbar-actions">
+            <a class="btn btn-primary btn-sm" href="#section-c">Action</a>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <section class="smoke-block">
+      <h2>Dropdown</h2>
+      <div class="dropdown" data-fnlla-dropdown>
+        <button
+          class="btn btn-outline btn-sm"
+          id="smoke-dropdown-toggle"
+          type="button"
+          data-fnlla-dropdown-toggle
+          aria-expanded="false"
+          aria-controls="smoke-dropdown-menu"
+        >
+          Open menu
+        </button>
+        <div class="dropdown-menu" id="smoke-dropdown-menu">
+          <a class="dropdown-item" href="#item-a">Item A</a>
+          <a class="dropdown-item" href="#item-b">Item B</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="smoke-block">
+      <h2>Tabs</h2>
+      <div class="tabs" data-fnlla-tabs>
+        <div class="tab-list" data-fnlla-tab-list aria-label="Smoke tabs">
+          <button class="tab-button" id="smoke-tab-1" type="button" data-fnlla-tab aria-selected="true" aria-controls="smoke-panel-1">First</button>
+          <button class="tab-button" id="smoke-tab-2" type="button" data-fnlla-tab aria-selected="false" aria-controls="smoke-panel-2">Second</button>
+        </div>
+        <div class="tab-panel" id="smoke-panel-1">
+          <p>First panel</p>
+        </div>
+        <div class="tab-panel" id="smoke-panel-2">
+          <p>Second panel</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="smoke-block">
+      <h2>Accordion</h2>
+      <div class="accordion" data-fnlla-accordion data-fnlla-accordion-single>
+        <article class="accordion-item is-open">
+          <button class="accordion-button" id="smoke-accordion-1" type="button" data-fnlla-accordion-button aria-expanded="true" aria-controls="smoke-accordion-panel-1">
+            First accordion
+          </button>
+          <div class="accordion-panel" id="smoke-accordion-panel-1">
+            <p>Panel 1</p>
+          </div>
+        </article>
+        <article class="accordion-item">
+          <button class="accordion-button" id="smoke-accordion-2" type="button" data-fnlla-accordion-button aria-expanded="false" aria-controls="smoke-accordion-panel-2">
+            Second accordion
+          </button>
+          <div class="accordion-panel" id="smoke-accordion-panel-2">
+            <p>Panel 2</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="smoke-block">
+      <h2>Modal and Toast</h2>
+      <div class="btn-toolbar">
+        <button class="btn btn-primary" id="smoke-modal-trigger" type="button" data-fnlla-modal-open="#smoke-modal" aria-controls="smoke-modal">Open modal</button>
+        <button class="btn btn-outline" id="smoke-toast-trigger" type="button" data-fnlla-toast-open="#smoke-toast">Show toast</button>
+      </div>
+
+      <div class="modal" id="smoke-modal" data-fnlla-modal role="dialog" aria-modal="true" aria-labelledby="smoke-modal-title" hidden>
+        <div class="modal-content">
+          <button class="btn btn-ghost btn-sm" type="button" data-fnlla-modal-initial-focus style="display: none;">Hidden initial target</button>
+          <div class="modal-header">
+            <h3 class="card-title" id="smoke-modal-title">Smoke modal</h3>
+            <button class="btn btn-ghost btn-sm" id="smoke-modal-close" type="button" data-fnlla-modal-close>Close</button>
+          </div>
+          <div class="modal-body">
+            <p>Modal content</p>
+            <button class="btn btn-outline btn-sm" id="smoke-modal-action" type="button">Secondary action</button>
+          </div>
+        </div>
+      </div>
+
+      <article class="toast toast-success" id="smoke-toast" data-fnlla-toast data-fnlla-toast-autohide="120" role="status" hidden>
+        <div class="toast-body">
+          <p class="toast-title">Saved</p>
+          <button class="btn btn-ghost btn-sm" type="button" data-fnlla-toast-close>Dismiss</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="smoke-block">
+      <h2>Offcanvas and Popover</h2>
+      <div class="btn-toolbar">
+        <button class="btn btn-primary" id="smoke-offcanvas-trigger" type="button" data-fnlla-offcanvas-open="#smoke-offcanvas" aria-controls="smoke-offcanvas">Open offcanvas</button>
+      </div>
+
+      <div class="offcanvas offcanvas-end" id="smoke-offcanvas" data-fnlla-offcanvas role="dialog" aria-modal="true" aria-labelledby="smoke-offcanvas-title" hidden>
+        <div class="offcanvas-panel">
+          <div class="offcanvas-header">
+            <h3 class="card-title" id="smoke-offcanvas-title">Smoke offcanvas</h3>
+            <button class="btn btn-ghost btn-sm" id="smoke-offcanvas-close" type="button" data-fnlla-offcanvas-close>Close</button>
+          </div>
+          <div class="offcanvas-body">
+            <fieldset disabled>
+              <legend>Disabled setup</legend>
+              <button class="btn btn-outline btn-sm" type="button" data-fnlla-offcanvas-initial-focus>Disabled initial target</button>
+            </fieldset>
+            <p>Offcanvas content</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="popover" data-fnlla-popover id="smoke-popover">
+        <button class="btn btn-outline" id="smoke-popover-toggle" type="button" data-fnlla-popover-toggle aria-controls="smoke-popover-panel" aria-expanded="false">Open popover</button>
+        <div class="popover-panel" id="smoke-popover-panel">
+          <p>Popover content</p>
+          <button class="btn btn-ghost btn-sm" type="button" data-fnlla-popover-close>Close</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="smoke-block">
+      <h2>Tooltip and Dynamic Init</h2>
+      <button class="btn btn-outline" id="smoke-tooltip-trigger" type="button" data-fnlla-tooltip="Tooltip text for browser smoke.">Tooltip trigger</button>
+      <div id="dynamic-root"></div>
+    </section>
+
+    <section class="smoke-block">
+      <h2>Range output</h2>
+      <div class="range-field">
+        <div class="range-meta">
+          <span>Confidence</span>
+          <output class="range-output" id="smoke-range-output" data-fnlla-range-output="smoke-range-input">40%</output>
+        </div>
+        <input class="range-input" id="smoke-range-input" type="range" min="0" max="100" value="40" data-fnlla-range-suffix="%" aria-label="Smoke range input">
+      </div>
+    </section>
+
+    <section class="smoke-block" id="smoke-scrollspy" data-fnlla-scrollspy>
+      <h2>Scrollspy</h2>
+      <nav class="scrollspy-nav" id="smoke-scrollspy-nav" data-fnlla-scrollspy-nav aria-label="Smoke scrollspy">
+        <a class="scrollspy-link" href="#spy-section-1">Spy One</a>
+        <a class="scrollspy-link" href="#spy-section-2">Spy Two</a>
+      </nav>
+      <section class="smoke-scroll-section" id="spy-section-1">
+        <h3>Spy section one</h3>
+        <p>Visible at the start of the test.</p>
+      </section>
+      <section class="smoke-scroll-section" id="spy-section-2">
+        <h3>Spy section two</h3>
+        <p>Becomes active after scrolling.</p>
+      </section>
+    </section>
+  </main>
+
+  <script src="../../assets/js/fnlla-ui.js"></script>
+  <script>
+    (function () {
+      function wait(ms) {
+        return new Promise(function (resolve) {
+          window.setTimeout(resolve, ms);
+        });
+      }
+
+      function assert(condition, message, failures) {
+        if (!condition) {
+          failures.push(message);
+        }
+      }
+
+      function getCurrentScrollspyHref() {
+        var current = document.querySelector("#smoke-scrollspy-nav a[aria-current='location']");
+        return current ? current.getAttribute("href") : "";
+      }
+
+      async function runSmokeTest() {
+        var failures = [];
+        var status = document.getElementById("test-status");
+        var failureList = document.getElementById("failure-list");
+
+        try {
+          await wait(180);
+
+          assert(document.documentElement.classList.contains("fnlla-ui-js"), "Auto-init should add the fnlla-ui-js class to the root element.", failures);
+          assert(!!window.FNLLAUI && typeof window.FNLLAUI.init === "function", "window.FNLLAUI.init should be exposed as a public API.", failures);
+
+          var navToggle = document.querySelector("[data-fnlla-nav-toggle]");
+          var navPanel = document.getElementById("smoke-nav-panel");
+          assert(navPanel.getAttribute("aria-hidden") === "true", "Mobile navigation panel should start collapsed in the smoke viewport.", failures);
+          navToggle.click();
+          await wait(80);
+          assert(navPanel.classList.contains("is-open"), "Mobile navigation should open after clicking the nav toggle.", failures);
+          navToggle.click();
+          await wait(80);
+          assert(!navPanel.classList.contains("is-open"), "Mobile navigation should close after clicking the nav toggle again.", failures);
+
+          var dropdownToggle = document.getElementById("smoke-dropdown-toggle");
+          var dropdownMenu = document.getElementById("smoke-dropdown-menu");
+          dropdownToggle.click();
+          await wait(80);
+          assert(dropdownToggle.getAttribute("aria-expanded") === "true", "Dropdown toggle should set aria-expanded to true after opening.", failures);
+          assert(dropdownMenu.hidden === false, "Dropdown menu should become visible after opening.", failures);
+          dropdownMenu.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+          await wait(80);
+          assert(dropdownMenu.hidden === true, "Dropdown menu should close on Escape.", failures);
+
+          var secondTab = document.getElementById("smoke-tab-2");
+          var firstPanel = document.getElementById("smoke-panel-1");
+          var secondPanel = document.getElementById("smoke-panel-2");
+          secondTab.click();
+          await wait(40);
+          assert(secondTab.getAttribute("aria-selected") === "true", "Second tab should become selected after click.", failures);
+          assert(firstPanel.hidden === true && secondPanel.hidden === false, "Tab panels should switch visibility when a tab is activated.", failures);
+
+          var secondAccordion = document.getElementById("smoke-accordion-2");
+          var firstAccordionPanel = document.getElementById("smoke-accordion-panel-1");
+          var secondAccordionPanel = document.getElementById("smoke-accordion-panel-2");
+          secondAccordion.click();
+          await wait(40);
+          assert(secondAccordion.getAttribute("aria-expanded") === "true", "Accordion item should expand on click.", failures);
+          assert(firstAccordionPanel.hidden === true && secondAccordionPanel.hidden === false, "Single-open accordion should close siblings when a new item opens.", failures);
+
+          var modalTrigger = document.getElementById("smoke-modal-trigger");
+          var modal = document.getElementById("smoke-modal");
+          var modalClose = document.getElementById("smoke-modal-close");
+          var modalAction = document.getElementById("smoke-modal-action");
+          var leadingSmokeBlock = document.querySelector(".smoke-shell > .smoke-block");
+          modalTrigger.click();
+          await wait(120);
+          assert(modal.hidden === false, "Modal should become visible after opening.", failures);
+          assert(document.body.style.overflow === "hidden", "Opening a modal should lock body scrolling.", failures);
+          assert(document.activeElement === modalClose, "Modal should skip CSS-hidden initial-focus targets and focus the first usable control.", failures);
+          document.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true, shiftKey: true }));
+          await wait(40);
+          assert(document.activeElement === modalAction, "Shift+Tab on the first modal control should wrap focus to the last focusable control.", failures);
+          document.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true }));
+          await wait(40);
+          assert(document.activeElement === modalClose, "Tab on the last modal control should wrap focus back to the first focusable control.", failures);
+          modalClose.click();
+          await wait(120);
+          assert(modal.hidden === true, "Modal should hide after closing.", failures);
+          assert(document.activeElement === modalTrigger, "Modal should restore focus to its trigger after close.", failures);
+
+          var toastTrigger = document.getElementById("smoke-toast-trigger");
+          var toast = document.getElementById("smoke-toast");
+          toastTrigger.click();
+          await wait(60);
+          assert(toast.hidden === false, "Toast should become visible after opening.", failures);
+          await wait(220);
+          assert(toast.hidden === true, "Toast should auto-hide after its configured timeout.", failures);
+
+          var offcanvasTrigger = document.getElementById("smoke-offcanvas-trigger");
+          var offcanvas = document.getElementById("smoke-offcanvas");
+          var offcanvasClose = document.getElementById("smoke-offcanvas-close");
+          offcanvasTrigger.click();
+          await wait(120);
+          assert(offcanvas.hidden === false, "Offcanvas should become visible after opening.", failures);
+          assert(document.activeElement === offcanvasClose, "Offcanvas should ignore controls disabled through a fieldset when choosing initial focus.", failures);
+          assert(leadingSmokeBlock.getAttribute("aria-hidden") === "true", "Opening offcanvas should isolate sibling content from assistive navigation.", failures);
+          window.FNLLAUI.showModal("#smoke-modal");
+          await wait(120);
+          assert(modal.hidden === false, "Programmatic modal open should work while another overlay is already active.", failures);
+          assert(document.activeElement === modalClose, "Top modal should take focus even when opened over an offcanvas panel.", failures);
+          window.FNLLAUI.hideOffcanvas("#smoke-offcanvas");
+          await wait(120);
+          assert(offcanvas.hidden === true, "Programmatic offcanvas close should work while a modal stays open above it.", failures);
+          assert(document.body.style.overflow === "hidden", "Closing a lower layer should keep scroll lock while the top modal remains open.", failures);
+          assert(leadingSmokeBlock.getAttribute("aria-hidden") === "true", "Closing a lower layer should not clear isolation required by the top modal.", failures);
+          modalClose.click();
+          await wait(120);
+          assert(modal.hidden === true, "Modal should still close cleanly after another layer beneath it was closed programmatically.", failures);
+          assert(leadingSmokeBlock.getAttribute("aria-hidden") !== "true", "Background content should be restored after the final blocking layer closes.", failures);
+          assert(document.body.style.overflow === "", "Body scroll lock should clear after the last blocking layer closes.", failures);
+          offcanvasTrigger.click();
+          await wait(120);
+          offcanvasClose.click();
+          await wait(120);
+          assert(offcanvas.hidden === true, "Offcanvas should hide after closing.", failures);
+          assert(document.activeElement === offcanvasTrigger, "Offcanvas should restore focus to its trigger after close.", failures);
+
+          var popover = document.getElementById("smoke-popover");
+          var popoverToggle = document.getElementById("smoke-popover-toggle");
+          var popoverPanel = document.getElementById("smoke-popover-panel");
+          popoverToggle.click();
+          await wait(80);
+          assert(popover.classList.contains("is-open"), "Popover should open after clicking the toggle.", failures);
+          assert(popoverPanel.hidden === false, "Popover panel should become visible after opening.", failures);
+          document.body.click();
+          await wait(80);
+          assert(!popover.classList.contains("is-open"), "Popover should close on outside click.", failures);
+
+          var tooltipTrigger = document.getElementById("smoke-tooltip-trigger");
+          tooltipTrigger.focus();
+          tooltipTrigger.dispatchEvent(new FocusEvent("focus"));
+          await wait(80);
+          var tooltipPanel = document.querySelector(".tooltip-panel");
+          assert(!!tooltipPanel && tooltipPanel.hidden === false, "Tooltip should create and reveal its panel on focus.", failures);
+          tooltipTrigger.blur();
+          tooltipTrigger.dispatchEvent(new FocusEvent("blur"));
+          await wait(80);
+          assert(!!tooltipPanel && tooltipPanel.hidden === true, "Tooltip should hide its panel on blur.", failures);
+
+          var smokeRangeInput = document.getElementById("smoke-range-input");
+          var smokeRangeOutput = document.getElementById("smoke-range-output");
+          assert(smokeRangeOutput.textContent.trim() === "40%", "Auto-init should preserve the initial declarative range output value.", failures);
+          smokeRangeInput.value = "82";
+          smokeRangeInput.dispatchEvent(new Event("input", { bubbles: true }));
+          await wait(40);
+          assert(smokeRangeOutput.textContent.trim() === "82%", "Declarative range output should update when the slider value changes.", failures);
+
+          var dynamicRoot = document.getElementById("dynamic-root");
+          dynamicRoot.innerHTML = '' +
+            '<div class="accordion" data-fnlla-accordion>' +
+              '<article class="accordion-item">' +
+                '<button class="accordion-button" type="button" data-fnlla-accordion-button aria-expanded="false" aria-controls="dynamic-panel-1">Dynamic accordion</button>' +
+                '<div class="accordion-panel" id="dynamic-panel-1"><p>Dynamic content</p></div>' +
+              '</article>' +
+            '</div>' +
+            '<div class="range-field">' +
+              '<div class="range-meta">' +
+                '<span>Dynamic threshold</span>' +
+                '<output class="range-output" data-fnlla-range-output="dynamic-range">10%</output>' +
+              '</div>' +
+              '<input class="range-input" id="dynamic-range" type="range" min="0" max="100" value="10" data-fnlla-range-suffix="%">' +
+            '</div>';
+          window.FNLLAUI.init(dynamicRoot);
+          var dynamicButton = dynamicRoot.querySelector("[data-fnlla-accordion-button]");
+          var dynamicPanel = document.getElementById("dynamic-panel-1");
+          dynamicButton.click();
+          await wait(40);
+          assert(dynamicPanel.hidden === false, "window.FNLLAUI.init(root) should bind behavior inside injected markup.", failures);
+          var dynamicRangeInput = document.getElementById("dynamic-range");
+          var dynamicRangeOutput = dynamicRoot.querySelector('[data-fnlla-range-output="dynamic-range"]');
+          dynamicRangeInput.value = "55";
+          dynamicRangeInput.dispatchEvent(new Event("input", { bubbles: true }));
+          await wait(40);
+          assert(dynamicRangeOutput.textContent.trim() === "55%", "window.FNLLAUI.init(root) should also bind declarative range outputs inside injected markup.", failures);
+
+          assert(getCurrentScrollspyHref() === "#spy-section-1", "Scrollspy should mark the first section active at the top of the page.", failures);
+          window.scrollTo(0, document.getElementById("spy-section-2").offsetTop + 24);
+          await wait(160);
+          window.FNLLAUI.refreshScrollspy("#smoke-scrollspy");
+          await wait(80);
+          assert(getCurrentScrollspyHref() === "#spy-section-2", "refreshScrollspy should update the active section after scrolling.", failures);
+          window.scrollTo(0, 0);
+        } catch (error) {
+          failures.push("Smoke test script error: " + (error && error.message ? error.message : String(error)));
+        }
+
+        failureList.innerHTML = "";
+
+        failures.forEach(function (failure) {
+          var item = document.createElement("li");
+          item.textContent = failure;
+          failureList.appendChild(item);
+        });
+
+        status.textContent = failures.length ? "FAIL" : "PASS";
+        status.setAttribute("data-result", failures.length ? "fail" : "pass");
+        document.documentElement.setAttribute("data-test-result", failures.length ? "fail" : "pass");
+      }
+
+      window.addEventListener("load", function () {
+        window.setTimeout(runSmokeTest, 150);
+      });
+    })();
+  </script>
+</body>
+</html>

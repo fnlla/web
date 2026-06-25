@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Guide: Component Classification</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body class="doc-guide-classification" data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Guide library</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Component selection</p>
+          <p class="doc-display">FNLLA UI - Guides</p>
+          <p class="doc-lead">A structured reference for choosing the right FNLLA UI component family and avoiding misuse patterns.</p>
+        </div>
+      </div>
+    </header>
+
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-outline btn-sm" href="./guides.html" aria-current="page">Guides</a>
+    </nav>
+
+    <section class="section pt-1">
+      <div class="doc-guide-layout">
+        <article class="card doc-guide-prose doc-guide-prose-numbered">
+<p>This guide belongs to <code>FNLLA UI</code>. It is maintained by <code>TechAyo LTD (techayo.co.uk)</code> from <code>Finella Gardens in Dundee, UK</code>.</p>
+
+<h2 id="use-this-guide-when">Use this guide when</h2>
+
+<p>Use this document for repeatable template assembly, component reviews, documentation work and design-system decisions.</p>
+
+<p>Reach for it when you need to answer:</p>
+
+<ul><li>what a component is</li><li>which category it belongs to</li><li>whether it is structural, presentational or interactive</li><li>what its best-fit usage is</li><li>when it should not be selected</li></ul>
+
+<h2 id="classification-model">Classification model</h2>
+
+<p>Each component family is described through the same lenses.</p>
+
+<ul><li><code>Role</code>: structural, presentational or interactive</li><li><code>Category</code>: layout, action, content, operational content, visual support, navigation, form, feedback, data display, process and status, disclosure, overlay, section or utility</li><li><code>Interaction level</code>: static, selectable, input, expandable, dismissible, modal or location-aware</li><li><code>Data density</code>: low, medium or high</li><li><code>Dependency level</code>: CSS only or CSS plus JavaScript hooks</li><li><code>Best fit</code>: the primary intended usage</li><li><code>Avoid when</code>: the most common misuse pattern</li></ul>
+
+<h2 id="layout-surfaces">Layout surfaces</h2>
+
+<h3 id="containers-and-grids">Containers and grids</h3>
+
+<ul><li>Classes: <code>container</code>, <code>container-sm</code>, <code>container-lg</code>, <code>section</code>, <code>section-alt</code>, <code>section-surface</code>, <code>section-primary-soft</code>, <code>grid</code>, <code>grid-2</code>, <code>grid-3</code>, <code>grid-4</code>, <code>gap-sm</code>, <code>gap-md</code>, <code>gap-lg</code></li><li>Role: structural</li><li>Category: layout</li><li>Interaction level: static</li><li>Data density: low to high</li><li>Dependency level: CSS only</li><li>Best fit: page shells, section bands, content width control and repeated column layouts</li><li>Avoid when: a one-off custom layout is being built with no intention to keep a shared structural pattern</li></ul>
+
+<h2 id="action-and-content-surfaces">Action and content surfaces</h2>
+
+<h3 id="buttons">Buttons</h3>
+
+<ul><li>Classes: <code>btn</code>, <code>btn-primary</code>, <code>btn-secondary</code>, <code>btn-outline</code>, <code>btn-ghost</code>, <code>btn-xs</code>, <code>btn-sm</code>, <code>btn-lg</code>, <code>btn-xl</code>, <code>btn-block</code>, <code>btn-group</code>, <code>btn-toolbar</code>, <code>close-btn</code></li><li>Role: interactive</li><li>Category: action</li><li>Interaction level: selectable</li><li>Data density: low</li><li>Dependency level: CSS only</li><li>Best fit: primary actions, secondary actions and compact workflow triggers</li><li>Avoid when: a plain text link is enough and a control surface would overstate importance</li></ul>
+
+<h3 id="panels-messages-and-menus">Panels, messages and menus</h3>
+
+<ul><li>Classes: <code>panel*</code>, <code>message*</code>, <code>menu*</code>, <code>chip*</code></li><li>Role: presentational</li><li>Category: operational content</li><li>Interaction level: static or selectable</li><li>Data density: medium</li><li>Dependency level: CSS only</li><li>Best fit: workspace shells, contextual explanation, subsection navigation and compact status metadata</li><li>Avoid when: a simpler alert, plain list or lightweight card would communicate the same thing with less structure</li></ul>
+
+<h3 id="avatars-and-media-objects">Avatars and media objects</h3>
+
+<ul><li>Classes: <code>avatar*</code>, <code>media*</code></li><li>Role: presentational</li><li>Category: content</li><li>Interaction level: static</li><li>Data density: low to medium</li><li>Dependency level: CSS only</li><li>Best fit: comments, staff rows, activity streams, support records and ownership metadata</li><li>Avoid when: the content does not benefit from identity or source context</li></ul>
+
+<h3 id="icons">Icons</h3>
+
+<ul><li>Classes and assets: <code>icon</code>, <code>icon-sm</code>, <code>icon-lg</code>, local files from <code>assets/icons/*.svg</code> and <code>assets/icons/sprite.svg</code></li><li>Role: presentational</li><li>Category: visual support</li><li>Interaction level: static</li><li>Data density: low</li><li>Dependency level: CSS only plus local vendored assets</li><li>Best fit: action affordances, navigation hints, status reinforcement and compact visual anchors next to visible labels</li><li>Avoid when: an icon would replace necessary text or depend on an external CDN instead of the local FNLLA Icons bundle</li></ul>
+
+<h3 id="search-shell">Search shell</h3>
+
+<ul><li>Classes: <code>search-shell</code>, <code>search-input-wrap</code>, <code>search-results</code>, <code>search-result*</code>, <code>icon</code></li><li>Role: interactive</li><li>Category: operational content</li><li>Interaction level: input</li><li>Data density: medium</li><li>Dependency level: CSS only</li><li>Best fit: internal search, documentation lookup, compact navigation launchers and discovery surfaces with result metadata</li><li>Avoid when: a plain input is enough and there are no grouped results or supporting result rows</li></ul>
+
+<h3 id="cards">Cards</h3>
+
+<ul><li>Classes: <code>card</code>, <code>feature-card</code>, <code>service-card</code>, <code>testimonial-card</code>, <code>cta-card</code></li><li>Role: presentational</li><li>Category: content</li><li>Interaction level: static</li><li>Data density: low to medium</li><li>Dependency level: CSS only</li><li>Best fit: grouped information blocks, repeated summaries, service listings and featured content</li><li>Avoid when: the content is a dense dataset that would be clearer as a list group or table</li></ul>
+
+<h3 id="list-groups">List groups</h3>
+
+<ul><li>Classes: <code>list-group</code>, <code>list-group-item</code>, <code>list-group-item-action</code>, <code>list-group-item-title</code>, <code>list-group-item-text</code>, <code>list-group-item-meta</code>, <code>list-group-nav</code>, <code>list-group-link</code></li><li>Role: presentational</li><li>Category: content</li><li>Interaction level: static or selectable</li><li>Data density: medium</li><li>Dependency level: CSS only</li><li>Best fit: grouped records, inbox-like lists, workspace pickers and status rows</li><li>Avoid when: each row needs a rich independent layout and should really be a full card or a table</li></ul>
+
+<h3 id="tables">Tables</h3>
+
+<ul><li>Classes: <code>table-responsive</code>, <code>table</code>, <code>table-striped</code>, <code>table-hover</code>, <code>table-compact</code>, <code>table-sticky</code>, <code>table-borderless</code>, <code>table-align-middle</code>, <code>table-row-title</code>, <code>table-row-meta</code>, <code>table-status*</code></li><li>Role: presentational</li><li>Category: data display</li><li>Interaction level: static</li><li>Data density: high</li><li>Dependency level: CSS only</li><li>Best fit: comparisons, audits, operational summaries and structured records with real column meaning</li><li>Avoid when: the content is narrative or card-like rather than tabular</li></ul>
+
+<h3 id="alerts-empty-states-and-loading">Alerts, empty states and loading</h3>
+
+<ul><li>Classes: <code>alert*</code>, <code>empty-state*</code>, <code>progress*</code>, <code>spinner*</code>, <code>loading-*</code>, <code>skeleton*</code></li><li>Role: presentational</li><li>Category: feedback</li><li>Interaction level: static</li><li>Data density: low</li><li>Dependency level: CSS only</li><li>Best fit: visible system status, zero-state messaging, loading states and measurable completion</li><li>Avoid when: the user needs a larger structured workflow rather than a short status surface</li></ul>
+
+<h2 id="navigation-and-discovery">Navigation and discovery</h2>
+
+<h3 id="navbar">Navbar</h3>
+
+<ul><li>Classes: <code>navbar</code>, <code>navbar-brand</code>, <code>navbar-menu</code>, <code>navbar-panel</code>, <code>navbar-actions</code>, <code>navbar-toggle</code></li><li>Role: interactive</li><li>Category: navigation</li><li>Interaction level: expandable on smaller screens</li><li>Data density: low to medium</li><li>Dependency level: CSS plus JavaScript hooks for mobile collapse</li><li>Best fit: primary site navigation with a consistent action area</li><li>Avoid when: a local subsection menu is needed rather than top-level navigation</li></ul>
+
+<h3 id="dropdown">Dropdown</h3>
+
+<ul><li>Hooks and classes: <code>data-fnlla-dropdown</code>, <code>data-fnlla-dropdown-toggle</code>, <code>.dropdown-menu</code>, <code>.dropdown-item</code></li><li>Role: interactive</li><li>Category: navigation</li><li>Interaction level: expandable and dismissible</li><li>Data density: low to medium</li><li>Dependency level: CSS plus JavaScript hooks</li><li>Best fit: compact action menus, secondary navigation and grouped next-step choices</li><li>Avoid when: all options are equally important and should remain visible all the time</li></ul>
+
+<h3 id="tabs">Tabs</h3>
+
+<ul><li>Hooks and classes: <code>data-fnlla-tabs</code>, <code>data-fnlla-tab-list</code>, <code>data-fnlla-tab</code>, <code>.tab-panel</code></li><li>Role: interactive</li><li>Category: navigation</li><li>Interaction level: selectable</li><li>Data density: medium</li><li>Dependency level: CSS plus JavaScript hooks</li><li>Best fit: switching between related panels without leaving the page</li><li>Avoid when: each panel contains long content that should simply stack vertically</li></ul>
+
+<h3 id="scrollspy">Scrollspy</h3>
+
+<ul><li>Hooks and classes: <code>data-fnlla-scrollspy</code>, <code>data-fnlla-scrollspy-nav</code>, <code>.scrollspy-link</code>, <code>.scrollspy-section</code></li><li>Role: interactive</li><li>Category: navigation</li><li>Interaction level: location-aware</li><li>Data density: medium</li><li>Dependency level: CSS plus JavaScript hooks</li><li>Best fit: long-form references, guides, policy pages and other pages that need a live in-page index</li><li>Avoid when: the page is too short to justify active section tracking</li></ul>
+
+<h3 id="breadcrumb-and-pagination">Breadcrumb and pagination</h3>
+
+<ul><li>Classes: <code>breadcrumb*</code>, <code>pagination*</code></li><li>Role: interactive</li><li>Category: navigation</li><li>Interaction level: selectable</li><li>Data density: low</li><li>Dependency level: CSS only</li><li>Best fit: hierarchy wayfinding and paged result sets</li><li>Avoid when: there is no real hierarchy or there are too few results to paginate</li></ul>
+
+<h2 id="forms-and-submission">Forms and submission</h2>
+
+<h3 id="forms-and-field-controls">Forms and field controls</h3>
+
+<ul><li>Classes: <code>form</code>, <code>form-group</code>, <code>form-row</code>, <code>form-actions</code>, <code>fieldset</code>, <code>fieldset-legend</code>, <code>label</code>, <code>input</code>, <code>textarea</code>, <code>select</code>, <code>checkbox</code>, <code>radio</code>, <code>switch*</code>, <code>range-*</code>, <code>file-*</code>, <code>help-text</code>, <code>error-text</code>, <code>success-text</code>, <code>contact-form</code>, <code>contact-field-*</code>, <code>lead-capture-*</code>, <code>form-layout-card</code></li><li>Role: interactive</li><li>Category: form</li><li>Interaction level: input</li><li>Data density: low to high</li><li>Dependency level: CSS only</li><li>Best fit: data capture, contact flows, qualification forms and operational inputs</li><li>Avoid when: the page is purely display-oriented and no input is expected</li></ul>
+
+<h3 id="input-groups">Input groups</h3>
+
+<ul><li>Classes: <code>input-group</code>, <code>input-group-text</code>, <code>input-group-field</code>, <code>input-group-action</code></li><li>Role: interactive</li><li>Category: form</li><li>Interaction level: input</li><li>Data density: low</li><li>Dependency level: CSS only</li><li>Best fit: fields with fixed prefixes, suffixes or attached submit actions</li><li>Avoid when: the attached prefix or button is not semantically tied to the field</li></ul>
+
+<h3 id="form-messages">Form messages</h3>
+
+<ul><li>Classes: <code>form-message</code>, <code>form-message-success</code>, <code>form-message-error</code></li><li>Role: presentational</li><li>Category: feedback</li><li>Interaction level: static</li><li>Data density: low</li><li>Dependency level: CSS only</li><li>Best fit: submit summaries and next-step explanations close to the relevant form</li><li>Avoid when: the message should auto-disappear without interrupting the current flow</li></ul>
+
+<h2 id="process-and-time">Process and time</h2>
+
+<h3 id="timelines-and-steps">Timelines and steps</h3>
+
+<ul><li>Classes: <code>timeline*</code>, <code>steps</code>, <code>step*</code></li><li>Role: presentational</li><li>Category: process and status</li><li>Interaction level: static</li><li>Data density: medium</li><li>Dependency level: CSS only</li><li>Best fit: delivery stages, onboarding progress, audit history and forward progress indicators</li><li>Avoid when: the information has no temporal or sequential meaning</li></ul>
+
+<h2 id="disclosure-and-overlays">Disclosure and overlays</h2>
+
+<h3 id="accordion">Accordion</h3>
+
+<ul><li>Hooks and classes: <code>data-fnlla-accordion</code>, <code>data-fnlla-accordion-button</code>, <code>.accordion-panel</code></li><li>Role: interactive</li><li>Category: disclosure</li><li>Interaction level: expandable</li><li>Data density: medium</li><li>Dependency level: CSS plus JavaScript hooks</li><li>Best fit: FAQs, grouped guidance and stacked detail blocks</li><li>Avoid when: the user should compare all content blocks side by side at once</li></ul>
+
+<h3 id="modal">Modal</h3>
+
+<ul><li>Hooks and classes: <code>data-fnlla-modal</code>, <code>data-fnlla-modal-open</code>, <code>data-fnlla-modal-close</code></li><li>Role: interactive</li><li>Category: overlay</li><li>Interaction level: modal</li><li>Data density: low to medium</li><li>Dependency level: CSS plus JavaScript hooks</li><li>Best fit: confirmations, short forms, critical branching points and focused review tasks</li><li>Avoid when: the interaction is non-critical and can live inline without interrupting context</li></ul>
+
+<h3 id="toast">Toast</h3>
+
+<ul><li>Hooks and classes: <code>data-fnlla-toast</code>, <code>data-fnlla-toast-open</code>, <code>data-fnlla-toast-close</code></li><li>Role: interactive</li><li>Category: feedback</li><li>Interaction level: dismissible</li><li>Data density: low</li><li>Dependency level: CSS plus JavaScript hooks</li><li>Best fit: short-lived confirmation, informational nudges and non-blocking status changes</li><li>Avoid when: the message is critical, blocking or requires guaranteed acknowledgement</li></ul>
+
+<h3 id="offcanvas">Offcanvas</h3>
+
+<ul><li>Hooks and classes: <code>data-fnlla-offcanvas</code>, <code>data-fnlla-offcanvas-open</code>, <code>data-fnlla-offcanvas-close</code>, <code>.offcanvas-panel</code></li><li>Role: interactive</li><li>Category: overlay</li><li>Interaction level: modal</li><li>Data density: low to medium</li><li>Dependency level: CSS plus JavaScript hooks</li><li>Best fit: filters, inspectors, side workspaces and secondary flows that should stay near the current page context</li><li>Avoid when: the user must stop and make a critical blocking decision that is better served by a modal</li></ul>
+
+<h3 id="popover-and-tooltip">Popover and tooltip</h3>
+
+<ul><li>Hooks and classes: <code>data-fnlla-popover</code>, <code>data-fnlla-popover-toggle</code>, <code>data-fnlla-popover-close</code>, <code>.popover-panel</code>, <code>data-fnlla-tooltip</code></li><li>Role: interactive</li><li>Category: overlay</li><li>Interaction level: dismissible or informative</li><li>Data density: low</li><li>Dependency level: CSS plus JavaScript hooks</li><li>Best fit: compact helper content, short clarification and contextual next-step hints</li><li>Avoid when: the content is long, essential or complex enough to require a larger always-visible surface</li></ul>
+
+<h2 id="section-library">Section library</h2>
+
+<h3 id="hero-and-section-wrappers">Hero and section wrappers</h3>
+
+<ul><li>Classes: <code>hero*</code>, <code>hero-copy</code>, <code>hero-panel-intro</code>, <code>hero-visual*</code>, <code>hero-art-*</code>, <code>hero-background*</code>, <code>hero-inline-*</code>, <code>feature-section*</code>, <code>service-section*</code>, <code>faq-section</code>, <code>contact-section</code>, <code>stats-section</code>, <code>process-section</code>, <code>pricing-section</code>, <code>pricing-card-head</code>, <code>testimonial-section</code>, <code>cta-section</code>, <code>cta-copy</code>, <code>cta-inline-notes</code>, <code>cta-proof-grid</code>, <code>cta-support</code>, <code>footer-top</code>, <code>footer-lead</code>, <code>footer-pillars</code>, <code>footer-pillar</code>, <code>footer-body</code>, <code>footer-status</code>, <code>footer-contact</code>, <code>footer-meta-copy</code>, <code>footer-legal</code></li><li>Role: structural and presentational</li><li>Category: section</li><li>Interaction level: usually static with optional embedded actions</li><li>Data density: low to medium</li><li>Dependency level: mostly CSS only</li><li>Best fit: landing pages, service overviews, process explanation, pricing and trust-building content</li><li>Avoid when: a highly custom one-off composition would be simpler than forcing content into a reusable section shell</li></ul>
+
+<h2 id="utilities">Utilities</h2>
+
+<h3 id="utility-classes">Utility classes</h3>
+
+<ul><li>Classes: spacing, gap, text alignment, weight, display, flex, radius, surface emphasis, width, sticky, scrollbar and accessibility helpers</li><li>Role: structural and presentational</li><li>Category: utility</li><li>Interaction level: static</li><li>Data density: not applicable</li><li>Dependency level: CSS only</li><li>Best fit: small local adjustments that support an existing component or section</li><li>Avoid when: utilities start replacing the base component pattern and create inconsistent markup</li></ul>
+
+<h2 id="quick-selection-rules">Quick selection rules</h2>
+
+<ul><li>Use <code>card</code> when content is grouped but not data-dense.</li><li>Use <code>list-group</code> when many rows belong to one shared surface.</li><li>Use <code>table</code> when column relationships and headers matter.</li><li>Use <code>panel</code> when a workspace needs a structured header, body and footer.</li><li>Use <code>message</code> when copy is richer than an alert but still belongs inline.</li><li>Use local FNLLA Icons when a compact visual cue helps scanning, but keep visible text for meaning.</li><li>Use <code>progress</code>, <code>spinner</code> and <code>skeleton</code> only for visible loading or completion states.</li><li>Use <code>timeline</code> for past progression and <code>steps</code> for current or upcoming staged flows.</li><li>Use <code>alert</code> when the message should remain visible in context.</li><li>Use <code>Toast</code> when the message should be brief and non-blocking.</li><li>Use <code>Offcanvas</code> when the user needs a temporary side workspace without leaving page context.</li><li>Use <code>Modal</code> when the user must focus on one task before returning.</li><li>Use <code>Popover</code> when helper content is richer than a tooltip but still smaller than a dialog.</li><li>Use <code>Scrollspy</code> when a long page needs a live in-page index.</li></ul>
+
+<h2 id="maintenance-note">Maintenance note</h2>
+
+<p>When a new component family is added to <code>FNLLA UI</code>, extend this file immediately so selection logic, documentation language and validation expectations do not drift apart.</p>
+        </article>
+        <aside class="doc-guide-sidebar scrollbar scrollbar-thin">
+          <div class="card doc-guide-card">
+            <p class="doc-panel-label">Guide pages</p>
+            <div class="doc-guide-nav" aria-label="Guide pages">
+            <a class="btn btn-outline btn-sm" href="./component-classification.html" aria-current="page">Classification</a>
+            <a class="btn btn-ghost btn-sm" href="./team-usage-and-maintenance.html">Usage</a>
+            </div>
+          </div>
+<div class="card doc-guide-card">
+            <p class="doc-panel-label">On this page</p>
+            <div class="doc-guide-toc doc-guide-toc-numbered">
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#use-this-guide-when">Use this guide when</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#classification-model">Classification model</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#layout-surfaces">Layout surfaces</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#containers-and-grids">Containers and grids</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#action-and-content-surfaces">Action and content surfaces</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#buttons">Buttons</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#panels-messages-and-menus">Panels, messages and menus</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#avatars-and-media-objects">Avatars and media objects</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#icons">Icons</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#search-shell">Search shell</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#cards">Cards</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#list-groups">List groups</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#tables">Tables</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#alerts-empty-states-and-loading">Alerts, empty states and loading</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#navigation-and-discovery">Navigation and discovery</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#navbar">Navbar</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#dropdown">Dropdown</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#tabs">Tabs</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#scrollspy">Scrollspy</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#breadcrumb-and-pagination">Breadcrumb and pagination</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#forms-and-submission">Forms and submission</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#forms-and-field-controls">Forms and field controls</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#input-groups">Input groups</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#form-messages">Form messages</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#process-and-time">Process and time</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#timelines-and-steps">Timelines and steps</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#disclosure-and-overlays">Disclosure and overlays</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#accordion">Accordion</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#modal">Modal</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#toast">Toast</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#offcanvas">Offcanvas</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#popover-and-tooltip">Popover and tooltip</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#section-library">Section library</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#hero-and-section-wrappers">Hero and section wrappers</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#utilities">Utilities</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#utility-classes">Utility classes</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#quick-selection-rules">Quick selection rules</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#maintenance-note">Maintenance note</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

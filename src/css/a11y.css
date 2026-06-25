@@ -1,0 +1,170 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: ACCESSIBILITY PREFERENCE LAYERS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+/* Reduced motion support for users who prefer minimal animation. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .btn:hover,
+  .btn:focus-visible,
+  .skip-link:focus {
+    transform: none;
+  }
+
+  .spinner,
+  .progress-indeterminate .progress-bar,
+  .skeleton::after,
+  .skeleton-line::after,
+  .skeleton-block::after {
+    animation: none !important;
+  }
+}
+
+/* High-contrast / forced-colors fallback layer. */
+@media (forced-colors: active) {
+  :root,
+  [data-fnlla-theme],
+  body {
+    forced-color-adjust: auto;
+  }
+
+  .btn,
+  .card,
+  .feature-card,
+  .service-card,
+  .testimonial-card,
+  .cta-card,
+  .panel,
+  .message,
+  .alert,
+  .list-group,
+  .list-group-item,
+  .empty-state,
+  .form-message,
+  .fieldset,
+  .progress,
+  .range-output,
+  .input,
+  .textarea,
+  .select,
+  .input-group-text,
+  .file-label,
+  .file-button,
+  .file-name,
+  .navbar-menu a,
+  .dropdown-menu,
+  .dropdown-item,
+  .tab-list,
+  .tab-button,
+  .tab-panel,
+  .table th,
+  .table td,
+  .pagination-link,
+  .pagination-ellipsis,
+  .modal-content,
+  .toast,
+  .accordion-item,
+  .accordion-button,
+  .accordion-panel,
+  .menu-list a,
+  .menu-list button,
+  .chip,
+  .search-result,
+  .skeleton-card,
+  .skeleton-table,
+  .hero-panel,
+  .hero-metric,
+  .feature-section-aside,
+  .service-section-aside,
+  .contact-card,
+  .stat-card,
+  .step,
+  .process-step,
+  .pricing-card,
+  .badge,
+  .tag,
+  .hero,
+  .section-shell,
+  .feature-section,
+  .service-section,
+  .faq-section,
+  .contact-section,
+  .stats-section,
+  .process-section,
+  .pricing-section,
+  .testimonial-section,
+  .cta-section,
+  .footer {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-ghost,
+  .close-btn,
+  .tab-button[aria-selected="true"],
+  .pagination-link[aria-current="page"],
+  .accordion-button[aria-expanded="true"],
+  .navbar-menu a[aria-current="page"],
+  .process-step-number,
+  .step-index {
+    border-color: Highlight;
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .spinner {
+    border-color: Highlight;
+    border-top-color: HighlightText;
+  }
+
+  .progress-bar {
+    background: Highlight;
+  }
+
+  .timeline-marker::before,
+  .feature-list li::before,
+  .pricing-feature-list li::before,
+  .contact-list li::before {
+    background: Highlight;
+  }
+
+  .alert-warning,
+  .alert-danger,
+  .alert-info,
+  .alert-success,
+  .toast-warning,
+  .toast-danger,
+  .toast-info,
+  .toast-success,
+  .form-message-success,
+  .form-message-error,
+  .pricing-card-featured {
+    border-top-color: Highlight;
+  }
+
+  .modal {
+    background: rgb(0 0 0 / 0.7);
+  }
+
+  :focus-visible {
+    outline-color: Highlight;
+  }
+}

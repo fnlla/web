@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <!-- =========================================================================
+       DOCUMENT HEAD
+       ========================================================================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Utilities</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- =========================================================================
+       DOCUMENT SHELL
+       ========================================================================= -->
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Blueprint documentation</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Framework blueprint</p>
+          <p class="doc-display">FNLLA UI - Documentation</p>
+          <p class="doc-lead">Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary docs navigation shared across the reference set. -->
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-outline btn-sm" href="./utilities.html" aria-current="page">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+    </nav>
+
+    <!-- Utility helpers and common usage examples. -->
+    <section class="section pt-1">
+      <div class="section-header">
+        <h2 class="section-title">Utility classes and theme helpers</h2>
+        <p class="section-text">Small helper classes speed up prototyping when used alongside the larger layout and component patterns.</p>
+      </div>
+
+      <div class="doc-grid">
+        <article class="card">
+          <h2 class="card-title">Spacing utilities</h2>
+          <div class="grid grid-2">
+            <div class="card">
+              <strong>mt-3 p-3</strong>
+              <div class="card mt-3 p-3">
+                <p class="card-text">Adds margin-top and padding.</p>
+              </div>
+            </div>
+            <div class="card">
+              <strong>mb-4 p-4</strong>
+              <div class="card mb-4 p-4">
+                <p class="card-text">Useful for section spacing.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Text utilities</h2>
+          <div class="grid grid-3">
+            <div class="card text-left">text-left</div>
+            <div class="card text-center">text-center</div>
+            <div class="card text-right">text-right</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Display utilities</h2>
+          <div class="d-flex flex-wrap gap-md">
+            <span class="tag">d-flex</span>
+            <span class="tag">d-grid</span>
+            <span class="tag">d-block</span>
+            <span class="tag">d-inline-block</span>
+            <span class="tag">d-none</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Layout containment helpers</h2>
+          <div class="grid gap-md">
+            <div class="card w-100"><strong>w-100</strong><p class="card-text">Makes a component or control stretch to the full available width.</p></div>
+            <div class="card overflow-auto"><strong>overflow-auto</strong><p class="card-text">Useful for horizontally scrollable previews, tables or code-like wrappers.</p></div>
+            <div class="card sticky-top"><strong>sticky-top</strong><p class="card-text">Pins an aside or support block while the surrounding content scrolls.</p></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Scrollbar utilities</h2>
+          <p class="card-text">Apply <code>.scrollbar</code> to any scroll container and add <code>.scrollbar-thin</code> when the chrome should stay visually lighter.</p>
+          <div class="overflow-auto scrollbar scrollbar-thin radius-md p-3" style="max-height: 12rem; border: 1px solid var(--fnlla-color-border); background: var(--fnlla-color-surface-soft);">
+            <p class="fw-bold mb-2">Scrollable panel</p>
+            <p class="mb-2">The scrollbar reads from shared theme tokens, so the same utility stays usable in default and dark theme contexts.</p>
+            <p class="mb-2">Use it for sidebars, long dropdown groups, dense inspector panels, code-like wrappers or documentation navigation.</p>
+            <p class="mb-2">The framework keeps scrollbar styling opt-in, which avoids forcing a custom chrome onto every browser surface by default.</p>
+            <p class="mb-0">Pair it with <code>.overflow-auto</code> on containers that can exceed their available height or width.</p>
+          </div>
+          <pre><code>&lt;div class="overflow-auto scrollbar scrollbar-thin"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Accessibility utility</h2>
+          <p class="card-text">Use <code>.visually-hidden</code> when text should stay available to assistive technology without remaining visible in the layout.</p>
+          <pre><code>&lt;button class="btn btn-outline" type="button"&gt;
+  Learn more
+  &lt;span class="visually-hidden"&gt; about the onboarding checklist&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Flex and grid helpers</h2>
+          <div class="d-flex flex-wrap items-center justify-between gap-md p-3 radius-md shadow-sm" style="border: 1px solid var(--fnlla-color-border);">
+            <span class="badge">items-center</span>
+            <span class="badge">justify-between</span>
+            <span class="badge">flex-wrap</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Gap, text and flex helpers</h2>
+          <div class="grid gap-md">
+            <div class="d-flex items-start justify-between gap-3 p-3 radius-md" style="border: 1px solid var(--fnlla-color-border);">
+              <div class="flex-1">
+                <p class="fw-bold mb-1">flex-1 + fw-bold</p>
+                <p class="text-muted mb-0">Use <code>.flex-1</code> when one child should naturally take the remaining space in a compact row.</p>
+              </div>
+              <span class="chip">gap-3</span>
+            </div>
+            <div class="d-flex justify-end gap-2">
+              <span class="tag">justify-end</span>
+              <span class="tag">items-start</span>
+              <span class="tag">text-muted</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Radius utilities</h2>
+          <div class="grid grid-3">
+            <div class="card radius-sm"><strong>radius-sm</strong></div>
+            <div class="card radius-md"><strong>radius-md</strong></div>
+            <div class="card radius-lg"><strong>radius-lg</strong></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Surface emphasis utilities</h2>
+          <div class="grid grid-2">
+            <div class="card shadow-sm"><strong>shadow-sm</strong></div>
+            <div class="card shadow-md"><strong>shadow-md</strong></div>
+          </div>
+          <p class="card-text mt-3">These helpers now strengthen border emphasis rather than introducing box shadows.</p>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Content primitives</h2>
+          <div class="prose">
+            <p>Use the base content layer when documentation, internal help pages or longer service copy needs readable defaults without custom one-off styling.</p>
+            <blockquote>
+              <p>Blockquotes are useful for quoted client notes, policy excerpts or implementation guidance that should stand apart from normal body copy.</p>
+            </blockquote>
+            <p>Keyboard hints can be shown with <kbd>Ctrl</kbd> + <kbd>K</kbd> and long-form content can live inside one <code>.prose</code> wrapper.</p>
+            <figure>
+              <div class="card p-3">
+                <p class="fw-bold mb-1">Evidence block example</p>
+                <p class="card-text mb-0">Place a screenshot, audit crop or annotated implementation note here when a written explanation needs visual proof.</p>
+              </div>
+              <figcaption>Use <code>figure</code> and <code>figcaption</code> for screenshots, diagrams and evidence captions.</figcaption>
+            </figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Utility contract at a glance</h2>
+        <p class="section-text">This is the practical runtime utility surface. Use it as a quick inventory before adding one-off CSS for something the framework already exposes.</p>
+      </div>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Stable helpers</th>
+              <th scope="col">Practical use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Display</strong></td>
+              <td><code>.d-block</code>, <code>.d-inline-block</code>, <code>.d-flex</code>, <code>.d-grid</code>, <code>.d-none</code></td>
+              <td>Switch element display mode quickly without authoring a page-specific override.</td>
+            </tr>
+            <tr>
+              <td><strong>Flex direction and sizing</strong></td>
+              <td><code>.flex-column</code>, <code>.flex-wrap</code>, <code>.flex-1</code>, <code>.flex-none</code></td>
+              <td>Compose compact rows, stacked controls and flexible content rails inside cards, toolbars or small shells.</td>
+            </tr>
+            <tr>
+              <td><strong>Alignment</strong></td>
+              <td><code>.items-start</code>, <code>.items-center</code>, <code>.items-end</code>, <code>.justify-start</code>, <code>.justify-center</code>, <code>.justify-between</code>, <code>.justify-end</code></td>
+              <td>Fine-tune the alignment of an existing flex container without creating a dedicated component variant.</td>
+            </tr>
+            <tr>
+              <td><strong>Spacing</strong></td>
+              <td><code>.p-1</code> to <code>.p-5</code>, <code>.pt-1</code> to <code>.pt-5</code>, <code>.pb-1</code> to <code>.pb-5</code>, <code>.mt-1</code> to <code>.mt-5</code>, <code>.mb-0</code> to <code>.mb-5</code></td>
+              <td>Adjust local breathing room during assembly while staying on the shared spacing scale.</td>
+            </tr>
+            <tr>
+              <td><strong>Width and overflow</strong></td>
+              <td><code>.w-100</code>, <code>.overflow-auto</code>, <code>.sticky-top</code>, <code>.scrollbar</code>, <code>.scrollbar-thin</code></td>
+              <td>Stretch controls, keep long content scrollable and stabilize supporting UI such as sidebars or inspectors.</td>
+            </tr>
+            <tr>
+              <td><strong>Text and accessibility</strong></td>
+              <td><code>.text-left</code>, <code>.text-center</code>, <code>.text-right</code>, <code>.text-muted</code>, <code>.fw-bold</code>, <code>.visually-hidden</code></td>
+              <td>Handle quick presentation shifts and keep assistive text available without changing the visible layout.</td>
+            </tr>
+            <tr>
+              <td><strong>Gap, radius and emphasis</strong></td>
+              <td><code>.gap-1</code> to <code>.gap-4</code>, <code>.radius-sm</code>, <code>.radius-md</code>, <code>.radius-lg</code>, <code>.shadow-sm</code>, <code>.shadow-md</code></td>
+              <td>Polish grouping and border emphasis while staying inside the same token-driven visual language.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">When utilities are enough</h2>
+        <p class="section-text">Utilities are strongest when they finish a layout or presentation detail. They should not quietly replace the documented page shell or component roles.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h3 class="card-title">Good fit</h3>
+          <ul class="doc-checklist">
+            <li>Adjusting local spacing inside an already-correct layout structure.</li>
+            <li>Aligning actions, badges or support text inside an existing card or toolbar.</li>
+            <li>Making a preview, table or sidebar scroll safely without inventing new wrappers.</li>
+            <li>Applying one-off muted text, width or radius tweaks that still follow shared tokens.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Step back to layout or components</h3>
+          <ul class="doc-checklist">
+            <li>If the page shell itself is unclear, start from <a href="./layout.html"><code>layout.html</code></a> before stacking utilities.</li>
+            <li>If a repeated pattern needs semantic structure, prefer a documented component or section instead of a growing utility pile.</li>
+            <li>If a utility combination is copied across pages, it is usually time to promote that pattern into a reusable surface.</li>
+            <li>If visual state depends on JavaScript behavior, verify the supported runtime hook in <a href="./api.html"><code>api.html</code></a> rather than styling around it ad hoc.</li>
+          </ul>
+        </article>
+      </div>
+
+      <article class="card mt-4">
+        <h3 class="card-title">Compact composition example</h3>
+        <p class="card-text">This is the sweet spot for utilities: a small, readable composition inside a stable card and section structure.</p>
+        <pre><code>&lt;div class="card p-3 radius-md shadow-sm"&gt;
+  &lt;div class="d-flex items-center justify-between gap-3"&gt;
+    &lt;div class="flex-1"&gt;
+      &lt;p class="fw-bold mb-1"&gt;Workspace status&lt;/p&gt;
+      &lt;p class="text-muted mb-0"&gt;Production-ready handoff&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class="tag"&gt;Ready&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </article>
+    </section>
+
+    <!-- Token-aware theme usage notes for utilities. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Theme-aware token usage</h2>
+        <p class="section-text">The utility layer stays theme-aware because color, shadow and surface values all read from shared tokens.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3 class="card-title">Theme attribute examples</h3>
+          <pre><code>&lt;body data-fnlla-theme="default"&gt;
+&lt;body data-fnlla-theme="dark"&gt;</code></pre>
+          <p class="card-text">Theme switching works by overriding CSS variables only, which keeps the utility classes reusable.</p>
+        </article>
+
+        <article class="card doc-token-list">
+          <h3 class="card-title">Token groups available</h3>
+          <p class="card-text"><strong>Colors:</strong> semantic surface, text, border, overlay and accent tokens.</p>
+          <p class="card-text"><strong>Typography:</strong> font families, scale, line heights and weights.</p>
+          <p class="card-text"><strong>Layout:</strong> spacing, sizing, containers, breakpoints, z-index and transitions.</p>
+        </article>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <!-- Shared runtime for interactive demos used inside the docs. -->
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

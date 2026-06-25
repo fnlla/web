@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <!-- =========================================================================
+       DOCUMENT HEAD
+       ========================================================================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI API</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- =========================================================================
+       DOCUMENT SHELL
+       ========================================================================= -->
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Blueprint documentation</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Framework blueprint</p>
+          <p class="doc-display">FNLLA UI - Documentation</p>
+          <p class="doc-lead">Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary docs navigation shared across the reference set. -->
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-outline btn-sm" href="./api.html" aria-current="page">API</a>
+      <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+    </nav>
+
+    <section class="section pt-1">
+      <div class="section-header">
+        <h2 class="section-title">FNLLA UI API and support contract</h2>
+        <p class="section-text">This page defines the supported public surface for the stable FNLLA UI release: runtime files, documented class families, JavaScript hooks and helper methods. Maintainer-only checks and private repository details appear later and are not consumer dependencies.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card doc-api-release-state">
+          <h2 class="card-title">Release state</h2>
+          <div class="doc-meta-list">
+            <div>
+              <p class="content-title mb-1">Version</p>
+              <p class="content-text"><code>1.0.0</code> is the stable internal release target for this repository snapshot.</p>
+            </div>
+            <div>
+              <p class="content-title mb-1">Support model</p>
+              <p class="content-text">Future changes should stay additive or conservative. Breaking markup, selector or hook changes should be treated as explicit upgrade work rather than routine drift.</p>
+            </div>
+            <div>
+              <p class="content-title mb-1">Hardening baseline</p>
+              <p class="content-text">Overlay behavior is now reconciled across one ordered modal or offcanvas layer stack, and fallback focus targeting skips CSS-hidden or fieldset-disabled controls before choosing the next usable control.</p>
+            </div>
+            <div>
+              <p class="content-title mb-1">Producer</p>
+              <p class="content-text">TechAyo LTD (techayo.co.uk)</p>
+            </div>
+            <div>
+              <p class="content-title mb-1">Maintainer</p>
+              <p class="content-text">TechAyo LTD (techayo.co.uk)</p>
+            </div>
+            <div>
+              <p class="content-title mb-1">Distributor</p>
+              <p class="content-text">TechAyo LTD (techayo.co.uk)</p>
+            </div>
+            <div>
+              <p class="content-title mb-1">Framework family</p>
+              <p class="content-text">FNLLA UI is the browser-facing UI layer in the wider FNLLA stack and can be used alongside FNLLA PHP.</p>
+            </div>
+            <div>
+              <p class="content-title mb-1">Copyright</p>
+              <p class="content-text">Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Public runtime contract</h2>
+          <ul class="doc-contract-list">
+            <li><code>assets/css/fnlla-ui.css</code> is the supported runtime stylesheet for tokens, layout primitives, components, sections and utilities.</li>
+            <li><code>assets/js/fnlla-ui.js</code> is the supported runtime script for dropdowns, mobile navigation, tabs, accordions, modals, toasts, offcanvas panels, popovers, tooltips and scrollspy.</li>
+            <li><code>assets/icons/</code> is the supported local <code>FNLLA Icons</code> bundle for offline icon usage, including root-level SVG files, <code>sprite.svg</code>, the Lucide license file and the FNLLA notice.</li>
+            <li>The stable CSS API uses prefix-free class names such as <code>wrapper</code>, <code>section</code>, <code>container</code>, <code>grid</code>, <code>btn</code>, <code>card</code> and <code>navbar</code>.</li>
+            <li><a href="./distribution.html"><code>distribution.html</code></a> defines how this runtime is packaged and when downstream projects should consume <code>dist/fnlla-ui/</code>.</li>
+            <li><a href="./layout.html"><code>layout.html</code></a> and the reference pages for components, sections and forms define the documented authoring model that this API expects.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Private implementation details</h2>
+          <ul class="doc-contract-list">
+            <li><code>src/css/</code> and <code>src/js/</code> are maintainer source layers, not consumer runtime dependencies.</li>
+            <li><code>scripts/fnlla-ui-manifest.mjs</code> coordinates publish and validation, but it is not part of the browser runtime API.</li>
+            <li><code>docs/assets/docs.css</code> and <code>docs/assets/docs.js</code> are documentation-only assets and should not be linked from production pages.</li>
+            <li>Internal source-module ordering, source file names and docs helper selectors may change as long as the published runtime contract stays stable.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Baseline authoring model for consumer pages. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Authoring baseline</h2>
+        <p class="section-text">The public API is not only files and hooks. It also includes the documented authoring model used to compose pages with stable layout responsibilities.</p>
+      </div>
+
+      <div class="grid grid-2 gap-md">
+        <article class="card">
+          <h3 class="card-title">Recommended page shell</h3>
+          <ul class="doc-contract-list">
+            <li><code>wrapper</code> owns the full page shell.</li>
+            <li>Use semantic <code>header</code>, <code>main</code> and <code>footer</code> inside that shell.</li>
+            <li><code>section</code> owns the full-width page band, spacing and optional background.</li>
+            <li><code>container</code>, <code>container-sm</code> and <code>container-lg</code> own the inner content width.</li>
+            <li><code>grid</code> and <code>grid-2/3/4</code> own inner column layout.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Authoring rule</h3>
+          <p class="card-text">Start from the page shell and layout primitives first, then place content components such as <code>card</code>, <code>panel</code>, <code>stat-card</code>, forms or section-specific wrappers inside that structure. Cards are supported content components, but they are not the default page layout skeleton.</p>
+          <pre><code>&lt;div class="wrapper"&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main&gt;
+    &lt;section class="section"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="grid grid-2 gap-md"&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <!-- Stable theme contract and token-level support guidance. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Supported theme contract</h2>
+        <p class="section-text">Themes are applied through shared tokens, not through component-level rewrites.</p>
+      </div>
+
+      <div class="doc-card-grid">
+        <article class="feature-card">
+          <h3 class="card-title">Official theme values</h3>
+          <p class="card-text"><code>default</code> and <code>dark</code> are the currently documented built-in theme values.</p>
+        </article>
+        <article class="feature-card">
+          <h3 class="card-title">Activation point</h3>
+          <p class="card-text">Apply <code>data-fnlla-theme</code> on <code>body</code> for production pages. Descendant theme wrappers are acceptable for documentation previews.</p>
+        </article>
+        <article class="feature-card">
+          <h3 class="card-title">Customization rule</h3>
+          <p class="card-text">Framework maintainers should change shared tokens in <code>src/css/tokens.css</code> and republish <code>assets/css/fnlla-ui.css</code>. Consumer projects that only use the published runtime should layer token overrides after <code>assets/css/fnlla-ui.css</code> instead of editing component selectors first.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Supported JavaScript hook surface. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">JavaScript hook contract</h2>
+        <p class="section-text">These hooks are the supported behavior API. The script assumes documented markup, real buttons for interactive triggers and valid target relationships.</p>
+      </div>
+
+      <div class="card doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">Pattern</th>
+              <th scope="col">Required hooks</th>
+              <th scope="col">Expected target</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dropdown</td>
+              <td><code>data-fnlla-dropdown</code>, <code>data-fnlla-dropdown-toggle</code></td>
+              <td>Toggle <code>aria-controls</code> should point to one <code>.dropdown-menu</code></td>
+              <td>Arrow keys, Home, End, outside click and Escape are supported.</td>
+            </tr>
+            <tr>
+              <td>Mobile navigation</td>
+              <td><code>data-fnlla-nav-toggle</code></td>
+              <td><code>aria-controls</code> should point to one <code>.navbar-panel</code></td>
+              <td>The whole panel is the supported collapse target on mobile.</td>
+            </tr>
+            <tr>
+              <td>Tabs</td>
+              <td><code>data-fnlla-tabs</code>, <code>data-fnlla-tab-list</code>, <code>data-fnlla-tab</code></td>
+              <td>Each tab <code>aria-controls</code> should point to one <code>.tab-panel</code></td>
+              <td>The script normalizes <code>role</code>, selection state, focus order and panel visibility.</td>
+            </tr>
+            <tr>
+              <td>Accordion</td>
+              <td><code>data-fnlla-accordion</code>, <code>data-fnlla-accordion-button</code></td>
+              <td>Each trigger <code>aria-controls</code> should point to one <code>.accordion-panel</code></td>
+              <td>Add <code>data-fnlla-accordion-single</code> only when one-open-at-a-time behavior is desired.</td>
+            </tr>
+            <tr>
+              <td>Modal</td>
+              <td><code>data-fnlla-modal</code>, <code>data-fnlla-modal-open</code>, <code>data-fnlla-modal-close</code></td>
+              <td><code>data-fnlla-modal-open</code> should point to a real selector such as <code>#example-modal</code></td>
+              <td>Focus trap, Escape, backdrop close and focus return are part of the supported behavior.</td>
+            </tr>
+            <tr>
+              <td>Toast</td>
+              <td><code>data-fnlla-toast</code>, <code>data-fnlla-toast-open</code>, <code>data-fnlla-toast-close</code></td>
+              <td><code>data-fnlla-toast-open</code> should point to one real toast selector such as <code>#save-toast</code></td>
+              <td>Optional <code>data-fnlla-toast-autohide</code> uses milliseconds and is intended for non-blocking status feedback.</td>
+            </tr>
+            <tr>
+              <td>Offcanvas</td>
+              <td><code>data-fnlla-offcanvas</code>, <code>data-fnlla-offcanvas-open</code>, <code>data-fnlla-offcanvas-close</code></td>
+              <td><code>data-fnlla-offcanvas-open</code> should point to one real offcanvas selector such as <code>#workspace-panel</code></td>
+              <td>Backdrop close, Escape close, focus return and layer isolation are part of the supported behavior.</td>
+            </tr>
+            <tr>
+              <td>Popover</td>
+              <td><code>data-fnlla-popover</code>, <code>data-fnlla-popover-toggle</code>, <code>data-fnlla-popover-close</code></td>
+              <td>The toggle <code>aria-controls</code> should point to one <code>.popover-panel</code></td>
+              <td>Outside click and Escape close are supported. Use this for compact rich helper content, not long-form dialogs.</td>
+            </tr>
+            <tr>
+              <td>Tooltip</td>
+              <td><code>data-fnlla-tooltip</code></td>
+              <td>The trigger itself is the supported target and should carry the tooltip text value</td>
+              <td>Focus and hover both reveal the tooltip. Use optional <code>data-fnlla-tooltip-position</code> for top, right, bottom or left.</td>
+            </tr>
+            <tr>
+              <td>Scrollspy</td>
+              <td><code>data-fnlla-scrollspy</code>, <code>data-fnlla-scrollspy-nav</code></td>
+              <td>Each nav link should point to one real section <code>id</code> on the same page</td>
+              <td>The script applies <code>aria-current="location"</code> as sections become active in the viewport.</td>
+            </tr>
+            <tr>
+              <td>Range output</td>
+              <td><code>data-fnlla-range-output</code>, optional <code>data-fnlla-range-prefix</code>, optional <code>data-fnlla-range-suffix</code></td>
+              <td>The output value should match one documented <code>.range-input[id]</code> on the same page</td>
+              <td>The runtime keeps the output text synchronized on load, input and change without page-specific JavaScript.</td>
+            </tr>
+            <tr>
+              <td>Runtime re-init</td>
+              <td><code>window.FNLLAUI.init(root)</code></td>
+              <td>A document, element or injected subtree containing documented FNLLA UI markup</td>
+              <td>The initializer is idempotent and is intended for progressive enhancement after dynamic DOM insertion.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Public runtime helper surface. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Public runtime helpers</h2>
+        <p class="section-text"><code>window.FNLLAUI</code> is the supported programmatic API. It is intended for progressive enhancement, dynamic content insertion and explicit open or close flows when markup alone is not enough.</p>
+      </div>
+
+      <div class="card doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">Helper</th>
+              <th scope="col">Accepted target</th>
+              <th scope="col">Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>window.FNLLAUI.init(root)</code></td>
+              <td>A document, element or injected subtree</td>
+              <td>Initializes documented FNLLA UI markup inside the provided scope. Calls are idempotent.</td>
+            </tr>
+            <tr>
+              <td><code>showModal</code>, <code>openModal</code>, <code>hideModal</code>, <code>closeModal</code></td>
+              <td>A selector string such as <code>#example-modal</code> or the modal element itself</td>
+              <td>Opens or closes a documented modal overlay.</td>
+            </tr>
+            <tr>
+              <td><code>showToast</code>, <code>hideToast</code></td>
+              <td>A selector string such as <code>#save-toast</code> or the toast element itself</td>
+              <td>Shows or hides a toast surface.</td>
+            </tr>
+            <tr>
+              <td><code>showOffcanvas</code>, <code>openOffcanvas</code>, <code>hideOffcanvas</code>, <code>closeOffcanvas</code></td>
+              <td>A selector string such as <code>#workspace-panel</code> or the offcanvas element itself</td>
+              <td>Opens or closes a documented offcanvas overlay.</td>
+            </tr>
+            <tr>
+              <td><code>openDropdown</code>, <code>closeDropdown</code></td>
+              <td>A selector string pointing to the dropdown wrapper or the dropdown element itself</td>
+              <td>Opens or closes a documented dropdown instance.</td>
+            </tr>
+            <tr>
+              <td><code>openPopover</code>, <code>closePopover</code></td>
+              <td>A selector string pointing to the popover wrapper or the popover element itself</td>
+              <td>Opens or closes a documented popover instance.</td>
+            </tr>
+            <tr>
+              <td><code>showTooltip</code>, <code>hideTooltip</code></td>
+              <td>A selector string pointing to the tooltip trigger or the trigger element itself</td>
+              <td>Shows or hides a documented tooltip.</td>
+            </tr>
+            <tr>
+              <td><code>refreshScrollspy</code></td>
+              <td>A selector string pointing to the scrollspy wrapper or the wrapper element itself</td>
+              <td>Refreshes active-link state for a documented scrollspy instance.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <article class="card mt-4">
+        <h3 class="card-title">Target resolution rule</h3>
+        <p class="card-text">Programmatic helpers accept either a selector string or a direct DOM element reference. If the target does not resolve to the documented FNLLA UI element type, the helper returns safely without throwing and keeps the chainable <code>window.FNLLAUI</code> object contract.</p>
+        <p class="card-text">The documented helper names are <code>window.FNLLAUI.showModal(target)</code>, <code>window.FNLLAUI.openModal(target)</code>, <code>window.FNLLAUI.hideModal(target)</code>, <code>window.FNLLAUI.closeModal(target)</code>, <code>window.FNLLAUI.showToast(target)</code>, <code>window.FNLLAUI.hideToast(target)</code>, <code>window.FNLLAUI.showOffcanvas(target)</code>, <code>window.FNLLAUI.openOffcanvas(target)</code>, <code>window.FNLLAUI.hideOffcanvas(target)</code>, <code>window.FNLLAUI.closeOffcanvas(target)</code>, <code>window.FNLLAUI.openDropdown(target)</code>, <code>window.FNLLAUI.closeDropdown(target)</code>, <code>window.FNLLAUI.openPopover(target)</code>, <code>window.FNLLAUI.closePopover(target)</code>, <code>window.FNLLAUI.showTooltip(target)</code>, <code>window.FNLLAUI.hideTooltip(target)</code> and <code>window.FNLLAUI.refreshScrollspy(target)</code>.</p>
+      </article>
+    </section>
+
+    <!-- Stable CSS family map. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Stable CSS families</h2>
+        <p class="section-text">The stable CSS API is grouped into reusable families. The items below are the supported categories to extend and reuse across projects.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h3 class="card-title">Layout and tokens</h3>
+          <p class="card-text"><code>.wrapper</code>, semantic <code>header</code>, <code>main</code> and <code>footer</code>, <code>.section</code>, <code>.section-alt</code>, <code>.section-surface</code>, <code>.section-primary-soft</code>, <code>.container*</code>, <code>.grid*</code>, gap helpers and all shared <code>--fnlla-*</code> tokens. Use <code>.section</code> for the full-width band, <code>.container</code> for the inner page line, and <code>.card*</code> inside content areas rather than as the default page shell.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Core components</h3>
+          <p class="card-text"><code>.btn*</code>, <code>.btn-group</code>, <code>.btn-toolbar</code>, <code>.close-btn</code>, <code>.card*</code>, <code>.panel*</code>, <code>.message*</code>, <code>.menu*</code>, <code>.chip*</code>, <code>.avatar*</code>, <code>.media*</code>, <code>.icon*</code>, <code>.alert*</code>, <code>.list-group*</code>, <code>.list-group-nav*</code>, <code>.empty-state*</code>, <code>.table*</code>, <code>.table-sticky</code>, <code>.table-status*</code>, <code>.breadcrumb*</code>, <code>.pagination*</code>, <code>.progress*</code>, <code>.progress-field</code>, <code>.progress-meta</code>, <code>.progress-label</code>, <code>.progress-value</code>, <code>.progress-indeterminate</code>, <code>.spinner*</code>, <code>.spinner-current</code>, <code>.loader-inline</code>, <code>.loading-*</code>, <code>.skeleton*</code>, <code>.skeleton-card</code>, <code>.skeleton-media</code>, <code>.skeleton-avatar</code>, <code>.skeleton-copy</code>, <code>.skeleton-actions</code>, <code>.skeleton-table</code>, <code>.skeleton-table-row</code>, <code>.search-*</code> and the documented navigation patterns.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Forms and feedback</h3>
+          <p class="card-text"><code>.form*</code>, <code>.fieldset*</code>, <code>.label</code>, <code>.input</code>, <code>.textarea</code>, <code>.select</code>, <code>.checkbox</code>, <code>.radio</code>, <code>.switch*</code>, <code>.range-*</code>, <code>.range-output</code>, <code>.range-labels</code>, <code>.file-*</code>, <code>.input-group*</code>, <code>.contact-form</code>, <code>.contact-field-*</code>, <code>.lead-capture-*</code>, <code>.form-layout-card</code>, help text and success or error message blocks.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Interactive shells</h3>
+          <p class="card-text"><code>.dropdown*</code>, <code>.tabs*</code>, <code>.accordion*</code>, <code>.modal*</code>, <code>.toast*</code>, <code>.offcanvas*</code>, <code>.popover*</code>, <code>.tooltip-panel</code> and <code>.scrollspy*</code> are supported only with the documented hook contract.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Content primitives</h3>
+          <p class="card-text">Base content styling for <code>blockquote</code>, <code>figure</code>, <code>figcaption</code>, <code>kbd</code>, <code>pre</code>, <code>code</code>, description lists and the <code>.prose</code> wrapper is part of the stable authoring surface.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Section library</h3>
+          <p class="card-text"><code>.hero*</code>, <code>.hero-copy</code>, <code>.hero-panel-intro</code>, <code>.hero-visual*</code>, <code>.hero-art-*</code>, <code>.hero-background*</code>, <code>.hero-inline-*</code>, <code>.feature-section*</code>, <code>.service-section*</code>, <code>.faq-section</code>, <code>.contact-section</code>, <code>.stats-section</code>, <code>.process-section</code>, <code>.pricing-section</code>, <code>.pricing-card-head</code>, <code>.testimonial-section</code>, <code>.cta-section</code>, <code>.cta-copy</code>, <code>.cta-inline-notes</code>, <code>.cta-proof-grid</code>, <code>.cta-support</code> and <code>.footer*</code>. These wrappers usually sit inside a standard <code>.section &gt; .container</code> page band.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Utilities</h3>
+          <p class="card-text">Spacing, text alignment, weight, gap, display, flex, radius, overflow, opt-in scrollbar and accessibility helpers such as <code>.scrollbar</code>, <code>.scrollbar-thin</code> and <code>.visually-hidden</code>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Maintainer checks and non-API boundaries</h2>
+        <p class="section-text">Stable does not mean frozen. It means changes should pass documented checks and preserve the supported authoring model for downstream projects.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3 class="card-title">Release checks for maintainers</h3>
+          <p class="card-text">Run the built-in publish, smoke-test and validation flow whenever runtime behavior, docs or packaging changed.</p>
+          <pre><code>node .\scripts\validate-fnlla-ui.mjs</code></pre>
+          <p class="card-text">When CSS or JavaScript source modules change, publish the readable runtime entrypoints with:</p>
+          <pre><code>node .\scripts\publish-fnlla-ui.mjs</code></pre>
+          <p class="card-text">That same publish flow now refreshes <code>dist/fnlla-ui/</code>, the runtime-only handoff package for downstream projects.</p>
+          <p class="card-text">Use the browser smoke test when runtime behavior or runtime publishing changes:</p>
+          <pre><code>node .\scripts\test-fnlla-ui-browser.mjs</code></pre>
+          <p class="card-text">Use the local browser matrix when you want the same smoke flow replayed across every detected supported Chromium browser:</p>
+          <pre><code>node .\scripts\test-fnlla-ui-browser-matrix.mjs</code></pre>
+          <p class="card-text">The browser smoke coverage now includes mixed modal or offcanvas stacking, programmatic lower-layer close flows, fallback focus targeting for CSS-hidden or fieldset-disabled preferred targets, docs shell checks and runtime API behavior.</p>
+          <p class="card-text">The repository also ships a GitHub Actions gate at <code>.github/workflows/fnlla-ui-hardening.yml</code> so publish, validation and browser hardening can run automatically on GitHub before release-oriented merges.</p>
+          <p class="card-text">Source-module ordering and the runtime-export boundary are centralized in <code>scripts/fnlla-ui-manifest.mjs</code> so publish and validation read the same repository contract.</p>
+          <p class="card-text"><code>FNLLA Icons</code> usage is intentionally static and local in this repository. The supported offline contract is local SVG files or the local sprite, not remote icon APIs or CDN-hosted assets. Source attribution to Lucide remains embedded in the local icon bundle.</p>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">What stays outside the stable API</h3>
+          <ul class="doc-contract-list">
+            <li>Legacy hooks such as <code>data-ui-target</code> are not part of the supported API.</li>
+            <li>Legacy hooks such as <code>data-ui-nav-menu</code> are not part of the supported API.</li>
+            <li>Accordion behavior without a real <code>aria-controls</code> target is not part of the supported API.</li>
+            <li>Documentation-only selectors from <code>docs/assets/docs.css</code> should not be copied into product CSS dependencies.</li>
+            <li>Source-layer file paths inside <code>src/</code> are not a consumer contract. Consumer projects should depend on published runtime assets instead.</li>
+            <li>Repository scripts and validation internals are not browser runtime dependencies even when they define how publish or validation work inside this repository.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <!-- Shared runtime for interactive demos used inside the docs. -->
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

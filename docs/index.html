@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <!-- =========================================================================
+       DOCUMENT HEAD
+       ========================================================================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Docs</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- =========================================================================
+       DOCUMENT SHELL
+       ========================================================================= -->
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Blueprint documentation</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Framework blueprint</p>
+          <p class="doc-display">FNLLA UI - Documentation</p>
+          <p class="doc-lead">Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary docs navigation shared across the reference set. -->
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-outline btn-sm" href="./index.html" aria-current="page">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+    </nav>
+
+    <section class="section pt-1">
+      <div class="section-header">
+        <h2 class="section-title">Start here</h2>
+        <p class="section-text">FNLLA UI is the stable no-build runtime layer for TechAyo websites. This page is the routing map for the docs set, while the deeper pages hold the detailed implementation rules.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h2 class="card-title">Stable runtime contract</h2>
+          <pre><code>&lt;link rel="stylesheet" href="assets/css/fnlla-ui.css"&gt;
+&lt;script src="assets/js/fnlla-ui.js"&gt;&lt;/script&gt;</code></pre>
+          <p class="card-text">The public runtime starts with one stylesheet, one script and the local <code>assets/icons/</code> bundle. The rest of the docs explain how to structure markup, choose components and keep that contract stable.</p>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Choose your working mode</h2>
+          <ul class="doc-checklist">
+            <li><strong>Consumer mode:</strong> copy <code>dist/fnlla-ui/</code> or work directly from <code>assets/</code>, then build a website on top of it.</li>
+            <li><strong>Maintainer mode:</strong> change <code>src/</code>, republish runtime files and run validation before release.</li>
+            <li><strong>Default rule:</strong> if a change only serves one website, keep it in the website project instead of pushing it into the framework.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Read next by task</h2>
+          <ul class="doc-checklist">
+            <li><a href="./distribution.html"><code>distribution.html</code></a> for packaging and copy rules.</li>
+            <li><a href="./layout.html"><code>layout.html</code></a> for page shells, containers and grid decisions.</li>
+            <li><a href="./api.html"><code>api.html</code></a> for hooks, helpers and stable CSS families.</li>
+            <li><a href="./guides.html"><code>guides.html</code></a> for workflow and component-selection guidance.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Documentation routes</h2>
+        <p class="section-text">Use the shortest path to the answer you need. These pages split setup, structure, component usage and maintenance into clearer reading routes.</p>
+      </div>
+
+      <div class="doc-link-grid">
+        <a class="doc-link-card" href="./distribution.html">
+          <span class="doc-link-label">Packaging</span>
+          <p class="doc-link-title">Distribution</p>
+          <p class="doc-link-text">What to copy, what belongs to runtime, what stays docs-only and when to use <code>dist/fnlla-ui/</code> instead of raw repo files.</p>
+        </a>
+        <a class="doc-link-card" href="./layout.html">
+          <span class="doc-link-label">Structure</span>
+          <p class="doc-link-title">Layout</p>
+          <p class="doc-link-text">How <code>wrapper</code>, <code>section</code>, <code>container</code> and <code>grid</code> divide responsibility, plus the anti-patterns to avoid.</p>
+        </a>
+        <a class="doc-link-card" href="./components.html">
+          <span class="doc-link-label">Primitives</span>
+          <p class="doc-link-title">Components</p>
+          <p class="doc-link-text">Reference for reusable UI surfaces such as buttons, cards, alerts, list groups, tables and interactive shells.</p>
+        </a>
+        <a class="doc-link-card" href="./sections.html">
+          <span class="doc-link-label">Compositions</span>
+          <p class="doc-link-title">Sections</p>
+          <p class="doc-link-text">Reusable page-level compositions for hero bands, service blocks, stats, process sections, pricing and CTA layouts.</p>
+        </a>
+        <a class="doc-link-card" href="./forms.html">
+          <span class="doc-link-label">Inputs</span>
+          <p class="doc-link-title">Forms</p>
+          <p class="doc-link-text">Reference for form shells, fields, validation states and contact-oriented patterns that need stable markup and accessible structure.</p>
+        </a>
+        <a class="doc-link-card" href="./utilities.html">
+          <span class="doc-link-label">Helpers</span>
+          <p class="doc-link-title">Utilities</p>
+          <p class="doc-link-text">Quick runtime helpers for spacing, display, flex alignment, overflow, emphasis and small token-aware presentation adjustments.</p>
+        </a>
+        <a class="doc-link-card" href="./icons.html">
+          <span class="doc-link-label">Assets</span>
+          <p class="doc-link-title">Icons</p>
+          <p class="doc-link-text">Search the offline FNLLA Icons bundle, inspect categories and copy the stable runtime path under <code>assets/icons/</code>.</p>
+        </a>
+        <a class="doc-link-card" href="./api.html">
+          <span class="doc-link-label">Contract</span>
+          <p class="doc-link-title">API</p>
+          <p class="doc-link-text">Public runtime files, stable hooks, authoring rules and the line between supported browser API and private maintainer internals.</p>
+        </a>
+        <a class="doc-link-card" href="./guides.html">
+          <span class="doc-link-label">Workflow</span>
+          <p class="doc-link-title">Guides</p>
+          <p class="doc-link-text">Long-form guidance for team usage, framework maintenance and choosing the right component family before inventing a new one.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Stable authoring rules</h2>
+        <p class="section-text">These are the rules worth keeping in your head while reading the rest of the docs set.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h3 class="card-title">Layout first, components second</h3>
+          <p class="card-text">Start from <code>wrapper</code>, <code>section</code>, <code>container</code> and <code>grid</code>, then place cards, forms, stats or sections inside that shell. Do not let cards become the default page skeleton.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Tokens before selector overrides</h3>
+          <p class="card-text">Rebrand through shared variables such as <code>--fnlla-color-primary</code>, <code>--fnlla-space-*</code> and typography tokens before editing component selectors or runtime CSS directly.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Hooks stay on the documented path</h3>
+          <p class="card-text">Use <code>data-fnlla-*</code> hooks, real <code>aria-controls</code> targets and <code>window.FNLLAUI.init(root)</code> for dynamic DOM insertion. Legacy <code>data-ui-*</code> patterns are outside the stable contract.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Icons stay local</h3>
+          <p class="card-text">Use the shipped local bundle under <code>assets/icons/</code> or <code>assets/icons/sprite.svg</code>. Keep visible text for meaning and use icons as reinforcement, not as the only label.</p>
+        </article>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <!-- Shared runtime for interactive demos used inside the docs. -->
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: BREADCRUMBS AND PAGINATION
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+/* ==========================================================================
+   BREADCRUMBS
+   ========================================================================== */
+.breadcrumb {
+  min-width: 0;
+}
+
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--fnlla-space-2);
+  margin: 0;
+  padding: 0.55rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-lg);
+  background: linear-gradient(180deg, var(--fnlla-color-surface-strong), var(--fnlla-color-bg-alt));
+  list-style: none;
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fnlla-space-2);
+  min-width: 0;
+  padding: 0.3rem;
+  color: var(--fnlla-color-muted);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+  color: var(--fnlla-color-placeholder);
+  font-size: 1rem;
+}
+
+.breadcrumb-link,
+.breadcrumb-current {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--fnlla-radius-pill);
+}
+
+.breadcrumb-link {
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-semibold);
+  background: var(--fnlla-color-surface);
+}
+
+.breadcrumb-link:hover,
+.breadcrumb-link:focus-visible {
+  color: var(--fnlla-color-secondary);
+  background: var(--fnlla-color-primary-soft);
+  text-decoration: none;
+}
+
+.breadcrumb-current {
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-semibold);
+  background: linear-gradient(135deg, var(--fnlla-color-primary-soft), var(--fnlla-color-accent-soft));
+}
+
+/* ==========================================================================
+   PAGINATION
+   ========================================================================== */
+.pagination {
+  min-width: 0;
+}
+
+.pagination-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--fnlla-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination-item {
+  display: inline-flex;
+}
+
+.pagination-link,
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-semibold);
+}
+
+.pagination-link:hover,
+.pagination-link:focus-visible {
+  border-color: var(--fnlla-color-primary-border);
+  background: var(--fnlla-color-primary-soft);
+  color: var(--fnlla-color-secondary);
+  text-decoration: none;
+}
+
+.pagination-link[aria-current="page"] {
+  border-color: var(--fnlla-color-primary-border);
+  background:
+    linear-gradient(135deg, var(--fnlla-color-primary-soft), var(--fnlla-color-accent-soft)),
+    var(--fnlla-color-surface-strong);
+}
+
+.pagination-ellipsis {
+  border-style: dashed;
+  color: var(--fnlla-color-muted);
+}

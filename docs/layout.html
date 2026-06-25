@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <!-- =========================================================================
+       DOCUMENT HEAD
+       ========================================================================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Layout</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- =========================================================================
+       DOCUMENT SHELL
+       ========================================================================= -->
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Blueprint documentation</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Framework blueprint</p>
+          <p class="doc-display">FNLLA UI - Documentation</p>
+          <p class="doc-lead">Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary docs navigation shared across the reference set. -->
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-outline btn-sm" href="./layout.html" aria-current="page">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+    </nav>
+
+    <section class="section pt-1">
+      <div class="section-header">
+        <h2 class="section-title">Layout responsibility map</h2>
+        <p class="section-text">Use this page as the structural source of truth: <code>wrapper</code> owns the page shell, <code>section</code> owns the full-width band, <code>container</code> owns the inner line and <code>grid</code> owns columns inside that line.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h2 class="card-title">Outside-to-inside recipe</h2>
+          <div class="grid gap-md">
+            <div class="doc-callout">
+              <h3 class="content-title">Shell first</h3>
+              <ul class="doc-checklist">
+                <li><code>wrapper</code> keeps one vertical page flow.</li>
+                <li><code>header</code>, <code>main</code> and <code>footer</code> stay semantic.</li>
+                <li><code>section</code> controls spacing, background and rhythm.</li>
+                <li><code>container</code> keeps a shared readable page line.</li>
+                <li><code>grid</code> is where column decisions happen.</li>
+              </ul>
+            </div>
+            <div class="doc-callout">
+              <h3 class="content-title">Decision order</h3>
+              <p class="content-text">Decide shell, then band, then width, then columns. Components such as cards, stats or forms come after that structure is already stable.</p>
+            </div>
+          </div>
+          <pre><code>&lt;div class="wrapper"&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main&gt;
+    &lt;section class="section"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="grid grid-2 gap-md"&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Section and container contract</h2>
+          <div class="doc-example">
+            <section class="section section-alt radius-lg">
+              <div class="container">
+                <div class="grid gap-sm">
+                  <p class="doc-panel-label mb-0">Container line</p>
+                  <div class="doc-callout">
+                    <h3 class="content-title">Section owns the band</h3>
+                    <p class="content-text">Keep backgrounds and vertical rhythm on the outer section, then align content inside one shared container.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <pre><code>&lt;section class="section section-alt"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="card"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Choose the width</h2>
+        <p class="section-text">Container size is the first local layout choice after the shell. Pick width based on reading comfort and content density, not on how much space happens to be available.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h2 class="card-title">Container width scale</h2>
+          <div class="doc-example">
+            <div class="grid gap-md">
+              <section class="section section-alt radius-lg">
+                <div class="container-sm">
+                  <div class="doc-callout">
+                    <h3 class="content-title">container-sm</h3>
+                    <p class="content-text">Use for tighter reading widths, quieter single-column copy and support pages.</p>
+                  </div>
+                </div>
+              </section>
+              <section class="section section-alt radius-lg">
+                <div class="container">
+                  <div class="doc-callout">
+                    <h3 class="content-title">container</h3>
+                    <p class="content-text">Use as the default page line for most marketing, docs and service layouts.</p>
+                  </div>
+                </div>
+              </section>
+              <section class="section section-alt radius-lg">
+                <div class="container-lg">
+                  <div class="doc-callout">
+                    <h3 class="content-title">container-lg</h3>
+                    <p class="content-text">Use when comparisons, data or media need more horizontal room.</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <pre><code>&lt;div class="container-sm"&gt;...&lt;/div&gt;
+&lt;div class="container"&gt;...&lt;/div&gt;
+&lt;div class="container-lg"&gt;...&lt;/div&gt;</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Choose the grid</h2>
+        <p class="section-text">Grid classes describe column count only. They do not decide what the inner blocks are, so the same structure can hold cards, forms, stats or plain content.</p>
+      </div>
+
+      <div class="grid gap-md">
+        <article class="card">
+          <h2 class="card-title">1-column grid</h2>
+          <div class="doc-example">
+            <div class="grid gap-md">
+              <div class="doc-callout">
+                <h3 class="content-title">Single column</h3>
+                <p class="content-text">Use when content should read in one uninterrupted vertical flow.</p>
+              </div>
+            </div>
+          </div>
+          <pre><code>&lt;div class="grid gap-md"&gt;
+  &lt;div&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">2-column grid</h2>
+          <div class="grid grid-2 gap-md">
+            <div class="doc-callout"><h3 class="content-title">Column one</h3><p class="content-text">Good for balanced summaries, text-plus-support or paired decision blocks.</p></div>
+            <div class="doc-callout"><h3 class="content-title">Column two</h3><p class="content-text">The layout stacks cleanly on smaller screens without changing the markup contract.</p></div>
+          </div>
+          <pre><code>&lt;div class="grid grid-2 gap-md"&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">3-column grid</h2>
+          <div class="grid grid-3 gap-md">
+            <div class="doc-callout"><h3 class="content-title">Item one</h3><p class="content-text">Good for service summaries and lightweight comparisons.</p></div>
+            <div class="doc-callout"><h3 class="content-title">Item two</h3><p class="content-text">Each inner block can later become a card, stat tile or custom section surface.</p></div>
+            <div class="doc-callout"><h3 class="content-title">Item three</h3><p class="content-text">The grid stays structural. The content component stays your choice.</p></div>
+          </div>
+          <pre><code>&lt;div class="grid grid-3 gap-md"&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">4-column grid</h2>
+          <div class="grid grid-4 gap-md">
+            <div class="doc-callout"><h3 class="content-title">One</h3><p class="content-text">Dense overview</p></div>
+            <div class="doc-callout"><h3 class="content-title">Two</h3><p class="content-text">Comparison-ready</p></div>
+            <div class="doc-callout"><h3 class="content-title">Three</h3><p class="content-text">Wider layouts</p></div>
+            <div class="doc-callout"><h3 class="content-title">Four</h3><p class="content-text">Scannable groups</p></div>
+          </div>
+          <pre><code>&lt;div class="grid grid-4 gap-md"&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+  &lt;div&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Anti-patterns to avoid</h2>
+        <p class="section-text">Most layout drift in downstream projects comes from responsibility leaks. These are the mistakes worth catching early in review.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h3 class="card-title">Do not use cards as the page shell</h3>
+          <p class="card-text">Cards are content surfaces. They should sit inside a stable shell, not replace <code>wrapper</code>, <code>section</code> or <code>container</code> as the default page skeleton.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Do not nest containers without a reason</h3>
+          <p class="card-text">Unnecessary nested containers create drifting inner lines and unpredictable rhythm. Use one container per band until a genuine sub-layout needs otherwise.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Do not use wide multi-column grids for long prose</h3>
+          <p class="card-text">Long-form copy belongs in calmer widths. Wide three- or four-column grids are for grouped summaries, not for dense reading blocks.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Do not skip <code>section &gt; container</code></h3>
+          <p class="card-text">Dropping straight into ad hoc widths makes background bands, spacing and alignment harder to reason about. Keep the section-band and container-line split intact.</p>
+        </article>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <!-- Shared runtime for interactive demos used inside the docs. -->
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

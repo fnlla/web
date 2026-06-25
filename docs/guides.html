@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <!-- =========================================================================
+       DOCUMENT HEAD
+       ========================================================================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Guides</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- =========================================================================
+       DOCUMENT SHELL
+       ========================================================================= -->
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Blueprint documentation</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Guide library</p>
+          <p class="doc-display">FNLLA UI - Guides</p>
+          <p class="doc-lead">Published browser-facing guides for component selection, downstream website work and framework maintenance workflows.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary docs navigation shared across the reference set. -->
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-outline btn-sm" href="./guides.html" aria-current="page">Guides</a>
+    </nav>
+
+    <section class="section pt-1">
+      <div class="section-header">
+        <h2 class="section-title">Which guide should you read first?</h2>
+        <p class="section-text">These guides sit above the raw component references. Use them when the question is not only what FNLLA UI ships, but how a team should decide, review or maintain that usage.</p>
+      </div>
+
+      <div class="doc-link-grid">
+        <a class="doc-link-card" href="./component-classification.html">
+          <span class="doc-link-label">Selection</span>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tag">For consumers</span>
+            <span class="tag">Decision guide</span>
+          </div>
+          <p class="doc-link-title">Component classification</p>
+          <p class="doc-link-text">Read this first when you need to choose the right surface, role and category before inventing a new card, panel, form shell or overlay pattern.</p>
+        </a>
+        <a class="doc-link-card" href="./team-usage-and-maintenance.html">
+          <span class="doc-link-label">Workflow</span>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tag">For consumers</span>
+            <span class="tag">For maintainers</span>
+            <span class="tag">Workflow guide</span>
+          </div>
+          <p class="doc-link-title">Team usage and maintenance</p>
+          <p class="doc-link-text">Read this first when a project is starting, when a site updates FNLLA UI, or when the team needs a clear split between consumer-mode work and framework maintenance.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Choose your path</h2>
+        <p class="section-text">Most teams are either consuming the runtime in a downstream website or maintaining FNLLA UI itself. Starting on the right path cuts down a lot of unnecessary reading.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h2 class="card-title">Consumer path</h2>
+          <ul class="doc-flow-list">
+            <li>Start with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a> to understand the consumer-mode boundary.</li>
+            <li>Move to <a href="./layout.html"><code>layout.html</code></a> when the page shell or structure is still undecided.</li>
+            <li>Use <a href="./component-classification.html"><code>component-classification.html</code></a> before inventing a new reusable surface.</li>
+            <li>Open <a href="./components.html"><code>components.html</code></a>, <a href="./sections.html"><code>sections.html</code></a>, <a href="./forms.html"><code>forms.html</code></a> or <a href="./utilities.html"><code>utilities.html</code></a> only after the role is clear.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Maintainer path</h2>
+          <ul class="doc-flow-list">
+            <li>Start with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a> to separate runtime work from downstream website usage.</li>
+            <li>Check <a href="./api.html"><code>api.html</code></a> before changing hooks, selectors or supported runtime files.</li>
+            <li>Use <a href="./distribution.html"><code>distribution.html</code></a> when publish, runtime export or handoff packaging may be affected.</li>
+            <li>Return to the reference pages only after the public contract and release boundary are understood.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Common tasks</h2>
+        <p class="section-text">Start from the task you are trying to solve, then jump into the deeper reference page only after the guide narrows the decision.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h2 class="card-title">Starting a new website</h2>
+          <p class="card-text">Begin with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a>, then use <a href="./distribution.html"><code>distribution.html</code></a> for packaging decisions and <a href="./layout.html"><code>layout.html</code></a> for the first page shell.</p>
+        </article>
+        <article class="card">
+          <h2 class="card-title">Choosing a reusable surface</h2>
+          <p class="card-text">Begin with <a href="./component-classification.html"><code>component-classification.html</code></a>, then open <a href="./components.html"><code>components.html</code></a>, <a href="./sections.html"><code>sections.html</code></a> or <a href="./forms.html"><code>forms.html</code></a> once the category is clear.</p>
+        </article>
+        <article class="card">
+          <h2 class="card-title">Reviewing a markup change</h2>
+          <p class="card-text">Use the guides for intent, then verify the stable contract in <a href="./api.html"><code>api.html</code></a> and the structural rules in <a href="./layout.html"><code>layout.html</code></a>.</p>
+        </article>
+        <article class="card">
+          <h2 class="card-title">Updating the framework itself</h2>
+          <p class="card-text">Start with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a>, then use <a href="./api.html"><code>api.html</code></a> and <a href="./distribution.html"><code>distribution.html</code></a> to check what is public, generated and release-sensitive.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Reading map</h2>
+        <p class="section-text">Use this quick routing table when the job sounds larger than a single component lookup and you need the shortest path through the docs.</p>
+      </div>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">If you need to...</th>
+              <th scope="col">Read this first</th>
+              <th scope="col">Then open</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Start a new downstream website on FNLLA UI</td>
+              <td><a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a></td>
+              <td><a href="./distribution.html"><code>distribution.html</code></a>, <a href="./layout.html"><code>layout.html</code></a>, <a href="./sections.html"><code>sections.html</code></a></td>
+            </tr>
+            <tr>
+              <td>Choose the right reusable surface before writing markup</td>
+              <td><a href="./component-classification.html"><code>component-classification.html</code></a></td>
+              <td><a href="./components.html"><code>components.html</code></a>, <a href="./sections.html"><code>sections.html</code></a>, <a href="./forms.html"><code>forms.html</code></a></td>
+            </tr>
+            <tr>
+              <td>Review whether a markup change stays inside the public contract</td>
+              <td><a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a></td>
+              <td><a href="./api.html"><code>api.html</code></a>, <a href="./layout.html"><code>layout.html</code></a>, <a href="./utilities.html"><code>utilities.html</code></a></td>
+            </tr>
+            <tr>
+              <td>Change the framework itself without blurring consumer and maintainer responsibilities</td>
+              <td><a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a></td>
+              <td><a href="./api.html"><code>api.html</code></a>, <a href="./distribution.html"><code>distribution.html</code></a>, <a href="./icons.html"><code>icons.html</code></a></td>
+            </tr>
+            <tr>
+              <td>Decide whether a small presentational need should use utilities or a bigger pattern</td>
+              <td><a href="./component-classification.html"><code>component-classification.html</code></a></td>
+              <td><a href="./utilities.html"><code>utilities.html</code></a>, <a href="./layout.html"><code>layout.html</code></a>, <a href="./components.html"><code>components.html</code></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <!-- Shared runtime for interactive demos used inside the docs. -->
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: RESPONSIVE LAYERS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+/* Tablet and small-laptop expansion of core grids. */
+@media (min-width: 48rem) {
+  .grid-2,
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-split,
+  .feature-grid,
+  .service-grid,
+  .contact-grid,
+  .faq-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-grid,
+  .process-grid,
+  .pricing-grid,
+  .testimonial-grid,
+  .testimonial-card-grid,
+  .hero-inline-facts,
+  .loading-spinner-grid,
+  .loading-skeleton-grid,
+  .loading-footer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-background-meta,
+  .cta-support {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-top {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Desktop expansion and richer multi-column compositions. */
+@media (min-width: 62rem) {
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid-4,
+  .footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .feature-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.85fr);
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-link-group {
+    justify-self: end;
+    width: max-content;
+  }
+}
+
+/* Extra-wide desktop expansion. */
+@media (min-width: 75rem) {
+  .grid-4,
+  .footer-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Mobile navigation and compact interactive patterns. */
+@media (max-width: 55rem) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: var(--fnlla-space-3);
+  }
+
+  .navbar-toggle {
+    display: inline-flex;
+  }
+
+  .navbar-panel,
+  .navbar-menu,
+  .navbar-actions {
+    width: 100%;
+  }
+
+  .navbar-panel {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--fnlla-space-3);
+  }
+
+  .fnlla-ui-js .navbar-panel[aria-hidden="true"] {
+    display: none;
+  }
+
+  .navbar-panel,
+  .navbar-menu,
+  .navbar-actions {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .navbar-menu > li,
+  .navbar-actions > * {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    min-width: 0;
+    margin-top: var(--fnlla-space-2);
+  }
+
+  .dropdown-menu-mega {
+    width: 100%;
+    max-width: none;
+  }
+
+  .mega-menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Narrow-phone stacking and control simplification. */
+@media (max-width: 40rem) {
+  .input-group {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row,
+  .form-actions,
+  .check-group,
+  .control-group,
+  .btn-toolbar,
+  .btn-group,
+  .media {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-group > .input-group-text,
+  .input-group > .input-group-field .input,
+  .input-group > .input-group-field .textarea,
+  .input-group > .input-group-field .select,
+  .input-group-action .btn {
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-radius: var(--fnlla-radius-md);
+  }
+
+  .toast-stack {
+    right: var(--fnlla-space-2);
+    left: var(--fnlla-space-2);
+    width: auto;
+  }
+
+  .pagination-list {
+    justify-content: flex-start;
+  }
+
+  .tab-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tab-button {
+    width: 100%;
+  }
+
+  .navbar-panel,
+  .navbar-menu,
+  .navbar-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar-menu a,
+  .btn {
+    width: 100%;
+  }
+
+  .navbar-account-trigger {
+    justify-content: flex-start;
+  }
+
+  .hero,
+  .section-shell,
+  .feature-section,
+  .service-section,
+  .faq-section,
+  .contact-section,
+  .stats-section,
+  .process-section,
+  .pricing-section,
+  .testimonial-section,
+  .cta-section,
+  .card,
+  .feature-card,
+  .service-card,
+  .testimonial-card,
+  .cta-card,
+  .modal-content {
+    padding: var(--fnlla-space-4);
+  }
+
+  .modal {
+    align-items: flex-start;
+    padding: var(--fnlla-space-3);
+  }
+
+  .modal-content {
+    width: 100%;
+    max-height: none;
+    margin: auto 0;
+  }
+
+  .offcanvas-panel {
+    max-width: none;
+    min-width: 100%;
+    border-left: 0;
+    border-top: 1px solid var(--fnlla-color-primary-border);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input-wrap,
+  .file-label,
+  .timeline-item,
+  .step {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-marker {
+    display: none;
+  }
+}
+

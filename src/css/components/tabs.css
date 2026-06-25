@@ -1,0 +1,74 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: TABS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+/* ==========================================================================
+   TAB LIST SHELL
+   ========================================================================== */
+.tabs {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-2);
+  padding: var(--fnlla-space-2);
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-lg);
+  background: var(--fnlla-color-surface-soft);
+}
+
+/* ==========================================================================
+   TAB TRIGGERS
+   ========================================================================== */
+.tab-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--fnlla-radius-md);
+  background: transparent;
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-semibold);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--fnlla-transition-base),
+    background-color var(--fnlla-transition-base),
+    color var(--fnlla-transition-base);
+}
+
+.tab-button:hover,
+.tab-button:focus-visible {
+  border-color: var(--fnlla-color-primary-border);
+  background: var(--fnlla-color-surface-strong);
+  text-decoration: none;
+}
+
+.tab-button[aria-selected="true"] {
+  border-color: var(--fnlla-color-primary-border);
+  background:
+    linear-gradient(135deg, var(--fnlla-color-primary-soft), var(--fnlla-color-accent-soft)),
+    var(--fnlla-color-surface-strong);
+  color: var(--fnlla-color-secondary);
+}
+
+/* ==========================================================================
+   TAB PANELS
+   ========================================================================== */
+.tab-panel {
+  display: grid;
+  gap: var(--fnlla-space-3);
+  min-width: 0;
+  padding: 1.75rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-lg);
+  background: var(--fnlla-color-surface-strong);
+}

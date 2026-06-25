@@ -1,0 +1,171 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: MODALS, TOASTS AND ACCORDIONS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+/* ==========================================================================
+   MODAL SHELL
+   ========================================================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--fnlla-z-toast) + 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: var(--fnlla-space-4);
+  background: rgba(11, 18, 32, 0.52);
+  -webkit-backdrop-filter: blur(0.45rem);
+  backdrop-filter: blur(0.45rem);
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: var(--fnlla-size-modal-max);
+  max-height: 85%;
+  overflow: auto;
+  padding: 1.75rem;
+  border-radius: var(--fnlla-radius-lg);
+  background: var(--fnlla-color-surface);
+  border: 1px solid var(--fnlla-color-border-strong);
+  box-shadow: 0 1.25rem 3rem rgba(11, 18, 32, 0.22);
+}
+
+.modal:focus-visible {
+  outline: none;
+}
+
+.modal:focus-visible .modal-content {
+  outline: 3px solid var(--fnlla-color-primary-soft);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   TOAST STACK AND INDIVIDUAL TOASTS
+   ========================================================================== */
+.toast-stack {
+  position: fixed;
+  right: var(--fnlla-space-3);
+  bottom: var(--fnlla-space-3);
+  z-index: var(--fnlla-z-toast);
+  display: grid;
+  gap: var(--fnlla-space-3);
+  width: var(--fnlla-size-toast-max);
+  max-width: 92%;
+}
+
+.toast {
+  display: grid;
+  gap: var(--fnlla-space-2);
+  min-width: 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+  opacity: 0;
+  transform: translateY(0.75rem);
+  pointer-events: none;
+  transition:
+    opacity var(--fnlla-transition-base),
+    transform var(--fnlla-transition-base);
+}
+
+.toast[hidden] {
+  display: none;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.toast-title {
+  margin: 0;
+  color: var(--fnlla-color-secondary);
+  font-size: 1rem;
+  font-weight: var(--fnlla-font-weight-bold);
+}
+
+.toast-text {
+  margin: 0;
+}
+
+.toast-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-2);
+}
+
+.toast-info {
+  border-color: var(--fnlla-color-info-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.toast-success {
+  border-color: var(--fnlla-color-success-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.toast-warning {
+  border-color: var(--fnlla-color-warning-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.toast-danger {
+  border-color: var(--fnlla-color-danger-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+/* ==========================================================================
+   ACCORDION SHELL
+   ========================================================================== */
+.accordion {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.accordion-item {
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+  overflow: hidden;
+}
+
+.accordion-button {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 0;
+  background: transparent;
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-bold);
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-button[aria-expanded="true"] {
+  background: var(--fnlla-color-primary-soft);
+}
+
+.accordion-button:hover,
+.accordion-button:focus-visible {
+  background: var(--fnlla-color-primary-soft);
+}
+
+.accordion-panel {
+  display: none;
+  padding: 0 1.2rem 1.2rem;
+}
+
+.accordion-item.is-open .accordion-panel,
+.accordion-button[aria-expanded="true"] + .accordion-panel {
+  display: block;
+}
+

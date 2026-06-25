@@ -1,0 +1,475 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: FORM CONTROLS AND FEEDBACK
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+/* ==========================================================================
+   FORM STACKING AND FIELD GROUPS
+   ========================================================================== */
+.form {
+  display: grid;
+  gap: var(--fnlla-space-4);
+}
+
+.form-group {
+  display: grid;
+  gap: var(--fnlla-space-2);
+}
+
+.form-row,
+.form-actions,
+.check-group,
+.control-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-3);
+}
+
+.fieldset {
+  display: grid;
+  gap: var(--fnlla-space-3);
+  min-width: 0;
+  margin: 0;
+  padding: 1rem 1.15rem 1.15rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.fieldset-legend {
+  padding: 0 0.35rem;
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-bold);
+}
+
+/* ==========================================================================
+   INPUT GROUPS
+   ========================================================================== */
+.input-group {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: stretch;
+}
+
+.input-group-field {
+  min-width: 0;
+}
+
+.input-group-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--fnlla-size-field-min);
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--fnlla-color-border);
+  background: var(--fnlla-color-bg-alt);
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-semibold);
+  white-space: nowrap;
+}
+
+.input-group > .input-group-text:first-child {
+  border-right: 0;
+  border-radius: var(--fnlla-radius-md) 0 0 var(--fnlla-radius-md);
+}
+
+.input-group > .input-group-text:last-child {
+  border-left: 0;
+  border-radius: 0 var(--fnlla-radius-md) var(--fnlla-radius-md) 0;
+}
+
+/* ==========================================================================
+   LABELS AND INPUT CONTROLS
+   ========================================================================== */
+.label {
+  font-weight: var(--fnlla-font-weight-bold);
+  color: var(--fnlla-color-secondary);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  min-height: var(--fnlla-size-field-min);
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+  color: var(--fnlla-color-text);
+  transition:
+    border-color var(--fnlla-transition-base),
+    background-color var(--fnlla-transition-base);
+}
+
+.input[disabled],
+.textarea[disabled],
+.select[disabled],
+.input[readonly],
+.textarea[readonly] {
+  background: var(--fnlla-color-bg-alt);
+  color: var(--fnlla-color-muted);
+  cursor: not-allowed;
+}
+
+.input[readonly],
+.textarea[readonly] {
+  cursor: default;
+}
+
+.input-group .input,
+.input-group .textarea,
+.input-group .select {
+  border-radius: 0;
+}
+
+.input-group > .input-group-field:first-child .input,
+.input-group > .input-group-field:first-child .textarea,
+.input-group > .input-group-field:first-child .select {
+  border-radius: var(--fnlla-radius-md) 0 0 var(--fnlla-radius-md);
+}
+
+.input-group > .input-group-field:last-child .input,
+.input-group > .input-group-field:last-child .textarea,
+.input-group > .input-group-field:last-child .select {
+  border-radius: 0 var(--fnlla-radius-md) var(--fnlla-radius-md) 0;
+}
+
+.input-group > .input-group-field:not(:first-child) .input,
+.input-group > .input-group-field:not(:first-child) .textarea,
+.input-group > .input-group-field:not(:first-child) .select,
+.input-group > .input-group-text + .input-group-field .input,
+.input-group > .input-group-text + .input-group-field .textarea,
+.input-group > .input-group-text + .input-group-field .select {
+  border-left-width: 0;
+}
+
+.input-group-action {
+  display: flex;
+}
+
+.input-group-action .btn {
+  min-height: var(--fnlla-size-field-min);
+  border-radius: 0 var(--fnlla-radius-md) var(--fnlla-radius-md) 0;
+}
+
+/* ==========================================================================
+   VALIDATION AND FOCUS STATES
+   ========================================================================== */
+.input[aria-invalid="true"],
+.textarea[aria-invalid="true"],
+.select[aria-invalid="true"] {
+  border-color: var(--fnlla-color-danger);
+  outline: 1px solid var(--fnlla-color-danger-border);
+  outline-offset: -1px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--fnlla-color-placeholder);
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: var(--fnlla-color-primary-border);
+  background: var(--fnlla-color-surface);
+  outline: 3px solid var(--fnlla-color-primary-soft);
+  outline-offset: 2px;
+}
+
+.input[aria-invalid="true"]:focus,
+.textarea[aria-invalid="true"]:focus,
+.select[aria-invalid="true"]:focus {
+  border-color: var(--fnlla-color-danger);
+  outline: 3px solid var(--fnlla-color-danger-soft);
+  outline-offset: 2px;
+}
+
+.textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.checkbox,
+.radio,
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2rem;
+  color: var(--fnlla-color-text);
+}
+
+.checkbox input[type="checkbox"],
+.radio input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--fnlla-color-primary);
+}
+
+.checkbox[aria-disabled="true"],
+.radio[aria-disabled="true"],
+.switch[aria-disabled="true"] {
+  opacity: 0.65;
+}
+
+.switch {
+  position: relative;
+}
+
+.switch-input {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch-slider {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 2.85rem;
+  height: 1.65rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-pill);
+  background: var(--fnlla-color-bg-alt);
+  transition:
+    background-color var(--fnlla-transition-base),
+    border-color var(--fnlla-transition-base);
+}
+
+.switch-slider::after {
+  content: "";
+  position: absolute;
+  top: 0.14rem;
+  left: 0.16rem;
+  width: 1.08rem;
+  height: 1.08rem;
+  border-radius: 50%;
+  background: var(--fnlla-color-surface-strong);
+  border: 1px solid var(--fnlla-color-border);
+  transition: transform var(--fnlla-transition-base);
+}
+
+.switch-input:checked + .switch-slider {
+  background: var(--fnlla-color-primary-soft);
+  border-color: var(--fnlla-color-primary-border);
+}
+
+.switch-input:checked + .switch-slider::after {
+  transform: translateX(1.15rem);
+  background: var(--fnlla-color-primary);
+  border-color: var(--fnlla-color-primary);
+}
+
+.switch-input:focus-visible + .switch-slider {
+  outline: 3px solid var(--fnlla-color-primary-soft);
+  outline-offset: 2px;
+}
+
+.switch-label {
+  color: var(--fnlla-color-text);
+}
+
+.range-field {
+  display: grid;
+  gap: var(--fnlla-space-2);
+}
+
+.range-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fnlla-space-3);
+  color: var(--fnlla-color-muted);
+  font-size: var(--fnlla-font-size-sm);
+}
+
+.range-output {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.25rem;
+  min-height: 2rem;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--fnlla-color-primary-border);
+  border-radius: var(--fnlla-radius-pill);
+  background: var(--fnlla-color-primary-soft);
+  color: var(--fnlla-color-primary);
+  font-size: var(--fnlla-font-size-sm);
+  font-weight: var(--fnlla-font-weight-bold);
+  white-space: nowrap;
+}
+
+.range-input {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--fnlla-color-primary);
+}
+
+.range-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.range-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fnlla-space-2);
+  color: var(--fnlla-color-muted);
+  font-size: var(--fnlla-font-size-sm);
+}
+
+.file-field {
+  display: grid;
+  gap: var(--fnlla-space-2);
+}
+
+.file-label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  overflow: hidden;
+  background: var(--fnlla-color-surface-strong);
+}
+
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.file-label:focus-within {
+  outline: 3px solid var(--fnlla-color-primary-soft);
+  outline-offset: 2px;
+}
+
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--fnlla-size-field-min);
+  padding: 0.95rem 1rem;
+  background: var(--fnlla-color-primary-soft);
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-bold);
+  white-space: nowrap;
+}
+
+.file-name {
+  min-width: 0;
+  padding: 0.95rem 1rem;
+  color: var(--fnlla-color-muted);
+}
+
+/* ==========================================================================
+   FIELD-LEVEL SUPPORT TEXT
+   ========================================================================== */
+.help-text,
+.error-text,
+.success-text {
+  margin: 0;
+  font-size: var(--fnlla-font-size-sm);
+}
+
+.help-text {
+  color: var(--fnlla-color-muted);
+}
+
+.error-text {
+  color: var(--fnlla-color-danger);
+}
+
+.success-text {
+  color: var(--fnlla-color-success-text);
+}
+
+/* ==========================================================================
+   FORM-LEVEL MESSAGES
+   ========================================================================== */
+.form-message {
+  display: grid;
+  gap: var(--fnlla-space-2);
+  min-width: 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.form-message-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: var(--fnlla-font-weight-bold);
+  color: var(--fnlla-color-secondary);
+}
+
+.form-message-text {
+  margin: 0;
+}
+
+.form-message-success {
+  border-color: var(--fnlla-color-success-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.form-message-success .form-message-title {
+  color: var(--fnlla-color-success-text);
+}
+
+.form-message-error {
+  border-color: var(--fnlla-color-danger-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.form-message-error .form-message-title {
+  color: var(--fnlla-color-danger-text);
+}
+
+.lead-capture-form,
+.lead-capture-intro,
+.lead-capture-actions,
+.form-layout-card,
+.form-layout-card .form {
+  align-content: start;
+}
+
+.lead-capture-intro {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.lead-capture-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-2);
+}
+
+.lead-capture-actions {
+  display: grid;
+  gap: var(--fnlla-space-2);
+}
+
+.lead-capture-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-3);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface);
+}
+

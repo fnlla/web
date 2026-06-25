@@ -1,0 +1,119 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: LAYOUT PRIMITIVES
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+}
+
+.wrapper > main {
+  flex: 1 0 auto;
+}
+
+.container {
+  width: 90%;
+  max-width: none;
+  padding-right: var(--fnlla-space-3);
+  padding-left: var(--fnlla-space-3);
+}
+
+.container-sm {
+  width: 90%;
+  max-width: none;
+  padding-right: var(--fnlla-space-3);
+  padding-left: var(--fnlla-space-3);
+}
+
+.container-lg {
+  width: 90%;
+  max-width: none;
+  padding-right: var(--fnlla-space-3);
+  padding-left: var(--fnlla-space-3);
+}
+
+.section {
+  position: relative;
+  padding: 4rem 0;
+}
+
+.section > .container,
+.section > .container-sm,
+.section > .container-lg {
+  position: relative;
+}
+
+.section-alt {
+  background: var(--fnlla-color-section-alt);
+}
+
+.section-surface {
+  background: var(--fnlla-color-surface-strong);
+}
+
+.section-primary-soft {
+  background: var(--fnlla-color-surface-soft);
+}
+
+/* ==========================================================================
+   GRID FOUNDATIONS
+   ========================================================================== */
+.grid {
+  display: grid;
+  gap: var(--fnlla-space-4);
+}
+
+.grid > * {
+  min-width: 0;
+}
+
+.grid-2,
+.grid-3,
+.grid-4 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ==========================================================================
+   COMMON GAP HELPERS
+   ========================================================================== */
+.gap-sm {
+  gap: var(--fnlla-space-2);
+}
+
+.gap-md {
+  gap: var(--fnlla-space-4);
+}
+
+.gap-lg {
+  gap: var(--fnlla-space-5);
+}
+
+@media (min-width: 62rem) {
+  .container {
+    width: 90%;
+    max-width: var(--fnlla-container-md);
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .container-sm {
+    width: 90%;
+    max-width: var(--fnlla-container-sm);
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .container-lg {
+    width: 90%;
+    max-width: var(--fnlla-container-lg);
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+

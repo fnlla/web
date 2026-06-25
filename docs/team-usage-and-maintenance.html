@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Guide: Team Usage and Maintenance</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body class="doc-guide-usage" data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Guide library</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Team workflow</p>
+          <p class="doc-display">FNLLA UI - Guides</p>
+          <p class="doc-lead">Playbook for building websites on FNLLA UI and maintaining the framework.</p>
+        </div>
+      </div>
+    </header>
+
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-outline btn-sm" href="./guides.html" aria-current="page">Guides</a>
+    </nav>
+
+    <section class="section pt-1">
+      <div class="doc-guide-layout">
+        <article class="card doc-guide-prose doc-guide-prose-numbered">
+<p>This guide belongs to <code>FNLLA UI</code>. It is maintained by <code>TechAyo LTD (techayo.co.uk)</code> and published from the framework repository for teams working from <code>Finella Gardens in Dundee, UK</code>.</p>
+
+<h2 id="use-this-guide-when">Use this guide when</h2>
+
+<ul><li>you are starting a new website on top of <code>FNLLA UI</code></li><li>you need to decide whether a change belongs to the website or the framework</li><li>you are updating the vendored runtime in a downstream project</li><li>you need a repeatable maintenance and review workflow</li></ul>
+
+<h2 id="operating-modes">Operating modes</h2>
+
+<p>FNLLA UI has two valid ways of working.</p>
+
+<h3 id="consumer-mode">Consumer mode</h3>
+
+<p>Use the ready runtime from <code>dist/fnlla-ui/</code> or <code>assets/</code>, then build the website on top of that published contract.</p>
+
+<h3 id="maintainer-mode">Maintainer mode</h3>
+
+<p>Extend or fix the framework itself inside the <code>fnlla-ui</code> repository, then republish the runtime and revalidate the docs and release surface.</p>
+
+<h3 id="default-rule">Default rule</h3>
+
+<p>If you are building one website, default to consumer mode. Move into maintainer mode only when the missing token, pattern or behavior should serve more than one project.</p>
+
+<h2 id="before-a-project-starts">Before a project starts</h2>
+
+<p>Agree on these decisions before page work begins.</p>
+
+<ul><li>whether the new website only consumes the framework or also contributes back to it</li><li>where the framework runtime will live inside the project repository</li><li>who approves token, pattern and UI-system changes</li><li>who owns accessibility QA and final release review</li><li>whether branding changes stay local or should be upstreamed to the framework</li></ul>
+
+<p>Recommended ownership split:</p>
+
+<ul><li><code>Tech lead</code>: decides whether a change belongs to the project or to the framework</li><li><code>Frontend developer</code>: builds pages with stable classes and <code>data-fnlla-*</code> hooks</li><li><code>Design or system owner</code>: approves tokens, spacing, typography and component reuse</li><li><code>Framework maintainer</code>: edits <code>src/</code>, republishes runtime files and runs validation</li><li><code>QA owner</code>: checks responsive behavior, accessibility and critical smoke flows</li></ul>
+
+<h2 id="build-a-new-website-on-fnlla-ui">Build a new website on FNLLA UI</h2>
+
+<h3 id="deliver-the-framework">Deliver the framework</h3>
+
+<p>The safest default is to copy <code>dist/fnlla-ui/</code> into the website repository and treat it as a vendored runtime dependency.</p>
+
+<pre><code class="language-text">my-site/
+  fnlla-ui/
+    assets/
+      css/
+        fnlla-ui.css
+      js/
+        fnlla-ui.js
+      icons/
+    LICENSE.md
+    README.md
+    VERSION
+  assets/
+    css/
+      site.css
+    js/
+      site.js
+    img/
+  index.html
+  about.html
+  contact.html</code></pre>
+
+<p>If the project prefers another folder such as <code>vendor/fnlla-ui/</code>, keep that path consistent across HTML, CSS, JS and team documentation.</p>
+
+<h3 id="include-the-runtime-files">Include the runtime files</h3>
+
+<p>Load the framework runtime on every page, then layer project-specific assets after it.</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;fnlla-ui/assets/css/fnlla-ui.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/site.css&quot;&gt;</code></pre>
+
+<p>At the end of <code>body</code>:</p>
+
+<pre><code class="language-html">&lt;script src=&quot;fnlla-ui/assets/js/fnlla-ui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/site.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+<p>The order matters:</p>
+
+<ul><li>first <code>fnlla-ui.css</code></li><li>then project-level CSS such as <code>site.css</code></li><li>first <code>fnlla-ui.js</code></li><li>then project-level scripts</li></ul>
+
+<h3 id="start-from-a-stable-page-shell">Start from a stable page shell</h3>
+
+<p>The first page should establish structure before it chases styling detail.</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Site Name&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;fnlla-ui/assets/css/fnlla-ui.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/site.css&quot;&gt;
+&lt;/head&gt;
+&lt;body data-fnlla-theme=&quot;default&quot;&gt;
+  &lt;a class=&quot;skip-link&quot; href=&quot;#main-content&quot;&gt;Skip to main content&lt;/a&gt;
+  &lt;div class=&quot;wrapper&quot;&gt;
+    &lt;header&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;nav class=&quot;navbar&quot; aria-label=&quot;Primary navigation&quot;&gt;
+          &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;Brand&lt;/a&gt;
+          &lt;ul class=&quot;navbar-menu&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/services&quot;&gt;Services&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;main id=&quot;main-content&quot;&gt;
+      &lt;section class=&quot;section&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+          &lt;h1&gt;Page title&lt;/h1&gt;
+          &lt;p&gt;Replace starter content with your own content.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer class=&quot;footer&quot;&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;p class=&quot;footer-note&quot;&gt;&amp;copy; 2026 Brand&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+
+  &lt;script src=&quot;fnlla-ui/assets/js/fnlla-ui.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;assets/js/site.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Keep the responsibility split clear:</p>
+
+<ul><li><code>wrapper</code> owns the full page flow</li><li><code>section</code> owns the full-width band and rhythm</li><li><code>container</code> owns the shared inner width</li><li>components such as cards or panels sit inside that shell</li></ul>
+
+<h3 id="upgrade-the-header-when-navigation-grows">Upgrade the header when navigation grows</h3>
+
+<p>When the site needs the official mobile navigation behavior, switch the header to the documented toggle and panel pattern.</p>
+
+<pre><code class="language-html">&lt;header&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;nav class=&quot;navbar&quot; aria-label=&quot;Primary navigation&quot;&gt;
+      &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;Brand&lt;/a&gt;
+      &lt;button
+        class=&quot;btn btn-outline btn-sm navbar-toggle&quot;
+        type=&quot;button&quot;
+        data-fnlla-nav-toggle
+        aria-controls=&quot;primary-navigation-panel&quot;
+        aria-expanded=&quot;false&quot;
+        aria-label=&quot;Open menu&quot;
+      &gt;
+        Menu
+      &lt;/button&gt;
+      &lt;div class=&quot;navbar-panel&quot; id=&quot;primary-navigation-panel&quot;&gt;
+        &lt;ul class=&quot;navbar-menu&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/services&quot;&gt;Services&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;/contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+
+<p>Use that responsive header when navigation will grow, collapse or include actions that should live inside one shared mobile panel.</p>
+
+<h3 id="compose-from-docs-before-inventing-variants">Compose from docs before inventing variants</h3>
+
+<p>Before writing new markup, check these references first:</p>
+
+<ul><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/forms.html</code></li><li><code>docs/utilities.html</code></li><li><code>docs/api.html</code></li><li><code>docs/component-classification.html</code></li></ul>
+
+<p>Recommended build loop:</p>
+
+<ol><li>Pick the closest documented pattern.</li><li>Copy the markup into the project.</li><li>Replace content, links and images.</li><li>Add project-level helper classes only if composition is still not enough.</li></ol>
+
+<h3 id="brand-with-tokens-first">Brand with tokens first</h3>
+
+<p>Project branding should start in project CSS, not in manual edits to <code>fnlla-ui.css</code>.</p>
+
+<pre><code class="language-css">:root {
+  --fnlla-color-primary: #0b3b35;
+  --fnlla-color-text: #10211d;
+  --fnlla-color-surface: #f6fbf8;
+  --fnlla-font-family-base: &quot;Manrope&quot;, sans-serif;
+  --fnlla-font-family-heading: &quot;Fraunces&quot;, serif;
+}</code></pre>
+
+<p>Change colors, typography, spacing and radius through tokens before reaching for component-selector overrides.</p>
+
+<h3 id="use-documented-hooks-and-runtime-re-init">Use documented hooks and runtime re-init</h3>
+
+<p>Use <code>data-fnlla-*</code> hooks in implementation work and match the API page exactly.</p>
+
+<p>Common examples:</p>
+
+<ul><li><code>data-fnlla-nav-toggle</code></li><li><code>data-fnlla-dropdown</code></li><li><code>data-fnlla-dropdown-toggle</code></li><li><code>data-fnlla-tabs</code></li><li><code>data-fnlla-tab</code></li><li><code>data-fnlla-modal</code></li><li><code>data-fnlla-modal-open</code></li><li><code>data-fnlla-toast</code></li><li><code>data-fnlla-offcanvas</code></li><li><code>data-fnlla-popover</code></li><li><code>data-fnlla-tooltip</code></li><li><code>data-fnlla-scrollspy</code></li></ul>
+
+<p>If the website injects HTML dynamically through AJAX, HTMX or custom JS, re-initialize the runtime on the new subtree.</p>
+
+<pre><code class="language-js">window.FNLLAUI.init(rootElement);</code></pre>
+
+<h3 id="keep-icons-local">Keep icons local</h3>
+
+<p>Do not load icons from a CDN when the framework already ships the local bundle.</p>
+
+<p>Supported options:</p>
+
+<ul><li>local SVG files from <code>fnlla-ui/assets/icons/*.svg</code></li><li>the local sprite from <code>fnlla-ui/assets/icons/sprite.svg</code></li></ul>
+
+<p>Example:</p>
+
+<pre><code class="language-html">&lt;span class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+  &lt;img src=&quot;fnlla-ui/assets/icons/search.svg&quot; alt=&quot;&quot;&gt;
+&lt;/span&gt;</code></pre>
+
+<h2 id="day-to-day-website-workflow">Day-to-day website workflow</h2>
+
+<p>Working rules:</p>
+
+<ul><li>treat the framework as a runtime dependency, not as a place for quick project hotfixes</li><li>keep project-specific fixes in <code>site.css</code>, <code>site.js</code> and project templates</li><li>change the framework itself only when the change makes sense for more than one project</li><li>keep interactive work aligned with <code>docs/api.html</code></li><li>check layout behavior on mobile, tablet and desktop before review</li></ul>
+
+<p>Typical frontend loop:</p>
+
+<ol><li>Choose the page or section to build.</li><li>Find the closest documented pattern.</li><li>Compose markup from existing framework classes.</li><li>Add project content and assets.</li><li>Add only minimal project-level overrides.</li><li>Check keyboard navigation, focus states and mobile layout.</li><li>Send the result for review.</li></ol>
+
+<h2 id="decide-when-a-change-belongs-in-the-framework">Decide when a change belongs in the framework</h2>
+
+<p>Upstream a change into the <code>fnlla-ui</code> repository when:</p>
+
+<ul><li>the same pattern will be reused across multiple projects</li><li>the current component has a runtime bug or accessibility bug</li><li>tokens are not enough and a shared variant is missing</li><li>framework documentation is out of sync with the real runtime</li></ul>
+
+<p>Keep the change local to the website project when:</p>
+
+<ul><li>it is branding for one website</li><li>it is a one-off landing page composition</li><li>it only affects content, imagery or local integrations</li></ul>
+
+<h2 id="maintain-a-downstream-website">Maintain a downstream website</h2>
+
+<h3 id="content-or-layout-change">Content or layout change</h3>
+
+<p>Use this path for copy edits, section-order changes and local page polish.</p>
+
+<ol><li>Open the relevant template or HTML file.</li><li>Update the content, section order or links.</li><li>Reuse existing layout and utility classes where possible.</li><li>Check mobile and desktop views.</li><li>Confirm focus flow, skip link behavior and CTA clarity.</li></ol>
+
+<h3 id="visual-polish">Visual polish</h3>
+
+<p>Use this path for small branding or spacing changes.</p>
+
+<ol><li>Try token overrides in <code>site.css</code> first.</li><li>If tokens are not enough, add local project styles.</li><li>Do not edit <code>fnlla-ui/assets/css/fnlla-ui.css</code> directly unless the project is intentionally forking the runtime.</li><li>Re-check contrast, focus states and dark-theme behavior if the project uses it.</li></ol>
+
+<h3 id="interaction-issue">Interaction issue</h3>
+
+<p>Use this path when a component behaves incorrectly on the website.</p>
+
+<ol><li>Check the markup against <code>docs/api.html</code>.</li><li>Confirm the <code>data-fnlla-*</code> hook is correct.</li><li>Confirm <code>aria-controls</code>, <code>aria-labelledby</code> and target <code>id</code> values exist.</li><li>Confirm the framework JS is actually loaded on the page.</li><li>If the markup is correct and the bug remains, raise it as a framework maintenance issue.</li></ol>
+
+<h3 id="framework-update-inside-a-website-project">Framework update inside a website project</h3>
+
+<p>Use this path when the downstream site upgrades its vendored FNLLA UI runtime.</p>
+
+<ol><li>Create an update branch.</li><li>Replace the project <code>fnlla-ui/</code> folder with a fresh <code>dist/fnlla-ui/</code> export from the framework repository.</li><li>Check <code>VERSION</code>.</li><li>Read <code>README.md</code>, <code>docs/api.html</code> and <code>docs/distribution.html</code> to confirm the current contract.</li><li>Search the project for legacy patterns such as <code>data-ui-*</code>, <code>ui-*</code> and outdated token overrides.</li><li>Re-test navigation, dropdowns, tabs, accordions, modals, forms and any local overrides.</li><li>Re-test on mobile, tablet and desktop.</li><li>Merge only after the downstream site passes its own review and QA checks.</li></ol>
+
+<h2 id="maintain-fnlla-ui-itself">Maintain FNLLA UI itself</h2>
+
+<h3 id="work-in-source-not-runtime">Work in source, not runtime</h3>
+
+<p>For CSS, work in:</p>
+
+<ul><li><code>src/css/tokens.css</code></li><li><code>src/css/base.css</code></li><li><code>src/css/layout.css</code></li><li><code>src/css/components/*.css</code></li><li><code>src/css/sections/*.css</code></li><li><code>src/css/utilities.css</code></li><li><code>src/css/responsive.css</code></li><li><code>src/css/a11y.css</code></li></ul>
+
+<p>For JS, work in:</p>
+
+<ul><li><code>src/js/core/*.js</code></li><li><code>src/js/modules/*.js</code></li></ul>
+
+<p>Do not start with manual edits to:</p>
+
+<ul><li><code>assets/css/fnlla-ui.css</code></li><li><code>assets/js/fnlla-ui.js</code></li><li><code>dist/fnlla-ui/</code></li></ul>
+
+<h3 id="update-docs-when-the-public-contract-changes">Update docs when the public contract changes</h3>
+
+<p>If the change affects public usage, update the relevant reference surface in the same pull request.</p>
+
+<ul><li><code>README.md</code></li><li><code>docs/api.html</code></li><li><code>docs/distribution.html</code></li><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/forms.html</code></li><li><code>docs/icons.html</code></li><li><code>docs/component-classification.html</code></li><li><code>docs/team-usage-and-maintenance.html</code> and its markdown source when workflow guidance changed</li></ul>
+
+<p>Rule:</p>
+
+<ul><li>code and docs should not drift across separate PRs when the public contract moved</li></ul>
+
+<h3 id="republish-smoke-test-and-validate">Republish, smoke-test and validate</h3>
+
+<p>After source changes, refresh the readable runtime and generated docs.</p>
+
+<pre><code class="language-bash">node .\scripts\publish-fnlla-ui.mjs</code></pre>
+
+<p>When behavior or packaging changed, run the browser smoke test.</p>
+
+<pre><code class="language-bash">node .\scripts\test-fnlla-ui-browser.mjs</code></pre>
+
+<p>Then confirm the repository contract.</p>
+
+<pre><code class="language-bash">node .\scripts\validate-fnlla-ui.mjs</code></pre>
+
+<h3 id="review-checklist-before-merge">Review checklist before merge</h3>
+
+<p>Before merging a framework change, confirm all of the following:</p>
+
+<ul><li>the change begins in <code>src/</code>, not in generated runtime files</li><li>runtime files and generated guide pages were republished</li><li>docs match the current behavior and naming</li><li>keyboard, focus and responsive behavior were checked</li><li>the packaging boundary still keeps <code>docs/assets/</code> outside the runtime contract</li><li>downstream projects would understand the change from <code>README.md</code>, <code>docs/api.html</code> and the relevant guide page</li></ul>
+        </article>
+        <aside class="doc-guide-sidebar scrollbar scrollbar-thin">
+          <div class="card doc-guide-card">
+            <p class="doc-panel-label">Guide pages</p>
+            <div class="doc-guide-nav" aria-label="Guide pages">
+            <a class="btn btn-ghost btn-sm" href="./component-classification.html">Classification</a>
+            <a class="btn btn-outline btn-sm" href="./team-usage-and-maintenance.html" aria-current="page">Usage</a>
+            </div>
+          </div>
+<div class="card doc-guide-card">
+            <p class="doc-panel-label">On this page</p>
+            <div class="doc-guide-toc doc-guide-toc-numbered">
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#use-this-guide-when">Use this guide when</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#operating-modes">Operating modes</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#consumer-mode">Consumer mode</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#maintainer-mode">Maintainer mode</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#default-rule">Default rule</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#before-a-project-starts">Before a project starts</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#build-a-new-website-on-fnlla-ui">Build a new website on FNLLA UI</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#deliver-the-framework">Deliver the framework</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#include-the-runtime-files">Include the runtime files</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#start-from-a-stable-page-shell">Start from a stable page shell</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#upgrade-the-header-when-navigation-grows">Upgrade the header when navigation grows</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#compose-from-docs-before-inventing-variants">Compose from docs before inventing variants</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#brand-with-tokens-first">Brand with tokens first</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#use-documented-hooks-and-runtime-re-init">Use documented hooks and runtime re-init</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#keep-icons-local">Keep icons local</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#day-to-day-website-workflow">Day-to-day website workflow</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#decide-when-a-change-belongs-in-the-framework">Decide when a change belongs in the framework</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#maintain-a-downstream-website">Maintain a downstream website</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#content-or-layout-change">Content or layout change</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#visual-polish">Visual polish</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#interaction-issue">Interaction issue</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#framework-update-inside-a-website-project">Framework update inside a website project</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#maintain-fnlla-ui-itself">Maintain FNLLA UI itself</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#work-in-source-not-runtime">Work in source, not runtime</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#update-docs-when-the-public-contract-changes">Update docs when the public contract changes</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#republish-smoke-test-and-validate">Republish, smoke-test and validate</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#review-checklist-before-merge">Review checklist before merge</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <!-- =========================================================================
+       DOCUMENT HEAD
+       ========================================================================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Components</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- =========================================================================
+       DOCUMENT SHELL
+       ========================================================================= -->
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Blueprint documentation</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Framework blueprint</p>
+          <p class="doc-display">FNLLA UI - Documentation</p>
+          <p class="doc-lead">Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary docs navigation shared across the reference set. -->
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-outline btn-sm" href="./components.html" aria-current="page">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+    </nav>
+
+    <!-- Rendered component catalogue with live patterns. -->
+    <section class="section pt-1">
+      <div class="section-header">
+        <h2 class="section-title">Component library</h2>
+        <p class="section-text">This page demonstrates the reusable UI components and interaction patterns shipped with FNLLA UI. Page-level compositions now live on the dedicated sections reference.</p>
+      </div>
+
+      <div class="doc-link-grid">
+        <a class="doc-link-card" href="#component-actions">
+          <span class="doc-link-label">Actions</span>
+          <p class="doc-link-title">Buttons, cards and feedback</p>
+          <p class="doc-link-text">Start here for action hierarchy, neutral content shells, alerts, empty states and the most common reusable primitives.</p>
+        </a>
+        <a class="doc-link-card" href="#component-navigation">
+          <span class="doc-link-label">Navigation</span>
+          <p class="doc-link-title">Navbar, dropdown, tabs and trails</p>
+          <p class="doc-link-text">Jump here when the task is discovery, movement, active state tracking or route structure rather than static content.</p>
+        </a>
+        <a class="doc-link-card" href="#component-overlays">
+          <span class="doc-link-label">Disclosure</span>
+          <p class="doc-link-title">Modal, toast, offcanvas and popover</p>
+          <p class="doc-link-text">Use these patterns for layered UI, short status feedback and supplemental workflows that sit above the base page.</p>
+        </a>
+        <a class="doc-link-card" href="#component-data">
+          <span class="doc-link-label">Data</span>
+          <p class="doc-link-title">Tables, lists and progress states</p>
+          <p class="doc-link-text">Open this track for denser record displays, progress communication, loading shells and comparison-oriented surfaces.</p>
+        </a>
+        <a class="doc-link-card" href="#component-supporting">
+          <span class="doc-link-label">Supporting</span>
+          <p class="doc-link-title">Search, media, icons and utilities-adjacent shells</p>
+          <p class="doc-link-text">Use these examples when the page needs search entry points, avatars, timelines, icon usage or small supporting interface parts.</p>
+        </a>
+        <a class="doc-link-card" href="#component-contracts">
+          <span class="doc-link-label">Contract</span>
+          <p class="doc-link-title">Markup rules and accessibility</p>
+          <p class="doc-link-text">Jump straight to authoring rules when you already know the pattern family and only need the stable contract.</p>
+        </a>
+      </div>
+
+      <div class="doc-grid doc-component-showcase-grid">
+        <article class="card">
+          <h2 class="card-title">Page-level sections</h2>
+          <p class="card-text">Hero, FAQ, pricing, testimonial, CTA and footer compositions now live on <code>sections.html</code> so this reference can stay focused on primitives, navigation, feedback and interactive shells.</p>
+          <a class="btn btn-outline btn-sm doc-inline-cta" href="./sections.html">Open sections library</a>
+        </article>
+
+        <article class="card" id="component-actions">
+          <h2 class="card-title">Buttons</h2>
+          <p class="card-text">Use button hierarchy to make the main action obvious and keep supporting controls visually quieter.</p>
+          <div class="doc-button-showcase">
+            <section class="doc-button-cluster">
+              <p class="doc-panel-label">Action priority</p>
+              <div class="doc-button-row">
+                <button class="btn btn-primary" type="button">Primary Action</button>
+                <button class="btn btn-secondary" type="button">Secondary Action</button>
+                <button class="btn btn-outline" type="button">Outline Action</button>
+                <button class="btn btn-ghost" type="button">Ghost Action</button>
+              </div>
+              <p class="card-text">Primary should represent the next best action. Secondary, outline and ghost should step down in emphasis rather than compete with it.</p>
+            </section>
+            <section class="doc-button-cluster">
+              <p class="doc-panel-label">Size scale</p>
+              <div class="doc-button-row doc-button-row-align">
+                <button class="btn btn-primary btn-xs" type="button">XS</button>
+                <button class="btn btn-primary btn-sm" type="button">Small</button>
+                <button class="btn btn-primary" type="button">Default</button>
+                <button class="btn btn-primary btn-lg" type="button">Large</button>
+                <button class="btn btn-primary btn-xl" type="button">XL</button>
+              </div>
+              <p class="card-text">Keep one size inside the same action group unless density or layout context truly changes.</p>
+            </section>
+          </div>
+          <p class="card-text">A good default is one primary button per decision block, with lower-emphasis options used for optional or reversible paths.</p></article>
+
+        <article class="card">
+          <h2 class="card-title">Cards</h2>
+          <div class="grid grid-3">
+            <article class="card">
+              <h3 class="card-title">Standard Card</h3>
+              <p class="card-text">A neutral content card for general layout needs.</p>
+            </article>
+            <article class="feature-card">
+              <h3 class="card-title">Feature Card</h3>
+              <p class="card-text">A slightly elevated card for highlighted benefits.</p>
+            </article>
+            <article class="service-card">
+              <h3 class="card-title">Service Card</h3>
+              <p class="card-text">A reusable pattern for service listings or offers.</p>
+            </article>
+          </div>
+          <p class="card-text mt-3">Use <code>.content-title</code> and <code>.content-text</code> when you want the same typography outside card components.</p></article>
+
+        <article class="card">
+          <h2 class="card-title">List groups and empty states</h2>
+          <div class="grid gap-md">
+            <div class="list-group">
+              <article class="list-group-item list-group-item-action active" tabindex="0">
+                <h3 class="list-group-item-title">Primary workspace</h3>
+                <p class="list-group-item-text">Use the active state for the current destination, selected record or highlighted workflow item.</p>
+                <p class="list-group-item-meta">Updated 5 minutes ago</p>
+              </article>
+              <article class="list-group-item list-group-item-action" tabindex="0">
+                <h3 class="list-group-item-title">Secondary workspace</h3>
+                <p class="list-group-item-text">Use action rows when the whole item should feel clickable without inventing a card for every list case.</p>
+                <p class="list-group-item-meta">Updated yesterday</p>
+              </article>
+              <article class="list-group-item">
+                <h3 class="list-group-item-title">Reference-only item</h3>
+                <p class="list-group-item-text">Use a plain list item when the row is informational and should not imply navigation or interaction.</p>
+              </article>
+            </div>
+
+            <section class="empty-state" aria-label="Empty state example">
+              <span class="badge">No active entries</span>
+              <h3 class="empty-state-title">Use a dedicated empty state instead of leaving a blank panel</h3>
+              <p class="empty-state-text">This pattern works well for search results, new dashboards, filtered tables or content libraries that start with no records.</p>
+              <div class="empty-state-actions">
+                <a class="btn btn-primary" href="#">Create first entry</a>
+                <a class="btn btn-ghost" href="#">View setup guide</a>
+              </div>
+            </section>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Alerts</h2>
+          <div class="grid grid-2">
+            <div class="alert alert-info" role="status">
+              <h3 class="alert-title">Heads up</h3>
+              <p class="alert-text">Use the info variant for neutral announcements, rollout notes or onboarding hints.</p>
+            </div>
+            <div class="alert alert-success" role="status">
+              <h3 class="alert-title">Changes saved</h3>
+              <p class="alert-text">Use the success variant after a form submit, settings update or completed workflow.</p>
+            </div>
+            <div class="alert alert-warning" role="alert">
+              <h3 class="alert-title">Action recommended</h3>
+              <p class="alert-text">Use the warning variant when the user can continue, but should review a risk or incomplete step.</p>
+            </div>
+            <div class="alert alert-danger" role="alert">
+              <h3 class="alert-title">Something failed</h3>
+              <p class="alert-text">Use the danger variant for blocking errors or failed submissions that need immediate attention.</p>
+            </div>
+          </div></article>
+
+        <article class="card" id="component-navigation">
+          <h2 class="card-title">Navbar, mobile toggle and megamenu</h2>
+          <div class="card">
+            <nav class="navbar" aria-label="Example navigation">
+              <a class="navbar-brand" href="#">Your Company</a>
+              <button class="btn btn-outline btn-sm navbar-toggle" type="button" data-fnlla-nav-toggle aria-controls="demo-nav-panel" aria-expanded="false" aria-label="Toggle navigation menu">Menu</button>
+              <div class="navbar-panel" id="demo-nav-panel">
+                <ul class="navbar-menu">
+                  <li><a href="#" aria-current="page">Overview</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li class="dropdown" data-fnlla-dropdown>
+                    <button class="btn btn-outline btn-sm" id="demo-megamenu-trigger" type="button" data-fnlla-dropdown-toggle aria-expanded="false" aria-controls="demo-megamenu-panel">Open megamenu</button>
+                    <div class="dropdown-menu dropdown-menu-mega" id="demo-megamenu-panel" aria-labelledby="demo-megamenu-trigger">
+                      <div class="mega-menu-grid">
+                        <div class="mega-menu-column">
+                          <p class="mega-menu-label">Core routes</p>
+                          <p class="mega-menu-heading">Service lines</p>
+                          <p class="mega-menu-text">Use the first column for broad route choices that help users self-sort before they dive into a deeper page.</p>
+                          <div class="mega-menu-links">
+                            <a class="mega-menu-link" href="#">Platform advisory<small>Short strategic discovery work</small></a>
+                            <a class="mega-menu-link" href="#">Implementation delivery<small>Structured build and rollout tracks</small></a>
+                            <a class="mega-menu-link" href="#">Operational support<small>Stability, iteration and handoff</small></a>
+                          </div>
+                        </div>
+                        <div class="mega-menu-column">
+                          <p class="mega-menu-label">Featured path</p>
+                          <p class="mega-menu-heading">Popular entry points</p>
+                          <div class="mega-menu-card">
+                            <p class="mega-menu-label">Quick start</p>
+                            <p class="mega-menu-heading">90-minute audit</p>
+                            <p class="mega-menu-text">Use highlighted cards to steer traffic into the most common journeys.</p>
+                            <a class="btn btn-primary btn-sm" href="#">Book audit</a>
+                          </div>
+                        </div>
+                        <div class="mega-menu-column">
+                          <p class="mega-menu-label">Supporting routes</p>
+                          <p class="mega-menu-heading">Resource group</p>
+                          <p class="mega-menu-text">Use the final column for enabling resources, onboarding and lower-priority supporting destinations.</p>
+                          <div class="mega-menu-links">
+                            <a class="mega-menu-link" href="#">Framework onboarding<small>Internal team enablement</small></a>
+                            <a class="mega-menu-link" href="#">Delivery playbook<small>Implementation standards</small></a>
+                            <a class="mega-menu-link" href="#">Support matrix<small>Ownership and escalation paths</small></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="navbar-actions">
+                  <a class="btn btn-ghost btn-sm" href="#">Sign In</a>
+                  <a class="btn btn-primary btn-sm" href="#">Request a Quote</a>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <div class="card mt-4" id="component-navigation-authenticated">
+            <p class="doc-panel-label">Authenticated state</p>
+            <nav class="navbar" aria-label="Authenticated example navigation">
+              <a class="navbar-brand" href="#">Your Company</a>
+              <button class="btn btn-outline btn-sm navbar-toggle" type="button" data-fnlla-nav-toggle aria-controls="demo-auth-nav-panel" aria-expanded="false" aria-label="Toggle authenticated navigation menu">Menu</button>
+              <div class="navbar-panel" id="demo-auth-nav-panel">
+                <ul class="navbar-menu">
+                  <li><a href="#" aria-current="page">Dashboard</a></li>
+                  <li><a href="#">Projects</a></li>
+                  <li class="dropdown" data-fnlla-dropdown>
+                    <button class="btn btn-outline btn-sm" id="demo-auth-megamenu-trigger" type="button" data-fnlla-dropdown-toggle aria-expanded="false" aria-controls="demo-auth-megamenu-panel">Workspace menu</button>
+                    <div class="dropdown-menu dropdown-menu-mega" id="demo-auth-megamenu-panel" aria-labelledby="demo-auth-megamenu-trigger">
+                      <div class="mega-menu-grid">
+                        <div class="mega-menu-column">
+                          <p class="mega-menu-label">Workspace routes</p>
+                          <p class="mega-menu-heading">Current workspace</p>
+                          <p class="mega-menu-text">Keep the first column focused on the places a signed-in user is most likely to revisit during day-to-day work.</p>
+                          <div class="mega-menu-links">
+                            <a class="mega-menu-link" href="#">Delivery board<small>Track active implementation work and handoff tasks</small></a>
+                            <a class="mega-menu-link" href="#">Asset library<small>Shared files, briefs and reusable project evidence</small></a>
+                            <a class="mega-menu-link" href="#">Support queue<small>Escalations, triage and operational follow-up</small></a>
+                          </div>
+                        </div>
+                        <div class="mega-menu-column">
+                          <p class="mega-menu-label">At a glance</p>
+                          <p class="mega-menu-heading">Recent activity</p>
+                          <div class="mega-menu-card">
+                            <p class="mega-menu-label">Assigned to you</p>
+                            <p class="mega-menu-heading">Jordan Ellis</p>
+                            <p class="mega-menu-text">Two reviews need approval and one client note is waiting in the queue.</p>
+                            <a class="btn btn-primary btn-sm" href="#">Open workspace</a>
+                          </div>
+                        </div>
+                        <div class="mega-menu-column">
+                          <p class="mega-menu-label">Team support</p>
+                          <p class="mega-menu-heading">Team routes</p>
+                          <p class="mega-menu-text">Use the last column for account, review and collaboration routes that support the main workspace rather than replace it.</p>
+                          <div class="mega-menu-links">
+                            <a class="mega-menu-link" href="#">Client portal<small>Signed-in collaboration and request history</small></a>
+                            <a class="mega-menu-link" href="#">Release checklist<small>Pre-merge QA and documentation review</small></a>
+                            <a class="mega-menu-link" href="#">Account support<small>Billing, permissions and security settings</small></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="navbar-actions">
+                  <div class="dropdown" data-fnlla-dropdown>
+                    <button class="btn btn-ghost btn-sm navbar-account-trigger" id="demo-account-trigger" type="button" data-fnlla-dropdown-toggle aria-expanded="false" aria-controls="demo-account-menu">
+                      <span class="avatar avatar-sm" aria-hidden="true"><span class="avatar-text">JE</span></span>
+                      <span class="navbar-account-name">Jordan Ellis</span>
+                    </button>
+                    <div class="dropdown-menu" id="demo-account-menu" aria-labelledby="demo-account-trigger">
+                      <a class="dropdown-item" href="#">Account settings</a>
+                      <a class="dropdown-item" href="#">Notifications</a>
+                      <a class="dropdown-item" href="#">Sign out</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <p class="card-text mt-3">Use the same shared <code>.navbar-panel</code> contract for both signed-out and authenticated navigation so primary links, megamenu entry points and account actions collapse together on mobile.</p></article>
+
+        <article class="card">
+          <h2 class="card-title">Dropdown</h2>
+          <div class="dropdown" data-fnlla-dropdown>
+            <button class="btn btn-outline" id="dropdown-demo-trigger" type="button" data-fnlla-dropdown-toggle aria-expanded="false" aria-controls="dropdown-demo-menu">Open Menu</button>
+            <div class="dropdown-menu" id="dropdown-demo-menu" aria-labelledby="dropdown-demo-trigger">
+              <a class="dropdown-item" href="#">Menu Item One</a>
+              <a class="dropdown-item" href="#">Menu Item Two</a>
+              <a class="dropdown-item" href="#">Menu Item Three</a>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Tabs</h2>
+          <div class="tabs" data-fnlla-tabs>
+            <div class="tab-list" data-fnlla-tab-list aria-label="Service plan tabs">
+              <button class="tab-button" id="tabs-demo-trigger-1" type="button" data-fnlla-tab aria-selected="true" aria-controls="tabs-demo-panel-1">Discovery</button>
+              <button class="tab-button" id="tabs-demo-trigger-2" type="button" data-fnlla-tab aria-selected="false" aria-controls="tabs-demo-panel-2">Delivery</button>
+              <button class="tab-button" id="tabs-demo-trigger-3" type="button" data-fnlla-tab aria-selected="false" aria-controls="tabs-demo-panel-3">Support</button>
+            </div>
+
+            <section class="tab-panel" id="tabs-demo-panel-1" aria-labelledby="tabs-demo-trigger-1">
+              <h3 class="content-title">Discovery workshop</h3>
+              <p class="content-text">Use the first panel for scoping, content audits, requirements review or early project alignment before implementation starts.</p>
+            </section>
+
+            <section class="tab-panel" id="tabs-demo-panel-2" aria-labelledby="tabs-demo-trigger-2">
+              <h3 class="content-title">Delivery phase</h3>
+              <p class="content-text">Use the second panel for implementation notes, milestones, sprint summaries or a compact breakdown of project outputs.</p>
+            </section>
+
+            <section class="tab-panel" id="tabs-demo-panel-3" aria-labelledby="tabs-demo-trigger-3">
+              <h3 class="content-title">Ongoing support</h3>
+              <p class="content-text">Use the final panel for maintenance terms, optimization work, monitoring or post-launch support expectations.</p>
+            </section>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Breadcrumbs</h2>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb-list">
+              <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Home</a></li>
+              <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Advisory services</a></li>
+              <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Platform delivery</a></li>
+              <li class="breadcrumb-item"><span class="breadcrumb-current" aria-current="page">Implementation plan</span></li>
+            </ol>
+          </nav></article>
+
+        <article class="card">
+          <h2 class="card-title">Pagination</h2>
+          <nav class="pagination" aria-label="Results pages">
+            <ol class="pagination-list">
+              <li class="pagination-item"><a class="pagination-link" href="#" aria-label="Go to previous page">Previous</a></li>
+              <li class="pagination-item"><a class="pagination-link" href="#">1</a></li>
+              <li class="pagination-item"><a class="pagination-link" href="#" aria-current="page">2</a></li>
+              <li class="pagination-item"><a class="pagination-link" href="#">3</a></li>
+              <li class="pagination-item"><span class="pagination-ellipsis" aria-hidden="true">...</span></li>
+              <li class="pagination-item"><a class="pagination-link" href="#">8</a></li>
+              <li class="pagination-item"><a class="pagination-link" href="#" aria-label="Go to next page">Next</a></li>
+            </ol>
+          </nav></article>
+
+        <article class="card" id="component-data">
+          <h2 class="card-title">Tables</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover" aria-label="Framework delivery table example">
+              <thead>
+                <tr>
+                  <th scope="col">Track</th>
+                  <th scope="col">Owner</th>
+                  <th scope="col">State</th>
+                  <th scope="col">Next review</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Design tokens</td>
+                  <td>Platform team</td>
+                  <td>Stable</td>
+                  <td>Weekly audit</td>
+                </tr>
+                <tr>
+                  <td>Interactive runtime</td>
+                  <td>Framework maintainer</td>
+                  <td>Hardened</td>
+                  <td>Release QA</td>
+                </tr>
+                <tr>
+                  <td>Documentation pages</td>
+                  <td>Internal enablement</td>
+                  <td>Active</td>
+                  <td>Content refresh</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="card-text mt-3">Use <code>.table-responsive</code> when the grid may overflow on narrower screens and <code>.table-striped</code> or <code>.table-hover</code> when scanability matters.</p></article>
+
+        <article class="card" id="component-overlays">
+          <h2 class="card-title">Modal</h2>
+          <button class="btn btn-primary doc-inline-cta" type="button" data-fnlla-modal-open="#demo-modal" aria-controls="demo-modal">Open Modal</button>
+          <div class="modal" id="demo-modal" data-fnlla-modal role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" aria-describedby="demo-modal-description" hidden>
+            <div class="modal-content">
+              <div class="d-flex justify-between items-center mb-3">
+                <h3 class="content-title mb-1" id="demo-modal-title">Generic modal dialog</h3>
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-modal-close data-fnlla-modal-initial-focus>Close</button>
+              </div>
+              <p class="content-text" id="demo-modal-description">Use this pattern for confirmations, announcements or compact forms. Press Escape or click the backdrop to close.</p>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Toast notifications</h2>
+          <div class="d-flex flex-wrap gap-md">
+            <button class="btn btn-primary" type="button" data-fnlla-toast-open="#demo-toast-success">Show success toast</button>
+            <button class="btn btn-outline" type="button" data-fnlla-toast-open="#demo-toast-warning">Show warning toast</button>
+          </div>
+
+          <div class="toast-stack mt-3" aria-live="polite" aria-label="Toast examples">
+            <article class="toast toast-success" id="demo-toast-success" data-fnlla-toast data-fnlla-toast-autohide="5000" role="status" hidden>
+              <h3 class="toast-title">Changes saved</h3>
+              <p class="toast-text">Use a toast for short-lived confirmation that should not interrupt the current workflow.</p>
+              <div class="toast-actions">
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-toast-close>Dismiss</button>
+              </div>
+            </article>
+
+            <article class="toast toast-warning" id="demo-toast-warning" data-fnlla-toast role="status" hidden>
+              <h3 class="toast-title">Review required</h3>
+              <p class="toast-text">Use a warning toast when the next step is recommended but the current task can continue.</p>
+              <div class="toast-actions">
+                <a class="btn btn-outline btn-sm" href="#">Open checklist</a>
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-toast-close>Dismiss</button>
+              </div>
+            </article>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Offcanvas panel</h2>
+          <div class="d-flex flex-wrap gap-md">
+            <button class="btn btn-primary" type="button" data-fnlla-offcanvas-open="#demo-offcanvas" aria-controls="demo-offcanvas">Open offcanvas</button>
+            <button class="btn btn-outline" type="button" data-fnlla-offcanvas-open="#demo-offcanvas-workspace" aria-controls="demo-offcanvas-workspace">Open full workspace</button>
+          </div>
+          <div class="offcanvas offcanvas-end" id="demo-offcanvas" data-fnlla-offcanvas role="dialog" aria-modal="true" aria-labelledby="demo-offcanvas-title" aria-describedby="demo-offcanvas-description" hidden>
+            <div class="offcanvas-panel">
+              <div class="offcanvas-header">
+                <div>
+                  <h3 class="content-title mb-1" id="demo-offcanvas-title">Workspace side panel</h3>
+                  <p class="content-text" id="demo-offcanvas-description">Use offcanvas when context should stay visible and the user only needs a temporary side workspace.</p>
+                </div>
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-offcanvas-close data-fnlla-offcanvas-initial-focus>Close</button>
+              </div>
+              <div class="offcanvas-body">
+                <section class="offcanvas-section" aria-label="Selection summary">
+                  <p class="offcanvas-kicker">Current selection</p>
+                  <p class="offcanvas-text">Use a summary block first so the user understands what the side panel is currently acting on.</p>
+                  <div class="offcanvas-metric-row">
+                    <span class="table-status table-status-info">3 items selected</span>
+                    <span class="table-status table-status-success">Ready to apply</span>
+                  </div>
+                </section>
+                <div class="list-group list-group-nav">
+                  <div class="list-group-item">
+                    <a class="list-group-link" href="#" aria-current="page">Overview</a>
+                  </div>
+                  <div class="list-group-item">
+                    <a class="list-group-link" href="#">Activity</a>
+                  </div>
+                  <div class="list-group-item">
+                    <a class="list-group-link" href="#">Assignments</a>
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap items-start gap-2">
+                  <a class="btn btn-primary btn-sm" href="#">Save selection</a>
+                  <button class="btn btn-outline btn-sm" type="button" data-fnlla-offcanvas-close>Dismiss</button>
+                </div>
+              </div>
+              <div class="offcanvas-footer">
+                <p class="content-text mb-0">Keep support actions visible without forcing a full page leave or blocking dialog.</p>
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-offcanvas-open="#demo-offcanvas-workspace" data-fnlla-offcanvas-close aria-controls="demo-offcanvas-workspace">Open full workspace</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="offcanvas offcanvas-workspace" id="demo-offcanvas-workspace" data-fnlla-offcanvas role="dialog" aria-modal="true" aria-labelledby="demo-offcanvas-workspace-title" aria-describedby="demo-offcanvas-workspace-description" hidden>
+            <div class="offcanvas-panel">
+              <div class="offcanvas-header">
+                <div>
+                  <h3 class="content-title mb-1" id="demo-offcanvas-workspace-title">Workspace full panel</h3>
+                  <p class="content-text" id="demo-offcanvas-workspace-description">Use a full workspace panel when the user needs a larger temporary surface without leaving the current page flow.</p>
+                </div>
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-offcanvas-close data-fnlla-offcanvas-initial-focus>Close workspace</button>
+              </div>
+              <div class="offcanvas-body">
+                <div class="grid grid-2 gap-md">
+                  <section class="offcanvas-section" aria-label="Workspace overview">
+                    <p class="offcanvas-kicker">Current board</p>
+                    <p class="offcanvas-text">Full workspace mode keeps more context visible at once: summaries, active tasks, side actions and review notes can all live on the same temporary surface.</p>
+                    <div class="offcanvas-metric-row">
+                      <span class="table-status table-status-info">12 active tasks</span>
+                      <span class="table-status table-status-success">4 ready for review</span>
+                    </div>
+                  </section>
+                  <section class="offcanvas-section" aria-label="Workspace actions">
+                    <p class="offcanvas-kicker">Next actions</p>
+                    <div class="d-flex flex-wrap items-start gap-2">
+                      <a class="btn btn-primary btn-sm" href="#">Open delivery board</a>
+                      <a class="btn btn-outline btn-sm" href="#">Review backlog</a>
+                      <button class="btn btn-ghost btn-sm" type="button" data-fnlla-offcanvas-close>Return to page</button>
+                    </div>
+                  </section>
+                </div>
+
+                <div class="grid grid-2 gap-md">
+                  <div class="list-group list-group-nav">
+                    <div class="list-group-item">
+                      <a class="list-group-link" href="#" aria-current="page">
+                        <span class="list-group-item-title">Workspace overview</span>
+                        <span class="list-group-item-meta">Primary summary, ownership and recent status changes.</span>
+                      </a>
+                    </div>
+                    <div class="list-group-item">
+                      <a class="list-group-link" href="#">
+                        <span class="list-group-item-title">Approvals queue</span>
+                        <span class="list-group-item-meta">Pending sign-offs, blockers and escalation notes.</span>
+                      </a>
+                    </div>
+                    <div class="list-group-item">
+                      <a class="list-group-link" href="#">
+                        <span class="list-group-item-title">Artifacts</span>
+                        <span class="list-group-item-meta">Evidence, briefs and reusable implementation assets.</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="table-responsive" style="max-height: 18rem;">
+                    <table class="table table-striped table-hover table-sticky table-align-middle" aria-label="Workspace full panel table example">
+                      <thead>
+                        <tr>
+                          <th scope="col">Track</th>
+                          <th scope="col">Owner</th>
+                          <th scope="col">State</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Delivery hardening</td>
+                          <td>Platform team</td>
+                          <td><span class="table-status table-status-info">In review</span></td>
+                        </tr>
+                        <tr>
+                          <td>Docs alignment</td>
+                          <td>Enablement</td>
+                          <td><span class="table-status table-status-success">Ready</span></td>
+                        </tr>
+                        <tr>
+                          <td>Accessibility QA</td>
+                          <td>QA owner</td>
+                          <td><span class="table-status table-status-warning">Needs follow-up</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="offcanvas-footer">
+                <p class="content-text mb-0">Use full-workspace offcanvas when a side panel is too narrow but a modal would feel too blocking.</p>
+                <div class="d-flex flex-wrap gap-md">
+                  <button class="btn btn-outline btn-sm" type="button" data-fnlla-offcanvas-open="#demo-offcanvas" data-fnlla-offcanvas-close aria-controls="demo-offcanvas">Back to side panel</button>
+                  <button class="btn btn-ghost btn-sm" type="button" data-fnlla-offcanvas-close>Close workspace</button>
+                </div>
+              </div>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Tooltip and popover</h2>
+          <div class="d-flex flex-wrap gap-md items-center">
+            <button class="btn btn-outline" type="button" data-fnlla-tooltip="Use tooltips for short clarifications that do not need rich actions.">Hover or focus for tooltip</button>
+            <button class="btn btn-ghost" type="button" data-fnlla-tooltip="Right-positioned helper text for denser UI areas." data-fnlla-tooltip-position="right">Right tooltip</button>
+          </div>
+          <div class="popover mt-3" data-fnlla-popover>
+            <button class="btn btn-primary" id="demo-popover-toggle" type="button" data-fnlla-popover-toggle aria-controls="demo-popover-panel" aria-expanded="false">Open popover</button>
+            <div class="popover-panel" id="demo-popover-panel" aria-labelledby="demo-popover-toggle" hidden>
+              <h3 class="popover-title">Compact next-step panel</h3>
+              <p class="popover-text">Use a popover when content is richer than a tooltip but still lighter than an offcanvas or modal.</p>
+              <div class="popover-actions">
+                <a class="btn btn-outline btn-sm" href="#">Review guide</a>
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-popover-close>Close</button>
+              </div>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Accordion</h2>
+          <div class="accordion" data-fnlla-accordion data-fnlla-accordion-single>
+            <div class="accordion-item">
+              <button class="accordion-button" id="accordion-trigger-1" type="button" data-fnlla-accordion-button aria-expanded="true" aria-controls="accordion-panel-1">What is this framework for?</button>
+              <div class="accordion-panel" id="accordion-panel-1" role="region" aria-labelledby="accordion-trigger-1">
+                <p class="content-text">It provides a neutral front-end starting point for reusable marketing and service websites.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button" id="accordion-trigger-2" type="button" data-fnlla-accordion-button aria-expanded="false" aria-controls="accordion-panel-2">Can the styles be re-themed?</button>
+              <div class="accordion-panel" id="accordion-panel-2" role="region" aria-labelledby="accordion-trigger-2">
+                <p class="content-text">Yes. The design tokens at the top of the CSS are intended to be adjusted per project.</p>
+              </div>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">List-group navigation and advanced tables</h2>
+          <div class="grid gap-md">
+            <nav class="list-group list-group-nav" aria-label="List-group navigation example">
+              <div class="list-group-item">
+                <a class="list-group-link" href="#" aria-current="page">
+                  <span class="list-group-item-title">Current board</span>
+                  <span class="list-group-item-meta">Use `aria-current` for the active destination.</span>
+                </a>
+              </div>
+              <div class="list-group-item">
+                <a class="list-group-link" href="#">
+                  <span class="list-group-item-title">Archived board</span>
+                  <span class="list-group-item-meta">Use the nav variant when a grouped surface also acts as navigation.</span>
+                </a>
+              </div>
+            </nav>
+
+            <div class="table-responsive" style="max-height: 16rem;">
+              <table class="table table-striped table-hover table-sticky table-align-middle table-borderless" aria-label="Advanced table example">
+                <thead>
+                  <tr>
+                    <th scope="col">Service line</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="table-row-title">Delivery hardening</p>
+                      <p class="table-row-meta">Sticky headers help when the grid becomes operationally dense.</p>
+                    </td>
+                    <td>Platform team</td>
+                    <td><span class="table-status table-status-success">Stable</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="table-row-title">Adoption review</p>
+                      <p class="table-row-meta">Row title and meta blocks help add context without abandoning table semantics.</p>
+                    </td>
+                    <td>Enablement</td>
+                    <td><span class="table-status table-status-warning">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="table-row-title">Runtime audit</p>
+                      <p class="table-row-meta">Use compact status tokens when the user is mostly scanning state.</p>
+                    </td>
+                    <td>Maintainer</td>
+                    <td><span class="table-status table-status-info">Review</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Scrollspy section navigation</h2>
+          <div class="scrollspy-layout" data-fnlla-scrollspy>
+            <nav class="scrollspy-nav" data-fnlla-scrollspy-nav aria-label="Scrollspy demo navigation">
+              <ol class="scrollspy-nav-list">
+                <li><a class="scrollspy-link" href="#scrollspy-demo-overview">Overview</a></li>
+                <li><a class="scrollspy-link" href="#scrollspy-demo-architecture">Architecture</a></li>
+                <li><a class="scrollspy-link" href="#scrollspy-demo-handoff">Handoff</a></li>
+              </ol>
+            </nav>
+            <div class="scrollspy-panel">
+              <section class="card scrollspy-section" id="scrollspy-demo-overview">
+                <h3 class="card-title">Overview</h3>
+                <p class="card-text">Use scrollspy when a long single page needs a side index that tracks the reader's current section.</p>
+                <p class="card-text">The active item should move naturally as the reader advances instead of depending on a fragile single-pixel threshold.</p>
+              </section>
+              <section class="card scrollspy-section" id="scrollspy-demo-architecture">
+                <h3 class="card-title">Architecture</h3>
+                <p class="card-text">This pattern works well for large docs, operating guides, policy pages and framework references.</p>
+                <p class="card-text">Keep headings specific and chunk content into meaningful sections so the side navigation remains trustworthy and worth using.</p>
+              </section>
+              <section class="card scrollspy-section" id="scrollspy-demo-handoff">
+                <h3 class="card-title">Handoff</h3>
+                <p class="card-text">Use `aria-current="location"` on the active link so assistive technology users get the same sense of position as visual users.</p>
+                <p class="card-text">The best implementations also preserve good anchor behavior, keyboard access and clear visual emphasis for the current section.</p>
+              </section>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Button groups, chips and close controls</h2>
+          <div class="grid gap-md">
+            <div class="btn-toolbar">
+              <div class="btn-group" role="group" aria-label="View density switch">
+                <button class="btn btn-outline btn-sm" type="button">Comfortable</button>
+                <button class="btn btn-primary btn-sm" type="button">Compact</button>
+                <button class="btn btn-outline btn-sm" type="button">Dense</button>
+              </div>
+              <div class="btn-group" role="group" aria-label="Bulk actions">
+                <button class="btn btn-ghost btn-sm" type="button">Archive</button>
+                <button class="btn btn-ghost btn-sm" type="button">Assign</button>
+              </div>
+            </div>
+            <div class="chip-group">
+              <span class="chip">Internal</span>
+              <span class="chip">Priority: High</span>
+              <span class="chip">Ready for review</span>
+              <button class="close-btn" type="button" aria-label="Dismiss chip group"></button>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Panels, messages and menu</h2>
+          <div class="grid grid-2 gap-md">
+            <article class="panel">
+              <div class="panel-header">
+                <h3 class="content-title">Review queue</h3>
+                <span class="chip">12 items</span>
+              </div>
+              <div class="panel-body">
+                <p class="content-text">Use panels for structured work areas where a header, content body and optional footer should stay together.</p>
+                <nav class="menu" aria-label="Example workspace menu">
+                  <p class="menu-label">Workspace</p>
+                  <ul class="menu-list">
+                    <li class="is-active"><a href="#">Overview</a></li>
+                    <li><a href="#">Approvals</a></li>
+                    <li><a href="#">Archived items</a></li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="panel-footer">
+                <span class="text-muted">Last synced 5 minutes ago</span>
+                <a class="btn btn-primary btn-sm" href="#">Open queue</a>
+              </div>
+            </article>
+
+            <div class="grid gap-md">
+              <article class="message message-info">
+                <div class="message-header">
+                  <strong>Operational note</strong>
+                </div>
+                <div class="message-body">
+                  <p class="content-text">Use message blocks when a page needs more structure than an alert but less interruption than a modal.</p>
+                </div>
+              </article>
+              <article class="message message-warning">
+                <div class="message-header">
+                  <strong>Action required</strong>
+                </div>
+                <div class="message-body">
+                  <p class="content-text">Messages work well for review queues, onboarding instructions and longer in-context explanations.</p>
+                </div>
+              </article>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Progress, spinner and skeleton</h2>
+          <p class="card-text">Loading states should feel deliberate rather than decorative. Use measurable progress when you know the real value, pair spinners with visible status copy and let skeletons preview the final layout they are standing in for.</p>
+          <div class="loading-showcase">
+            <section class="loading-panel">
+              <div class="loading-panel-header">
+                <p class="doc-panel-label">Measured completion</p>
+                <h3 class="content-title">Progress works best when the next update is believable</h3>
+                <p class="content-text">Show determinate progress only when the percentage is trustworthy. When work is active but the finish point is not yet predictable, switch to an indeterminate bar and keep a short status explanation nearby.</p>
+              </div>
+              <div class="loading-stack">
+                <div class="progress-field">
+                  <div class="progress-meta">
+                    <p class="progress-label">Import progress</p>
+                    <p class="progress-value">72%</p>
+                  </div>
+                  <div class="progress" role="progressbar" aria-label="Import progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72">
+                    <span class="progress-bar" style="width: 72%;"></span>
+                  </div>
+                  <p class="help-text">Use progress bars when the user benefits from a visible sense of completion. Example meta can combine 72%, 18 of 25 files and about 2 minutes left.</p>
+                </div>
+                <div class="progress-field">
+                  <div class="progress-meta">
+                    <p class="progress-label">Background indexing</p>
+                    <p class="progress-value">18/25 files</p>
+                  </div>
+                  <div class="progress progress-indeterminate" role="progressbar" aria-label="Background indexing in progress" aria-valuetext="In progress">
+                    <span class="progress-bar"></span>
+                  </div>
+                  <p class="help-text">Use indeterminate progress when the task is active but exact completion is unknown. Example copy can still add context such as about 2 minutes left.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="loading-panel">
+              <div class="loading-panel-header">
+                <p class="doc-panel-label">Live activity</p>
+                <h3 class="content-title">Spinners need context so the wait feels active</h3>
+                <p class="content-text">A spinner alone can read as abandoned. Pair it with a button state, inline status or compact activity surface so users know what is happening and where they should keep their attention.</p>
+              </div>
+              <div class="loading-spinner-grid">
+                <section class="loading-surface" aria-label="Spinner size examples">
+                  <p class="loading-caption">Size scale for short live activity</p>
+                  <div class="loading-spinner-row">
+                    <span class="spinner" aria-hidden="true"></span>
+                    <span class="spinner spinner-sm" aria-hidden="true"></span>
+                    <span class="spinner spinner-lg" aria-hidden="true"></span>
+                    <p class="mb-0">Use spinners for short live activity, not for long silent waits without context.</p>
+                  </div>
+                </section>
+                <section class="loading-surface" aria-label="Spinner usage examples">
+                  <p class="loading-caption">Inline and action-surface examples</p>
+                  <div class="grid gap-md">
+                    <button class="btn btn-primary btn-sm is-loading" type="button" aria-busy="true" disabled>
+                      <span class="spinner spinner-sm spinner-current" aria-hidden="true"></span>
+                      Saving...
+                    </button>
+                    <div class="loader-inline" role="status" aria-live="polite">
+                      <span class="spinner spinner-sm" aria-hidden="true"></span>
+                      <span>Syncing release notes...</span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </section>
+
+            <section class="loading-panel">
+              <div class="loading-panel-header">
+                <p class="doc-panel-label">Layout-matched placeholders</p>
+                <h3 class="content-title">Skeletons should preview the destination, not look generic</h3>
+                <p class="content-text">Prefer placeholders that resemble the final surface. A card shell, table shell or media row makes the loading state feel intentional and helps the page hold its structure while data is on the way.</p>
+              </div>
+              <div class="loading-skeleton-grid">
+                <figure class="loading-surface">
+                  <div class="skeleton-card" aria-hidden="true">
+                    <div class="skeleton-media">
+                      <span class="skeleton skeleton-avatar"></span>
+                      <div class="skeleton-copy">
+                        <span class="skeleton-line" style="width: 48%;"></span>
+                        <span class="skeleton-line" style="width: 76%;"></span>
+                      </div>
+                    </div>
+                    <span class="skeleton-block" style="min-height: 4.75rem;"></span>
+                    <div class="skeleton-actions">
+                      <span class="skeleton-line"></span>
+                      <span class="skeleton-line" style="width: 4rem;"></span>
+                    </div>
+                  </div>
+                  <figcaption class="loading-caption">Card shell for feed items, record previews or profile summaries.</figcaption>
+                </figure>
+                <figure class="loading-surface">
+                  <div class="skeleton-table" aria-hidden="true">
+                    <div class="skeleton-table-row">
+                      <span class="skeleton-line" style="width: 100%;"></span>
+                      <span class="skeleton-line" style="width: 100%;"></span>
+                      <span class="skeleton-line" style="width: 100%;"></span>
+                    </div>
+                    <div class="skeleton-table-row">
+                      <span class="skeleton-line" style="width: 94%;"></span>
+                      <span class="skeleton-line" style="width: 84%;"></span>
+                      <span class="skeleton-line" style="width: 78%;"></span>
+                    </div>
+                    <div class="skeleton-table-row">
+                      <span class="skeleton-line" style="width: 88%;"></span>
+                      <span class="skeleton-line" style="width: 68%;"></span>
+                      <span class="skeleton-line" style="width: 74%;"></span>
+                    </div>
+                  </div>
+                  <figcaption class="loading-caption">Dense table shell for lists, audit logs and data-heavy workspaces.</figcaption>
+                </figure>
+              </div>
+              <div class="loading-footer">
+                <section class="loading-surface" aria-label="Primitive skeleton shapes">
+                  <p class="loading-caption">Primitive shapes for simple custom layouts</p>
+                  <div class="grid gap-2" aria-hidden="true">
+                    <span class="skeleton-line"></span>
+                    <span class="skeleton-line" style="width: 78%;"></span>
+                    <span class="skeleton-block"></span>
+                  </div>
+                </section>
+                <article class="message message-info">
+                  <div class="message-header">
+                    <strong>Reduced motion behavior</strong>
+                  </div>
+                  <div class="message-body">
+                    <p class="content-text">When <code>prefers-reduced-motion</code> is active, spinners and indeterminate progress pause while skeleton shimmer is removed. Keep visible status copy so the state remains understandable without motion.</p>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <div class="loading-controls">
+              <div class="range-field">
+                <div class="range-meta">
+                  <span class="content-title">Confidence threshold</span>
+                  <output class="range-output" data-fnlla-range-output="confidence-threshold">64%</output>
+                </div>
+                <input class="range-input" id="confidence-threshold" type="range" min="0" max="100" value="64" data-fnlla-range-suffix="%" aria-label="Confidence threshold example">
+                <div class="range-labels" aria-hidden="true">
+                  <span>Low</span>
+                  <span>Balanced</span>
+                  <span>High</span>
+                </div>
+                <p class="help-text">Use sliders when the user should adjust a value across a continuous range.</p>
+              </div>
+              <div class="range-field">
+                <div class="range-meta">
+                  <span class="content-title">Automation threshold</span>
+                  <output class="range-output">40%</output>
+                </div>
+                <input class="range-input" type="range" min="0" max="100" value="40" disabled aria-label="Disabled automation threshold example">
+                <div class="range-labels" aria-hidden="true">
+                  <span>Manual review</span>
+                  <span>Auto-apply</span>
+                </div>
+                <p class="error-text">Disabled example: lock the control when the current plan or role should not allow changes.</p>
+              </div>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Avatars and media object</h2>
+          <div class="grid gap-md">
+            <div class="avatar-stack" aria-label="Reviewer group">
+              <span class="avatar avatar-sm"><span class="avatar-text">AM</span></span>
+              <span class="avatar avatar-sm"><span class="avatar-text">LK</span></span>
+              <span class="avatar avatar-sm"><span class="avatar-text">JT</span></span>
+            </div>
+            <article class="media">
+              <div class="media-figure">
+                <span class="avatar"><span class="avatar-text">TA</span></span>
+              </div>
+              <div class="media-body">
+                <h3 class="media-title">TechAyo support desk</h3>
+                <p class="media-text">Use the media object when identity, status or source context should sit beside richer body content without becoming a full card grid.</p>
+              </div>
+            </article>
+          </div></article>
+
+        <article class="card" id="component-supporting">
+          <h2 class="card-title">Timeline, steps and search shell</h2>
+          <div class="grid gap-md">
+            <div class="grid grid-2 gap-md">
+              <div class="timeline">
+                <article class="timeline-item">
+                  <div class="timeline-marker" aria-hidden="true"></div>
+                  <div class="timeline-content">
+                    <p class="timeline-title">Discovery completed</p>
+                    <p class="timeline-text">Requirements were clarified and the delivery route was approved.</p>
+                    <p class="timeline-meta">Monday, 09:00</p>
+                  </div>
+                </article>
+                <article class="timeline-item">
+                  <div class="timeline-marker" aria-hidden="true"></div>
+                  <div class="timeline-content">
+                    <p class="timeline-title">Implementation started</p>
+                    <p class="timeline-text">The operational workspace moved into active build and review mode.</p>
+                    <p class="timeline-meta">Tuesday, 14:30</p>
+                  </div>
+                </article>
+              </div>
+              <div class="steps">
+                <article class="step is-complete">
+                  <span class="step-index">1</span>
+                  <div class="step-body">
+                    <p class="step-title">Scope</p>
+                    <p class="step-text">Capture the request and confirm delivery shape.</p>
+                  </div>
+                </article>
+                <article class="step is-current">
+                  <span class="step-index">2</span>
+                  <div class="step-body">
+                    <p class="step-title">Review</p>
+                    <p class="step-text">Validate priorities and resolve open questions.</p>
+                  </div>
+                </article>
+                <article class="step">
+                  <span class="step-index">3</span>
+                  <div class="step-body">
+                    <p class="step-title">Launch</p>
+                    <p class="step-text">Approve and release the final build.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="search-shell">
+              <label class="label" for="component-search-demo">Search shell</label>
+              <div class="search-input-wrap">
+                <span class="icon" aria-hidden="true">
+                  <img src="../assets/icons/search.svg" alt="">
+                </span>
+                <input class="input" id="component-search-demo" type="search" placeholder="Search a workspace, project or document">
+              </div>
+              <ul class="search-results" aria-label="Search results example">
+                <li class="search-result">
+                  <p class="search-result-title">Framework onboarding</p>
+                  <p class="search-result-text">Use a result card when title, path and short explanatory text should stay grouped.</p>
+                </li>
+                <li class="search-result">
+                  <p class="search-result-title">Support escalation path</p>
+                  <p class="search-result-text">This shell works well for internal tools, docs hubs and navigation launchers.</p>
+                </li>
+              </ul>
+            </div>
+          </div></article>
+
+        <article class="card">
+          <h2 class="card-title">FNLLA Icons quick use</h2>
+          <div class="grid gap-md">
+            <div class="d-flex flex-wrap items-center gap-md">
+              <span class="icon icon-lg" aria-hidden="true">
+                <img src="../assets/icons/download.svg" alt="">
+              </span>
+              <span class="icon icon-lg" aria-hidden="true">
+                <svg aria-hidden="true">
+                  <use href="../assets/icons/sprite.svg#settings-2"></use>
+                </svg>
+              </span>
+              <span class="icon icon-lg" aria-hidden="true">
+                <svg aria-hidden="true">
+                  <use href="../assets/icons/sprite.svg#shield-check"></use>
+                </svg>
+              </span>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <h3 class="content-title">Offline icon usage</h3>
+                <span class="chip">Local only</span>
+              </div>
+              <div class="panel-body">
+                <p class="content-text">Keep icon usage on the stable runtime path under <code>assets/icons/</code>. Use individual SVG files for the clearest offline reference and the local sprite when the page reuses many icons.</p>
+                <pre><code>&lt;span class="icon" aria-hidden="true"&gt;
+  &lt;img src="assets/icons/search.svg" alt=""&gt;
+&lt;/span&gt;
+
+&lt;span class="icon" aria-hidden="true"&gt;
+  &lt;svg&gt;&lt;use href="assets/icons/sprite.svg#settings-2"&gt;&lt;/use&gt;&lt;/svg&gt;
+&lt;/span&gt;</code></pre>
+                <p class="content-text mb-0">For the searchable catalogue, category map and bundle notes, continue to <a href="./icons.html"><code>icons.html</code></a>.</p>
+              </div>
+            </div>
+          </div></article>
+
+      </div>
+    </section>
+
+    <section class="section" id="component-contracts">
+      <div class="section-header">
+        <h2 class="section-title">Component contracts</h2>
+        <p class="section-text">These rules define the intended markup contract for the interactive patterns shipped with the framework.</p>
+      </div>
+
+      <div class="grid grid-2 doc-guidance-stack">
+        <article class="card">
+          <h3 class="card-title">Navigation</h3>
+          <ul>
+            <li>Use a real toggle button with <code>data-fnlla-nav-toggle</code> and <code>aria-controls</code> pointing to the collapsible panel.</li>
+            <li>Wrap the menu list and CTA area inside one <code>.navbar-panel</code> when you want a unified mobile panel.</li>
+            <li>Keep the primary links in <code>.navbar-menu</code> inside the shared mobile panel.</li>
+            <li>Escape closes the mobile panel and returns focus to the toggle so keyboard users do not stay inside hidden navigation content.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Alerts</h3>
+          <ul>
+            <li>Use <code>.alert</code> as the base wrapper and add exactly one semantic variant such as <code>.alert-info</code> or <code>.alert-danger</code>.</li>
+            <li>Use <code>.alert-title</code> and <code>.alert-text</code> for a predictable heading and body structure.</li>
+            <li>Use <code>role="status"</code> for passive updates and reserve <code>role="alert"</code> for urgent failures or warnings.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">List groups and empty states</h3>
+          <ul>
+            <li>Use <code>.list-group</code> when multiple related rows should share one surface instead of repeated isolated cards.</li>
+            <li>Add <code>.list-group-item-action</code> only when the whole row should feel interactive.</li>
+            <li>Use <code>.empty-state</code> whenever a panel would otherwise be visually blank and the page should suggest a next step.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Dropdown</h3>
+          <ul>
+            <li>Use <code>[data-fnlla-dropdown]</code> on the wrapper and <code>[data-fnlla-dropdown-toggle]</code> on a real button.</li>
+            <li>The toggle should control one <code>.dropdown-menu</code> through <code>aria-controls</code>.</li>
+            <li>Keep focusable actions inside the menu so arrow-key movement stays predictable.</li>
+            <li>Arrow Down, Arrow Up, Home and End are supported while the dropdown is open.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Tabs</h3>
+          <ul>
+            <li>Use <code>[data-fnlla-tabs]</code> on the wrapper, <code>[data-fnlla-tab-list]</code> on the tab row and <code>[data-fnlla-tab]</code> on each real button.</li>
+            <li>Each tab button should point to one <code>.tab-panel</code> through <code>aria-controls</code>, and each panel should point back with <code>aria-labelledby</code>.</li>
+            <li>Mark one initial tab with <code>aria-selected="true"</code>; the script will keep the rest synchronized.</li>
+            <li>Horizontal tablists use Arrow Left and Arrow Right; vertical tablists should declare <code>aria-orientation="vertical"</code> and use Arrow Up and Arrow Down instead.</li>
+            <li>Home and End move to the first and last tab and activate the newly focused panel.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Breadcrumbs</h3>
+          <ul>
+            <li>Wrap breadcrumbs in a labeled <code>nav</code> and keep the trail inside an ordered list.</li>
+            <li>Use <code>.breadcrumb-link</code> for earlier steps and one <code>.breadcrumb-current</code> item with <code>aria-current="page"</code> for the current location.</li>
+            <li>Keep labels short enough to wrap cleanly without breaking the reading order.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Pagination</h3>
+          <ul>
+            <li>Wrap pagination in a labeled <code>nav</code> and keep page actions in a list so the sequence stays understandable to assistive technology.</li>
+            <li>Use <code>aria-current="page"</code> on the active page link.</li>
+            <li>Use visible Previous and Next labels when they improve clarity on smaller screens.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Tables</h3>
+          <ul>
+            <li>Wrap wider tables in <code>.table-responsive</code> so the layout degrades to horizontal scrolling instead of breaking the page width.</li>
+            <li>Keep table headers as real <code>th</code> elements and reserve striped or hover states for cases where scanning row relationships matters.</li>
+            <li>Prefer tables for dense comparative data, not for general card-like marketing content.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Modal</h3>
+          <ul>
+            <li>Use <code>[data-fnlla-modal-open]</code> on the trigger and point it at one modal selector such as <code>#demo-modal</code>.</li>
+            <li>Mark the overlay with <code>[data-fnlla-modal]</code> and keep one <code>.modal-content</code> dialog container inside it.</li>
+            <li>Put dialog semantics and labeling on the modal container with <code>role="dialog"</code>, <code>aria-modal</code>, <code>aria-labelledby</code> and, when needed, <code>aria-describedby</code>.</li>
+            <li>Always provide a visible close control with <code>[data-fnlla-modal-close]</code>.</li>
+            <li>Use <code>data-fnlla-modal-initial-focus</code> or native <code>autofocus</code> when one control should receive focus first.</li>
+            <li>While open, the modal isolates sibling page branches with <code>aria-hidden</code> and <code>inert</code> so background content stays out of the active focus order.</li>
+            <li>If there is no focusable element inside the dialog, the modal container itself becomes the focus target.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Accordion</h3>
+          <ul>
+            <li>Use <code>[data-fnlla-accordion]</code> on the wrapper and <code>[data-fnlla-accordion-button]</code> on each trigger.</li>
+            <li>Each button should point to one panel with <code>aria-controls</code>, and each panel should point back with <code>aria-labelledby</code>.</li>
+            <li>Add <code>data-fnlla-accordion-single</code> only when the content model should allow one open item at a time.</li>
+            <li>Arrow Up, Arrow Down, Home and End move focus between triggers.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Toasts</h3>
+          <ul>
+            <li>Use <code>[data-fnlla-toast]</code> on the toast itself and <code>[data-fnlla-toast-open]</code> on any trigger that should reveal it.</li>
+            <li>Use <code>[data-fnlla-toast-close]</code> on dismiss controls inside the toast surface.</li>
+            <li>Optional <code>data-fnlla-toast-autohide</code> may be used in milliseconds for short-lived status confirmations.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Offcanvas</h3>
+          <ul>
+            <li>Use <code>[data-fnlla-offcanvas-open]</code> on the trigger and point it to one offcanvas selector such as <code>#demo-offcanvas</code>.</li>
+            <li>Mark the overlay with <code>[data-fnlla-offcanvas]</code> and keep one <code>.offcanvas-panel</code> surface inside it.</li>
+            <li>Use <code>[data-fnlla-offcanvas-close]</code> for every explicit dismiss control and keep a visible close button in the header or footer.</li>
+            <li>Use offcanvas for secondary workflows and side workspaces, not for critical blocking confirmation flows.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Popover and tooltip</h3>
+          <ul>
+            <li>Use <code>data-fnlla-tooltip</code> for short one-line or short-paragraph helper text attached to a trigger.</li>
+            <li>Use <code>[data-fnlla-popover]</code> with <code>[data-fnlla-popover-toggle]</code> when the panel needs richer content or small actions.</li>
+            <li>Popover panels should stay compact and should not become substitute modals or sidebars.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Scrollspy</h3>
+          <ul>
+            <li>Use <code>[data-fnlla-scrollspy]</code> on the wrapper and <code>[data-fnlla-scrollspy-nav]</code> on the navigation block.</li>
+            <li>Keep every scrollspy link pointing to a real section <code>id</code> on the same page.</li>
+            <li>Prefer scrollspy for long single-page references, internal guides and structured documentation pages.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="component-accessibility">
+      <div class="section-header">
+        <h2 class="section-title">Accessibility notes</h2>
+        <p class="section-text">Use these patterns consistently when wiring the components into a real project.</p>
+      </div>
+
+      <div class="grid grid-2 doc-guidance-stack">
+        <article class="card">
+          <h3 class="card-title">Status messages</h3>
+          <ul>
+            <li>Use <code>role="status"</code> for non-blocking confirmation and informational copy that should be announced politely.</li>
+            <li>Use <code>role="alert"</code> only when the message is urgent enough to interrupt assistive technology output.</li>
+            <li>Keep the copy brief and actionable so repeated announcements remain understandable.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Tables and dense data</h3>
+          <ul>
+            <li>Use real header cells and preserve reading order so assistive technology can move through rows and columns predictably.</li>
+            <li>If a table becomes too wide for the viewport, prefer a scroll container over visually collapsing columns into unreadable fragments.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Dropdowns</h3>
+          <ul>
+            <li>Use a real <code>button</code> for the toggle, not a plain link.</li>
+            <li>Pair the toggle with <code>aria-expanded</code>, <code>aria-controls</code> and a labeled menu container; the framework will wire <code>aria-labelledby</code> when needed.</li>
+            <li>Keyboard users should be able to open the menu, move through items with Arrow keys, Home and End, and close it with Escape.</li>
+            <li>When JavaScript is active, closed dropdown panels are also marked <code>inert</code> so focus cannot drift into collapsed content.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Tabs</h3>
+          <ul>
+            <li>Use real <code>button</code> elements for tabs so focus and keyboard behavior stay predictable.</li>
+            <li>The tab row should keep a clear visible label and uses a horizontal orientation by default.</li>
+            <li>If the project uses a vertical tab layout, declare <code>aria-orientation="vertical"</code> so Up and Down become the active arrow-key pattern.</li>
+            <li>Keep tab labels short enough to wrap cleanly on smaller screens, and test the stacked mobile layout.</li>
+            <li>Use tabs for sibling content sets, not for unrelated navigation destinations.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Navigation trails</h3>
+          <ul>
+            <li>Use breadcrumbs only when they reflect the real page hierarchy and help users move upward in that structure.</li>
+            <li>Mark the current breadcrumb with <code>aria-current="page"</code> and keep it non-interactive when it already represents the current page.</li>
+            <li>For pagination, make the active page obvious with both visible styling and <code>aria-current="page"</code>.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Modals</h3>
+          <ul>
+            <li>Add <code>role="dialog"</code>, <code>aria-modal="true"</code>, <code>aria-labelledby</code> and <code>aria-describedby</code>.</li>
+            <li>Return focus to the trigger after closing where possible.</li>
+            <li>Use <code>data-fnlla-modal-initial-focus</code> when the first focus target should be explicit.</li>
+            <li>Keep background content out of the assistive-technology flow while the dialog is open.</li>
+            <li>Keep a visible close button in addition to backdrop and Escape support.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Offcanvas panels</h3>
+          <ul>
+            <li>Use dialog labeling just as you would for a modal when the panel carries task-level content.</li>
+            <li>Keep focus inside the open panel and return it to the trigger after close.</li>
+            <li>Reserve offcanvas for supplemental workflows that should not fully replace the current page context.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Tooltips and popovers</h3>
+          <ul>
+            <li>Tooltips should stay short, purely supportive and readable on focus as well as hover.</li>
+            <li>Popovers should include a clear close affordance when they contain more than static helper text.</li>
+            <li>Do not hide essential instructions only inside a tooltip if the task cannot be completed without them.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Accordions</h3>
+          <ul>
+            <li>Use buttons for each trigger and keep <code>aria-expanded</code> in sync.</li>
+            <li>Link each panel to its trigger with <code>aria-labelledby</code>.</li>
+            <li>Use a single-open pattern only when it matches the content model.</li>
+            <li>Support Arrow Up, Arrow Down, Home and End so keyboard users can move between headings quickly.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">General interaction</h3>
+          <ul>
+            <li>Keep focus styles visible against every theme.</li>
+            <li>Respect <code>prefers-reduced-motion</code> for users who opt out of motion.</li>
+            <li>The framework ships a <code>forced-colors</code> fallback layer so core states stay legible in high-contrast system modes.</li>
+            <li>Test components with keyboard only, touch screens and narrow mobile layouts.</li>
+            <li>Use one shared navigation panel on mobile so primary links and CTA actions open and close together.</li>
+            <li>Use <code>.visually-hidden</code> when supporting text should stay available to assistive technology without remaining visible in the layout.</li>
+            <li>Prefer collapsed states that combine <code>hidden</code>, <code>aria-hidden</code> and <code>inert</code> so both focus order and assistive-technology output stay predictable.</li>
+            <li>Use toast notifications only for short, secondary feedback; anything blocking or actionable enough to demand focus should be a visible alert or dialog instead.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Scrollspy and section navigation</h3>
+          <ul>
+            <li>Use scrollspy only when the page has genuine long-form sections worth indexing.</li>
+            <li>Keep section headings meaningful enough that the side navigation reads as a real outline.</li>
+            <li>Prefer <code>aria-current="location"</code> for the active in-page destination.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <!-- Shared runtime for interactive demos used inside the docs. -->
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

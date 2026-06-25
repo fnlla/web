@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <!-- =========================================================================
+       DOCUMENT HEAD
+       ========================================================================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Sections</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- =========================================================================
+       DOCUMENT SHELL
+       ========================================================================= -->
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Blueprint documentation</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Framework blueprint</p>
+          <p class="doc-display">FNLLA UI - Documentation</p>
+          <p class="doc-lead">Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary docs navigation shared across the reference set. -->
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-outline btn-sm" href="./sections.html" aria-current="page">Sections</a>
+      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+    </nav>
+
+    <section class="section pt-1">
+      <div class="section-header">
+        <h2 class="section-title">Section library</h2>
+        <p class="section-text">These examples promote repeated marketing, service and trust-building layouts into first-class reusable blocks. Use them when a page needs a full composition, not just an isolated component.</p>
+      </div>
+
+      <div class="doc-link-grid">
+        <a class="doc-link-card" href="#section-hero-patterns">
+          <span class="doc-link-label">Intro</span>
+          <p class="doc-link-title">Hero patterns</p>
+          <p class="doc-link-text">Use these when the page needs a strong top-of-page opener, a concise value narrative and an immediate primary action.</p>
+        </a>
+        <a class="doc-link-card" href="#section-feature-service">
+          <span class="doc-link-label">Proof</span>
+          <p class="doc-link-title">Feature, service, stats and process blocks</p>
+          <p class="doc-link-text">Choose this family when the page needs explanation, operational proof or staged delivery structure after the intro.</p>
+        </a>
+        <a class="doc-link-card" href="#section-decision-support">
+          <span class="doc-link-label">Decision</span>
+          <p class="doc-link-title">FAQ, pricing and testimonials</p>
+          <p class="doc-link-text">Use these sections when the user needs reassurance, plan comparison or objection-handling before committing.</p>
+        </a>
+        <a class="doc-link-card" href="#section-closing-patterns">
+          <span class="doc-link-label">Closing</span>
+          <p class="doc-link-title">CTA section and footer</p>
+          <p class="doc-link-text">Open these when the page is ready to convert interest into one clear action and then close with support links and trust signals.</p>
+        </a>
+      </div>
+
+      <div class="doc-grid doc-sections-showcase-grid">
+        <article class="card" id="section-hero-patterns">
+          <h2 class="card-title">Hero patterns</h2>
+          <div class="grid gap-md">
+            <section class="hero hero-split" aria-label="Split hero variant">
+              <div class="grid gap-md hero-copy">
+                <span class="tag">Split hero</span>
+                <h3 class="hero-title">Frame the offer fast, then give the user enough proof to keep scrolling</h3>
+                <p class="hero-text">Use the split variant when the page needs a stronger opening narrative, a visible primary action and one supporting surface that turns abstract value into something more concrete.</p>
+                <ul class="hero-proof-list">
+                  <li>Pair one strong headline with two or three believable proof points.</li>
+                  <li>Keep the primary action visible before the user reaches denser service detail.</li>
+                  <li>Use the side panel for delivery signals, timing or scannable operational notes.</li>
+                </ul>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="#">Book discovery</a>
+                  <a class="btn btn-outline" href="#">View deliverables</a>
+                </div>
+              </div>
+              <aside class="hero-panel" aria-label="Hero support panel">
+                <div class="hero-panel-intro">
+                  <p class="doc-panel-label">Support panel</p>
+                  <h3 class="hero-panel-title">Delivery snapshot</h3>
+                  <p class="hero-panel-text">Keep this panel compact. It works best when every item helps the user estimate pace, scope or readiness.</p>
+                </div>
+                <div class="hero-metric-list">
+                  <div class="hero-metric">
+                    <p class="hero-metric-value">2 weeks</p>
+                    <p class="hero-metric-label">Typical initial audit window</p>
+                  </div>
+                  <div class="hero-metric">
+                    <p class="hero-metric-value">3 tracks</p>
+                    <p class="hero-metric-label">Strategy, implementation and enablement</p>
+                  </div>
+                  <div class="hero-metric">
+                    <p class="hero-metric-value">48h</p>
+                    <p class="hero-metric-label">Response window for scoped follow-up questions</p>
+                  </div>
+                </div>
+                <p class="help-text mb-0">Use one short note like this for availability, handoff expectations or review cadence instead of a second paragraph block.</p>
+              </aside>
+            </section>
+
+            <section class="hero hero-split hero-visual" aria-label="Split hero with visual example">
+              <div class="grid gap-md hero-copy">
+                <div class="d-flex flex-wrap items-center gap-md">
+                  <span class="tag">Visual split hero</span>
+                  <span class="badge">Graphic-led layout</span>
+                </div>
+                <h3 class="hero-title">Use a visual split hero when the right side should preview the product, workflow or destination</h3>
+                <p class="hero-text">This variant works well when the page benefits from showing a believable interface, a service artifact or a campaign visual instead of a metric panel. The graphic should reinforce the offer, not compete with the headline.</p>
+                <ul class="hero-proof-list">
+                  <li>Use it for product surfaces, delivery dashboards, launch kits or before-and-after workflow previews.</li>
+                  <li>Keep the visual focused on one story so the eye still returns naturally to the call to action.</li>
+                  <li>Choose this pattern when a real preview helps trust faster than another paragraph would.</li>
+                </ul>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="#">Preview walkthrough</a>
+                  <a class="btn btn-outline" href="#">Open launch kit</a>
+                </div>
+              </div>
+              <figure class="hero-visual-pane" aria-label="Illustrated hero panel">
+                <div class="hero-art-window" aria-hidden="true">
+                  <div class="hero-art-toolbar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div class="hero-art-body">
+                    <div class="hero-art-header">
+                      <p class="hero-art-eyebrow">Launch overview</p>
+                      <div class="hero-art-status">Ready for review</div>
+                    </div>
+                    <div class="hero-art-title-block">
+                      <div class="hero-art-line hero-art-line-strong"></div>
+                      <div class="hero-art-line"></div>
+                    </div>
+                    <div class="hero-art-metrics">
+                      <article class="hero-art-card">
+                        <strong>4</strong>
+                        <span>pages ready</span>
+                      </article>
+                      <article class="hero-art-card">
+                        <strong>12</strong>
+                        <span>assets aligned</span>
+                      </article>
+                      <article class="hero-art-card">
+                        <strong>2d</strong>
+                        <span>to launch</span>
+                      </article>
+                    </div>
+                    <div class="hero-art-feature">
+                      <div class="hero-art-line hero-art-line-strong"></div>
+                      <div class="hero-art-line hero-art-line-mid"></div>
+                      <div class="hero-art-pill-row">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <figcaption class="loading-caption">Use the right side to preview the experience itself, not just to decorate the layout.</figcaption>
+              </figure>
+            </section>
+
+            <section class="hero hero-background" aria-label="Hero with background visual example">
+              <div class="grid gap-md hero-copy hero-background-copy">
+                <div class="d-flex flex-wrap items-center gap-md">
+                  <span class="tag">Background visual hero</span>
+                  <span class="badge">Atmospheric layout</span>
+                </div>
+                <h3 class="hero-title">Use a background visual hero when the page should feel more immersive without adding a second content column</h3>
+                <p class="hero-text">This pattern works when the right move is to let the visual set tone and context behind the message instead of asking the user to parse a separate panel. It is useful for launch pages, campaign entries, platform overviews and polished service introductions that still need strong readability.</p>
+                <ul class="hero-proof-list">
+                  <li>Keep the background meaningful enough to reinforce the story, but quiet enough that the headline stays dominant.</li>
+                  <li>Use overlays, soft gradients and one focal cluster instead of a busy full-bleed illustration.</li>
+                  <li>Choose this variant when mood, product feel or visual credibility matters more than a second stack of facts.</li>
+                </ul>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="#">Explore platform</a>
+                  <a class="btn btn-outline" href="#">Open case study</a>
+                </div>
+                <div class="hero-background-meta">
+                  <article class="hero-background-chip">
+                    <span class="doc-panel-label">Best fit</span>
+                    <p class="content-text mb-0">Launch pages, campaign entries and polished overview pages.</p>
+                  </article>
+                  <article class="hero-background-chip">
+                    <span class="doc-panel-label">Visual rule</span>
+                    <p class="content-text mb-0">Treat the artwork like atmosphere, not like a second hero competing for attention.</p>
+                  </article>
+                  <article class="hero-background-chip">
+                    <span class="doc-panel-label">Keep visible</span>
+                    <p class="content-text mb-0">Strong contrast, one primary action and enough clear space around the main copy.</p>
+                  </article>
+                </div>
+              </div>
+            </section>
+
+            <section class="hero hero-compact" aria-label="Compact hero variant">
+              <div class="grid gap-md hero-copy">
+                <div class="d-flex flex-wrap items-center gap-md">
+                  <span class="tag">Compact hero</span>
+                  <span class="badge">Inner pages</span>
+                  <span class="badge">Fast-scanning layouts</span>
+                </div>
+                <h3 class="hero-title">Use a tighter hero when the page should reach proof, scope or pricing faster</h3>
+                <p class="hero-text">Compact heroes work well for inner service pages, campaign landers and follow-up content hubs where the user already knows the broader brand context and mainly needs direction. The goal is not to feel smaller for its own sake, but to get the page to the right evidence sooner without losing clarity.</p>
+                <ul class="hero-proof-list">
+                  <li>Keep one clear promise, one next action and one proof line above the fold.</li>
+                  <li>Use the saved vertical space for service detail, pricing comparison or implementation scope.</li>
+                  <li>Let the hero still orient the user, even if the page is already mid-funnel.</li>
+                </ul>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="#">Start request</a>
+                  <a class="btn btn-ghost" href="#">Review scope</a>
+                </div>
+                <p class="help-text mb-0">This variant can still carry proof, route cues and a fallback action. It should feel deliberate, not like a reduced version of a hero that lost half its content.</p>
+              </div>
+              <div class="hero-inline-facts" aria-label="Compact hero support facts">
+                <div class="hero-inline-fact">
+                  <span class="doc-panel-label">Best fit</span>
+                  <p class="content-text mb-0">Inner service pages, campaign follow-ups and service-detail routes that need direction more than storytelling.</p>
+                </div>
+                <div class="hero-inline-fact">
+                  <span class="doc-panel-label">Keep visible</span>
+                  <p class="content-text mb-0">One proof line, one primary action and one next-step clue that makes the rest of the page easier to scan.</p>
+                </div>
+                <div class="hero-inline-fact">
+                  <span class="doc-panel-label">Works well with</span>
+                  <p class="content-text mb-0">Pricing blocks, service grids, scope breakdowns, implementation plans and FAQ sections directly below.</p>
+                </div>
+                <div class="hero-inline-fact">
+                  <span class="doc-panel-label">Avoid</span>
+                  <p class="content-text mb-0">Rebuilding a full landing-page story when the user is already warmed up or hiding the primary route behind too much neutral copy.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <article class="card" id="section-feature-service">
+          <h2 class="card-title">Feature and service section patterns</h2>
+          <div class="grid gap-md">
+            <section class="feature-section" aria-label="Feature section example">
+              <div class="section-header mb-0">
+                <p class="feature-kicker">Feature section</p>
+                <h3 class="section-title">Explain the core product or service differentiators in one reusable block</h3>
+                <p class="section-text">Use the feature section when the page needs a compact value narrative plus a visible checklist of operational strengths.</p>
+              </div>
+              <div class="feature-grid">
+                <div class="grid grid-3 gap-md">
+                  <article class="feature-card">
+                    <h4 class="content-title">Content-ready structure</h4>
+                    <p class="content-text">Use repeated cards for short benefits, outcomes or adoption points.</p>
+                  </article>
+                  <article class="feature-card">
+                    <h4 class="content-title">Theme-aware styling</h4>
+                    <p class="content-text">The same block inherits token updates without extra overrides.</p>
+                  </article>
+                  <article class="feature-card">
+                    <h4 class="content-title">Section-level reuse</h4>
+                    <p class="content-text">Keep the wrapper and card rhythm consistent across many page types.</p>
+                  </article>
+                </div>
+                <aside class="feature-section-aside">
+                  <h4 class="content-title">When to use it</h4>
+                  <ul class="feature-list">
+                    <li>core platform capabilities</li>
+                    <li>service scope summaries</li>
+                    <li>launch or migration benefits</li>
+                  </ul>
+                </aside>
+              </div>
+            </section>
+
+            <section class="service-section" aria-label="Service section example">
+              <div class="section-header mb-0">
+                <p class="service-kicker">Service section</p>
+                <h3 class="section-title">Map multiple service offers into a repeatable section-level pattern</h3>
+                <p class="section-text">Use this pattern when the page needs a clean overview of delivery tracks, retainer models or staged implementation offers.</p>
+              </div>
+              <div class="service-grid">
+                <article class="service-card">
+                  <h4 class="content-title">Audit and release planning</h4>
+                  <p class="content-text">Short diagnostic engagements for content structure, UX debt and implementation sequencing.</p>
+                </article>
+                <article class="service-card">
+                  <h4 class="content-title">Implementation support</h4>
+                  <p class="content-text">Hands-on delivery for builds, migrations or platform hardening work.</p>
+                </article>
+                <article class="service-card">
+                  <h4 class="content-title">Enablement and handoff</h4>
+                  <p class="content-text">Operational guidance, internal onboarding and maintainable documentation for the next team.</p>
+                </article>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <article class="card" id="section-decision-support">
+          <h2 class="card-title">FAQ block</h2>
+          <section class="faq-section" aria-label="FAQ section example">
+            <div class="faq-layout">
+              <div class="section-header mb-0">
+                <p class="feature-kicker">FAQ block</p>
+                <h3 class="section-title">Turn accordion behavior into a full reusable question-and-answer section</h3>
+                <p class="section-text">The FAQ block pairs a section intro with a ready-to-copy accordion, so support and objection-handling content can ship with a consistent wrapper.</p>
+              </div>
+              <div class="accordion" data-fnlla-accordion data-fnlla-accordion-single>
+                <div class="accordion-item">
+                  <button class="accordion-button" id="faq-section-trigger-1" type="button" data-fnlla-accordion-button aria-expanded="true" aria-controls="faq-section-panel-1">Can this FAQ block be reused on pricing and service pages?</button>
+                  <div class="accordion-panel" id="faq-section-panel-1" role="region" aria-labelledby="faq-section-trigger-1">
+                    <p class="content-text">Yes. The wrapper gives the section a stable visual shell, while the accordion still uses the same generic interaction contract as the core component example.</p>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-button" id="faq-section-trigger-2" type="button" data-fnlla-accordion-button aria-expanded="false" aria-controls="faq-section-panel-2">What content works best here?</button>
+                  <div class="accordion-panel" id="faq-section-panel-2" role="region" aria-labelledby="faq-section-trigger-2">
+                    <p class="content-text">Use recurring buyer questions, delivery clarifications, implementation constraints and other information that benefits from progressive disclosure.</p>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-button" id="faq-section-trigger-3" type="button" data-fnlla-accordion-button aria-expanded="false" aria-controls="faq-section-panel-3">Should every page use the single-open pattern?</button>
+                  <div class="accordion-panel" id="faq-section-panel-3" role="region" aria-labelledby="faq-section-trigger-3">
+                    <p class="content-text">No. Keep <code>data-fnlla-accordion-single</code> only when the content model is easier to scan that way.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Stats and process blocks</h2>
+          <div class="grid gap-md">
+            <section class="stats-section" aria-label="Stats section example">
+              <div class="section-header mb-0">
+                <p class="feature-kicker">Stats block</p>
+                <h3 class="section-title">Use a dedicated stats grid for quick proof, scale or adoption signals</h3>
+              </div>
+              <div class="stats-grid">
+                <article class="stat-card">
+                  <p class="stat-value">98%</p>
+                  <p class="stat-label">Content QA coverage in the latest internal rollout</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-value">14</p>
+                  <p class="stat-label">Reusable page sections available after the first composition pass</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-value">4</p>
+                  <p class="stat-label">Theme variants already supported by shared tokens</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-value">0</p>
+                  <p class="stat-label">Build steps required to use the framework in a new project</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="process-section" aria-label="Process section example">
+              <div class="section-header mb-0">
+                <p class="process-kicker">Process block</p>
+                <h3 class="section-title">Describe staged delivery with a repeatable process section</h3>
+              </div>
+              <div class="process-grid">
+                <article class="process-step">
+                  <span class="process-step-number">1</span>
+                  <h4 class="process-step-title">Audit</h4>
+                  <p class="process-step-text">Use the first step for discovery, asset review or implementation constraints.</p>
+                </article>
+                <article class="process-step">
+                  <span class="process-step-number">2</span>
+                  <h4 class="process-step-title">Build</h4>
+                  <p class="process-step-text">Use the second step for implementation, content assembly or migration work.</p>
+                </article>
+                <article class="process-step">
+                  <span class="process-step-number">3</span>
+                  <h4 class="process-step-title">Handoff</h4>
+                  <p class="process-step-text">Use the final step for QA review, training and ongoing maintenance guidance.</p>
+                </article>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Pricing block</h2>
+          <section class="pricing-section" aria-label="Pricing section example">
+            <div class="section-header mb-0">
+              <p class="pricing-kicker">Pricing block</p>
+              <h3 class="section-title">Promote recurring offer tiers into one documented pricing section</h3>
+              <p class="section-text">Use the pricing block when the project needs clear plan comparison without inventing a custom layout each time.</p>
+            </div>
+            <div class="pricing-grid">
+              <article class="pricing-card">
+                <div class="pricing-card-head">
+                  <h4 class="pricing-title">Starter</h4>
+                </div>
+                <div class="pricing-price">
+                  <p class="pricing-price-value">&pound;900</p>
+                  <p class="pricing-price-period">per sprint</p>
+                </div>
+                <p class="pricing-text">Good for small advisory or optimization engagements.</p>
+                <ul class="pricing-feature-list">
+                  <li>one primary workstream</li>
+                  <li>weekly delivery review</li>
+                  <li>shared implementation notes</li>
+                </ul>
+                <a class="btn btn-outline" href="#">Compare starter</a>
+              </article>
+              <article class="pricing-card pricing-card-featured">
+                <div class="pricing-card-head">
+                  <h4 class="pricing-title">Growth</h4>
+                  <span class="tag pricing-badge">Recommended</span>
+                </div>
+                <div class="pricing-price">
+                  <p class="pricing-price-value">&pound;1,800</p>
+                  <p class="pricing-price-period">per sprint</p>
+                </div>
+                <p class="pricing-text">A balanced option for delivery plus operational handoff support.</p>
+                <ul class="pricing-feature-list">
+                  <li>two coordinated workstreams</li>
+                  <li>QA and handoff guidance</li>
+                  <li>priority planning sessions</li>
+                </ul>
+                <a class="btn btn-primary" href="#">Choose growth</a>
+              </article>
+              <article class="pricing-card">
+                <div class="pricing-card-head">
+                  <h4 class="pricing-title">Scale</h4>
+                </div>
+                <div class="pricing-price">
+                  <p class="pricing-price-value">&pound;3,200</p>
+                  <p class="pricing-price-period">per sprint</p>
+                </div>
+                <p class="pricing-text">Use the top tier for larger launches, migrations or multi-team enablement.</p>
+                <ul class="pricing-feature-list">
+                  <li>multi-track implementation</li>
+                  <li>broader review cadence</li>
+                  <li>extended support coverage</li>
+                </ul>
+                <a class="btn btn-outline" href="#">Plan scale</a>
+              </article>
+            </div>
+          </section>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Testimonial section</h2>
+          <section class="testimonial-section" aria-label="Testimonial section example">
+            <div class="section-header mb-0">
+              <p class="testimonial-kicker">Testimonial section</p>
+              <h3 class="section-title">Expand the single testimonial card into a full reusable trust section</h3>
+              <p class="section-text">Use the testimonial section when the page benefits from multiple signals of confidence instead of a single isolated quote.</p>
+            </div>
+            <div class="testimonial-card-grid">
+              <article class="testimonial-card">
+                <p class="testimonial-quote">"The new section patterns gave us a repeatable way to ship landing pages without rethinking layout structure each time."</p>
+                <div class="testimonial-meta">
+                  <h4 class="testimonial-author">Jordan Ellis</h4>
+                  <p class="testimonial-role">Product Marketing Lead</p>
+                </div>
+              </article>
+              <article class="testimonial-card">
+                <p class="testimonial-quote">"The framework now feels much closer to a handoff-ready internal kit than a loose starter stylesheet."</p>
+                <div class="testimonial-meta">
+                  <h4 class="testimonial-author">Casey Rivera</h4>
+                  <p class="testimonial-role">Operations Manager</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </article>
+
+        <article class="card" id="section-closing-patterns">
+          <h2 class="card-title">CTA section and footer</h2>
+          <section class="cta-section mb-4" aria-label="Call to action example">
+            <div class="cta-grid">
+              <div class="grid gap-md cta-copy">
+                <div class="d-flex flex-wrap items-center gap-md">
+                  <span class="tag">Reusable CTA</span>
+                  <span class="badge">Decision-ready surface</span>
+                </div>
+                <h3 class="content-title">Turn late-page confidence into one clear next step without making the close feel abrupt</h3>
+                <p class="content-text">Use the CTA section when the page has already built enough context and now needs a decisive route into contact, booking or activation. A stronger CTA block can still carry reassurance, timing cues and a fallback path, so the close feels guided rather than pushy.</p>
+                <ul class="hero-proof-list">
+                  <li>Keep one primary action dominant and one lower-friction fallback visible.</li>
+                  <li>Use short trust reminders to reduce hesitation right before the click.</li>
+                  <li>Let this section summarize momentum instead of restarting the full sales story.</li>
+                </ul>
+                <div class="d-flex flex-wrap gap-md">
+                  <a class="btn btn-primary btn-xl" href="#">Book working session</a>
+                  <a class="btn btn-outline" href="#">Review delivery options</a>
+                  <a class="btn btn-ghost" href="#">Email support team</a>
+                </div>
+                <div class="cta-inline-notes">
+                  <p class="help-text mb-0">Best after pricing, proof and scope clarification.</p>
+                  <p class="help-text mb-0">Keep the copy action-led, not generic.</p>
+                </div>
+              </div>
+              <div class="grid grid-2 gap-md cta-proof-grid">
+                <article class="cta-proof">
+                  <p class="cta-proof-title">When to place it</p>
+                  <p class="cta-proof-text">After value, proof and friction-reduction have already been communicated.</p>
+                </article>
+                <article class="cta-proof">
+                  <p class="cta-proof-title">What to include</p>
+                  <p class="cta-proof-text">One main CTA, one fallback action and one or two trust reminders.</p>
+                </article>
+                <article class="cta-proof">
+                  <p class="cta-proof-title">Good support signals</p>
+                  <p class="cta-proof-text">Availability notes, response windows, onboarding clarity and one visible ownership cue.</p>
+                </article>
+                <article class="cta-proof">
+                  <p class="cta-proof-title">Avoid</p>
+                  <p class="cta-proof-text">Repeating the full hero, hiding the actual action or adding too many equally loud CTA routes.</p>
+                </article>
+              </div>
+              <div class="cta-support">
+                <div class="hero-inline-fact">
+                  <span class="doc-panel-label">Response rhythm</span>
+                  <p class="content-text mb-0">Scope questions within 48 hours, kickoff options in the same thread.</p>
+                </div>
+                <div class="hero-inline-fact">
+                  <span class="doc-panel-label">Typical next step</span>
+                  <p class="content-text mb-0">Discovery call, scoped audit or direct handoff into an implementation track.</p>
+                </div>
+                <div class="hero-inline-fact">
+                  <span class="doc-panel-label">Why it works</span>
+                  <p class="content-text mb-0">The user gets one clear route plus enough reassurance to commit without hunting for support details.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <footer class="footer p-4 radius-lg doc-sections-footer" aria-label="Footer example">
+            <div class="footer-top">
+              <div class="footer-lead">
+                <p class="doc-panel-label">Closing pattern</p>
+                <h3 class="footer-heading">A stronger footer should feel like a calm final orientation layer</h3>
+                <p class="footer-note">Use it to recap routes, confirm support ownership and give the user one last low-friction way to continue without turning the footer into another hero.</p>
+              </div>
+              <div class="footer-pillars">
+                <article class="footer-pillar">
+                  <span class="doc-panel-label">Route recap</span>
+                  <p class="footer-note">Repeat the most likely destinations so the user does not need to scroll back up.</p>
+                </article>
+                <article class="footer-pillar">
+                  <span class="doc-panel-label">Operational trust</span>
+                  <p class="footer-note">Show support windows, ownership cues or service standards in one compact place.</p>
+                </article>
+                <article class="footer-pillar">
+                  <span class="doc-panel-label">Low-noise close</span>
+                  <p class="footer-note">Finish with legal and governance links that stay accessible without dominating the layout.</p>
+                </article>
+              </div>
+            </div>
+            <div class="footer-body">
+              <p class="doc-panel-label">Footer pattern</p>
+              <div class="footer-grid">
+                <div class="footer-brand-block">
+                <h3 class="footer-heading">Your Company</h3>
+                <p class="footer-note">Use the brand block for a calm final summary: what the company does, who it helps and where the user should go next if they are ready to continue.</p>
+                <div class="footer-status">
+                  <span class="badge">Support desk active</span>
+                  <span class="badge">Docs-led delivery</span>
+                  <span class="badge">No-build rollout ready</span>
+                </div>
+                <div class="footer-contact">
+                  <p class="footer-note">hello@yourcompany.example</p>
+                  <p class="footer-note">Mon-Fri, 09:00-17:00 UTC</p>
+                  <p class="footer-note">Escalation route available for active delivery clients.</p>
+                </div>
+                <div class="footer-socials">
+                  <a class="tag" href="#">LinkedIn</a>
+                  <a class="tag" href="#">GitLab</a>
+                  <a class="tag" href="#">Support</a>
+                </div>
+                </div>
+                <div class="footer-link-group">
+                  <h3 class="footer-heading">Popular routes</h3>
+                  <div class="footer-links">
+                    <a href="#">Professional services</a>
+                    <a href="#">Platform advisory</a>
+                    <a href="#">Support plans</a>
+                  </div>
+                </div>
+                <div class="footer-link-group">
+                  <h3 class="footer-heading">Delivery</h3>
+                  <div class="footer-links">
+                    <a href="#">Process</a>
+                    <a href="#">Onboarding guide</a>
+                    <a href="#">Delivery standards</a>
+                  </div>
+                </div>
+                <div class="footer-link-group">
+                  <h3 class="footer-heading">Company</h3>
+                  <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Support matrix</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-meta-bar mt-4">
+              <div class="grid gap-2 footer-meta-copy">
+                <p class="footer-note">Recommended footer pattern: one brand summary, three or four grouped link columns, one compact operational signal set and a final low-noise ownership bar.</p>
+                <p class="footer-note">Copyright, support ownership, escalation route, status messaging and runtime versioning can live here in real project builds.</p>
+              </div>
+              <nav class="footer-legal" aria-label="Legal links">
+                <a href="#">Privacy policy</a>
+                <a href="#">Terms</a>
+                <a href="#">Accessibility</a>
+              </nav>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Section authoring guidance</h2>
+        <p class="section-text">Keep section markup predictable so teams can compose whole pages from stable blocks instead of drifting into one-off layouts. The default foundation is one full-width <code>section</code> with one inner <code>container</code>.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3 class="card-title">Foundation first</h3>
+          <p class="card-text">Start with <code>&lt;section class="section"&gt;&lt;div class="container"&gt;...&lt;/div&gt;&lt;/section&gt;</code>. Add <code>feature-section</code>, <code>service-section</code> or other ready wrappers inside that band when the content needs a more designed shell.</p>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">What belongs on this page</h3>
+          <ul>
+            <li>hero, proof, service and pricing compositions</li>
+            <li>FAQ, testimonial and CTA wrappers</li>
+            <li>footer patterns and repeated closing-page structures</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">What stays elsewhere</h3>
+          <ul>
+            <li>Use <code>components.html</code> for primitives and interaction shells such as buttons, dropdowns, tabs, modal and scrollspy.</li>
+            <li>Use <code>forms.html</code> for form controls, validation states and the reusable contact section.</li>
+            <li>Use <code>layout.html</code> and <code>utilities.html</code> when the page needs structural or spacing helpers.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Composition order</h3>
+          <ol>
+            <li>Open with hero or compact intro.</li>
+            <li>Add feature, service or proof content.</li>
+            <li>Support decisions with pricing, FAQ or testimonials.</li>
+            <li>Close with one decisive CTA and a low-noise footer.</li>
+          </ol>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Semantic rules</h3>
+          <ul>
+            <li>Keep headings as real heading elements and preserve their hierarchy.</li>
+            <li>Keep pricing features, proof points and footer links as real lists.</li>
+            <li>Reuse section wrappers before inventing project-specific shells.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <!-- Shared runtime for interactive demos used inside the docs. -->
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

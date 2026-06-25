@@ -1,0 +1,459 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: HERO AND SECTION HEADERS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+/* ==========================================================================
+   HERO WRAPPERS
+   ========================================================================== */
+.hero {
+  display: grid;
+  gap: var(--fnlla-space-4);
+  padding: 3rem;
+  border: 1px solid var(--fnlla-color-primary-border);
+  border-radius: var(--fnlla-radius-lg);
+  background: var(--fnlla-color-surface-strong);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: auto -12% -28% auto;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.hero-title {
+  max-width: 12ch;
+  margin-bottom: 0;
+}
+
+.hero-text {
+  max-width: 60ch;
+  margin-bottom: 0;
+  font-size: 0.98rem;
+}
+
+/* ==========================================================================
+   SECTION HEADERS
+   ========================================================================== */
+.section-header {
+  display: grid;
+  gap: var(--fnlla-space-2);
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  margin-bottom: 0;
+}
+
+.section-text {
+  margin-bottom: 0;
+}
+
+.cta-section {
+  padding: 3rem;
+  border-radius: var(--fnlla-radius-lg);
+  background: var(--fnlla-color-primary-soft);
+  border: 1px solid var(--fnlla-color-primary-border);
+}
+
+/* ==========================================================================
+   REUSABLE SECTION SHELLS
+   ========================================================================== */
+.section-shell,
+.feature-section,
+.service-section,
+.faq-section,
+.contact-section,
+.stats-section,
+.process-section,
+.pricing-section,
+.testimonial-section {
+  display: grid;
+  gap: var(--fnlla-space-4);
+  padding: 2.25rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-lg);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.feature-section {
+  background: var(--fnlla-color-surface-strong);
+}
+
+.service-section {
+  border-color: var(--fnlla-color-primary-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.faq-section {
+  border-color: var(--fnlla-color-accent-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.contact-section {
+  border-color: var(--fnlla-color-primary-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.stats-section,
+.process-section,
+.pricing-section,
+.testimonial-section {
+  background: var(--fnlla-color-surface-strong);
+}
+
+.hero-compact {
+  width: 100%;
+  max-width: none;
+}
+
+.hero-split {
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 42rem;
+}
+
+.hero-copy .hero-title {
+  max-width: none;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-3);
+}
+
+.hero-detail-grid {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.hero-proof-list {
+  display: grid;
+  gap: var(--fnlla-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-proof-list li {
+  display: flex;
+  gap: var(--fnlla-space-2);
+  align-items: flex-start;
+  color: var(--fnlla-color-muted);
+  line-height: 1.65;
+}
+
+.hero-proof-list li::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-top: 0.3rem;
+  border-radius: 50%;
+  background: var(--fnlla-color-primary);
+}
+
+/* ==========================================================================
+   HERO SUPPORT PANELS AND METRICS
+   ========================================================================== */
+.hero-panel {
+  display: grid;
+  gap: var(--fnlla-space-3);
+  padding: 1.5rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-lg);
+  background: var(--fnlla-color-surface-soft);
+}
+
+.hero-panel-title {
+  margin: 0;
+  color: var(--fnlla-color-secondary);
+}
+
+.hero-panel-text {
+  margin: 0;
+}
+
+.hero-panel-intro {
+  display: grid;
+  gap: var(--fnlla-space-2);
+}
+
+.hero-panel-intro > * {
+  margin: 0;
+}
+
+.hero-metric-list {
+  display: grid;
+  gap: var(--fnlla-space-2);
+}
+
+.hero-metric {
+  display: grid;
+  gap: var(--fnlla-space-1);
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface);
+}
+
+.hero-metric-value {
+  margin: 0;
+  color: var(--fnlla-color-secondary);
+  font-size: 1.75rem;
+  font-weight: var(--fnlla-font-weight-heavy);
+  line-height: 1;
+}
+
+.hero-metric-label {
+  margin: 0;
+  font-size: var(--fnlla-font-size-sm);
+}
+
+.hero-visual {
+  align-items: center;
+}
+
+.hero-visual-pane {
+  display: grid;
+  gap: var(--fnlla-space-3);
+  margin: 0;
+  align-self: stretch;
+}
+
+.hero-background {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-color: var(--fnlla-color-primary-border);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.hero-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.78);
+  z-index: -1;
+}
+
+.hero-background::after {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  right: 1.4rem;
+  width: min(34rem, 42%);
+  aspect-ratio: 4 / 5;
+  border-radius: var(--fnlla-radius-lg);
+  background: rgba(37, 99, 235, 0.18);
+  z-index: -1;
+}
+
+.hero-background-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-background .hero-title,
+.hero-background .hero-text,
+.hero-background .hero-proof-list,
+.hero-compact .hero-title,
+.hero-compact .hero-text,
+.hero-compact .hero-copy {
+  max-width: none;
+}
+
+.hero-background-meta,
+.hero-inline-facts {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.hero-background-chip,
+.hero-inline-fact {
+  display: grid;
+  gap: var(--fnlla-space-2);
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface);
+}
+
+.hero-background-chip > *,
+.hero-inline-fact > * {
+  margin: 0;
+}
+
+.hero-art-window {
+  display: grid;
+  gap: var(--fnlla-space-3);
+  min-height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-lg);
+  background: var(--fnlla-color-surface);
+}
+
+.hero-art-toolbar {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.hero-art-toolbar span {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: rgba(16, 35, 63, 0.18);
+}
+
+.hero-art-body,
+.hero-art-title-block,
+.hero-art-feature {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.hero-art-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-2);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-art-eyebrow,
+.hero-art-card strong,
+.hero-art-card span {
+  margin: 0;
+}
+
+.hero-art-eyebrow {
+  color: var(--fnlla-color-secondary);
+  font-size: var(--fnlla-font-size-sm);
+  font-weight: var(--fnlla-font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-art-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.85rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--fnlla-color-primary-border);
+  border-radius: var(--fnlla-radius-pill);
+  background: var(--fnlla-color-primary-soft);
+  color: var(--fnlla-color-secondary);
+  font-size: var(--fnlla-font-size-sm);
+  font-weight: var(--fnlla-font-weight-bold);
+}
+
+.hero-art-line {
+  height: 0.78rem;
+  border-radius: var(--fnlla-radius-pill);
+  background: rgba(16, 35, 63, 0.12);
+}
+
+.hero-art-line-strong {
+  width: 82%;
+  height: 1rem;
+  background: rgba(21, 48, 79, 0.78);
+}
+
+.hero-art-line-mid {
+  width: 68%;
+}
+
+.hero-art-metrics {
+  display: grid;
+  gap: var(--fnlla-space-2);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hero-art-card {
+  display: grid;
+  gap: var(--fnlla-space-1);
+  padding: 0.9rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.hero-art-card strong {
+  color: var(--fnlla-color-secondary);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.hero-art-card span {
+  color: var(--fnlla-color-muted);
+  font-size: var(--fnlla-font-size-sm);
+  line-height: 1.5;
+}
+
+.hero-art-feature {
+  padding: 1rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.hero-art-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-2);
+}
+
+.hero-art-pill-row span {
+  width: 4.25rem;
+  height: 1.85rem;
+  border-radius: var(--fnlla-radius-pill);
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.cta-grid {
+  display: grid;
+  gap: var(--fnlla-space-4);
+}
+
+.cta-copy,
+.cta-inline-notes,
+.cta-support {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.cta-inline-notes {
+  gap: var(--fnlla-space-2);
+}
+
+.cta-proof-grid {
+  align-content: start;
+}
+
+.cta-proof {
+  display: grid;
+  gap: var(--fnlla-space-2);
+  padding: 1.15rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface-strong);
+}
+
+.cta-proof-title,
+.cta-proof-text {
+  margin: 0;
+}
+

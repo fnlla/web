@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<html lang="en">
+<head>
+  <!-- =========================================================================
+       DOCUMENT HEAD
+       ========================================================================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A4137">
+  <title>FNLLA UI Forms</title>
+  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body data-fnlla-theme="default">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- =========================================================================
+       DOCUMENT SHELL
+       ========================================================================= -->
+  <main class="doc-wrapper" id="main-content">
+    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+      <div class="doc-header-bar">
+        <span class="doc-kicker">Blueprint documentation</span>
+        <span class="doc-status">Stable 1.0.0</span>
+      </div>
+      <div class="doc-header-grid">
+        <div>
+          <p class="doc-overline">Framework blueprint</p>
+          <p class="doc-display">FNLLA UI - Documentation</p>
+          <p class="doc-lead">Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary docs navigation shared across the reference set. -->
+    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
+      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
+      <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
+      <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
+      <a class="btn btn-outline btn-sm" href="./forms.html" aria-current="page">Forms</a>
+      <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
+      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
+      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
+      <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+    </nav>
+
+    <!-- Field, message and input-group patterns. -->
+    <section class="section pt-1">
+      <div class="section-header">
+        <h2 class="section-title">Form patterns</h2>
+        <p class="section-text">These examples show labels, inputs, textarea fields, select elements, choice controls, range and file inputs, validation states, status messages and reusable layout recipes for production-ready form flows.</p>
+      </div>
+
+      <div class="doc-table-wrap">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">Layer</th>
+              <th scope="col">Stable form contract</th>
+              <th scope="col">Authoring rule</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Structure</strong></td>
+              <td><code>.form</code>, <code>.form-group</code>, <code>.form-row</code>, <code>.fieldset</code></td>
+              <td>Start from predictable grouping before styling special cases. Layout decisions should stay readable in raw markup.</td>
+            </tr>
+            <tr>
+              <td><strong>Controls</strong></td>
+              <td><code>.input</code>, <code>.select</code>, <code>.textarea</code>, <code>.range-input</code>, <code>.file-field</code>, choice controls and switches</td>
+              <td>Prefer the shipped field shells before inventing local variants for common input types.</td>
+            </tr>
+            <tr>
+              <td><strong>Supporting text</strong></td>
+              <td><code>.help-text</code>, <code>.success-text</code>, <code>.error-text</code></td>
+              <td>Connect contextual and validation copy with <code>aria-describedby</code> so support text remains part of the field contract.</td>
+            </tr>
+            <tr>
+              <td><strong>Submission state</strong></td>
+              <td><code>.form-message</code>, <code>.form-message-success</code>, <code>.form-message-error</code></td>
+              <td>Use one visible summary near the top for form-level outcome, then repeat specific issues or confirmations at field level when needed.</td>
+            </tr>
+            <tr>
+              <td><strong>Compositions</strong></td>
+              <td><code>.input-group</code>, <code>.contact-section</code>, compact capture and long-form stacked layouts</td>
+              <td>Use composition patterns when the form needs a reusable shell, not just a list of standalone controls.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-2 doc-forms-showcase-grid">
+        <article class="card">
+          <h2 class="card-title">Field states</h2>
+          <form class="form" action="#" method="get" novalidate>
+            <div class="form-group">
+              <label class="label" for="field-name">Full name</label>
+              <input class="input" id="field-name" name="name" type="text" aria-describedby="field-name-help" placeholder="Enter a full name" required>
+              <p class="help-text" id="field-name-help">Use help text for context or formatting guidance.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="field-email">Email address</label>
+              <input class="input" id="field-email" name="email" type="email" autocomplete="email" aria-describedby="field-email-help field-email-error" aria-invalid="true" placeholder="name@example.com" required>
+              <p class="help-text" id="field-email-help">Use <code>aria-describedby</code> to keep guidance and error text connected to the field.</p>
+              <p class="error-text" id="field-email-error">Enter a complete email address in the format <code>name@example.com</code>.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="field-service">Service type</label>
+              <select class="select" id="field-service" name="service" aria-describedby="field-service-success">
+                <option selected>Professional Services</option>
+                <option>Advisory Services</option>
+                <option>Support Services</option>
+              </select>
+              <p class="success-text" id="field-service-success">Use success text when a selection or correction has already been accepted.</p>
+            </div>
+          </form>
+        </article>
+
+        <article class="card form-layout-card">
+          <h2 class="card-title">Submission messages</h2>
+          <div class="form">
+            <div class="form-message form-message-success" role="status" aria-labelledby="form-success-title" aria-describedby="form-success-text">
+              <h3 class="form-message-title" id="form-success-title">Request prepared successfully</h3>
+              <p class="form-message-text" id="form-success-text">Use a polite confirmation after save, submit or update actions when the user does not need to stop and fix anything.</p>
+            </div>
+
+            <div class="form-message form-message-error" role="alert" aria-labelledby="form-error-title" aria-describedby="form-error-text">
+              <h3 class="form-message-title" id="form-error-title">Please correct the highlighted fields</h3>
+              <p class="form-message-text" id="form-error-text">Use an error summary when the submission fails and the user needs a short explanation before reviewing individual fields.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Input groups</h2>
+          <form class="form" action="#" method="get" novalidate>
+            <div class="form-group">
+              <label class="label" for="invoice-domain">Team domain</label>
+              <div class="input-group">
+                <span class="input-group-text">https://</span>
+                <div class="input-group-field">
+                  <input class="input" id="invoice-domain" name="invoice-domain" type="text" placeholder="portal.example.com" aria-describedby="invoice-domain-help">
+                </div>
+              </div>
+              <p class="help-text" id="invoice-domain-help">Use an input group when a field needs a fixed prefix, suffix or attached action without inventing custom one-off markup.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="search-projects">Project search</label>
+              <div class="input-group">
+                <div class="input-group-field">
+                  <input class="input" id="search-projects" name="search-projects" type="search" placeholder="Search project library">
+                </div>
+                <div class="input-group-action">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Advanced control set</h2>
+        <p class="section-text">These controls cover the common gaps that usually force teams to borrow styles from another framework: choice groups, switches, range inputs, file fields and explicit readonly or disabled states.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3 class="card-title">Choice controls and switches</h3>
+          <form class="form" action="#" method="get" novalidate>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Notification settings</legend>
+              <div class="check-group">
+                <label class="checkbox">
+                  <input type="checkbox" name="notify-email" checked>
+                  <span>Email summaries</span>
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" name="notify-security">
+                  <span>Security alerts</span>
+                </label>
+              </div>
+              <div class="check-group">
+                <label class="radio">
+                  <input type="radio" name="digest-frequency" checked>
+                  <span>Daily digest</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="digest-frequency">
+                  <span>Weekly digest</span>
+                </label>
+              </div>
+              <label class="switch">
+                <input class="switch-input" type="checkbox" checked>
+                <span class="switch-slider" aria-hidden="true"></span>
+                <span class="switch-label">Enable urgent escalation routing</span>
+              </label>
+            </fieldset>
+          </form>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Range, file and readonly states</h3>
+          <form class="form" action="#" method="get" novalidate>
+            <div class="range-field">
+              <label class="label" for="support-priority-range">Support priority weighting</label>
+              <div class="range-meta">
+                <span>Confidence</span>
+                <output class="range-output" data-fnlla-range-output="support-priority-range">65%</output>
+              </div>
+              <input class="range-input" id="support-priority-range" type="range" min="0" max="100" value="65" data-fnlla-range-suffix="%">
+              <div class="range-labels" aria-hidden="true">
+                <span>Low</span>
+                <span>Balanced</span>
+                <span>High</span>
+              </div>
+            </div>
+
+            <div class="file-field">
+              <span class="label">Implementation brief</span>
+              <label class="file-label" for="form-file-demo">
+                <input class="file-input" id="form-file-demo" type="file">
+                <span class="file-button">Choose file</span>
+                <span class="file-name">project-brief.pdf</span>
+              </label>
+              <p class="help-text">Use the file field shell when upload, replacement or evidence submission needs a consistent visual wrapper.</p>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label class="label" for="readonly-reference">Readonly reference</label>
+                <input class="input" id="readonly-reference" type="text" value="FW-2026-091" readonly>
+              </div>
+              <div class="form-group flex-1">
+                <label class="label" for="disabled-archive">Disabled field</label>
+                <input class="input" id="disabled-archive" type="text" value="Locked after approval" disabled>
+              </div>
+            </div>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <!-- Reusable contact-section composition. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Contact section block</h2>
+        <p class="section-text">This example turns the existing validated form pattern into a reusable contact section with supporting context, contact details and a full failed-submit state.</p>
+      </div>
+
+      <section class="contact-section">
+        <div class="contact-grid">
+          <aside class="contact-card contact-summary-card" aria-label="Contact section summary">
+            <p class="contact-kicker">Contact block</p>
+            <h3 class="contact-card-title">Use one reusable contact section instead of rebuilding every enquiry layout</h3>
+            <p class="contact-text">Pair the form with clear response expectations, operating hours or routing notes so the section feels complete even before project-specific contact data is inserted.</p>
+            <ul class="contact-list">
+              <li>reply expectations or SLA notes</li>
+              <li>routing guidance for the right request type</li>
+              <li>secondary support or escalation context</li>
+            </ul>
+          </aside>
+
+          <article class="cta-card contact-form-card">
+            <form class="form contact-form" action="#" method="get" novalidate>
+              <div class="form-message form-message-error" role="alert" aria-labelledby="contact-form-error-title" aria-describedby="contact-form-error-text">
+                <h3 class="form-message-title" id="contact-form-error-title">We still need a few details</h3>
+                <p class="form-message-text" id="contact-form-error-text">Review the highlighted fields below before resubmitting the request.</p>
+              </div>
+
+              <div class="grid grid-2 contact-field-grid">
+                <div class="form-group contact-field">
+                  <label class="label" for="contact-name">Name</label>
+                  <input class="input" id="contact-name" name="contact-name" type="text" autocomplete="name" aria-describedby="contact-name-error" aria-invalid="true" placeholder="Your name" required>
+                  <div class="contact-field-meta">
+                    <p class="error-text" id="contact-name-error">Enter the primary contact name for this request.</p>
+                  </div>
+                </div>
+                <div class="form-group contact-field">
+                  <label class="label" for="contact-company">Company</label>
+                  <input class="input" id="contact-company" name="contact-company" type="text" autocomplete="organization" aria-describedby="contact-company-help" placeholder="Your company">
+                  <div class="contact-field-meta">
+                    <p class="help-text" id="contact-company-help">Company is optional when the enquiry is individual rather than organizational.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-2 contact-field-grid">
+                <div class="form-group contact-field">
+                  <label class="label" for="contact-email">Email</label>
+                  <input class="input" id="contact-email" name="contact-email" type="email" autocomplete="email" aria-describedby="contact-email-help contact-email-error" aria-invalid="true" placeholder="you@example.com" required>
+                  <div class="contact-field-meta">
+                    <p class="help-text" id="contact-email-help">Use the email address where project updates should be sent.</p>
+                    <p class="error-text" id="contact-email-error">Enter a valid email address so the team can reply.</p>
+                  </div>
+                </div>
+                <div class="form-group contact-field">
+                  <label class="label" for="contact-phone">Phone</label>
+                  <input class="input" id="contact-phone" name="contact-phone" type="tel" autocomplete="tel" aria-describedby="contact-phone-success" placeholder="Optional phone number">
+                  <div class="contact-field-meta">
+                    <p class="success-text" id="contact-phone-success">Optional phone number captured for faster follow-up.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="label" for="contact-scope">Service area</label>
+                <select class="select" id="contact-scope" name="contact-scope" aria-describedby="contact-scope-help">
+                  <option>Professional Services</option>
+                  <option selected>Support Services</option>
+                  <option>Managed Service Area</option>
+                </select>
+                <p class="help-text" id="contact-scope-help">Use help text to explain what kind of choice is expected.</p>
+              </div>
+
+              <div class="form-group">
+                <label class="label" for="contact-brief">Project brief</label>
+                <textarea class="textarea" id="contact-brief" name="contact-brief" aria-describedby="contact-brief-help contact-brief-error" aria-invalid="true" placeholder="Outline requirements, preferred timing and any operational notes."></textarea>
+                <p class="help-text" id="contact-brief-help">Keep the visible label even when the placeholder already describes the field.</p>
+                <p class="error-text" id="contact-brief-error">Add a short description of the request so the next step can be scoped correctly.</p>
+              </div>
+
+              <div class="d-flex flex-wrap gap-md">
+                <button class="btn btn-primary" type="submit">Submit Layout Example</button>
+                <button class="btn btn-ghost" type="reset">Reset Fields</button>
+              </div>
+            </form>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <!-- Alternative form layout recipes. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Layout recipes</h2>
+        <p class="section-text">Use these patterns as starting points when a project needs more than one generic form shape.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card form-layout-card">
+          <h3 class="card-title">Compact lead capture</h3>
+          <form class="form lead-capture-form" action="#" method="get" novalidate>
+            <div class="lead-capture-intro">
+              <p class="content-title mb-1">Fast qualification</p>
+              <p class="help-text">Use this pattern when the page only needs one quick next step, not a full discovery brief. Keep the ask narrow, reduce hesitation and make the follow-up action feel lightweight.</p>
+              <div class="lead-capture-points">
+                <span class="badge">Low-friction</span>
+                <span class="badge">Best for callbacks</span>
+                <span class="badge">Single-goal flow</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="lead-email">Work email</label>
+              <input class="input" id="lead-email" name="lead-email" type="email" autocomplete="email" aria-describedby="lead-email-help" placeholder="name@company.com" required>
+              <p class="help-text" id="lead-email-help">Use a short single-goal form when the page only needs an email capture or callback request.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="lead-interest">Primary interest</label>
+              <select class="select" id="lead-interest" name="lead-interest">
+                <option>Platform advisory</option>
+                <option>Implementation support</option>
+                <option>Ongoing optimization</option>
+              </select>
+            </div>
+
+            <div class="lead-capture-actions">
+              <div class="lead-capture-action-bar">
+                <div class="grid gap-2">
+                  <p class="content-title mb-0">Preferred next step</p>
+                  <p class="help-text mb-0">Use one compact primary action when the page goal is callback capture rather than full project scoping.</p>
+                </div>
+                <div class="d-flex flex-wrap items-center gap-md">
+                <button class="btn btn-primary btn-sm" type="submit">Request Follow-Up</button>
+                <a class="btn btn-ghost btn-sm" href="#">View full brief</a>
+                </div>
+              </div>
+              <p class="help-text mb-0">Good default for landing pages, support entries and early-stage lead capture where fewer fields usually convert better.</p>
+            </div>
+          </form>
+        </article>
+
+        <article class="card form-layout-card">
+          <h3 class="card-title">Long-form discovery brief</h3>
+          <form class="form" action="#" method="get" novalidate>
+            <p class="content-title mb-1">Project context</p>
+            <p class="help-text">Use section headings and one-column stacking when the user needs to explain scope, timing or operational detail.</p>
+
+            <div class="grid grid-2">
+              <div class="form-group">
+                <label class="label" for="brief-team">Team size</label>
+                <input class="input" id="brief-team" name="brief-team" type="text" placeholder="Approximate team size">
+              </div>
+              <div class="form-group">
+                <label class="label" for="brief-timeline">Target timeline</label>
+                <input class="input" id="brief-timeline" name="brief-timeline" type="text" placeholder="Desired launch window">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="brief-goals">Primary goals</label>
+              <textarea class="textarea" id="brief-goals" name="brief-goals" placeholder="Describe the main business or operational goals."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="brief-risks">Constraints or risks</label>
+              <textarea class="textarea" id="brief-risks" name="brief-risks" placeholder="List technical, compliance, timeline or approval constraints."></textarea>
+            </div>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <!-- Lightweight authoring guidance for choosing patterns. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Authoring guidance</h2>
+        <p class="section-text">These notes help decide which layout to use and how to keep the submission flow understandable.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3 class="card-title">Choosing a layout</h3>
+          <ul>
+            <li>Use one-column stacking for long answers, review-heavy forms or anything likely to be completed on mobile.</li>
+            <li>Use two-column grids only for short related fields such as name and company or email and phone.</li>
+            <li>Use compact capture forms when the page goal is one quick next step rather than a full qualification flow.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Submission flow checklist</h3>
+          <ul>
+            <li>Before submit, make sure every field has a visible label, useful autocomplete hint when relevant, and concise support text only where needed.</li>
+            <li>After a failed submit, keep one visible summary near the top and repeat the specific message at each invalid field.</li>
+            <li>After a successful submit, keep the confirmation visible long enough for the user to understand the next step.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Accessibility reminders for real-product adaptation. -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Accessibility notes</h2>
+        <p class="section-text">These form notes help keep the framework examples usable when adapted into real products.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3 class="card-title">Labels and semantics</h3>
+          <ul>
+            <li>Every input, select and textarea should have a visible <code>label</code>.</li>
+            <li>Placeholders can support the field, but should not replace a label.</li>
+            <li>Use proper input types and autocomplete hints where they improve usability.</li>
+            <li>In input groups, visible prefixes and suffixes should supplement the label, not replace it.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Help and error text</h3>
+          <ul>
+            <li>Link every relevant help, success or error message to the control with <code>aria-describedby</code>.</li>
+            <li>Use <code>aria-invalid="true"</code> when a field is actually in an error state.</li>
+            <li>Keep help and error messages close to the relevant field.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Keyboard and mobile use</h3>
+          <ul>
+            <li>Fields must remain fully visible and tappable on smaller screens.</li>
+            <li>Buttons should stay large enough to tap without crowding the layout.</li>
+            <li>Long forms should use stacking layouts instead of forcing horizontal scrolling.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Validation</h3>
+          <ul>
+            <li>Pair native validation with clear field-level messaging and, when needed, one form-level summary near the top.</li>
+            <li>Do not rely only on color to indicate an error state.</li>
+            <li>Use <code>role="status"</code> for polite success confirmation and <code>role="alert"</code> only when failed submission feedback should be announced immediately.</li>
+            <li>In a real application flow, move focus to the summary or first invalid field after failed submission.</li>
+            <li>Always keep the submission flow usable with keyboard only.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
+    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+    </footer>
+  </main>
+  <!-- Shared runtime for interactive demos used inside the docs. -->
+  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="./assets/docs.js"></script>
+</body>
+</html>

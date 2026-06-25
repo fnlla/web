@@ -1,0 +1,161 @@
+/*
+  ============================================================================
+  FNLLA UI SOURCE: FOOTER, BADGES AND TAGS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+/* ==========================================================================
+   FOOTER SHELL
+   ========================================================================== */
+.footer {
+  margin-top: 4rem;
+  padding: 3rem 0 2rem;
+  border-top: 1px solid var(--fnlla-color-border);
+  background: var(--fnlla-color-surface-soft);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--fnlla-space-4);
+}
+
+.footer-brand-block,
+.footer-link-group,
+.footer-meta-bar {
+  display: grid;
+  gap: var(--fnlla-space-2);
+}
+
+.footer-heading,
+.footer-note {
+  margin: 0;
+}
+
+.footer-heading {
+  color: var(--fnlla-color-secondary);
+  font-weight: var(--fnlla-font-weight-bold);
+}
+
+.footer-links {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.footer-links a {
+  color: var(--fnlla-color-muted);
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--fnlla-color-secondary);
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-2);
+}
+
+.footer-meta-bar {
+  padding-top: var(--fnlla-space-4);
+  border-top: 1px solid var(--fnlla-color-border);
+}
+
+.footer-top,
+.footer-lead,
+.footer-pillars {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.footer-top {
+  margin-bottom: var(--fnlla-space-4);
+  padding-bottom: var(--fnlla-space-4);
+  border-bottom: 1px solid var(--fnlla-color-border);
+}
+
+.footer-lead > * {
+  margin: 0;
+}
+
+.footer-pillars {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.footer-pillar {
+  display: grid;
+  gap: var(--fnlla-space-2);
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--fnlla-color-border);
+  border-radius: var(--fnlla-radius-md);
+  background: var(--fnlla-color-surface);
+}
+
+.footer-pillar > * {
+  margin: 0;
+}
+
+.footer-body {
+  display: grid;
+  gap: var(--fnlla-space-3);
+  padding-bottom: var(--fnlla-space-4);
+}
+
+.footer-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-2);
+}
+
+.footer-contact,
+.footer-meta-copy {
+  display: grid;
+  gap: var(--fnlla-space-3);
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fnlla-space-3);
+}
+
+.footer-legal a {
+  color: var(--fnlla-color-muted);
+  text-decoration: none;
+}
+
+.footer-legal a:hover,
+.footer-legal a:focus-visible {
+  color: var(--fnlla-color-secondary);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   BADGES AND TAGS
+   ========================================================================== */
+.badge,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: var(--fnlla-size-badge-min);
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--fnlla-radius-pill);
+  font-size: 0.88rem;
+  font-weight: var(--fnlla-font-weight-bold);
+  letter-spacing: 0.01em;
+}
+
+.badge {
+  background: var(--fnlla-color-primary-soft);
+  color: var(--fnlla-color-secondary);
+}
+
+.tag {
+  background: var(--fnlla-color-surface-soft);
+  border: 1px solid var(--fnlla-color-border);
+  color: var(--fnlla-color-text);
+}
+
