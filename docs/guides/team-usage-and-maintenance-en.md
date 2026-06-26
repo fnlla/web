@@ -364,11 +364,13 @@ For JS, work in:
 
 - `src/js/core/*.js`
 - `src/js/modules/*.js`
+- `src/docs/js/*.js` when the change belongs to the documentation shell rather than the public website runtime
 
 Do not start with manual edits to:
 
 - `assets/css/fnlla-ui.css`
 - `assets/js/fnlla-ui.js`
+- `docs/assets/docs.js`
 - `dist/fnlla-ui/`
 
 ### Update docs when the public contract changes
@@ -385,6 +387,7 @@ If the change affects public usage, update the relevant reference surface in the
 - `docs/icons.html`
 - `docs/component-classification.html`
 - `docs/team-usage-and-maintenance.html` and its markdown source when workflow guidance changed
+- `docs/assets/docs.js` indirectly through `src/docs/js/*.js` when documentation-only browser behavior changed
 
 Rule:
 

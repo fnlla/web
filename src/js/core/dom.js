@@ -135,6 +135,10 @@
       return false;
     }
 
+    if (element.getAttribute("tabindex") === "-1") {
+      return false;
+    }
+
     if (isElementDisabledByFieldset(element)) {
       return false;
     }

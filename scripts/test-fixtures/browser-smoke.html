@@ -246,6 +246,18 @@
     </section>
 
     <section class="smoke-block">
+      <h2>Select</h2>
+      <div class="form-group">
+        <label class="label" for="smoke-service-area">Service area</label>
+        <select class="select" id="smoke-service-area" name="service-area">
+          <option value="advisory">Advisory Services</option>
+          <option value="delivery" selected>Professional Services</option>
+          <option value="support">Support Services</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="smoke-block">
       <h2>Range output</h2>
       <div class="range-field">
         <div class="range-meta">
@@ -303,6 +315,19 @@
 
           assert(document.documentElement.classList.contains("fnlla-ui-js"), "Auto-init should add the fnlla-ui-js class to the root element.", failures);
           assert(!!window.FNLLAUI && typeof window.FNLLAUI.init === "function", "window.FNLLAUI.init should be exposed as a public API.", failures);
+          assert(typeof window.FNLLAUI.setTheme === "function", "window.FNLLAUI.setTheme should be exposed as a public API.", failures);
+          window.FNLLAUI.setTheme("dark");
+          await wait(40);
+          assert(document.body.getAttribute("data-fnlla-theme") === "dark", "window.FNLLAUI.setTheme(theme) should apply the requested theme to body.", failures);
+          var scopedThemeHost = document.createElement("div");
+          scopedThemeHost.id = "smoke-theme-host";
+          document.body.appendChild(scopedThemeHost);
+          window.FNLLAUI.setTheme("dark", scopedThemeHost);
+          await wait(40);
+          assert(scopedThemeHost.getAttribute("data-fnlla-theme") === "dark", "window.FNLLAUI.setTheme(theme, target) should support scoped theme wrappers.", failures);
+          window.FNLLAUI.setTheme("default");
+          await wait(40);
+          assert(document.body.getAttribute("data-fnlla-theme") === "default", "window.FNLLAUI.setTheme(theme) should restore the default theme.", failures);
 
           var navToggle = document.querySelector("[data-fnlla-nav-toggle]");
           var navPanel = document.getElementById("smoke-nav-panel");
@@ -458,6 +483,22 @@
           await wait(40);
           assert(smokeRangeOutput.textContent.trim() === "82%", "Declarative range output should update when the slider value changes.", failures);
 
+          var smokeSelect = document.getElementById("smoke-service-area");
+          var smokeSelectShell = smokeSelect.closest("[data-fnlla-select-shell]");
+          var smokeSelectToggle = smokeSelectShell ? smokeSelectShell.querySelector("[data-fnlla-select-toggle]") : null;
+          var smokeSelectMenu = smokeSelectShell ? smokeSelectShell.querySelector(".select-menu") : null;
+          assert(!!smokeSelectShell, "Single-select fields should be enhanced into the custom FNLLA UI select shell.", failures);
+          assert(!!smokeSelectToggle, "Enhanced select fields should create a visible toggle control.", failures);
+          assert(smokeSelectToggle && smokeSelectToggle.textContent.indexOf("Professional Services") !== -1, "Enhanced select toggle should render the current option label.", failures);
+          smokeSelectToggle.click();
+          await wait(60);
+          assert(smokeSelectMenu && smokeSelectMenu.hidden === false, "Enhanced select menu should open after clicking the toggle.", failures);
+          var smokeSelectOption = smokeSelectShell ? smokeSelectShell.querySelector('[data-fnlla-option-index="2"]') : null;
+          smokeSelectOption.click();
+          await wait(60);
+          assert(smokeSelect.value === "support", "Selecting a custom menu option should update the hidden native select value.", failures);
+          assert(smokeSelectToggle.textContent.indexOf("Support Services") !== -1, "Enhanced select toggle should refresh after selecting a different option.", failures);
+
           var dynamicRoot = document.getElementById("dynamic-root");
           dynamicRoot.innerHTML = '' +
             '<div class="accordion" data-fnlla-accordion>' +
@@ -472,6 +513,13 @@
                 '<output class="range-output" data-fnlla-range-output="dynamic-range">10%</output>' +
               '</div>' +
               '<input class="range-input" id="dynamic-range" type="range" min="0" max="100" value="10" data-fnlla-range-suffix="%">' +
+            '</div>' +
+            '<div class="form-group">' +
+              '<label class="label" for="dynamic-select">Dynamic select</label>' +
+              '<select class="select" id="dynamic-select" name="dynamic-select">' +
+                '<option value="draft" selected>Draft</option>' +
+                '<option value="ready">Ready</option>' +
+              '</select>' +
             '</div>';
           window.FNLLAUI.init(dynamicRoot);
           var dynamicButton = dynamicRoot.querySelector("[data-fnlla-accordion-button]");
@@ -481,10 +529,13 @@
           assert(dynamicPanel.hidden === false, "window.FNLLAUI.init(root) should bind behavior inside injected markup.", failures);
           var dynamicRangeInput = document.getElementById("dynamic-range");
           var dynamicRangeOutput = dynamicRoot.querySelector('[data-fnlla-range-output="dynamic-range"]');
+          var dynamicSelect = document.getElementById("dynamic-select");
+          var dynamicSelectShell = dynamicSelect.closest("[data-fnlla-select-shell]");
           dynamicRangeInput.value = "55";
           dynamicRangeInput.dispatchEvent(new Event("input", { bubbles: true }));
           await wait(40);
           assert(dynamicRangeOutput.textContent.trim() === "55%", "window.FNLLAUI.init(root) should also bind declarative range outputs inside injected markup.", failures);
+          assert(!!dynamicSelectShell, "window.FNLLAUI.init(root) should also enhance select fields inside injected markup.", failures);
 
           assert(getCurrentScrollspyHref() === "#spy-section-1", "Scrollspy should mark the first section active at the top of the page.", failures);
           window.scrollTo(0, document.getElementById("spy-section-2").offsetTop + 24);

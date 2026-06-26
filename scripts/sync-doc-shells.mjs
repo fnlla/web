@@ -20,12 +20,29 @@ import {
 } from "./tooling-support.mjs";
 
 function renderRootDocsNavigation(rootPages, currentLabel) {
-  return rootPages.map((page) => {
+  const linksMarkup = rootPages.map((page) => {
     const current = page.label === currentLabel;
     const buttonClass = current ? "btn btn-outline btn-sm" : "btn btn-ghost btn-sm";
     const currentAttribute = current ? ' aria-current="page"' : "";
     return `      <a class="${buttonClass}" href="${page.href}"${currentAttribute}>${page.label}</a>`;
   }).join("\n");
+
+  return `      <div class="doc-nav-top">
+        <p class="doc-nav-label">Docs Navigation</p>
+        <button class="btn btn-ghost btn-sm doc-nav-toggle" type="button" data-doc-nav-toggle aria-expanded="false" aria-controls="doc-nav-panel">
+          Browse Docs
+        </button>
+      </div>
+      <div class="doc-nav-panel" id="doc-nav-panel" data-doc-nav-panel>
+${linksMarkup}
+        <div class="doc-nav-controls">
+          <label class="switch doc-theme-toggle">
+            <input class="switch-input" id="doc-theme-toggle" data-doc-theme-toggle type="checkbox" aria-label="Enable dark mode for the docs">
+            <span class="switch-slider" aria-hidden="true"></span>
+            <span class="switch-label">Dark mode</span>
+          </label>
+        </div>
+      </div>`;
 }
 
 /* Extract page-specific body content while preserving the shared shell boundary. */

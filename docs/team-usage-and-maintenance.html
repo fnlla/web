@@ -28,6 +28,13 @@
     </header>
 
     <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <div class="doc-nav-top">
+        <p class="doc-nav-label">Docs Navigation</p>
+        <button class="btn btn-ghost btn-sm doc-nav-toggle" type="button" data-doc-nav-toggle aria-expanded="false" aria-controls="doc-nav-panel">
+          Browse Docs
+        </button>
+      </div>
+      <div class="doc-nav-panel" id="doc-nav-panel" data-doc-nav-panel>
       <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
       <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
       <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
@@ -38,6 +45,14 @@
       <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
       <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
       <a class="btn btn-outline btn-sm" href="./guides.html" aria-current="page">Guides</a>
+        <div class="doc-nav-controls">
+          <label class="switch doc-theme-toggle">
+            <input class="switch-input" id="doc-theme-toggle" data-doc-theme-toggle type="checkbox" aria-label="Enable dark mode for the docs">
+            <span class="switch-slider" aria-hidden="true"></span>
+            <span class="switch-label">Dark mode</span>
+          </label>
+        </div>
+      </div>
     </nav>
 
     <section class="section pt-1">
@@ -311,17 +326,17 @@
 
 <p>For JS, work in:</p>
 
-<ul><li><code>src/js/core/*.js</code></li><li><code>src/js/modules/*.js</code></li></ul>
+<ul><li><code>src/js/core/*.js</code></li><li><code>src/js/modules/*.js</code></li><li><code>src/docs/js/*.js</code> when the change belongs to the documentation shell rather than the public website runtime</li></ul>
 
 <p>Do not start with manual edits to:</p>
 
-<ul><li><code>assets/css/fnlla-ui.css</code></li><li><code>assets/js/fnlla-ui.js</code></li><li><code>dist/fnlla-ui/</code></li></ul>
+<ul><li><code>assets/css/fnlla-ui.css</code></li><li><code>assets/js/fnlla-ui.js</code></li><li><code>docs/assets/docs.js</code></li><li><code>dist/fnlla-ui/</code></li></ul>
 
 <h3 id="update-docs-when-the-public-contract-changes">Update docs when the public contract changes</h3>
 
 <p>If the change affects public usage, update the relevant reference surface in the same pull request.</p>
 
-<ul><li><code>README.md</code></li><li><code>docs/api.html</code></li><li><code>docs/distribution.html</code></li><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/forms.html</code></li><li><code>docs/icons.html</code></li><li><code>docs/component-classification.html</code></li><li><code>docs/team-usage-and-maintenance.html</code> and its markdown source when workflow guidance changed</li></ul>
+<ul><li><code>README.md</code></li><li><code>docs/api.html</code></li><li><code>docs/distribution.html</code></li><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/forms.html</code></li><li><code>docs/icons.html</code></li><li><code>docs/component-classification.html</code></li><li><code>docs/team-usage-and-maintenance.html</code> and its markdown source when workflow guidance changed</li><li><code>docs/assets/docs.js</code> indirectly through <code>src/docs/js/*.js</code> when documentation-only browser behavior changed</li></ul>
 
 <p>Rule:</p>
 

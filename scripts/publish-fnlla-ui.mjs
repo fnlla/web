@@ -117,16 +117,20 @@ export function publishFramework(options = {}) {
   const manifest = getFnllaUiManifest();
   const cssTargetPath = path.join(repoRoot, manifest.runtime.cssOutput);
   const jsTargetPath = path.join(repoRoot, manifest.runtime.jsOutput);
+  const docsJsTargetPath = path.join(repoRoot, manifest.docs.assets.jsOutput);
   const distRootPath = options.distRootPath || path.join(repoRoot, manifest.runtime.distRoot);
   const cssSourceFiles = resolveSourcePaths(repoRoot, manifest.source.css);
   const jsSourceFiles = resolveSourcePaths(repoRoot, manifest.source.js);
+  const docsJsSourceFiles = resolveSourcePaths(repoRoot, manifest.docs.assets.js);
   const version = getCurrentVersion(repoRoot);
 
   assertSourceFilesExist("CSS", cssSourceFiles);
   assertSourceFilesExist("JavaScript", jsSourceFiles);
+  assertSourceFilesExist("docs JavaScript", docsJsSourceFiles);
 
   writeText(cssTargetPath, getPublishedContent(cssSourceFiles, manifest.runtime.cssBanner));
   writeText(jsTargetPath, getPublishedContent(jsSourceFiles));
+  writeText(docsJsTargetPath, getPublishedContent(docsJsSourceFiles));
   syncDocShells({ repoRoot, manifest, check: false });
   buildGuidePages({ repoRoot, check: false });
   writeRuntimeExport({ repoRoot, manifest, version, distRootPath });
@@ -134,6 +138,7 @@ export function publishFramework(options = {}) {
   return {
     cssTargetPath,
     jsTargetPath,
+    docsJsTargetPath,
     distRootPath
   };
 }
@@ -142,6 +147,7 @@ function runCli() {
   const result = publishFramework();
   console.log(`Published FNLLA UI runtime CSS: ${result.cssTargetPath}`);
   console.log(`Published FNLLA UI runtime JS: ${result.jsTargetPath}`);
+  console.log(`Published FNLLA UI docs JS: ${result.docsJsTargetPath}`);
   console.log(`Refreshed FNLLA UI runtime export: ${result.distRootPath}`);
 }
 

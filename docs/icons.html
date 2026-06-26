@@ -35,6 +35,13 @@
 
     <!-- Primary docs navigation shared across the reference set. -->
     <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <div class="doc-nav-top">
+        <p class="doc-nav-label">Docs Navigation</p>
+        <button class="btn btn-ghost btn-sm doc-nav-toggle" type="button" data-doc-nav-toggle aria-expanded="false" aria-controls="doc-nav-panel">
+          Browse Docs
+        </button>
+      </div>
+      <div class="doc-nav-panel" id="doc-nav-panel" data-doc-nav-panel>
       <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
       <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
       <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
@@ -45,6 +52,14 @@
       <a class="btn btn-outline btn-sm" href="./icons.html" aria-current="page">Icons</a>
       <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
       <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+        <div class="doc-nav-controls">
+          <label class="switch doc-theme-toggle">
+            <input class="switch-input" id="doc-theme-toggle" data-doc-theme-toggle type="checkbox" aria-label="Enable dark mode for the docs">
+            <span class="switch-slider" aria-hidden="true"></span>
+            <span class="switch-label">Dark mode</span>
+          </label>
+        </div>
+      </div>
     </nav>
 
     <section class="section pt-1">

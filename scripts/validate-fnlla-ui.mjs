@@ -192,6 +192,7 @@ export function validateFramework(options = {}) {
   const componentClassificationPath = path.join(repoRoot, manifest.docs.guidePages[0].source);
   const cssEntrypointPath = path.join(repoRoot, manifest.runtime.cssOutput);
   const runtimeScriptPath = path.join(repoRoot, manifest.runtime.jsOutput);
+  const docsScriptPath = path.join(repoRoot, manifest.docs.assets.jsOutput);
   const publishScriptPath = path.join(repoRoot, "scripts", "publish-fnlla-ui.mjs");
   const validateScriptPath = path.join(repoRoot, "scripts", "validate-fnlla-ui.mjs");
   const buildGuidesScriptPath = path.join(repoRoot, "scripts", "build-guides.mjs");
@@ -199,6 +200,7 @@ export function validateFramework(options = {}) {
   const manifestScriptPath = path.join(repoRoot, "scripts", "fnlla-ui-manifest.mjs");
   const browserSmokeScriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser.mjs");
   const browserMatrixScriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser-matrix.mjs");
+  const browserSmokeDocsInspectionPath = path.join(repoRoot, "scripts", "browser-smoke-docs-inspection.mjs");
   const browserSmokeFixturePath = path.join(repoRoot, "scripts", "test-fixtures", "browser-smoke.html");
   const githubWorkflowPath = path.join(repoRoot, ".github", "workflows", "fnlla-ui-hardening.yml");
   const errors = [];
@@ -464,6 +466,7 @@ export function validateFramework(options = {}) {
       "LICENSE.md",
       "dist/fnlla-ui/",
       "window.FNLLAUI.init(root)",
+      "window.FNLLAUI.setTheme(theme, target)",
       "window.FNLLAUI.showToast(target)",
       "window.FNLLAUI.showOffcanvas(target)",
       "docs/component-classification.html",
@@ -534,6 +537,7 @@ export function validateFramework(options = {}) {
       expectedOwner,
       "FNLLA PHP",
       "window.FNLLAUI.init(root)",
+      "window.FNLLAUI.setTheme(theme, target)",
       "window.FNLLAUI.showOffcanvas(target)",
       "assets/icons/",
       "FNLLA Icons",
@@ -562,6 +566,7 @@ export function validateFramework(options = {}) {
     manifestScriptPath,
     browserSmokeScriptPath,
     browserMatrixScriptPath,
+    browserSmokeDocsInspectionPath,
     browserSmokeFixturePath
   ].forEach((targetPath) => {
     if (!pathExists(targetPath)) {
@@ -635,6 +640,37 @@ export function validateFramework(options = {}) {
     const syntaxCheck = spawnSync(process.execPath, ["--check", runtimeScriptPath], { encoding: "utf8" });
     if (syntaxCheck.status !== 0) {
       errors.push(`assets/js/fnlla-ui.js: node --check failed: ${(syntaxCheck.stderr || syntaxCheck.stdout || "").trim()}`);
+    }
+  }
+
+  if (!pathExists(docsScriptPath)) {
+    errors.push("docs/assets/docs.js: missing file");
+  } else {
+    const missingDocsJsSources = [];
+    const expectedDocsRuntimeModules = [];
+
+    manifest.docs.assets.js.forEach((relativePath) => {
+      const fullPath = path.join(repoRoot, relativePath);
+      if (!pathExists(fullPath)) {
+        missingDocsJsSources.push(relativePath);
+        return;
+      }
+
+      expectedDocsRuntimeModules.push(readText(fullPath).trimEnd());
+    });
+
+    if (missingDocsJsSources.length) {
+      errors.push(`docs js source modules missing: ${missingDocsJsSources.join(", ")}`);
+    } else {
+      const expectedDocsRuntime = `${expectedDocsRuntimeModules.join("\r\n\r\n")}\r\n`;
+      if (!compareNormalizedContent(readText(docsScriptPath), expectedDocsRuntime)) {
+        errors.push("docs/assets/docs.js: docs script is out of sync with src/docs/js modules. Run scripts/publish-fnlla-ui.mjs");
+      }
+    }
+
+    const docsSyntaxCheck = spawnSync(process.execPath, ["--check", docsScriptPath], { encoding: "utf8" });
+    if (docsSyntaxCheck.status !== 0) {
+      errors.push(`docs/assets/docs.js: node --check failed: ${(docsSyntaxCheck.stderr || docsSyntaxCheck.stdout || "").trim()}`);
     }
   }
 

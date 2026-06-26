@@ -32,6 +32,7 @@
   var toastTimerMap = new WeakMap();
   var tooltipPanelMap = new WeakMap();
   var scrollspyObserverMap = new WeakMap();
+  var customSelectStateMap = new WeakMap();
   var scrollspyRegistry = [];
   var fnllaUiIdCounter = 0;
   var mobileNavQuery = window.matchMedia ? window.matchMedia("(max-width: 880px)") : null;
@@ -60,6 +61,7 @@
     popoverTrigger: new WeakSet(),
     popoverClose: new WeakSet(),
     tooltipTrigger: new WeakSet(),
+    select: new WeakSet(),
     rangeInput: new WeakSet(),
     scrollspy: new WeakSet()
   };
@@ -110,6 +112,12 @@
     offcanvas: "[data-fnlla-offcanvas]",
     offcanvasClose: "[data-fnlla-offcanvas-close]",
     offcanvasInitialFocus: "[data-fnlla-offcanvas-initial-focus], [autofocus]",
+    select: "select.select",
+    selectShell: "[data-fnlla-select-shell]",
+    selectNative: "[data-fnlla-select-native]",
+    selectToggle: "[data-fnlla-select-toggle]",
+    selectMenu: ".select-menu",
+    selectOption: "[data-fnlla-select-option]",
     rangeInput: ".range-input[id]",
     popover: "[data-fnlla-popover]",
     popoverToggle: "[data-fnlla-popover-toggle]",
@@ -130,6 +138,8 @@
     modal: "modal",
     toast: "toast",
     offcanvas: "offcanvas",
+    selectToggle: "select-toggle",
+    selectMenu: "select-menu",
     popoverToggle: "popover-toggle",
     popoverPanel: "popover-panel",
     tooltip: "tooltip"
@@ -269,6 +279,10 @@
     }
 
     if (element.hasAttribute("disabled") || element.getAttribute("aria-disabled") === "true") {
+      return false;
+    }
+
+    if (element.getAttribute("tabindex") === "-1") {
       return false;
     }
 
@@ -1397,6 +1411,40 @@
 
 /*
   ============================================================================
+  FNLLA UI SOURCE MODULE: CUSTOM SELECT CORE HELPERS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+  function closeSelectMenu(select, options) {
+    var settings = options || {};
+    var state = customSelectStateMap.get(select);
+
+    if (!state) {
+      return;
+    }
+
+    state.shell.classList.remove("is-open");
+    state.toggle.setAttribute("aria-expanded", "false");
+    state.menu.hidden = true;
+    state.menu.setAttribute("aria-hidden", "true");
+    setElementInertState(state.menu, true);
+
+    if (settings.restoreFocus && canReceiveFocus(state.toggle)) {
+      state.toggle.focus();
+    }
+  }
+
+  function closeAllSelectMenus(exceptSelect) {
+    toArray(document.querySelectorAll(selectors.selectNative)).forEach(function (select) {
+      if (select !== exceptSelect) {
+        closeSelectMenu(select);
+      }
+    });
+  }
+
+/*
+  ============================================================================
   FNLLA UI SOURCE MODULE: DROPDOWN INITIALIZER
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
   ============================================================================
@@ -2058,6 +2106,600 @@
 
 /*
   ============================================================================
+  FNLLA UI SOURCE MODULE: CUSTOM SELECT SHARED HELPERS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+  function isSingleSelectField(target) {
+    if (!target || target.tagName !== "SELECT") {
+      return false;
+    }
+
+    if (target.multiple) {
+      return false;
+    }
+
+    if (!target.hasAttribute("size")) {
+      return true;
+    }
+
+    return target.getAttribute("size") === "1";
+  }
+
+  function getSelectState(select) {
+    return customSelectStateMap.get(select) || null;
+  }
+
+  function getAssociatedSelectLabels(select) {
+    return select && select.labels ? toArray(select.labels) : [];
+  }
+
+  function getSelectOptionText(option) {
+    if (!option) {
+      return "";
+    }
+
+    return String(option.text || option.label || option.textContent || "").replace(/\s+/g, " ").trim();
+  }
+
+  function getSelectableSelectButtons(select) {
+    var state = getSelectState(select);
+
+    if (!state) {
+      return [];
+    }
+
+    return state.optionButtons.filter(function (button) {
+      return !button.disabled && button.getAttribute("aria-disabled") !== "true";
+    });
+  }
+
+  function updateSelectButtonLabel(select) {
+    var state = getSelectState(select);
+    var selectedOption = select.options[select.selectedIndex] || null;
+    var renderedLabel = getSelectOptionText(selectedOption);
+    var isPlaceholder = !selectedOption || selectedOption.value === "";
+
+    if (!state) {
+      return;
+    }
+
+    state.valueLabel.textContent = renderedLabel || "\u00a0";
+    state.toggle.classList.toggle("is-placeholder", isPlaceholder);
+  }
+
+  function syncSelectState(select) {
+    var state = getSelectState(select);
+    var describedBy = select.getAttribute("aria-describedby");
+    var invalid = select.getAttribute("aria-invalid") === "true";
+
+    if (!state) {
+      return;
+    }
+
+    state.shell.classList.toggle("is-disabled", !!select.disabled);
+    state.shell.classList.toggle("is-invalid", invalid);
+    state.toggle.disabled = !!select.disabled;
+    state.toggle.setAttribute("aria-invalid", invalid ? "true" : "false");
+
+    if (select.required) {
+      state.toggle.setAttribute("aria-required", "true");
+    } else {
+      state.toggle.removeAttribute("aria-required");
+    }
+
+    if (describedBy) {
+      state.toggle.setAttribute("aria-describedby", describedBy);
+    } else {
+      state.toggle.removeAttribute("aria-describedby");
+    }
+
+    updateSelectButtonLabel(select);
+
+    state.optionButtons.forEach(function (button) {
+      var optionIndex = parseInt(button.getAttribute("data-fnlla-option-index"), 10);
+      var option = select.options[optionIndex];
+      var isSelected = optionIndex === select.selectedIndex;
+      var isDisabled = !option || option.disabled;
+
+      button.disabled = isDisabled;
+      button.setAttribute("aria-disabled", isDisabled ? "true" : "false");
+      button.setAttribute("aria-selected", isSelected ? "true" : "false");
+      button.classList.toggle("is-selected", isSelected);
+    });
+
+    if (select.disabled) {
+      closeSelectMenu(select);
+    }
+  }
+
+  function focusSelectOption(button) {
+    if (!button || typeof button.focus !== "function") {
+      return;
+    }
+
+    button.focus();
+
+    if (typeof button.scrollIntoView === "function") {
+      button.scrollIntoView({ block: "nearest" });
+    }
+  }
+
+  function focusSelectOptionByMode(select, mode) {
+    var state = getSelectState(select);
+    var buttons = getSelectableSelectButtons(select);
+    var target = null;
+
+    if (!state || !buttons.length) {
+      return;
+    }
+
+    if (mode === "selected") {
+      target = state.optionButtons.find(function (button) {
+        return button.classList.contains("is-selected") && !button.disabled;
+      }) || buttons[0];
+    } else if (mode === "last") {
+      target = buttons[buttons.length - 1];
+    } else {
+      target = buttons[0];
+    }
+
+    focusSelectOption(target);
+  }
+
+  function moveFocusedSelectOption(select, step) {
+    var buttons = getSelectableSelectButtons(select);
+    var currentIndex = buttons.indexOf(document.activeElement);
+
+    if (!buttons.length) {
+      return;
+    }
+
+    if (currentIndex === -1) {
+      focusSelectOption(buttons[step > 0 ? 0 : buttons.length - 1]);
+      return;
+    }
+
+    focusSelectOption(buttons[(currentIndex + step + buttons.length) % buttons.length]);
+  }
+
+  function handleSelectTypeahead(select, character) {
+    var state = getSelectState(select);
+    var buttons = getSelectableSelectButtons(select);
+    var activeIndex = buttons.indexOf(document.activeElement);
+    var searchValue = "";
+    var startIndex = 0;
+    var offset;
+    var candidate;
+
+    if (!state || !buttons.length) {
+      return;
+    }
+
+    searchValue = (state.typeaheadValue + String(character || "")).toLowerCase();
+    state.typeaheadValue = searchValue;
+
+    if (state.typeaheadTimer) {
+      window.clearTimeout(state.typeaheadTimer);
+    }
+
+    state.typeaheadTimer = window.setTimeout(function () {
+      state.typeaheadValue = "";
+      state.typeaheadTimer = 0;
+    }, 260);
+
+    startIndex = activeIndex === -1 ? 0 : (activeIndex + 1) % buttons.length;
+
+    for (offset = 0; offset < buttons.length; offset += 1) {
+      candidate = buttons[(startIndex + offset) % buttons.length];
+
+      if ((candidate.textContent || "").trim().toLowerCase().indexOf(searchValue) === 0) {
+        focusSelectOption(candidate);
+        return;
+      }
+    }
+  }
+
+  function queueSelectObserverRefresh(select) {
+    var state = getSelectState(select);
+
+    if (!state || state.observerQueued) {
+      return;
+    }
+
+    state.observerQueued = true;
+    window.setTimeout(function () {
+      var refreshedState = getSelectState(select);
+
+      if (!refreshedState) {
+        return;
+      }
+
+      refreshedState.observerQueued = false;
+      refreshedState.rebuildMenu();
+      syncSelectState(select);
+    }, 0);
+  }
+
+/*
+  ============================================================================
+  FNLLA UI SOURCE MODULE: CUSTOM SELECT MENU BUILDERS
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+  function createSelectOptionButton(select, option, optionIndex) {
+    var button = document.createElement("button");
+    var label = document.createElement("span");
+    var optionLabel = getSelectOptionText(option);
+    var isSelected = optionIndex === select.selectedIndex;
+    var isDisabled = !!option.disabled;
+
+    button.type = "button";
+    button.className = "select-option";
+    button.setAttribute("role", "option");
+    button.setAttribute("data-fnlla-select-option", "");
+    button.setAttribute("data-fnlla-option-index", String(optionIndex));
+    button.setAttribute("aria-selected", isSelected ? "true" : "false");
+    button.setAttribute("aria-disabled", isDisabled ? "true" : "false");
+    button.disabled = isDisabled;
+    button.classList.toggle("is-selected", isSelected);
+
+    label.className = "select-option-label";
+    label.textContent = optionLabel || "\u00a0";
+    button.appendChild(label);
+    return button;
+  }
+
+  function rebuildSelectMenu(select) {
+    var state = getSelectState(select);
+    var optionIndex = 0;
+
+    if (!state) {
+      return;
+    }
+
+    state.optionButtons = [];
+    state.menu.innerHTML = "";
+
+    toArray(select.children).forEach(function (child) {
+      if (child.tagName === "OPTION") {
+        if (!child.hidden) {
+          var standaloneButton = createSelectOptionButton(select, child, optionIndex);
+
+          state.optionButtons.push(standaloneButton);
+          state.menu.appendChild(standaloneButton);
+        }
+
+        optionIndex += 1;
+        return;
+      }
+
+      if (child.tagName === "OPTGROUP") {
+        var group = document.createElement("div");
+        var groupLabel = document.createElement("p");
+
+        group.className = "select-group";
+        groupLabel.className = "select-group-label";
+        groupLabel.textContent = child.label || "";
+        group.appendChild(groupLabel);
+
+        toArray(child.children).forEach(function (optionChild) {
+          var groupButton;
+
+          if (optionChild.tagName !== "OPTION") {
+            return;
+          }
+
+          if (!optionChild.hidden) {
+            groupButton = createSelectOptionButton(select, optionChild, optionIndex);
+            state.optionButtons.push(groupButton);
+            group.appendChild(groupButton);
+          }
+
+          optionIndex += 1;
+        });
+
+        if (group.childElementCount > 1) {
+          state.menu.appendChild(group);
+        }
+      }
+    });
+
+    syncSelectState(select);
+  }
+
+  function openSelectMenu(select, focusMode) {
+    var state = getSelectState(select);
+
+    if (!state || select.disabled) {
+      return;
+    }
+
+    state.rebuildMenu();
+    closeAllSelectMenus(select);
+    state.shell.classList.add("is-open");
+    state.toggle.setAttribute("aria-expanded", "true");
+    state.menu.hidden = false;
+    state.menu.setAttribute("aria-hidden", "false");
+    setElementInertState(state.menu, false);
+
+    if (focusMode) {
+      focusSelectOptionByMode(select, focusMode);
+    }
+  }
+
+  function selectOptionByIndex(select, optionIndex) {
+    var option = select.options[optionIndex];
+
+    if (!option || option.disabled) {
+      return;
+    }
+
+    if (select.selectedIndex !== optionIndex) {
+      select.selectedIndex = optionIndex;
+      select.dispatchEvent(new Event("input", { bubbles: true }));
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    } else {
+      syncSelectState(select);
+    }
+
+    closeSelectMenu(select, { restoreFocus: true });
+  }
+
+/*
+  ============================================================================
+  FNLLA UI SOURCE MODULE: CUSTOM SELECT INITIALIZER
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  ============================================================================
+*/
+
+  function initSelects(root) {
+    getScopedMatches(root, selectors.select).forEach(function (select) {
+      var optionObserver;
+      if (initializationState.select.has(select) || !isSingleSelectField(select)) {
+        return;
+      }
+
+      initializationState.select.add(select);
+
+      var shell = document.createElement("div");
+      var toggle = document.createElement("button");
+      var valueLabel = document.createElement("span");
+      var menu = document.createElement("div");
+      var associatedLabels = getAssociatedSelectLabels(select);
+      var labelIds = [];
+
+      shell.className = "select-shell";
+      shell.setAttribute("data-fnlla-select-shell", "");
+
+      select.parentNode.insertBefore(shell, select);
+      shell.appendChild(select);
+
+      select.setAttribute("data-fnlla-select-native", "");
+      select.setAttribute("aria-hidden", "true");
+      select.tabIndex = -1;
+      select.classList.add("select-native");
+
+      toggle.type = "button";
+      toggle.className = "select-control";
+      toggle.id = createFnllaUiId(idPrefixes.selectToggle);
+      toggle.setAttribute("data-fnlla-select-toggle", "");
+      toggle.setAttribute("aria-haspopup", "listbox");
+      toggle.setAttribute("aria-expanded", "false");
+
+      valueLabel.className = "select-value";
+      valueLabel.id = createFnllaUiId("select-value");
+      toggle.appendChild(valueLabel);
+      shell.appendChild(toggle);
+
+      menu.className = "select-menu scrollbar scrollbar-thin";
+      menu.id = createFnllaUiId(idPrefixes.selectMenu);
+      menu.hidden = true;
+      menu.setAttribute("role", "listbox");
+      menu.setAttribute("aria-hidden", "true");
+      toggle.setAttribute("aria-controls", menu.id);
+      setElementInertState(menu, true);
+      shell.appendChild(menu);
+
+      customSelectStateMap.set(select, {
+        shell: shell,
+        toggle: toggle,
+        valueLabel: valueLabel,
+        menu: menu,
+        optionButtons: [],
+        observerQueued: false,
+        typeaheadValue: "",
+        typeaheadTimer: 0,
+        rebuildMenu: function () {
+          rebuildSelectMenu(select);
+        }
+      });
+
+      associatedLabels.forEach(function (label) {
+        if (!label.id) {
+          label.id = createFnllaUiId("select-label");
+        }
+
+        labelIds.push(label.id);
+
+        label.addEventListener("click", function (event) {
+          if (select.disabled) {
+            return;
+          }
+
+          event.preventDefault();
+          toggle.focus();
+        });
+      });
+
+      if (labelIds.length) {
+        toggle.setAttribute("aria-labelledby", labelIds.join(" ") + " " + valueLabel.id);
+      }
+
+      menu.setAttribute("aria-labelledby", toggle.id);
+
+      toggle.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (shell.classList.contains("is-open")) {
+          closeSelectMenu(select);
+          return;
+        }
+
+        openSelectMenu(select, "selected");
+      });
+
+      toggle.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          openSelectMenu(select, "selected");
+          return;
+        }
+
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+          openSelectMenu(select, "last");
+          return;
+        }
+
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openSelectMenu(select, "selected");
+          return;
+        }
+
+        if (event.key === "Home") {
+          event.preventDefault();
+          openSelectMenu(select, "first");
+          return;
+        }
+
+        if (event.key === "End") {
+          event.preventDefault();
+          openSelectMenu(select, "last");
+          return;
+        }
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeSelectMenu(select, { restoreFocus: true });
+          event.stopPropagation();
+        }
+      });
+
+      menu.addEventListener("click", function (event) {
+        var optionButton = event.target.closest(selectors.selectOption);
+        var optionIndex;
+
+        if (!optionButton) {
+          return;
+        }
+
+        optionIndex = parseInt(optionButton.getAttribute("data-fnlla-option-index"), 10);
+        selectOptionByIndex(select, optionIndex);
+      });
+
+      menu.addEventListener("keydown", function (event) {
+        var optionButton = event.target.closest(selectors.selectOption);
+        var optionIndex;
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeSelectMenu(select, { restoreFocus: true });
+          event.stopPropagation();
+          return;
+        }
+
+        if (event.key === "Tab") {
+          closeSelectMenu(select);
+          return;
+        }
+
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          moveFocusedSelectOption(select, 1);
+          return;
+        }
+
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+          moveFocusedSelectOption(select, -1);
+          return;
+        }
+
+        if (event.key === "Home") {
+          event.preventDefault();
+          focusSelectOptionByMode(select, "first");
+          return;
+        }
+
+        if (event.key === "End") {
+          event.preventDefault();
+          focusSelectOptionByMode(select, "last");
+          return;
+        }
+
+        if ((event.key === "Enter" || event.key === " ") && optionButton) {
+          event.preventDefault();
+          optionIndex = parseInt(optionButton.getAttribute("data-fnlla-option-index"), 10);
+          selectOptionByIndex(select, optionIndex);
+          return;
+        }
+
+        if (event.key && event.key.length === 1 && !event.altKey && !event.ctrlKey && !event.metaKey) {
+          handleSelectTypeahead(select, event.key);
+        }
+      });
+
+      shell.addEventListener("focusout", function () {
+        window.setTimeout(function () {
+          if (!shell.contains(document.activeElement)) {
+            closeSelectMenu(select);
+          }
+        }, 0);
+      });
+
+      select.addEventListener("change", function () {
+        syncSelectState(select);
+      });
+      select.addEventListener("input", function () {
+        syncSelectState(select);
+      });
+      select.addEventListener("invalid", function () {
+        syncSelectState(select);
+      });
+
+      if (select.form) {
+        select.form.addEventListener("reset", function () {
+          window.setTimeout(function () {
+            rebuildSelectMenu(select);
+            syncSelectState(select);
+          }, 0);
+        });
+      }
+
+      if (typeof MutationObserver === "function") {
+        optionObserver = new MutationObserver(function () {
+          queueSelectObserverRefresh(select);
+        });
+        optionObserver.observe(select, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ["disabled", "hidden", "label", "selected", "value", "aria-invalid", "aria-describedby", "required"]
+        });
+      }
+
+      rebuildSelectMenu(select);
+      syncSelectState(select);
+    });
+  }
+
+/*
+  ============================================================================
   FNLLA UI SOURCE MODULE: RANGE OUTPUT INITIALIZER
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
   ============================================================================
@@ -2082,8 +2724,13 @@
         var prefix = input.getAttribute(attributeNames.rangePrefix) || "";
         var suffix = input.getAttribute(attributeNames.rangeSuffix);
         var renderedValue = prefix + String(input.value) + (suffix === null ? "" : suffix);
+        var min = parseFloat(input.min || "0");
+        var max = parseFloat(input.max || "100");
+        var current = parseFloat(input.value || "0");
+        var progress = max > min ? ((current - min) / (max - min)) * 100 : 0;
 
         output.textContent = renderedValue;
+        input.style.setProperty("--fnlla-range-percent", progress + "%");
 
         if (output.tagName === "OUTPUT") {
           output.value = renderedValue;
@@ -2181,6 +2828,14 @@
   function bindRuntimeHandlers() {
     if (!runtimeBindings.documentClick) {
       document.addEventListener("click", function (event) {
+        toArray(document.querySelectorAll(selectors.selectNative)).forEach(function (select) {
+          var state = customSelectStateMap.get(select);
+
+          if (state && !state.shell.contains(event.target)) {
+            closeSelectMenu(select);
+          }
+        });
+
         toArray(document.querySelectorAll(selectors.dropdown)).forEach(function (dropdown) {
           if (!dropdown.contains(event.target)) {
             closeDropdown(dropdown);
@@ -2226,6 +2881,7 @@
           return;
         }
 
+        closeAllSelectMenus(null);
         closeAllDropdowns(null);
         closeAllPopovers(null);
         closeOpenNavigation({ restoreFocus: true });
@@ -2277,11 +2933,26 @@
     initOffcanvas(scope);
     initPopovers(scope);
     initTooltips(scope);
+    initSelects(scope);
     initRanges(scope);
     initScrollspy(scope);
     syncNavigationMode(scope);
 
     return fnllaUiApi;
+  }
+
+  /* Normalize supported public theme values into the stable runtime contract. */
+  function normalizeThemeName(theme) {
+    return theme === "dark" ? "dark" : "default";
+  }
+
+  /* Resolve the element that should receive the theme attribute. */
+  function resolveThemeTarget(target) {
+    if (!target || target === document || target === document.documentElement || target === document.body) {
+      return document.body;
+    }
+
+    return resolveElementReference(target);
   }
 
   /* Auto-start the runtime once the DOM is ready. */
@@ -2301,6 +2972,15 @@
   var fnllaUiApi = {
     version: fnllaUiVersion,
     init: initFnllaUi,
+    setTheme: function (theme, target) {
+      var themeTarget = resolveThemeTarget(target);
+
+      if (themeTarget) {
+        themeTarget.setAttribute("data-fnlla-theme", normalizeThemeName(theme));
+      }
+
+      return fnllaUiApi;
+    },
     showModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
 

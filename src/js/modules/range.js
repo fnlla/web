@@ -24,8 +24,13 @@
         var prefix = input.getAttribute(attributeNames.rangePrefix) || "";
         var suffix = input.getAttribute(attributeNames.rangeSuffix);
         var renderedValue = prefix + String(input.value) + (suffix === null ? "" : suffix);
+        var min = parseFloat(input.min || "0");
+        var max = parseFloat(input.max || "100");
+        var current = parseFloat(input.value || "0");
+        var progress = max > min ? ((current - min) / (max - min)) * 100 : 0;
 
         output.textContent = renderedValue;
+        input.style.setProperty("--fnlla-range-percent", progress + "%");
 
         if (output.tagName === "OUTPUT") {
           output.value = renderedValue;

@@ -32,6 +32,7 @@
   var toastTimerMap = new WeakMap();
   var tooltipPanelMap = new WeakMap();
   var scrollspyObserverMap = new WeakMap();
+  var customSelectStateMap = new WeakMap();
   var scrollspyRegistry = [];
   var fnllaUiIdCounter = 0;
   var mobileNavQuery = window.matchMedia ? window.matchMedia("(max-width: 880px)") : null;
@@ -60,6 +61,7 @@
     popoverTrigger: new WeakSet(),
     popoverClose: new WeakSet(),
     tooltipTrigger: new WeakSet(),
+    select: new WeakSet(),
     rangeInput: new WeakSet(),
     scrollspy: new WeakSet()
   };
@@ -110,6 +112,12 @@
     offcanvas: "[data-fnlla-offcanvas]",
     offcanvasClose: "[data-fnlla-offcanvas-close]",
     offcanvasInitialFocus: "[data-fnlla-offcanvas-initial-focus], [autofocus]",
+    select: "select.select",
+    selectShell: "[data-fnlla-select-shell]",
+    selectNative: "[data-fnlla-select-native]",
+    selectToggle: "[data-fnlla-select-toggle]",
+    selectMenu: ".select-menu",
+    selectOption: "[data-fnlla-select-option]",
     rangeInput: ".range-input[id]",
     popover: "[data-fnlla-popover]",
     popoverToggle: "[data-fnlla-popover-toggle]",
@@ -130,6 +138,8 @@
     modal: "modal",
     toast: "toast",
     offcanvas: "offcanvas",
+    selectToggle: "select-toggle",
+    selectMenu: "select-menu",
     popoverToggle: "popover-toggle",
     popoverPanel: "popover-panel",
     tooltip: "tooltip"

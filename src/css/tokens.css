@@ -202,7 +202,7 @@
   --fnlla-color-scheme: dark;
   --fnlla-color-primary: #60a5fa;
   --fnlla-color-secondary: #e2ecff;
-  --fnlla-color-accent: #2dd4bf;
+  --fnlla-color-accent: #2563eb;
   --fnlla-color-text: #e5eefc;
   --fnlla-color-muted: #a9bad2;
   --fnlla-color-border: rgba(226, 236, 255, 0.16);
@@ -214,9 +214,9 @@
   --fnlla-color-surface-soft: rgba(18, 27, 47, 0.88);
   --fnlla-color-surface-strong: rgba(18, 27, 47, 0.96);
   --fnlla-color-primary-soft: rgba(96, 165, 250, 0.18);
-  --fnlla-color-accent-soft: rgba(45, 212, 191, 0.16);
+  --fnlla-color-accent-soft: rgba(37, 99, 235, 0.16);
   --fnlla-color-primary-border: rgba(96, 165, 250, 0.28);
-  --fnlla-color-accent-border: rgba(45, 212, 191, 0.28);
+  --fnlla-color-accent-border: rgba(37, 99, 235, 0.28);
   --fnlla-color-info: #60a5fa;
   --fnlla-color-info-soft: rgba(96, 165, 250, 0.18);
   --fnlla-color-info-border: rgba(96, 165, 250, 0.28);
@@ -242,7 +242,7 @@
   --fnlla-shadow-sm: none;
   --fnlla-shadow-md: none;
   --fnlla-bg-radial-primary: rgba(96, 165, 250, 0.16);
-  --fnlla-bg-radial-secondary: rgba(45, 212, 191, 0.12);
+  --fnlla-bg-radial-secondary: rgba(37, 99, 235, 0.12);
   --fnlla-bg-gradient-start: #09111f;
   --fnlla-bg-gradient-mid: #0d1628;
   --fnlla-bg-gradient-end: #111c31;

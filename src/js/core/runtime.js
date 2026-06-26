@@ -9,6 +9,14 @@
   function bindRuntimeHandlers() {
     if (!runtimeBindings.documentClick) {
       document.addEventListener("click", function (event) {
+        toArray(document.querySelectorAll(selectors.selectNative)).forEach(function (select) {
+          var state = customSelectStateMap.get(select);
+
+          if (state && !state.shell.contains(event.target)) {
+            closeSelectMenu(select);
+          }
+        });
+
         toArray(document.querySelectorAll(selectors.dropdown)).forEach(function (dropdown) {
           if (!dropdown.contains(event.target)) {
             closeDropdown(dropdown);
@@ -54,6 +62,7 @@
           return;
         }
 
+        closeAllSelectMenus(null);
         closeAllDropdowns(null);
         closeAllPopovers(null);
         closeOpenNavigation({ restoreFocus: true });
@@ -105,11 +114,26 @@
     initOffcanvas(scope);
     initPopovers(scope);
     initTooltips(scope);
+    initSelects(scope);
     initRanges(scope);
     initScrollspy(scope);
     syncNavigationMode(scope);
 
     return fnllaUiApi;
+  }
+
+  /* Normalize supported public theme values into the stable runtime contract. */
+  function normalizeThemeName(theme) {
+    return theme === "dark" ? "dark" : "default";
+  }
+
+  /* Resolve the element that should receive the theme attribute. */
+  function resolveThemeTarget(target) {
+    if (!target || target === document || target === document.documentElement || target === document.body) {
+      return document.body;
+    }
+
+    return resolveElementReference(target);
   }
 
   /* Auto-start the runtime once the DOM is ready. */
@@ -129,6 +153,15 @@
   var fnllaUiApi = {
     version: fnllaUiVersion,
     init: initFnllaUi,
+    setTheme: function (theme, target) {
+      var themeTarget = resolveThemeTarget(target);
+
+      if (themeTarget) {
+        themeTarget.setAttribute("data-fnlla-theme", normalizeThemeName(theme));
+      }
+
+      return fnllaUiApi;
+    },
     showModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
 

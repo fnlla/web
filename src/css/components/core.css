@@ -59,6 +59,12 @@
   color: var(--fnlla-color-on-dark);
 }
 
+[data-fnlla-theme="dark"] .btn-primary:hover,
+[data-fnlla-theme="dark"] .btn-primary:focus-visible {
+  background: var(--fnlla-color-accent);
+  color: var(--fnlla-color-on-dark);
+}
+
 .btn-secondary {
   background: var(--fnlla-color-secondary);
   color: var(--fnlla-color-on-dark);
@@ -66,6 +72,19 @@
 
 .btn-secondary:hover,
 .btn-secondary:focus-visible {
+  background: var(--fnlla-color-primary);
+  color: var(--fnlla-color-on-dark);
+}
+
+[data-fnlla-theme="dark"] .btn-secondary {
+  border-color: var(--fnlla-color-primary-border);
+  background: var(--fnlla-color-primary-soft);
+  color: var(--fnlla-color-secondary);
+}
+
+[data-fnlla-theme="dark"] .btn-secondary:hover,
+[data-fnlla-theme="dark"] .btn-secondary:focus-visible {
+  border-color: var(--fnlla-color-primary);
   background: var(--fnlla-color-primary);
   color: var(--fnlla-color-on-dark);
 }
@@ -601,7 +620,8 @@
 .skeleton-block {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, var(--fnlla-color-surface), var(--fnlla-color-bg-alt));
+  background: linear-gradient(180deg, var(--fnlla-color-primary-soft), var(--fnlla-color-surface-soft));
+  box-shadow: inset 0 0 0 1px var(--fnlla-color-primary-border);
 }
 
 .skeleton::after,
@@ -611,8 +631,21 @@
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
   animation: fw-skeleton-wave 1.5s ease infinite;
+}
+
+[data-fnlla-theme="dark"] .skeleton,
+[data-fnlla-theme="dark"] .skeleton-line,
+[data-fnlla-theme="dark"] .skeleton-block {
+  background: linear-gradient(180deg, var(--fnlla-color-primary-soft), var(--fnlla-color-surface-strong));
+  box-shadow: inset 0 0 0 1px var(--fnlla-color-primary-border);
+}
+
+[data-fnlla-theme="dark"] .skeleton::after,
+[data-fnlla-theme="dark"] .skeleton-line::after,
+[data-fnlla-theme="dark"] .skeleton-block::after {
+  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
 }
 
 .skeleton-line {
@@ -788,6 +821,10 @@
 
 .icon img {
   object-fit: contain;
+}
+
+[data-fnlla-theme="dark"] .icon img {
+  filter: brightness(0) saturate(100%) invert(92%) sepia(15%) saturate(384%) hue-rotate(184deg) brightness(104%) contrast(103%);
 }
 
 @keyframes fw-spin {

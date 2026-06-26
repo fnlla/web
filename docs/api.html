@@ -35,6 +35,13 @@
 
     <!-- Primary docs navigation shared across the reference set. -->
     <nav class="doc-nav" aria-label="FNLLA UI documentation">
+      <div class="doc-nav-top">
+        <p class="doc-nav-label">Docs Navigation</p>
+        <button class="btn btn-ghost btn-sm doc-nav-toggle" type="button" data-doc-nav-toggle aria-expanded="false" aria-controls="doc-nav-panel">
+          Browse Docs
+        </button>
+      </div>
+      <div class="doc-nav-panel" id="doc-nav-panel" data-doc-nav-panel>
       <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
       <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
       <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
@@ -45,6 +52,14 @@
       <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
       <a class="btn btn-outline btn-sm" href="./api.html" aria-current="page">API</a>
       <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
+        <div class="doc-nav-controls">
+          <label class="switch doc-theme-toggle">
+            <input class="switch-input" id="doc-theme-toggle" data-doc-theme-toggle type="checkbox" aria-label="Enable dark mode for the docs">
+            <span class="switch-slider" aria-hidden="true"></span>
+            <span class="switch-label">Dark mode</span>
+          </label>
+        </div>
+      </div>
     </nav>
 
     <section class="section pt-1">
@@ -294,6 +309,11 @@
               <td>Initializes documented FNLLA UI markup inside the provided scope. Calls are idempotent.</td>
             </tr>
             <tr>
+              <td><code>setTheme</code></td>
+              <td>A theme name such as <code>default</code> or <code>dark</code>, with an optional selector string or direct element reference for a scoped wrapper</td>
+              <td>Applies the selected documented theme to <code>body</code> by default or to one explicit theme wrapper.</td>
+            </tr>
+            <tr>
               <td><code>showModal</code>, <code>openModal</code>, <code>hideModal</code>, <code>closeModal</code></td>
               <td>A selector string such as <code>#example-modal</code> or the modal element itself</td>
               <td>Opens or closes a documented modal overlay.</td>
@@ -335,7 +355,7 @@
       <article class="card mt-4">
         <h3 class="card-title">Target resolution rule</h3>
         <p class="card-text">Programmatic helpers accept either a selector string or a direct DOM element reference. If the target does not resolve to the documented FNLLA UI element type, the helper returns safely without throwing and keeps the chainable <code>window.FNLLAUI</code> object contract.</p>
-        <p class="card-text">The documented helper names are <code>window.FNLLAUI.showModal(target)</code>, <code>window.FNLLAUI.openModal(target)</code>, <code>window.FNLLAUI.hideModal(target)</code>, <code>window.FNLLAUI.closeModal(target)</code>, <code>window.FNLLAUI.showToast(target)</code>, <code>window.FNLLAUI.hideToast(target)</code>, <code>window.FNLLAUI.showOffcanvas(target)</code>, <code>window.FNLLAUI.openOffcanvas(target)</code>, <code>window.FNLLAUI.hideOffcanvas(target)</code>, <code>window.FNLLAUI.closeOffcanvas(target)</code>, <code>window.FNLLAUI.openDropdown(target)</code>, <code>window.FNLLAUI.closeDropdown(target)</code>, <code>window.FNLLAUI.openPopover(target)</code>, <code>window.FNLLAUI.closePopover(target)</code>, <code>window.FNLLAUI.showTooltip(target)</code>, <code>window.FNLLAUI.hideTooltip(target)</code> and <code>window.FNLLAUI.refreshScrollspy(target)</code>.</p>
+        <p class="card-text">The documented helper names are <code>window.FNLLAUI.setTheme(theme, target)</code>, <code>window.FNLLAUI.showModal(target)</code>, <code>window.FNLLAUI.openModal(target)</code>, <code>window.FNLLAUI.hideModal(target)</code>, <code>window.FNLLAUI.closeModal(target)</code>, <code>window.FNLLAUI.showToast(target)</code>, <code>window.FNLLAUI.hideToast(target)</code>, <code>window.FNLLAUI.showOffcanvas(target)</code>, <code>window.FNLLAUI.openOffcanvas(target)</code>, <code>window.FNLLAUI.hideOffcanvas(target)</code>, <code>window.FNLLAUI.closeOffcanvas(target)</code>, <code>window.FNLLAUI.openDropdown(target)</code>, <code>window.FNLLAUI.closeDropdown(target)</code>, <code>window.FNLLAUI.openPopover(target)</code>, <code>window.FNLLAUI.closePopover(target)</code>, <code>window.FNLLAUI.showTooltip(target)</code>, <code>window.FNLLAUI.hideTooltip(target)</code> and <code>window.FNLLAUI.refreshScrollspy(target)</code>.</p>
       </article>
     </section>
 

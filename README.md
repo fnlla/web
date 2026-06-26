@@ -84,6 +84,7 @@ If the framework files sit at the site root instead, use `assets/css/fnlla-ui.cs
 The stable browser API lives under `window.FNLLAUI`.
 
 - `window.FNLLAUI.init(root)` performs idempotent initialization for HTML injected after first page load.
+- `window.FNLLAUI.setTheme(theme, target)` applies the documented `default` or `dark` theme to `body` by default, or to a specific wrapper when a selector or element is provided.
 - `window.FNLLAUI.showToast(target)` and the matching hide helper support non-blocking notification flows.
 - `window.FNLLAUI.showOffcanvas(target)` and the matching hide helper support side-panel workflows.
 - Modal, dropdown, popover, tooltip and scrollspy helpers are documented in `docs/api.html`.
@@ -129,6 +130,8 @@ For releases, keep the flow lightweight and repeatable:
 
 The repository root is the maintainer workspace. Generated outputs should not be treated as hand-authored sources.
 
+The docs browser behavior bundle under `docs/assets/docs.js` is generated during publish from readable source modules under `src/docs/js/`.
+
 Authoritative maintainer scripts:
 
 - `scripts/fnlla-ui-manifest.mjs` defines source ordering, docs pages and the runtime export contract.
@@ -164,9 +167,12 @@ Treat these as public, supported outputs:
 Treat these as maintainer-only internals:
 
 - `src/`
+- `src/docs/js/`
 - `scripts/`
 - `docs/guides/*.md`
-- `docs/assets/docs.css` and the docs shell around the runtime demos
+- `docs/assets/docs.css`
+- `docs/assets/docs.js`
+- the docs shell around the runtime demos
 
 The docs shell is documentation-specific, but component demos should still render from the same shared runtime shipped in `assets/css/fnlla-ui.css` and `assets/js/fnlla-ui.js`.
 
@@ -176,7 +182,9 @@ The docs shell is documentation-specific, but component demos should still rende
 - Component classification guide: `docs/component-classification.html`
 - Team usage and maintenance guide: `docs/team-usage-and-maintenance.html`
 - Docs stylesheet: `docs/assets/docs.css` for documentation-only shell and presentation helpers around the shared runtime
+- Docs behavior bundle: `docs/assets/docs.js` for documentation-only navigation, theme-toggle, code-highlighting and icon-catalogue behavior
 - Guide sources: `docs/guides/*.md` for maintainer-authored content that publishes into the HTML guide set
+- Docs behavior sources: `src/docs/js/*.js` for maintainer-authored documentation-only JavaScript that publishes into `docs/assets/docs.js`
 - Runtime manifest: `scripts/fnlla-ui-manifest.mjs` for the shared source-ordering and export contract
 - Validator: `scripts/validate-fnlla-ui.mjs` for release-stage structural checks
 - Browser smoke test: `scripts/test-fnlla-ui-browser.mjs` for published runtime behavior checks

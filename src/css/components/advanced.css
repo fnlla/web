@@ -224,7 +224,7 @@
   padding: 1rem;
   border: 1px solid var(--fnlla-color-border);
   border-radius: var(--fnlla-radius-md);
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--fnlla-color-surface-strong);
 }
 
 .offcanvas-panel .btn {
@@ -287,6 +287,12 @@
   transition:
     opacity var(--fnlla-transition-base),
     transform var(--fnlla-transition-base);
+}
+
+[data-fnlla-theme="dark"] .tooltip-panel {
+  background: var(--fnlla-color-code-surface);
+  color: var(--fnlla-color-text);
+  border-color: var(--fnlla-color-primary-border);
 }
 
 .tooltip-panel.is-visible {

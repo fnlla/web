@@ -39,6 +39,19 @@ export function getFnllaUiManifest() {
       ]
     },
     docs: {
+      assets: {
+        jsOutput: "docs/assets/docs.js",
+        js: [
+          "src/docs/js/00-preamble.js",
+          "src/docs/js/nav.js",
+          "src/docs/js/theme.js",
+          "src/docs/js/highlight.js",
+          "src/docs/js/guides.js",
+          "src/docs/js/icons-data.js",
+          "src/docs/js/icons-render.js",
+          "src/docs/js/runtime.js"
+        ]
+      },
       rootShell: {
         themeColor: "#1A4137",
         kicker: "Blueprint documentation",
@@ -124,6 +137,7 @@ export function getFnllaUiManifest() {
         "src/js/core/popover-core.js",
         "src/js/core/tooltip-core.js",
         "src/js/core/scrollspy-core.js",
+        "src/js/core/select-core.js",
         "src/js/modules/dropdown.js",
         "src/js/modules/navigation.js",
         "src/js/modules/tabs.js",
@@ -133,6 +147,9 @@ export function getFnllaUiManifest() {
         "src/js/modules/offcanvas.js",
         "src/js/modules/popover.js",
         "src/js/modules/tooltip.js",
+        "src/js/modules/select-utils.js",
+        "src/js/modules/select-menu.js",
+        "src/js/modules/select.js",
         "src/js/modules/range.js",
         "src/js/modules/scrollspy.js",
         "src/js/core/runtime.js"

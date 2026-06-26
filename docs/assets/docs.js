@@ -12,6 +12,117 @@
 
 (function () {
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var docsThemeStorageKey = "fnlla-ui-docs-theme";
+  var docsThemeColors = {
+    default: "#1A4137",
+    dark: "#0B1220"
+  };
+
+  function initDocsNav() {
+    var nav = document.querySelector(".doc-nav");
+
+    if (!nav) {
+      return;
+    }
+
+    var toggle = nav.querySelector("[data-doc-nav-toggle]");
+    var panel = nav.querySelector("[data-doc-nav-panel]");
+    var mobileQuery = window.matchMedia ? window.matchMedia("(max-width: 47.9375rem)") : null;
+
+    if (!toggle || !panel || !mobileQuery) {
+      return;
+    }
+
+    function syncNavState(isOpen) {
+      nav.classList.toggle("is-open", isOpen);
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      panel.hidden = !isOpen;
+    }
+
+    function syncNavMode() {
+      if (mobileQuery.matches) {
+        syncNavState(false);
+        return;
+      }
+
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      panel.hidden = false;
+    }
+
+    toggle.addEventListener("click", function () {
+      if (!mobileQuery.matches) {
+        return;
+      }
+
+      syncNavState(panel.hidden);
+    });
+
+    if (typeof mobileQuery.addEventListener === "function") {
+      mobileQuery.addEventListener("change", syncNavMode);
+    } else if (typeof mobileQuery.addListener === "function") {
+      mobileQuery.addListener(syncNavMode);
+    }
+
+    syncNavMode();
+  }
+
+  function normalizeDocsTheme(theme) {
+    return theme === "dark" ? "dark" : "default";
+  }
+
+  function readStoredDocsTheme() {
+    try {
+      return normalizeDocsTheme(window.localStorage.getItem(docsThemeStorageKey));
+    } catch (error) {
+      return "default";
+    }
+  }
+
+  function storeDocsTheme(theme) {
+    try {
+      window.localStorage.setItem(docsThemeStorageKey, normalizeDocsTheme(theme));
+    } catch (error) {
+      return;
+    }
+  }
+
+  function applyDocsTheme(theme) {
+    var normalizedTheme = normalizeDocsTheme(theme);
+    var themeToggle = document.querySelector("[data-doc-theme-toggle]");
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    if (window.FNLLAUI && typeof window.FNLLAUI.setTheme === "function") {
+      window.FNLLAUI.setTheme(normalizedTheme);
+    } else if (document.body) {
+      document.body.setAttribute("data-fnlla-theme", normalizedTheme);
+    }
+
+    if (themeToggle) {
+      themeToggle.checked = normalizedTheme === "dark";
+    }
+
+    if (themeMeta) {
+      themeMeta.setAttribute("content", docsThemeColors[normalizedTheme]);
+    }
+  }
+
+  function initDocsThemeToggle() {
+    var themeToggle = document.querySelector("[data-doc-theme-toggle]");
+    var initialTheme = readStoredDocsTheme();
+
+    applyDocsTheme(initialTheme);
+
+    if (!themeToggle) {
+      return;
+    }
+
+    themeToggle.addEventListener("change", function () {
+      var nextTheme = themeToggle.checked ? "dark" : "default";
+      applyDocsTheme(nextTheme);
+      storeDocsTheme(nextTheme);
+    });
+  }
 
   function escapeHtml(text) {
     return String(text)
@@ -998,6 +1109,9 @@
 
     renderIconCatalogue(state);
   }
+
+  initDocsNav();
+  initDocsThemeToggle();
 
   if (document.body) {
     highlightCodeWithin(document.body);
