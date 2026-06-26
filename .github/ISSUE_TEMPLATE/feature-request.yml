@@ -4,6 +4,9 @@ title: "[Feature]: "
 labels:
   - enhancement
 body:
+  - type: markdown
+    attributes:
+      value: FNLLA UI is a proprietary shared framework. Requests that only serve one downstream website may be redirected out of the framework scope.
   - type: textarea
     id: problem
     attributes:

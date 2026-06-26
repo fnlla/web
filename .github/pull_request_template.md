@@ -2,6 +2,8 @@
 
 Describe the change in a few direct sentences and explain why it belongs in FNLLA UI now.
 
+If this change may be security-sensitive, stop and follow `SECURITY.md` instead of opening a normal PR.
+
 ## Scope
 
 - Runtime CSS:
@@ -29,3 +31,4 @@ Describe the change in a few direct sentences and explain why it belongs in FNLL
 - [ ] Placeholder copy or demo-only content was reviewed for docs quality
 - [ ] New selectors, hooks or helpers are intentional and consistent with existing naming
 - [ ] I checked whether this change affects current GitHub issues or milestone work
+- [ ] I reviewed `.github/CONTRIBUTING.md` when the change affects workflow or contribution expectations

@@ -5,6 +5,9 @@ labels:
   - bug
   - testing
 body:
+  - type: markdown
+    attributes:
+      value: If this may be a security vulnerability, stop and follow `SECURITY.md` instead of filing a public bug.
   - type: textarea
     id: summary
     attributes:

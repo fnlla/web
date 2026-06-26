@@ -188,6 +188,8 @@ export function validateFramework(options = {}) {
   const readmePath = path.join(repoRoot, "README.md");
   const versionPath = path.join(repoRoot, "VERSION");
   const licensePath = path.join(repoRoot, "LICENSE.md");
+  const codeOfConductPath = path.join(repoRoot, "CODE_OF_CONDUCT.md");
+  const securityPath = path.join(repoRoot, "SECURITY.md");
   const apiDocPath = path.join(docsDir, "api.html");
   const componentClassificationPath = path.join(repoRoot, manifest.docs.guidePages[0].source);
   const cssEntrypointPath = path.join(repoRoot, manifest.runtime.cssOutput);
@@ -202,6 +204,8 @@ export function validateFramework(options = {}) {
   const browserMatrixScriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser-matrix.mjs");
   const browserSmokeDocsInspectionPath = path.join(repoRoot, "scripts", "browser-smoke-docs-inspection.mjs");
   const browserSmokeFixturePath = path.join(repoRoot, "scripts", "test-fixtures", "browser-smoke.html");
+  const contributingPath = path.join(repoRoot, ".github", "CONTRIBUTING.md");
+  const supportPath = path.join(repoRoot, ".github", "SUPPORT.md");
   const githubWorkflowPath = path.join(repoRoot, ".github", "workflows", "fnlla-ui-hardening.yml");
   const errors = [];
   let version = "";
@@ -464,6 +468,10 @@ export function validateFramework(options = {}) {
       "scripts/test-fnlla-ui-browser.mjs",
       "scripts/test-fnlla-ui-browser-matrix.mjs",
       "LICENSE.md",
+      "CODE_OF_CONDUCT.md",
+      "SECURITY.md",
+      ".github/CONTRIBUTING.md",
+      ".github/SUPPORT.md",
       "dist/fnlla-ui/",
       "window.FNLLAUI.init(root)",
       "window.FNLLAUI.setTheme(theme, target)",
@@ -525,6 +533,69 @@ export function validateFramework(options = {}) {
     [expectedProject, expectedOwner, "productions executed by TechAyo LTD"].forEach((requiredText) => {
       if (!license.includes(requiredText)) {
         errors.push(`LICENSE.md: missing required text '${requiredText}'`);
+      }
+    });
+  }
+
+  if (!pathExists(codeOfConductPath)) {
+    errors.push("CODE_OF_CONDUCT.md: missing file");
+  } else {
+    const codeOfConduct = readText(codeOfConductPath);
+    [
+      "TechAyo LTD",
+      "FNLLA UI Code of Conduct",
+      "https://techayo.co.uk"
+    ].forEach((requiredText) => {
+      if (!codeOfConduct.includes(requiredText)) {
+        errors.push(`CODE_OF_CONDUCT.md: missing required text '${requiredText}'`);
+      }
+    });
+  }
+
+  if (!pathExists(securityPath)) {
+    errors.push("SECURITY.md: missing file");
+  } else {
+    const security = readText(securityPath);
+    [
+      "Security Policy",
+      "TechAyo LTD",
+      "https://techayo.co.uk",
+      "Do not open public GitHub issues"
+    ].forEach((requiredText) => {
+      if (!security.includes(requiredText)) {
+        errors.push(`SECURITY.md: missing required text '${requiredText}'`);
+      }
+    });
+  }
+
+  if (!pathExists(contributingPath)) {
+    errors.push(".github/CONTRIBUTING.md: missing file");
+  } else {
+    const contributing = readText(contributingPath);
+    [
+      "Contributing to FNLLA UI",
+      "TechAyo LTD",
+      "SECURITY.md",
+      "LICENSE.md"
+    ].forEach((requiredText) => {
+      if (!contributing.includes(requiredText)) {
+        errors.push(`.github/CONTRIBUTING.md: missing required text '${requiredText}'`);
+      }
+    });
+  }
+
+  if (!pathExists(supportPath)) {
+    errors.push(".github/SUPPORT.md: missing file");
+  } else {
+    const support = readText(supportPath);
+    [
+      "FNLLA UI Support",
+      "SECURITY.md",
+      "CODE_OF_CONDUCT.md",
+      "https://techayo.co.uk"
+    ].forEach((requiredText) => {
+      if (!support.includes(requiredText)) {
+        errors.push(`.github/SUPPORT.md: missing required text '${requiredText}'`);
       }
     });
   }

@@ -1,5 +1,14 @@
 blank_issues_enabled: false
 contact_links:
+  - name: FNLLA UI Contributing Guide
+    url: https://github.com/fnlla/ui/blob/main/.github/CONTRIBUTING.md
+    about: Review repository scope, contribution expectations and maintainer workflow before opening implementation work.
+  - name: FNLLA UI Security Policy
+    url: https://github.com/fnlla/ui/blob/main/SECURITY.md
+    about: Use this private route for vulnerabilities instead of opening a public issue.
+  - name: FNLLA UI Support
+    url: https://github.com/fnlla/ui/blob/main/.github/SUPPORT.md
+    about: Find the right support, licensing or conduct route for non-bug requests.
   - name: FNLLA UI README
     url: https://github.com/fnlla/ui/blob/main/README.md
     about: Review the runtime contract, docs routes and repository structure before opening an issue.

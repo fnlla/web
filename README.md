@@ -32,6 +32,13 @@ The current repository identity is defined by three state files that should stay
 - `VERSION`
 - `LICENSE.md`
 
+Repository participation and disclosure rules also rely on:
+
+- `CODE_OF_CONDUCT.md`
+- `SECURITY.md`
+- `.github/CONTRIBUTING.md`
+- `.github/SUPPORT.md`
+
 ## Who it is for
 
 Use FNLLA UI when a project needs:
@@ -116,6 +123,7 @@ Use the repository-level GitHub templates when work moves from implementation in
 - docs/runtime parity reports when the shipped contract and demo surface drift apart
 - feature proposals when additive capability needs explicit scope and runtime impact
 - the pull request template for runtime, docs, dist and accessibility confirmation
+- the contributing and security guidance for repository workflow, disclosure and business-boundary questions
 
 For releases, keep the flow lightweight and repeatable:
 
@@ -140,6 +148,10 @@ Authoritative maintainer scripts:
 - `scripts/validate-fnlla-ui.mjs` checks repository structure, docs sync, runtime export generation and release metadata.
 - `scripts/test-fnlla-ui-browser.mjs` runs the real browser smoke test against the published runtime.
 - `scripts/test-fnlla-ui-browser-matrix.mjs` replays the smoke flow across every detected supported local browser, including Firefox when available.
+- `.github/CONTRIBUTING.md` defines contribution expectations for this proprietary repository.
+- `CODE_OF_CONDUCT.md` defines the professional behavior standard for repository collaboration.
+- `SECURITY.md` defines the private vulnerability reporting route and response expectations.
+- `.github/SUPPORT.md` routes support, licensing and repository-governance questions.
 
 Recommended maintainer sequence:
 
@@ -188,6 +200,10 @@ The docs shell is documentation-specific, but component demos should still rende
 - Runtime manifest: `scripts/fnlla-ui-manifest.mjs` for the shared source-ordering and export contract
 - Validator: `scripts/validate-fnlla-ui.mjs` for release-stage structural checks
 - Browser smoke test: `scripts/test-fnlla-ui-browser.mjs` for published runtime behavior checks
+- Code of Conduct: `CODE_OF_CONDUCT.md` for collaboration and moderation standards
+- Contributing guide: `.github/CONTRIBUTING.md` for repository workflow and scope expectations
 - License: `LICENSE.md` for proprietary commercial usage terms
+- Security policy: `SECURITY.md` for vulnerability reporting and disclosure handling
+- Support routing: `.github/SUPPORT.md` for issue, licensing and contact guidance
 
 Use the docs to review component behavior and copy the patterns you need into real project templates.
