@@ -98,8 +98,12 @@ body::before {
   padding: 1.5rem;
   border: 1px solid var(--fnlla-doc-shell-border);
   border-radius: var(--fnlla-radius-lg);
-  background: var(--fnlla-color-surface);
+  background:
+    radial-gradient(circle at top left, rgba(47, 101, 235, 0.10), transparent 36%),
+    radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.10), transparent 40%),
+    var(--fnlla-color-surface);
   box-shadow: var(--fnlla-doc-shell-shadow);
+  overflow: hidden;
 }
 
 .doc-header-bar,
@@ -203,6 +207,29 @@ body::before {
   display: grid;
   gap: var(--fnlla-space-4);
   align-items: stretch;
+}
+
+.doc-brand {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--fnlla-space-4);
+  align-items: center;
+}
+
+.doc-brand-copy {
+  min-width: 0;
+}
+
+.doc-brand-mark {
+  display: block;
+  width: 5.25rem;
+  height: 5.25rem;
+  border-radius: 1.35rem;
+  box-shadow: 0 1rem 2rem rgba(21, 48, 79, 0.16);
+}
+
+body[data-fnlla-theme="dark"] .doc-brand-mark {
+  box-shadow: 0 1rem 2rem rgba(2, 6, 23, 0.34);
 }
 
 .doc-overline,
@@ -1428,6 +1455,17 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
   .doc-display {
     max-width: none;
     font-size: var(--fnlla-doc-display-size-mobile);
+  }
+
+  .doc-brand {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    gap: var(--fnlla-space-3);
+  }
+
+  .doc-brand-mark {
+    width: 4.5rem;
+    height: 4.5rem;
   }
 
   .doc-card-grid,

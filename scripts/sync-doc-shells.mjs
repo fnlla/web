@@ -73,6 +73,7 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
   const displayTitle = page.displayTitle || shell.displayTitle;
   const lead = page.lead || shell.lead;
   const kicker = page.kicker || shell.kicker;
+  const brandMarkHref = "./assets/brand/fnlla-ui-mark.svg";
 
   return `<!DOCTYPE html>
 <!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
@@ -85,6 +86,7 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="${escapeHtml(shell.themeColor)}">
   <title>${escapeHtml(page.title)}</title>
+  <link rel="icon" href="${escapeHtml(brandMarkHref)}" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
   <link rel="stylesheet" href="./assets/docs.css">
 </head>
@@ -101,10 +103,13 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
         <span class="doc-status">Stable ${escapeHtml(version)}</span>
       </div>
       <div class="doc-header-grid">
-        <div>
-          <p class="doc-overline">${escapeHtml(overline)}</p>
-          <p class="doc-display">${escapeHtml(displayTitle)}</p>
-          <p class="doc-lead">${escapeHtml(lead)}</p>
+        <div class="doc-brand">
+          <img class="doc-brand-mark" src="${escapeHtml(brandMarkHref)}" alt="" width="84" height="84" decoding="async">
+          <div class="doc-brand-copy">
+            <p class="doc-overline">${escapeHtml(overline)}</p>
+            <p class="doc-display">${escapeHtml(displayTitle)}</p>
+            <p class="doc-lead">${escapeHtml(lead)}</p>
+          </div>
         </div>
       </div>
     </header>

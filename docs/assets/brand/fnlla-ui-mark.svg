@@ -1,0 +1,20 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fnlla-ui-mark-shell" x1="18" y1="14" x2="110" y2="114" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2F65EB"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+    <linearGradient id="fnlla-ui-mark-core" x1="36" y1="34" x2="86" y2="95" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F2B57"/>
+      <stop offset="1" stop-color="#16325B"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="#EEF3FB"/>
+  <path d="M64 10L105.569 34V82L64 106L22.431 82V34L64 10Z" fill="url(#fnlla-ui-mark-shell)"/>
+  <path d="M64 22L95.177 40V76L64 94L32.823 76V40L64 22Z" fill="white" fill-opacity="0.94"/>
+  <path d="M43 36C43 33.791 44.791 32 47 32H54C56.209 32 58 33.791 58 36V90H47C44.791 90 43 88.209 43 86V36Z" fill="url(#fnlla-ui-mark-core)"/>
+  <path d="M53 36C53 33.791 54.791 32 57 32H80C82.209 32 84 33.791 84 36V42C84 44.209 82.209 46 80 46H53V36Z" fill="#2F65EB"/>
+  <path d="M53 56C53 53.791 54.791 52 57 52H74C76.209 52 78 53.791 78 56V62C78 64.209 76.209 66 74 66H53V56Z" fill="#0F766E"/>
+  <rect x="69" y="72" width="16" height="16" rx="5.5" fill="#DCEAFD"/>
+  <path d="M75.5 76.75H81.5V82.75H75.5V76.75Z" fill="#16325B"/>
+</svg>

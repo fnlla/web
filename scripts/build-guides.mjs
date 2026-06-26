@@ -250,6 +250,7 @@ function renderGuidePage({ page, version, contentHtml, documentTitle, toc, rootP
   const docsCssHref = getRelativeDocHref(page.output, "docs/assets/docs.css");
   const docsJsHref = getRelativeDocHref(page.output, "docs/assets/docs.js");
   const runtimeJsHref = getRelativeDocHref(page.output, "assets/js/fnlla-ui.js");
+  const brandMarkHref = getRelativeDocHref(page.output, "docs/assets/brand/fnlla-ui-mark.svg");
   const rootNavPrefix = getRelativeDocHref(page.output, "docs/index.html").replace(/index\.html$/, "");
   const bodyClassAttribute = page.bodyClass ? ` class="${escapeHtml(page.bodyClass)}"` : "";
   const guideNavigation = guidePages.map((entry) => {
@@ -277,6 +278,7 @@ ${toc.map((item) => `              <a class="doc-guide-toc-link doc-guide-toc-le
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1A4137">
   <title>${escapeHtml(page.title)}</title>
+  <link rel="icon" href="${escapeHtml(brandMarkHref)}" type="image/svg+xml">
   <link rel="stylesheet" href="${escapeHtml(runtimeCssHref)}">
   <link rel="stylesheet" href="${escapeHtml(docsCssHref)}">
 </head>
@@ -290,10 +292,13 @@ ${toc.map((item) => `              <a class="doc-guide-toc-link doc-guide-toc-le
         <span class="doc-status">Stable ${escapeHtml(version)}</span>
       </div>
       <div class="doc-header-grid">
-        <div>
-          <p class="doc-overline">${escapeHtml(page.heroLabel)}</p>
-          <p class="doc-display">FNLLA UI - Guides</p>
-          <p class="doc-lead">${escapeHtml(page.description)}</p>
+        <div class="doc-brand">
+          <img class="doc-brand-mark" src="${escapeHtml(brandMarkHref)}" alt="" width="84" height="84" decoding="async">
+          <div class="doc-brand-copy">
+            <p class="doc-overline">${escapeHtml(page.heroLabel)}</p>
+            <p class="doc-display">FNLLA UI - Guides</p>
+            <p class="doc-lead">${escapeHtml(page.description)}</p>
+          </div>
         </div>
       </div>
     </header>

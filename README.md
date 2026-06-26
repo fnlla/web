@@ -46,6 +46,14 @@ Repository participation and disclosure rules also rely on:
 - `.github/RELEASE_TEMPLATE.md`
 - `.github/SUPPORT.md`
 
+Repository identity and GitHub presentation assets rely on:
+
+- `docs/assets/brand/fnlla-ui-mark.svg`
+- `docs/assets/brand/fnlla-ui-mark-grid.svg`
+- `docs/assets/brand/fnlla-ui-mark-shield.svg`
+- `docs/assets/brand/fnlla-ui-social-preview.png`
+- `docs/assets/brand/fnlla-ui-avatar.png`
+
 ## Who it is for
 
 Use FNLLA UI when a project needs:
@@ -155,6 +163,7 @@ Authoritative maintainer scripts:
 - `scripts/validate-fnlla-ui.mjs` checks repository structure, docs sync, runtime export generation and release metadata.
 - `scripts/test-fnlla-ui-browser.mjs` runs the real browser smoke test against the published runtime.
 - `scripts/test-fnlla-ui-browser-matrix.mjs` replays the smoke flow across every detected supported local browser, including Firefox when available.
+- `scripts/render-brand-previews.mjs` regenerates the GitHub social preview and avatar PNG assets from the committed brand preview HTML.
 - `.github/CONTRIBUTING.md` defines contribution expectations for this proprietary repository.
 - `CODE_OF_CONDUCT.md` defines the professional behavior standard for repository collaboration.
 - `SECURITY.md` defines the private vulnerability reporting route and response expectations.
@@ -202,11 +211,13 @@ The docs shell is documentation-specific, but component demos should still rende
 - Team usage and maintenance guide: `docs/team-usage-and-maintenance.html`
 - Docs stylesheet: `docs/assets/docs.css` for documentation-only shell and presentation helpers around the shared runtime
 - Docs behavior bundle: `docs/assets/docs.js` for documentation-only navigation, theme-toggle, code-highlighting and icon-catalogue behavior
+- Brand assets: `docs/assets/brand/` for the primary mark, alternate mark proposals and GitHub-ready preview imagery
 - Guide sources: `docs/guides/*.md` for maintainer-authored content that publishes into the HTML guide set
 - Docs behavior sources: `src/docs/js/*.js` for maintainer-authored documentation-only JavaScript that publishes into `docs/assets/docs.js`
 - Runtime manifest: `scripts/fnlla-ui-manifest.mjs` for the shared source-ordering and export contract
 - Validator: `scripts/validate-fnlla-ui.mjs` for release-stage structural checks
 - Browser smoke test: `scripts/test-fnlla-ui-browser.mjs` for published runtime behavior checks
+- Brand preview renderer: `scripts/render-brand-previews.mjs` for reproducible GitHub avatar and social preview PNG exports
 - Code of Conduct: `CODE_OF_CONDUCT.md` for collaboration and moderation standards
 - Contributing guide: `.github/CONTRIBUTING.md` for repository workflow and scope expectations
 - License: `LICENSE.md` for proprietary commercial usage terms
