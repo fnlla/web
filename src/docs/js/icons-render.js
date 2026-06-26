@@ -1,3 +1,9 @@
+  /*
+    Rebuild the category button list from current state.
+
+    The button list is regenerated on each render so pressed state, counts and
+    focus restoration always describe the same filtered dataset the grid shows.
+  */
   function renderIconCategoryButtons(state) {
     var categoryListElement = state.categoryListElement;
 
@@ -38,6 +44,7 @@
     categoryListElement.appendChild(fragment);
   }
 
+  /* Replace the grid with one explicit empty state when no records match. */
   function renderIconEmptyState(state) {
     state.iconGrid.innerHTML = "";
 
@@ -56,6 +63,13 @@
     state.iconGrid.appendChild(emptyState);
   }
 
+  /*
+    Render progress and the "load more" control for the current result set.
+
+    The catalogue intentionally pages results in the UI even though all metadata
+    is already local. That keeps the docs responsive on smaller devices when the
+    icon set is large, while still avoiding any network fetch.
+  */
   function renderIconActions(state, totalCount, visibleCount) {
     var actionsElement = state.actionsElement;
 
@@ -102,6 +116,12 @@
     actionsElement.appendChild(loadMoreButton);
   }
 
+  /*
+    Render only the currently visible slice of icon records.
+
+    Each card is built from the shared template so preview image, runtime path and
+    copy affordance remain structurally consistent even as filtering changes.
+  */
   function renderIconCards(state, records) {
     var template = state.cardTemplate;
     var grid = state.iconGrid;
@@ -154,6 +174,14 @@
     grid.appendChild(fragment);
   }
 
+  /*
+    Central catalogue render pass.
+
+    This function owns the relationship between search query, active category,
+    visible slice size, assistive text and focus restoration. Keeping those pieces
+    in one place reduces the risk of the sidebar, results label and grid drifting
+    out of sync after a future maintenance change.
+  */
   function renderIconCatalogue(state, options) {
     var renderOptions = options || {};
     var query = String(state.searchInput.value || "").trim();
@@ -226,6 +254,13 @@
     }
   }
 
+  /*
+    Bind the catalogue only when the required docs shell elements exist.
+
+    The icons page is the only place that ships the full interactive catalogue,
+    so every dependency is checked up front. Failing soft here prevents unrelated
+    docs pages from paying a runtime penalty or logging noisy errors.
+  */
   function initIconCatalogue() {
     var iconGrid = document.getElementById("icon-grid");
 
@@ -277,6 +312,11 @@
       visibleCount: 60
     };
 
+    /*
+      A new query should start from the first visible slice again.
+      renderIconCatalogue will restore the default page size whenever we do not
+      explicitly request visible-count preservation.
+    */
     searchInput.addEventListener("input", function () {
       renderIconCatalogue(state);
     });

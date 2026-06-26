@@ -49,6 +49,7 @@ Repository participation and disclosure rules also rely on:
 Repository identity and GitHub presentation assets rely on:
 
 - `docs/assets/brand/fnlla-ui-mark.svg`
+- `docs/assets/brand/fnlla-ui-mark-technical.svg`
 - `docs/assets/brand/fnlla-ui-mark-grid.svg`
 - `docs/assets/brand/fnlla-ui-mark-shield.svg`
 - `docs/assets/brand/fnlla-ui-social-preview.png`

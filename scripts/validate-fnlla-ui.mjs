@@ -211,6 +211,7 @@ export function validateFramework(options = {}) {
   const githubWorkflowPath = path.join(repoRoot, ".github", "workflows", "fnlla-ui-hardening.yml");
   const brandAssetsDir = path.join(repoRoot, "docs", "assets", "brand");
   const brandMarkPath = path.join(brandAssetsDir, "fnlla-ui-mark.svg");
+  const brandTechnicalPath = path.join(brandAssetsDir, "fnlla-ui-mark-technical.svg");
   const brandGridPath = path.join(brandAssetsDir, "fnlla-ui-mark-grid.svg");
   const brandShieldPath = path.join(brandAssetsDir, "fnlla-ui-mark-shield.svg");
   const brandReadmePath = path.join(brandAssetsDir, "README.md");
@@ -486,6 +487,7 @@ export function validateFramework(options = {}) {
       ".github/RELEASE_TEMPLATE.md",
       ".github/SUPPORT.md",
       "docs/assets/brand/fnlla-ui-mark.svg",
+      "docs/assets/brand/fnlla-ui-mark-technical.svg",
       "docs/assets/brand/fnlla-ui-social-preview.png",
       "docs/assets/brand/fnlla-ui-avatar.png",
       "dist/fnlla-ui/",
@@ -649,6 +651,7 @@ export function validateFramework(options = {}) {
 
   [
     brandMarkPath,
+    brandTechnicalPath,
     brandGridPath,
     brandShieldPath,
     brandReadmePath,
@@ -667,6 +670,7 @@ export function validateFramework(options = {}) {
     [
       "FNLLA UI brand assets",
       "fnlla-ui-mark.svg",
+      "fnlla-ui-mark-technical.svg",
       "fnlla-ui-social-preview.png",
       "fnlla-ui-avatar.png"
     ].forEach((requiredText) => {

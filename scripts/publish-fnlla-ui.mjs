@@ -22,6 +22,11 @@ import {
   writeText
 } from "./tooling-support.mjs";
 
+/*
+  Map manifest-declared relative source paths into absolute filesystem paths once,
+  so every later helper can stay focused on validation or publishing rather than
+  repeating path-join logic inline.
+*/
 function resolveSourcePaths(repoRoot, relativePaths) {
   return relativePaths.map((relativePath) => path.join(repoRoot, relativePath));
 }
@@ -34,7 +39,14 @@ function assertSourceFilesExist(label, paths) {
   }
 }
 
-/* Concatenate readable runtime modules while preserving explicit source order. */
+/*
+  Concatenate source modules exactly in manifest order.
+
+  The framework intentionally publishes readable runtime files instead of bundling
+  through a minifier or module graph. That keeps diffs reviewable, makes browser
+  debugging less opaque, and lets validation reason about one explicit ordering
+  contract declared in scripts/fnlla-ui-manifest.mjs.
+*/
 function getPublishedContent(paths, banner = "") {
   const body = paths.map((targetPath) => readText(targetPath).trimEnd()).join("\r\n\r\n");
   return banner
@@ -42,7 +54,13 @@ function getPublishedContent(paths, banner = "") {
     : `${body}\r\n`;
 }
 
-/* Read the semantic version marker from the repository state file. */
+/*
+  Read the semantic version marker from VERSION.
+
+  Several maintainers scripts, release notes and generated exports depend on one
+  shared version value. Failing here is preferable to quietly producing assets
+  with a missing or ambiguous version state.
+*/
 function getCurrentVersion(repoRoot) {
   const versionLines = readText(path.join(repoRoot, "VERSION")).split(/\r?\n/);
   const version = (versionLines[0] || "").trim();
@@ -54,7 +72,13 @@ function getCurrentVersion(repoRoot) {
   return version;
 }
 
-/* Generate the downstream runtime-export README copied into dist/fnlla-ui/. */
+/*
+  Generate the README copied into the downstream dist handoff.
+
+  This file is intentionally short: downstream teams need a stable explanation of
+  the runtime contract, not a mirror of maintainer-only docs. The repository root
+  remains the source of truth for operational guidance and governance files.
+*/
 function getDistReadmeContent(version) {
   return `# FNLLA UI runtime export
 
@@ -90,7 +114,14 @@ ${version}
 `;
 }
 
-/* Rebuild the generated runtime-only export that downstream projects can copy. */
+/*
+  Rebuild dist/fnlla-ui/ from the published runtime snapshot.
+
+  The dist export is not a separate build target with different semantics; it is
+  a curated copy of the already-published runtime plus the minimum release files
+  that downstream consumers need for traceability. Rebuilding it from scratch each
+  time prevents stale files from surviving a framework refactor.
+*/
 export function writeRuntimeExport(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const manifest = options.manifest || getFnllaUiManifest();
@@ -111,7 +142,19 @@ export function writeRuntimeExport(options = {}) {
   return distRootPath;
 }
 
-/* Publish the full runtime snapshot and refresh every generated documentation surface. */
+/*
+  Publish every generated framework surface in one ordered pass.
+
+  Order matters:
+  1. Validate that declared source inputs exist.
+  2. Publish runtime CSS and JS.
+  3. Publish docs-only JS that depends on source docs modules.
+  4. Rebuild top-level docs shells and generated guide pages.
+  5. Refresh the dist export from the newly published runtime.
+
+  Keeping this sequencing centralized helps eliminate maintenance drift between
+  "what the repo says is published" and "what downstream projects actually get".
+*/
 export function publishFramework(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const manifest = getFnllaUiManifest();
@@ -143,6 +186,7 @@ export function publishFramework(options = {}) {
   };
 }
 
+/* Keep CLI output human-readable so local release work is easy to audit. */
 function runCli() {
   const result = publishFramework();
   console.log(`Published FNLLA UI runtime CSS: ${result.cssTargetPath}`);

@@ -16,11 +16,19 @@ export function getFnllaUiManifest() {
 */`;
 
   return {
+    /* Repository identity used by validation, docs copy and legal metadata. */
     project: {
       name: "FNLLA UI",
       owner: "TechAyo LTD (techayo.co.uk)",
       origin: "Finella Gardens in Dundee, UK"
     },
+    /*
+      Stable published runtime contract.
+
+      This block defines what counts as the downstream-consumable framework
+      surface, including the dist export and the minimum icon bundle files that
+      validation expects to ship with every release line.
+    */
     runtime: {
       cssBanner: cssRuntimeBanner,
       cssOutput: "assets/css/fnlla-ui.css",
@@ -38,6 +46,13 @@ export function getFnllaUiManifest() {
         "assets/icons/search.svg"
       ]
     },
+    /*
+      Browser-facing docs contract.
+
+      Root pages are maintained as hand-authored HTML bodies wrapped in a shared
+      shell, while guide pages are generated from markdown sources. Keeping both
+      declarations here allows publish and validation to reason about one docs map.
+    */
     docs: {
       assets: {
         jsOutput: "docs/assets/docs.js",
@@ -104,6 +119,13 @@ export function getFnllaUiManifest() {
         }
       ]
     },
+    /*
+      Ordered readable source inputs for the published runtime.
+
+      These arrays are intentionally explicit. They double as build order,
+      review surface and maintenance documentation for how the framework is
+      assembled without a separate bundler pipeline.
+    */
     source: {
       css: [
         "src/css/tokens.css",
@@ -155,6 +177,7 @@ export function getFnllaUiManifest() {
         "src/js/core/runtime.js"
       ]
     },
+    /* Release-state files that must stay aligned before publication. */
     release: {
       stateFiles: [
         "README.md",

@@ -4,7 +4,8 @@ This directory holds the repository identity assets used by the FNLLA UI docs sh
 
 ## Primary mark
 
-- `fnlla-ui-mark.svg`: preferred production mark for docs, favicon usage, avatar export and GitHub-facing preview imagery
+- `fnlla-ui-mark.svg`: preferred production mark for docs, favicon usage, avatar export and GitHub-facing preview imagery; this version now leans more premium and composed
+- `fnlla-ui-mark-technical.svg`: sharper technical/tooling direction that emphasizes system wiring, runtime structure and component orchestration
 
 ## Alternate proposals
 

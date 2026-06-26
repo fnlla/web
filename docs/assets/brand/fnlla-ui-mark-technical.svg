@@ -1,0 +1,28 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fnlla-ui-technical-shell" x1="20" y1="16" x2="108" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B2144"/>
+      <stop offset="1" stop-color="#16325B"/>
+    </linearGradient>
+    <linearGradient id="fnlla-ui-technical-ring" x1="29" y1="22" x2="95" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7FB3FF"/>
+      <stop offset="0.55" stop-color="#2F65EB"/>
+      <stop offset="1" stop-color="#4FD1C5"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="#091A34"/>
+  <rect x="16" y="16" width="96" height="96" rx="24" fill="url(#fnlla-ui-technical-shell)"/>
+  <path d="M64 24L94.311 41.5V76.5L64 94L33.689 76.5V41.5L64 24Z" stroke="url(#fnlla-ui-technical-ring)" stroke-width="6"/>
+  <path d="M44 40C44 36.686 46.686 34 50 34H56C59.314 34 62 36.686 62 40V88H50C46.686 88 44 85.314 44 82V40Z" fill="#E9F1FE"/>
+  <path d="M56 40C56 36.686 58.686 34 62 34H82C85.314 34 88 36.686 88 40V46C88 49.314 85.314 52 82 52H56V40Z" fill="#2F65EB"/>
+  <path d="M56 58C56 54.686 58.686 52 62 52H73C76.314 52 79 54.686 79 58V64C79 67.314 76.314 70 73 70H56V58Z" fill="#4FD1C5"/>
+  <path d="M62 43L80 58" stroke="#7FB3FF" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M31 41.5H43" stroke="#4FD1C5" stroke-width="3" stroke-linecap="round"/>
+  <path d="M85 84H97" stroke="#4FD1C5" stroke-width="3" stroke-linecap="round"/>
+  <path d="M64 95V106" stroke="#7FB3FF" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="28" cy="41.5" r="4" fill="#4FD1C5"/>
+  <circle cx="100" cy="84" r="4" fill="#4FD1C5"/>
+  <circle cx="64" cy="110" r="4" fill="#7FB3FF"/>
+  <rect x="69" y="73" width="16" height="16" rx="6" fill="#D7E7FF"/>
+  <path d="M74 78H80V84H74V78Z" fill="#16325B"/>
+</svg>

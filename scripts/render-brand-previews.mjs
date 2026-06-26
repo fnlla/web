@@ -18,6 +18,13 @@ import {
   pathExists
 } from "./tooling-support.mjs";
 
+/*
+  Each preview job renders a committed HTML composition into a committed bitmap.
+
+  That lets GitHub-facing art stay reproducible: maintainers can review the HTML
+  source, regenerate the PNG locally, and avoid one-off design exports that drift
+  away from repository state.
+*/
 const PREVIEW_JOBS = [
   {
     source: path.join("docs", "assets", "brand", "fnlla-ui-social-preview.html"),
@@ -33,7 +40,14 @@ const PREVIEW_JOBS = [
   }
 ];
 
-/* Render the committed preview compositions through a local Chromium browser. */
+/*
+  Render the committed preview compositions through a local Chromium browser.
+
+  We use the browser itself rather than a drawing library because the preview
+  layouts are authored as normal HTML/CSS. That keeps typography, gradients and
+  layout behavior consistent with what GitHub will effectively rasterize from the
+  uploaded image, while still letting us keep everything inside the repo.
+*/
 export function renderBrandPreviews(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const browser = options.browserPath ? { path: options.browserPath } : getPreferredChromiumBrowser();
@@ -52,6 +66,13 @@ export function renderBrandPreviews(options = {}) {
 
     ensureDirectory(path.dirname(outputPath));
 
+    /*
+      The browser flags bias toward deterministic screenshots:
+      - headless/new keeps rendering modern and scriptable
+      - hide-scrollbars avoids accidental chrome in exported art
+      - force-color-profile=srgb reduces cross-device color surprises
+      - virtual-time-budget gives gradients/fonts/layout a moment to settle
+    */
     const result = spawnSync(
       browser.path,
       [
@@ -80,6 +101,7 @@ export function renderBrandPreviews(options = {}) {
   });
 }
 
+/* Support direct local execution during manual GitHub-branding refresh work. */
 if (isDirectExecution(import.meta.url)) {
   renderBrandPreviews();
 }

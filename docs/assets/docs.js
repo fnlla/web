@@ -18,6 +18,14 @@
     dark: "#0B1220"
   };
 
+  /*
+    Keep the docs navigation predictable across breakpoints.
+
+    On mobile the nav behaves like a collapsible panel so it does not steal too
+    much vertical space from the article content. On larger screens the same nav
+    must immediately return to an always-visible state, even if the user last
+    interacted with it in mobile mode and left it open or closed.
+  */
   function initDocsNav() {
     var nav = document.querySelector(".doc-nav");
 
@@ -33,12 +41,23 @@
       return;
     }
 
+    /*
+      One helper updates the three pieces that must never drift apart:
+      CSS open state, ARIA-expanded state and the hidden state of the panel.
+    */
     function syncNavState(isOpen) {
       nav.classList.toggle("is-open", isOpen);
       toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       panel.hidden = !isOpen;
     }
 
+    /*
+      Breakpoint changes are authoritative.
+
+      If we enter mobile mode, start closed so the nav does not cover content.
+      If we leave mobile mode, force the panel visible so desktop never inherits
+      a collapsed state that only makes sense on smaller screens.
+    */
     function syncNavMode() {
       if (mobileQuery.matches) {
         syncNavState(false);
@@ -50,6 +69,7 @@
       panel.hidden = false;
     }
 
+    /* Only let the button act as a disclosure control in mobile mode. */
     toggle.addEventListener("click", function () {
       if (!mobileQuery.matches) {
         return;
@@ -64,6 +84,7 @@
       mobileQuery.addListener(syncNavMode);
     }
 
+    /* Reconcile the initial state immediately on first load. */
     syncNavMode();
   }
 
@@ -488,26 +509,38 @@
     });
   }
 
+  /* Normalize optional array-like inputs so data loading can fail soft. */
   function getArray(value) {
     return Array.isArray(value) ? value : [];
   }
 
+  /* Shared DOM text helper used by both render and status code paths. */
   function setText(element, value) {
     if (element) {
       element.textContent = value;
     }
   }
 
+  /* Keep arrays unique without depending on Set ordering semantics. */
   function uniquePush(list, value) {
     if (value && list.indexOf(value) === -1) {
       list.push(value);
     }
   }
 
+  /* Central string comparator so every icon list sorts the same way. */
   function sortStrings(left, right) {
     return String(left).localeCompare(String(right));
   }
 
+  /*
+    Normalize category metadata into one stable shape.
+
+    The docs bundle accepts both compact tuple syntax and object syntax because
+    maintainers may regenerate icon metadata in different formats over time.
+    Everything is converted here so the rest of the catalogue code can operate on
+    one predictable category API.
+  */
   function normalizeIconCategoryDefinitions(categoryDefinitions) {
     var categoryTitleMap = {};
     var categoryOrderMap = {};
@@ -544,6 +577,13 @@
     };
   }
 
+  /*
+    Resolve category references used by compact icon records.
+
+    Compact data may reference categories by number to shrink generated payloads.
+    This helper maps those numeric references back to the canonical category name
+    and also supports plain string names for readability and backwards-compat.
+  */
   function resolveIconCategoryName(rawCategory, categoryDefinitions) {
     var indexedCategoryDefinition;
 
@@ -564,6 +604,13 @@
     return String(rawCategory || "").trim();
   }
 
+  /*
+    Build one normalized icon record used by the interactive catalogue.
+
+    This is the point where the catalogue contract is established: canonical file
+    name, aliases, category titles and search text are all derived here so render
+    code later only consumes ready-to-use records instead of repeating cleanup.
+  */
   function buildIconRecord(canonicalName, aliasNames, categoryNames, categoryTitleMap, categoryOrderMap) {
     var normalizedCanonicalName = String(canonicalName || "").trim();
     var normalizedAliasNames = [];
@@ -623,6 +670,13 @@
     };
   }
 
+  /*
+    Build records from the current compact data shape generated for docs.
+
+    Compact data is the preferred path because it is smaller and already groups
+    most icon metadata into near-final records, while still allowing category
+    references to be stored as short numeric indexes.
+  */
   function buildIconRecordsFromCompactData(categoryDefinitions, categoryTitleMap, categoryOrderMap) {
     return getArray(window.FNLLA_ICON_RECORDS).map(function (rawRecord) {
       var canonicalName = "";
@@ -649,6 +703,13 @@
     });
   }
 
+  /*
+    Build records from the older split-window globals.
+
+    This legacy path exists so older docs payloads or transitional generated files
+    can still produce the same final catalogue records without breaking the page.
+    Canonical names collapse duplicate aliases that map to the same shipped SVG.
+  */
   function buildIconRecordsFromLegacyData(categoryTitleMap, categoryOrderMap) {
     var iconNames = getArray(window.FNLLA_ICON_NAMES);
     var categoryMap = window.FNLLA_ICON_CATEGORY_MAP && typeof window.FNLLA_ICON_CATEGORY_MAP === "object"
@@ -697,6 +758,11 @@
     });
   }
 
+  /*
+    Prefer compact records when available, otherwise transparently fall back to
+    the legacy globals. The rest of the docs code never needs to know which data
+    source produced the final record list.
+  */
   function buildIconCatalogueData() {
     var categoryDefinitions = getArray(window.FNLLA_ICON_CATEGORIES);
     var categoryMetadata = normalizeIconCategoryDefinitions(categoryDefinitions);
@@ -718,6 +784,13 @@
     };
   }
 
+  /*
+    Search ranking favors canonical-name precision before broader matches.
+
+    This ranking does not decide inclusion, only ordering. Exact canonical names
+    should appear first, then prefix matches, then aliases, then category-text
+    matches, so maintainers can still find the real shipped file quickly.
+  */
   function getIconSearchRank(record, normalizedQuery) {
     if (!normalizedQuery) {
       return 0;
@@ -742,6 +815,10 @@
     return 4;
   }
 
+  /*
+    Filter by active category and free-text query, then rank results so the most
+    likely canonical match appears first without hiding valid broader matches.
+  */
   function filterIconRecords(records, activeCategory, query) {
     var normalizedQuery = String(query || "").trim().toLowerCase();
 
@@ -761,6 +838,7 @@
     });
   }
 
+  /* Precompute category counts once so the category sidebar can stay lightweight. */
   function getIconCategoryCounts(records) {
     var counts = { all: records.length };
 
@@ -773,6 +851,13 @@
     return counts;
   }
 
+  /*
+    Copy runtime icon paths with a permissive browser fallback.
+
+    Some docs environments may not expose the async Clipboard API. The fallback
+    keeps the catalogue usable in stricter or older browsers rather than silently
+    losing the copy action altogether.
+  */
   function copyTextWithFallback(text, onSuccess, onFailure) {
     function fallbackCopy() {
       var textarea = document.createElement("textarea");
@@ -807,6 +892,7 @@
     fallbackCopy();
   }
 
+  /* Show a short-lived per-card status message without stacking timers. */
   function setIconCopyStatus(statusElement, message) {
     if (!statusElement) {
       return;
@@ -824,6 +910,12 @@
     }, 2200);
   }
 
+  /*
+    Rebuild the category button list from current state.
+
+    The button list is regenerated on each render so pressed state, counts and
+    focus restoration always describe the same filtered dataset the grid shows.
+  */
   function renderIconCategoryButtons(state) {
     var categoryListElement = state.categoryListElement;
 
@@ -864,6 +956,7 @@
     categoryListElement.appendChild(fragment);
   }
 
+  /* Replace the grid with one explicit empty state when no records match. */
   function renderIconEmptyState(state) {
     state.iconGrid.innerHTML = "";
 
@@ -882,6 +975,13 @@
     state.iconGrid.appendChild(emptyState);
   }
 
+  /*
+    Render progress and the "load more" control for the current result set.
+
+    The catalogue intentionally pages results in the UI even though all metadata
+    is already local. That keeps the docs responsive on smaller devices when the
+    icon set is large, while still avoiding any network fetch.
+  */
   function renderIconActions(state, totalCount, visibleCount) {
     var actionsElement = state.actionsElement;
 
@@ -928,6 +1028,12 @@
     actionsElement.appendChild(loadMoreButton);
   }
 
+  /*
+    Render only the currently visible slice of icon records.
+
+    Each card is built from the shared template so preview image, runtime path and
+    copy affordance remain structurally consistent even as filtering changes.
+  */
   function renderIconCards(state, records) {
     var template = state.cardTemplate;
     var grid = state.iconGrid;
@@ -980,6 +1086,14 @@
     grid.appendChild(fragment);
   }
 
+  /*
+    Central catalogue render pass.
+
+    This function owns the relationship between search query, active category,
+    visible slice size, assistive text and focus restoration. Keeping those pieces
+    in one place reduces the risk of the sidebar, results label and grid drifting
+    out of sync after a future maintenance change.
+  */
   function renderIconCatalogue(state, options) {
     var renderOptions = options || {};
     var query = String(state.searchInput.value || "").trim();
@@ -1052,6 +1166,13 @@
     }
   }
 
+  /*
+    Bind the catalogue only when the required docs shell elements exist.
+
+    The icons page is the only place that ships the full interactive catalogue,
+    so every dependency is checked up front. Failing soft here prevents unrelated
+    docs pages from paying a runtime penalty or logging noisy errors.
+  */
   function initIconCatalogue() {
     var iconGrid = document.getElementById("icon-grid");
 
@@ -1103,6 +1224,11 @@
       visibleCount: 60
     };
 
+    /*
+      A new query should start from the first visible slice again.
+      renderIconCatalogue will restore the default page size whenever we do not
+      explicitly request visible-count preservation.
+    */
     searchInput.addEventListener("input", function () {
       renderIconCatalogue(state);
     });
