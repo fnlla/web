@@ -1,5 +1,11 @@
 # FNLLA UI
 
+[![Release](https://img.shields.io/badge/release-v1.0.0-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.0)
+[![Hardening](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml)
+[![License](https://img.shields.io/badge/license-proprietary-111827?style=flat-square)](./LICENSE.md)
+[![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
+[![Docs](https://img.shields.io/badge/docs-12%20pages-c26d00?style=flat-square)](./docs/guides.html)
+
 ## What FNLLA UI is
 
 FNLLA UI is a standalone internal UI kit for static and server-rendered websites. It packages reusable layout, component and interaction patterns without coupling them to any specific client, brand or CMS.
@@ -37,6 +43,7 @@ Repository participation and disclosure rules also rely on:
 - `CODE_OF_CONDUCT.md`
 - `SECURITY.md`
 - `.github/CONTRIBUTING.md`
+- `.github/RELEASE_TEMPLATE.md`
 - `.github/SUPPORT.md`
 
 ## Who it is for
@@ -131,7 +138,7 @@ For releases, keep the flow lightweight and repeatable:
 2. Publish runtime files and generated docs.
 3. Validate runtime assets, docs parity and browser behavior.
 4. Publish the release commit to `main`.
-5. Create the version tag and GitHub release notes.
+5. Create the version tag and GitHub release notes using `.github/RELEASE_TEMPLATE.md`.
 6. Open follow-up work in the next milestone when cleanup or regression hardening remains.
 
 ## Maintainer workflow
@@ -203,6 +210,7 @@ The docs shell is documentation-specific, but component demos should still rende
 - Code of Conduct: `CODE_OF_CONDUCT.md` for collaboration and moderation standards
 - Contributing guide: `.github/CONTRIBUTING.md` for repository workflow and scope expectations
 - License: `LICENSE.md` for proprietary commercial usage terms
+- Release template: `.github/RELEASE_TEMPLATE.md` for ASCII-safe GitHub release notes
 - Security policy: `SECURITY.md` for vulnerability reporting and disclosure handling
 - Support routing: `.github/SUPPORT.md` for issue, licensing and contact guidance
 

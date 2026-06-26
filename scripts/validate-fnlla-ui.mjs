@@ -205,6 +205,7 @@ export function validateFramework(options = {}) {
   const browserSmokeDocsInspectionPath = path.join(repoRoot, "scripts", "browser-smoke-docs-inspection.mjs");
   const browserSmokeFixturePath = path.join(repoRoot, "scripts", "test-fixtures", "browser-smoke.html");
   const contributingPath = path.join(repoRoot, ".github", "CONTRIBUTING.md");
+  const releaseTemplatePath = path.join(repoRoot, ".github", "RELEASE_TEMPLATE.md");
   const supportPath = path.join(repoRoot, ".github", "SUPPORT.md");
   const githubWorkflowPath = path.join(repoRoot, ".github", "workflows", "fnlla-ui-hardening.yml");
   const errors = [];
@@ -471,6 +472,7 @@ export function validateFramework(options = {}) {
       "CODE_OF_CONDUCT.md",
       "SECURITY.md",
       ".github/CONTRIBUTING.md",
+      ".github/RELEASE_TEMPLATE.md",
       ".github/SUPPORT.md",
       "dist/fnlla-ui/",
       "window.FNLLAUI.init(root)",
@@ -580,6 +582,21 @@ export function validateFramework(options = {}) {
     ].forEach((requiredText) => {
       if (!contributing.includes(requiredText)) {
         errors.push(`.github/CONTRIBUTING.md: missing required text '${requiredText}'`);
+      }
+    });
+  }
+
+  if (!pathExists(releaseTemplatePath)) {
+    errors.push(".github/RELEASE_TEMPLATE.md: missing file");
+  } else {
+    const releaseTemplate = readText(releaseTemplatePath);
+    [
+      "FNLLA UI Release Notes Template",
+      "Stable runtime contract: assets/css/fnlla-ui.css, assets/js/fnlla-ui.js and assets/icons/",
+      "Use plain ASCII"
+    ].forEach((requiredText) => {
+      if (!releaseTemplate.includes(requiredText)) {
+        errors.push(`.github/RELEASE_TEMPLATE.md: missing required text '${requiredText}'`);
       }
     });
   }
