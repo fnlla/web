@@ -693,7 +693,6 @@ export function validateFramework(options = {}) {
     const apiDoc = readText(apiDocPath);
     [
       expectedOwner,
-      "FNLLA PHP",
       "window.FNLLAUI.init(root)",
       "window.FNLLAUI.setTheme(theme, target)",
       "window.FNLLAUI.showOffcanvas(target)",

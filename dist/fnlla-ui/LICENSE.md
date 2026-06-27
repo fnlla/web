@@ -37,7 +37,7 @@ The repository root, the published `assets/` runtime tree and the generated `dis
 
 8. Trademark and naming
 
-The FNLLA name, the FNLLA UI product name and related framework-line references including FNLLA PHP are reserved identifiers associated with TechAyo LTD and their documented origin.
+The FNLLA name and the FNLLA UI product name are reserved identifiers associated with TechAyo LTD and their documented origin.
 
 9. Warranty
 
