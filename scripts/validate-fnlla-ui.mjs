@@ -202,7 +202,6 @@ export function validateFramework(options = {}) {
   const manifestScriptPath = path.join(repoRoot, "scripts", "fnlla-ui-manifest.mjs");
   const browserSmokeScriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser.mjs");
   const browserMatrixScriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser-matrix.mjs");
-  const brandPreviewScriptPath = path.join(repoRoot, "scripts", "render-brand-previews.mjs");
   const browserSmokeDocsInspectionPath = path.join(repoRoot, "scripts", "browser-smoke-docs-inspection.mjs");
   const browserSmokeFixturePath = path.join(repoRoot, "scripts", "test-fixtures", "browser-smoke.html");
   const contributingPath = path.join(repoRoot, ".github", "CONTRIBUTING.md");
@@ -214,7 +213,6 @@ export function validateFramework(options = {}) {
   const brandDarkSvgPath = path.join(brandAssetsDir, "fnlla-ui-dark.svg");
   const brandGithubSvgPath = path.join(brandAssetsDir, "fnlla-github.svg");
   const brandReadmePath = path.join(brandAssetsDir, "README.md");
-  const brandGithubPreviewHtmlPath = path.join(brandAssetsDir, "fnlla-github-preview.html");
   const brandGithubPngPath = path.join(brandAssetsDir, "fnlla-github.png");
   const errors = [];
   let version = "";
@@ -486,7 +484,6 @@ export function validateFramework(options = {}) {
       "scripts/publish-fnlla-ui.mjs",
       "scripts/fnlla-ui-manifest.mjs",
       "scripts/build-guides.mjs",
-      "scripts/render-brand-previews.mjs",
       "scripts/test-fnlla-ui-browser.mjs",
       "scripts/test-fnlla-ui-browser-matrix.mjs",
       "LICENSE.md",
@@ -642,27 +639,11 @@ export function validateFramework(options = {}) {
     });
   }
 
-  if (!pathExists(brandPreviewScriptPath)) {
-    errors.push("scripts/render-brand-previews.mjs: missing file");
-  } else {
-    const brandPreviewScript = readText(brandPreviewScriptPath);
-    [
-      "renderBrandPreviews",
-      "fnlla-github-preview.html",
-      "A Chromium-based browser is required to render FNLLA UI brand previews"
-    ].forEach((requiredText) => {
-      if (!brandPreviewScript.includes(requiredText)) {
-        errors.push(`scripts/render-brand-previews.mjs: missing required text '${requiredText}'`);
-      }
-    });
-  }
-
   [
     brandSvgPath,
     brandDarkSvgPath,
     brandGithubSvgPath,
     brandReadmePath,
-    brandGithubPreviewHtmlPath,
     brandGithubPngPath
   ].forEach((brandPath) => {
     if (!pathExists(brandPath)) {
@@ -681,19 +662,6 @@ export function validateFramework(options = {}) {
     ].forEach((requiredText) => {
       if (!brandReadme.includes(requiredText)) {
         errors.push(`docs/assets/brand/README.md: missing required text '${requiredText}'`);
-      }
-    });
-  }
-
-  if (pathExists(brandGithubPreviewHtmlPath)) {
-    const brandGithubPreviewHtml = readText(brandGithubPreviewHtmlPath);
-    [
-      "fnlla-github.svg",
-      "FNLLA GitHub organization avatar preview",
-      "theme-color"
-    ].forEach((requiredText) => {
-      if (!brandGithubPreviewHtml.includes(requiredText)) {
-        errors.push(`docs/assets/brand/fnlla-github-preview.html: missing required text '${requiredText}'`);
       }
     });
   }

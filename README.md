@@ -1,6 +1,6 @@
 # FNLLA UI
 
-[![Release](https://img.shields.io/badge/release-v1.0.0-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.0)
+[![Release](https://img.shields.io/badge/release-v1.0.1-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.1)
 [![Hardening](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml)
 [![License](https://img.shields.io/badge/license-proprietary-111827?style=flat-square)](./LICENSE.md)
 [![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
@@ -162,7 +162,6 @@ Authoritative maintainer scripts:
 - `scripts/validate-fnlla-ui.mjs` checks repository structure, docs sync, runtime export generation and release metadata.
 - `scripts/test-fnlla-ui-browser.mjs` runs the real browser smoke test against the published runtime.
 - `scripts/test-fnlla-ui-browser-matrix.mjs` replays the smoke flow across every detected supported local browser, including Firefox when available.
-- `scripts/render-brand-previews.mjs` regenerates the GitHub-ready preview PNG files from the committed logo source.
 - `.github/CONTRIBUTING.md` defines contribution expectations for this proprietary repository.
 - `CODE_OF_CONDUCT.md` defines the professional behavior standard for repository collaboration.
 - `SECURITY.md` defines the private vulnerability reporting route and response expectations.
@@ -216,7 +215,6 @@ The docs shell is documentation-specific, but component demos should still rende
 - Runtime manifest: `scripts/fnlla-ui-manifest.mjs` for the shared source-ordering and export contract
 - Validator: `scripts/validate-fnlla-ui.mjs` for release-stage structural checks
 - Browser smoke test: `scripts/test-fnlla-ui-browser.mjs` for published runtime behavior checks
-- Brand preview renderer: `scripts/render-brand-previews.mjs` for reproducible social preview and avatar PNG exports
 - Code of Conduct: `CODE_OF_CONDUCT.md` for collaboration and moderation standards
 - Contributing guide: `.github/CONTRIBUTING.md` for repository workflow and scope expectations
 - License: `LICENSE.md` for proprietary commercial usage terms
