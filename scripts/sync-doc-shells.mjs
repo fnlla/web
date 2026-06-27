@@ -8,6 +8,7 @@
 */
 
 import path from "node:path";
+import { renderDocBrandMark } from "./doc-brand-mark.mjs";
 import { getFnllaUiManifest } from "./fnlla-ui-manifest.mjs";
 import {
   compareNormalizedContent,
@@ -103,14 +104,13 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
         <span class="doc-status">Stable ${escapeHtml(version)}</span>
       </div>
       <div class="doc-header-grid">
+        <p class="doc-overline">${escapeHtml(overline)}</p>
         <div class="doc-brand">
-          <img class="doc-brand-mark" src="${escapeHtml(brandMarkHref)}" alt="" width="108" height="100" decoding="async">
-          <div class="doc-brand-copy">
-            <p class="doc-overline">${escapeHtml(overline)}</p>
-            <p class="doc-display">${escapeHtml(displayTitle)}</p>
-            <p class="doc-lead">${escapeHtml(lead)}</p>
-          </div>
+          ${renderDocBrandMark()}
+          <span class="doc-brand-separator" aria-hidden="true">-</span>
+          <p class="doc-display">${escapeHtml(displayTitle)}</p>
         </div>
+        <p class="doc-lead">${escapeHtml(lead)}</p>
       </div>
     </header>
 

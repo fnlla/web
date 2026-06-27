@@ -625,12 +625,12 @@ export async function runBrowserSmokeTest({ repoRoot, browserPath, browserFamily
     const docsFailures = [];
 
     if (sourceResult.result === "pass" && distResult.result === "pass") {
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/index.html`, "FNLLA UI Docs", "Overview", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`, "FNLLA UI Components", "Components", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/forms.html`, "FNLLA UI Forms", "Forms", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/sections.html`, "FNLLA UI Sections", "Sections", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/distribution.html`, "FNLLA UI Distribution", "Distribution", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/guides.html`, "FNLLA UI Guides", "Guides", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/index.html`, "Overview - FNLLA UI Documentation", "Overview", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`, "Components - FNLLA UI Documentation", "Components", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/forms.html`, "Forms - FNLLA UI Documentation", "Forms", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/sections.html`, "Sections - FNLLA UI Documentation", "Sections", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/distribution.html`, "Distribution - FNLLA UI Documentation", "Distribution", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/guides.html`, "Guides - FNLLA UI Documentation", "Guides", minimumRootNavLinks));
       docsFailures.push(...await inspectDocsThemeToggle(client, `http://127.0.0.1:${serverPort}/docs/index.html`));
       docsFailures.push(...await inspectLoadingDocsPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`));
       docsFailures.push(...await inspectFormsLayoutPage(client, `http://127.0.0.1:${serverPort}/docs/forms.html`));

@@ -15,8 +15,8 @@ body {
   color: var(--fnlla-color-text);
   text-rendering: optimizeLegibility;
   background: var(--fnlla-color-bg-alt);
-  --fnlla-doc-display-size: 3.5rem;
-  --fnlla-doc-display-size-mobile: 3rem;
+  --fnlla-doc-display-size: 3.25rem;
+  --fnlla-doc-display-size-mobile: 2.5rem;
   --fnlla-doc-section-title-h1-size: 2.75rem;
   --fnlla-doc-section-title-h2-size: 1.8rem;
   --fnlla-doc-section-title-h3-size: 1.45rem;
@@ -28,9 +28,8 @@ body {
   --fnlla-doc-nav-blur: 0.875rem;
   --fnlla-doc-copy-measure: 44rem;
   --fnlla-doc-shell-border: var(--fnlla-color-border);
-  --fnlla-doc-shell-shadow: 0 1.125rem 2.5rem rgba(21, 48, 79, 0.06);
-  --fnlla-doc-shell-shadow-sm: 0 0.65rem 1.5rem rgba(21, 48, 79, 0.05);
-  --fnlla-doc-shell-highlight: var(--fnlla-color-surface-soft);
+  --fnlla-doc-brand-mark-accent: #2563eb;
+  --fnlla-doc-brand-mark-label: #ffffff;
   --fnlla-doc-code-accent: #0b5cad;
   --fnlla-doc-code-muted: #5f6f85;
   --fnlla-doc-code-property: #8c4f12;
@@ -39,9 +38,8 @@ body {
 }
 
 body[data-fnlla-theme="dark"] {
-  --fnlla-doc-shell-shadow: 0 1.125rem 2.5rem rgba(2, 6, 23, 0.34);
-  --fnlla-doc-shell-shadow-sm: 0 0.65rem 1.5rem rgba(2, 6, 23, 0.28);
-  --fnlla-doc-shell-highlight: rgba(18, 27, 47, 0.92);
+  --fnlla-doc-brand-mark-accent: #60a5fa;
+  --fnlla-doc-brand-mark-label: #0f172a;
   --fnlla-doc-code-accent: #93c5fd;
   --fnlla-doc-code-muted: #a9bad2;
   --fnlla-doc-code-property: #fbbf24;
@@ -93,17 +91,12 @@ body::before {
 
 .doc-header {
   display: grid;
-  gap: var(--fnlla-space-4);
+  gap: var(--fnlla-space-5);
   margin-bottom: var(--fnlla-space-4);
-  padding: 1.5rem;
+  padding: 1.5rem 1.6rem 1.75rem;
   border: 1px solid var(--fnlla-doc-shell-border);
   border-radius: var(--fnlla-radius-lg);
-  background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 32%),
-    radial-gradient(circle at bottom right, rgba(17, 24, 31, 0.06), transparent 34%),
-    var(--fnlla-color-surface);
-  box-shadow: var(--fnlla-doc-shell-shadow);
-  overflow: hidden;
+  background: var(--fnlla-color-surface);
 }
 
 .doc-header-bar,
@@ -205,25 +198,45 @@ body::before {
 
 .doc-header-grid {
   display: grid;
-  gap: var(--fnlla-space-4);
-  align-items: stretch;
+  gap: 0.9rem;
+  align-items: start;
+  max-width: 60rem;
 }
 
 .doc-brand {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--fnlla-space-4);
+  display: flex;
   align-items: center;
-}
-
-.doc-brand-copy {
+  gap: 0.85rem;
   min-width: 0;
+  color: var(--fnlla-color-secondary);
 }
 
 .doc-brand-mark {
   display: block;
-  width: 6.75rem;
+  flex: 0 0 auto;
+  width: 3.1rem;
   height: auto;
+}
+
+.doc-brand-mark-tile {
+  fill: currentColor;
+}
+
+.doc-brand-mark-badge {
+  fill: var(--fnlla-doc-brand-mark-accent);
+}
+
+.doc-brand-mark-label {
+  fill: var(--fnlla-doc-brand-mark-label);
+}
+
+.doc-brand-separator {
+  flex: 0 0 auto;
+  color: inherit;
+  font-family: var(--fnlla-font-heading);
+  font-size: 2.3rem;
+  font-weight: var(--fnlla-font-weight-heavy);
+  line-height: 1;
 }
 
 .doc-overline,
@@ -237,22 +250,21 @@ body::before {
 
 .doc-display {
   margin: 0;
-  color: var(--fnlla-color-secondary);
+  min-width: 0;
+  color: inherit;
   font-family: var(--fnlla-font-heading);
   font-size: var(--fnlla-doc-display-size);
   font-weight: var(--fnlla-font-weight-heavy);
-  letter-spacing: -0.025em;
-  line-height: 1.10;
-  text-wrap: balance;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
 }
 
 .doc-lead {
-  max-width: 48rem;
-  margin: var(--fnlla-space-5) 0 0;
+  max-width: 45rem;
+  margin: 1.65rem 0 0;
   color: var(--fnlla-color-text-muted, var(--fnlla-color-muted));
   font-size: 1.02rem;
-  line-height: 1.72;
-  text-wrap: pretty;
+  line-height: 1.7;
 }
 
 .doc-contract-list li + li {
@@ -382,7 +394,6 @@ body::before {
   border: 1px solid var(--fnlla-doc-shell-border);
   border-radius: var(--fnlla-radius-lg);
   background: var(--fnlla-color-surface);
-  box-shadow: var(--fnlla-doc-shell-shadow-sm);
 }
 
 body:has(.modal:not([hidden])) .doc-nav {
@@ -452,7 +463,6 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
   border: 1px solid var(--fnlla-color-border);
   border-radius: var(--fnlla-radius-md);
   background: var(--fnlla-color-code-surface);
-  box-shadow: inset 0 1px 0 rgba(21, 48, 79, 0.04);
 }
 
 .doc-wrapper code {
@@ -479,7 +489,6 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
   padding: 0.1rem 0.36rem;
   border-radius: 0.42rem;
   border: 1px solid var(--fnlla-doc-shell-border);
-  box-shadow: inset 0 1px 0 var(--fnlla-doc-shell-highlight);
 }
 
 .doc-code-doctype,
@@ -583,7 +592,6 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
   border: 1px solid var(--fnlla-doc-shell-border);
   border-radius: var(--fnlla-radius-lg);
   background: var(--fnlla-color-surface-strong);
-  box-shadow: var(--fnlla-doc-shell-shadow-sm);
 }
 
 .doc-link-grid a {
@@ -595,7 +603,6 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
   transition:
     transform var(--fnlla-transition-base),
     border-color var(--fnlla-transition-base),
-    box-shadow var(--fnlla-transition-base),
     background var(--fnlla-transition-base);
 }
 
@@ -603,7 +610,6 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
 .doc-link-card:focus-visible {
   transform: translateY(-0.125rem);
   border-color: var(--fnlla-color-primary-border);
-  box-shadow: 0 1rem 2.25rem rgba(21, 48, 79, 0.08);
   text-decoration: none;
 }
 
@@ -706,7 +712,6 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
   border: 1px solid var(--fnlla-doc-shell-border);
   border-radius: var(--fnlla-radius-md);
   background: var(--fnlla-color-surface);
-  box-shadow: var(--fnlla-doc-shell-shadow-sm);
 }
 
 .doc-guide-nav,
@@ -947,8 +952,7 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
   transition:
     border-color var(--fnlla-transition-base),
     background var(--fnlla-transition-base),
-    color var(--fnlla-transition-base),
-    box-shadow var(--fnlla-transition-base);
+    color var(--fnlla-transition-base);
 }
 
 .doc-icon-category-button:hover,
@@ -962,7 +966,6 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
 .doc-icon-category-button.is-active {
   border-color: var(--fnlla-color-primary);
   background: var(--fnlla-color-primary-soft);
-  box-shadow: var(--fnlla-doc-shell-shadow-sm);
 }
 
 .doc-icon-category-count {
@@ -1196,35 +1199,26 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
 .loading-panel,
 .loading-surface {
   border-color: var(--fnlla-doc-shell-border);
-  box-shadow: var(--fnlla-doc-shell-shadow-sm);
 }
 
 .loading-showcase .skeleton,
 .loading-showcase .skeleton-line,
 .loading-showcase .skeleton-block {
-  background: linear-gradient(180deg, var(--fnlla-color-primary-soft), var(--fnlla-color-surface-soft));
-  box-shadow: inset 0 0 0 1px var(--fnlla-color-primary-border);
+  background: var(--fnlla-color-surface-soft);
+  border: 1px solid var(--fnlla-color-primary-border);
 }
 
 .loading-showcase .skeleton::after,
 .loading-showcase .skeleton-line::after,
 .loading-showcase .skeleton-block::after {
-  content: "";
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
-  animation: fw-skeleton-wave 1.5s ease infinite;
+  content: none;
 }
 
 [data-fnlla-theme="dark"] .loading-showcase .skeleton,
 [data-fnlla-theme="dark"] .loading-showcase .skeleton-line,
 [data-fnlla-theme="dark"] .loading-showcase .skeleton-block {
-  background: linear-gradient(180deg, var(--fnlla-color-primary-soft), var(--fnlla-color-surface-strong));
-  box-shadow: inset 0 0 0 1px var(--fnlla-color-primary-border);
-}
-
-[data-fnlla-theme="dark"] .loading-showcase .skeleton::after,
-[data-fnlla-theme="dark"] .loading-showcase .skeleton-line::after,
-[data-fnlla-theme="dark"] .loading-showcase .skeleton-block::after {
-  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
+  background: var(--fnlla-color-surface-strong);
+  border: 1px solid var(--fnlla-color-primary-border);
 }
 
 .loading-showcase .skeleton-card,
@@ -1452,13 +1446,19 @@ body:has(.offcanvas:not([hidden])) .doc-nav {
   }
 
   .doc-brand {
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: start;
-    gap: var(--fnlla-space-3);
+    gap: 0.9rem;
   }
 
   .doc-brand-mark {
-    width: 5.5rem;
+    width: 2.75rem;
+  }
+
+  .doc-brand-separator {
+    font-size: 2rem;
+  }
+
+  .doc-lead {
+    margin-top: 1rem;
   }
 
   .doc-card-grid,

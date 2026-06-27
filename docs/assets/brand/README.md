@@ -5,10 +5,10 @@ This directory stores the committed FNLLA UI logo source and the generated previ
 Included files:
 
 - `fnlla-ui.svg`: official logo source provided for FNLLA UI
-- `fnlla-ui-social-preview.html`: HTML composition used to render the social preview image
-- `fnlla-ui-social-preview.png`: GitHub-ready wide social preview export
-- `fnlla-ui-avatar-preview.html`: HTML composition used to render the square avatar image
-- `fnlla-ui-avatar.png`: GitHub-ready square avatar export
+- `fnlla-ui-dark.svg`: dark-mode logo variant for dark surfaces and repository assets
+- `fnlla-github.svg`: simplified organization-avatar mark without the `UI` badge
+- `fnlla-github-preview.html`: HTML composition used to render the GitHub organization avatar
+- `fnlla-github.png`: GitHub-ready organization avatar export
 
 Regenerate the PNG exports after updating the logo source or preview layouts:
 

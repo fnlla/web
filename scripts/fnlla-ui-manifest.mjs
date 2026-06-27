@@ -71,30 +71,30 @@ export function getFnllaUiManifest() {
         themeColor: "#1A4137",
         kicker: "Blueprint documentation",
         overline: "Framework blueprint",
-        displayTitle: "FNLLA UI - Documentation",
+        displayTitle: "Documentation",
         lead: "Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer."
       },
       rootPages: [
-        { href: "./index.html", label: "Overview", title: "FNLLA UI Docs" },
-        { href: "./distribution.html", label: "Distribution", title: "FNLLA UI Distribution" },
-        { href: "./layout.html", label: "Layout", title: "FNLLA UI Layout" },
-        { href: "./components.html", label: "Components", title: "FNLLA UI Components" },
-        { href: "./sections.html", label: "Sections", title: "FNLLA UI Sections" },
-        { href: "./forms.html", label: "Forms", title: "FNLLA UI Forms" },
-        { href: "./utilities.html", label: "Utilities", title: "FNLLA UI Utilities" },
+        { href: "./index.html", label: "Overview", title: "Overview - FNLLA UI Documentation" },
+        { href: "./distribution.html", label: "Distribution", title: "Distribution - FNLLA UI Documentation" },
+        { href: "./layout.html", label: "Layout", title: "Layout - FNLLA UI Documentation" },
+        { href: "./components.html", label: "Components", title: "Components - FNLLA UI Documentation" },
+        { href: "./sections.html", label: "Sections", title: "Sections - FNLLA UI Documentation" },
+        { href: "./forms.html", label: "Forms", title: "Forms - FNLLA UI Documentation" },
+        { href: "./utilities.html", label: "Utilities", title: "Utilities - FNLLA UI Documentation" },
         {
           href: "./icons.html",
           label: "Icons",
-          title: "FNLLA UI Icons",
+          title: "Icons - FNLLA UI Documentation",
           extraScripts: ["./assets/icons-data.js"]
         },
-        { href: "./api.html", label: "API", title: "FNLLA UI API" },
+        { href: "./api.html", label: "API", title: "API - FNLLA UI Documentation" },
         {
           href: "./guides.html",
           label: "Guides",
-          title: "FNLLA UI Guides",
+          title: "Guides - FNLLA UI Documentation",
           overline: "Guide library",
-          displayTitle: "FNLLA UI - Guides",
+          displayTitle: "Guides",
           lead: "Published browser-facing guides for component selection, downstream website work and framework maintenance workflows."
         }
       ],
@@ -102,7 +102,7 @@ export function getFnllaUiManifest() {
         {
           source: "docs/guides/component-classification.md",
           output: "docs/component-classification.html",
-          title: "FNLLA UI Guide: Component Classification",
+          title: "Component Classification Guide - FNLLA UI Documentation",
           navLabel: "Classification",
           heroLabel: "Component selection",
           bodyClass: "doc-guide-classification",
@@ -111,7 +111,7 @@ export function getFnllaUiManifest() {
         {
           source: "docs/guides/team-usage-and-maintenance-en.md",
           output: "docs/team-usage-and-maintenance.html",
-          title: "FNLLA UI Guide: Team Usage and Maintenance",
+          title: "Team Usage and Maintenance Guide - FNLLA UI Documentation",
           navLabel: "Usage",
           heroLabel: "Team workflow",
           bodyClass: "doc-guide-usage",

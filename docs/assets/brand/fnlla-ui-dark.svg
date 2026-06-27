@@ -1,0 +1,14 @@
+<svg width="560" height="520" viewBox="0 0 560 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FNLLA UI logo dark mode">
+  <title>FNLLA UI logo dark mode</title>
+  <g>
+    <rect x="143" y="75" width="82" height="82" rx="12" fill="#EFF6FF"/>
+    <rect x="239" y="75" width="82" height="82" rx="12" fill="#EFF6FF"/>
+    <rect x="335" y="75" width="82" height="82" rx="12" fill="#EFF6FF"/>
+    <rect x="143" y="171" width="82" height="82" rx="12" fill="#EFF6FF"/>
+    <rect x="239" y="171" width="82" height="82" rx="12" fill="#EFF6FF"/>
+    <rect x="143" y="267" width="82" height="82" rx="12" fill="#EFF6FF"/>
+    <rect x="143" y="363" width="82" height="82" rx="12" fill="#EFF6FF"/>
+    <rect x="239" y="361" width="150" height="86" rx="18" fill="#60A5FA"/>
+    <text x="314" y="406" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" fill="#0F172A">UI</text>
+  </g>
+</svg>

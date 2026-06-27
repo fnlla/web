@@ -20,14 +20,8 @@ import {
 
 const PREVIEW_JOBS = [
   {
-    source: path.join("docs", "assets", "brand", "fnlla-ui-social-preview.html"),
-    output: path.join("docs", "assets", "brand", "fnlla-ui-social-preview.png"),
-    width: 1280,
-    height: 640
-  },
-  {
-    source: path.join("docs", "assets", "brand", "fnlla-ui-avatar-preview.html"),
-    output: path.join("docs", "assets", "brand", "fnlla-ui-avatar.png"),
+    source: path.join("docs", "assets", "brand", "fnlla-github-preview.html"),
+    output: path.join("docs", "assets", "brand", "fnlla-github.png"),
     width: 512,
     height: 512
   }

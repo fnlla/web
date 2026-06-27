@@ -49,8 +49,9 @@ Repository participation and disclosure rules also rely on:
 Repository identity assets also rely on:
 
 - `docs/assets/brand/fnlla-ui.svg`
-- `docs/assets/brand/fnlla-ui-social-preview.png`
-- `docs/assets/brand/fnlla-ui-avatar.png`
+- `docs/assets/brand/fnlla-ui-dark.svg`
+- `docs/assets/brand/fnlla-github.svg`
+- `docs/assets/brand/fnlla-github.png`
 
 ## Who it is for
 

@@ -211,11 +211,11 @@ export function validateFramework(options = {}) {
   const githubWorkflowPath = path.join(repoRoot, ".github", "workflows", "fnlla-ui-hardening.yml");
   const brandAssetsDir = path.join(repoRoot, "docs", "assets", "brand");
   const brandSvgPath = path.join(brandAssetsDir, "fnlla-ui.svg");
+  const brandDarkSvgPath = path.join(brandAssetsDir, "fnlla-ui-dark.svg");
+  const brandGithubSvgPath = path.join(brandAssetsDir, "fnlla-github.svg");
   const brandReadmePath = path.join(brandAssetsDir, "README.md");
-  const brandSocialPreviewHtmlPath = path.join(brandAssetsDir, "fnlla-ui-social-preview.html");
-  const brandAvatarPreviewHtmlPath = path.join(brandAssetsDir, "fnlla-ui-avatar-preview.html");
-  const brandSocialPreviewPngPath = path.join(brandAssetsDir, "fnlla-ui-social-preview.png");
-  const brandAvatarPngPath = path.join(brandAssetsDir, "fnlla-ui-avatar.png");
+  const brandGithubPreviewHtmlPath = path.join(brandAssetsDir, "fnlla-github-preview.html");
+  const brandGithubPngPath = path.join(brandAssetsDir, "fnlla-github.png");
   const errors = [];
   let version = "";
 
@@ -247,7 +247,11 @@ export function validateFramework(options = {}) {
   const discoveredRootDocNames = fs.readdirSync(docsDir)
     .filter((name) => name.endsWith(".html"))
     .sort();
-  const rootDocFiles = expectedRootDocNames.map((name) => ({ name, fullPath: path.join(docsDir, name) }));
+  const rootDocFiles = manifest.docs.rootPages.map((page) => ({
+    page,
+    name: path.basename(page.href),
+    fullPath: path.join(docsDir, path.basename(page.href))
+  }));
   const guideFiles = manifest.docs.guidePages.map((page) => ({
     page,
     name: path.basename(page.output),
@@ -281,6 +285,10 @@ export function validateFramework(options = {}) {
         errors.push(`${file.name}: missing required asset reference '${requiredAsset}'`);
       }
     });
+
+    if (!content.includes(`<title>${file.page.title}</title>`)) {
+      errors.push(`${file.name}: document title must match manifest title '${file.page.title}'`);
+    }
 
     if (/(src|href)\s*=\s*"https?:\/\/[^"]*(lucide\.dev|cdn\.jsdelivr\.net|unpkg\.com|npmjs\.com)/i.test(content)) {
       errors.push(`${file.name}: external icon asset reference detected; FNLLA Icons must stay local and offline`);
@@ -409,6 +417,10 @@ export function validateFramework(options = {}) {
       }
     });
 
+    if (!content.includes(`<title>${file.page.title}</title>`)) {
+      errors.push(`${file.name}: document title must match manifest title '${file.page.title}'`);
+    }
+
     const skipMatch = content.match(/<a[^>]*class="[^"]*skip-link[^"]*"[^>]*href="#([^"]+)"/i);
     if (!skipMatch) {
       errors.push(`${file.name}: missing skip-link`);
@@ -484,8 +496,9 @@ export function validateFramework(options = {}) {
       ".github/RELEASE_TEMPLATE.md",
       ".github/SUPPORT.md",
       "docs/assets/brand/fnlla-ui.svg",
-      "docs/assets/brand/fnlla-ui-social-preview.png",
-      "docs/assets/brand/fnlla-ui-avatar.png",
+      "docs/assets/brand/fnlla-ui-dark.svg",
+      "docs/assets/brand/fnlla-github.svg",
+      "docs/assets/brand/fnlla-github.png",
       "dist/fnlla-ui/",
       "window.FNLLAUI.init(root)",
       "window.FNLLAUI.setTheme(theme, target)",
@@ -635,8 +648,7 @@ export function validateFramework(options = {}) {
     const brandPreviewScript = readText(brandPreviewScriptPath);
     [
       "renderBrandPreviews",
-      "fnlla-ui-social-preview.html",
-      "fnlla-ui-avatar-preview.html",
+      "fnlla-github-preview.html",
       "A Chromium-based browser is required to render FNLLA UI brand previews"
     ].forEach((requiredText) => {
       if (!brandPreviewScript.includes(requiredText)) {
@@ -647,11 +659,11 @@ export function validateFramework(options = {}) {
 
   [
     brandSvgPath,
+    brandDarkSvgPath,
+    brandGithubSvgPath,
     brandReadmePath,
-    brandSocialPreviewHtmlPath,
-    brandAvatarPreviewHtmlPath,
-    brandSocialPreviewPngPath,
-    brandAvatarPngPath
+    brandGithubPreviewHtmlPath,
+    brandGithubPngPath
   ].forEach((brandPath) => {
     if (!pathExists(brandPath)) {
       errors.push(`${path.relative(repoRoot, brandPath).replace(/\\/g, "/")}: missing file`);
@@ -663,8 +675,9 @@ export function validateFramework(options = {}) {
     [
       "FNLLA UI brand assets",
       "fnlla-ui.svg",
-      "fnlla-ui-social-preview.png",
-      "fnlla-ui-avatar.png"
+      "fnlla-ui-dark.svg",
+      "fnlla-github.svg",
+      "fnlla-github.png"
     ].forEach((requiredText) => {
       if (!brandReadme.includes(requiredText)) {
         errors.push(`docs/assets/brand/README.md: missing required text '${requiredText}'`);
@@ -672,33 +685,20 @@ export function validateFramework(options = {}) {
     });
   }
 
-  if (pathExists(brandSocialPreviewHtmlPath)) {
-    const brandSocialPreviewHtml = readText(brandSocialPreviewHtmlPath);
+  if (pathExists(brandGithubPreviewHtmlPath)) {
+    const brandGithubPreviewHtml = readText(brandGithubPreviewHtmlPath);
     [
-      "FNLLA UI",
-      "Stable no-build runtime for static and server-rendered websites.",
-      "fnlla-ui.svg"
-    ].forEach((requiredText) => {
-      if (!brandSocialPreviewHtml.includes(requiredText)) {
-        errors.push(`docs/assets/brand/fnlla-ui-social-preview.html: missing required text '${requiredText}'`);
-      }
-    });
-  }
-
-  if (pathExists(brandAvatarPreviewHtmlPath)) {
-    const brandAvatarPreviewHtml = readText(brandAvatarPreviewHtmlPath);
-    [
-      "fnlla-ui.svg",
-      "FNLLA UI",
+      "fnlla-github.svg",
+      "FNLLA GitHub organization avatar preview",
       "theme-color"
     ].forEach((requiredText) => {
-      if (!brandAvatarPreviewHtml.includes(requiredText)) {
-        errors.push(`docs/assets/brand/fnlla-ui-avatar-preview.html: missing required text '${requiredText}'`);
+      if (!brandGithubPreviewHtml.includes(requiredText)) {
+        errors.push(`docs/assets/brand/fnlla-github-preview.html: missing required text '${requiredText}'`);
       }
     });
   }
 
-  [brandSocialPreviewPngPath, brandAvatarPngPath].forEach((imagePath) => {
+  [brandGithubPngPath].forEach((imagePath) => {
     if (pathExists(imagePath) && fs.statSync(imagePath).size < 1024) {
       errors.push(`${path.relative(repoRoot, imagePath).replace(/\\/g, "/")}: file is unexpectedly small`);
     }
