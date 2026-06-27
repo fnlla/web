@@ -10,7 +10,7 @@
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { renderDocBrandMark } from "./doc-brand-mark.mjs";
+import { renderDocBrandBadge, renderDocBrandMark } from "./doc-brand-mark.mjs";
 import { getFnllaUiManifest } from "./fnlla-ui-manifest.mjs";
 import {
   compareNormalizedContent,
@@ -296,6 +296,7 @@ ${toc.map((item) => `              <a class="doc-guide-toc-link doc-guide-toc-le
         <p class="doc-overline">${escapeHtml(page.heroLabel)}</p>
         <div class="doc-brand">
           ${renderDocBrandMark()}
+          ${renderDocBrandBadge()}
           <span class="doc-brand-separator" aria-hidden="true">-</span>
           <p class="doc-display">Guides</p>
         </div>

@@ -2,13 +2,11 @@
   <title>FNLLA UI logo</title>
   <g>
     <rect x="143" y="75" width="82" height="82" rx="12" fill="#11181F"/>
-<rect x="239" y="75" width="82" height="82" rx="12" fill="#11181F"/>
-<rect x="335" y="75" width="82" height="82" rx="12" fill="#11181F"/>
-<rect x="143" y="171" width="82" height="82" rx="12" fill="#11181F"/>
-<rect x="239" y="171" width="82" height="82" rx="12" fill="#11181F"/>
-<rect x="143" y="267" width="82" height="82" rx="12" fill="#11181F"/>
-<rect x="143" y="363" width="82" height="82" rx="12" fill="#11181F"/>
-    <rect x="239" y="361" width="150" height="86" rx="18" fill="#2563EB"/>
-    <text x="314.0" y="406.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" fill="#FFFFFF">UI</text>
+    <rect x="239" y="75" width="82" height="82" rx="12" fill="#11181F"/>
+    <rect x="335" y="75" width="82" height="82" rx="12" fill="#11181F"/>
+    <rect x="143" y="171" width="82" height="82" rx="12" fill="#11181F"/>
+    <rect x="239" y="171" width="82" height="82" rx="12" fill="#11181F"/>
+    <rect x="143" y="267" width="82" height="82" rx="12" fill="#11181F"/>
+    <rect x="143" y="363" width="82" height="82" rx="12" fill="#11181F"/>
   </g>
 </svg>

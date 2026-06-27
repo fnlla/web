@@ -1,7 +1,6 @@
 /*
-  Shared inline FNLLA UI brand mark used inside docs headers.
-  The mark exposes CSS hooks so docs can publish distinct light and dark variants
-  while keeping one shared header template.
+  Shared inline FNLLA UI brand primitives used inside docs headers.
+  The logo stays clean while the small UI badge is generated as a separate element.
 */
 
 export function renderDocBrandMark() {
@@ -13,7 +12,9 @@ export function renderDocBrandMark() {
   <rect class="doc-brand-mark-tile" x="239" y="171" width="82" height="82" rx="12"/>
   <rect class="doc-brand-mark-tile" x="143" y="267" width="82" height="82" rx="12"/>
   <rect class="doc-brand-mark-tile" x="143" y="363" width="82" height="82" rx="12"/>
-  <rect class="doc-brand-mark-badge" x="239" y="361" width="150" height="86" rx="18"/>
-  <text class="doc-brand-mark-label" x="314" y="406" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800">UI</text>
 </svg>`;
+}
+
+export function renderDocBrandBadge() {
+  return `<span class="doc-brand-badge" aria-hidden="true">UI</span>`;
 }

@@ -10,6 +10,8 @@ Included files:
 - `fnlla-github-preview.html`: HTML composition used to render the GitHub organization avatar
 - `fnlla-github.png`: GitHub-ready organization avatar export
 
+The `UI` badge is no longer embedded directly inside the core `fnlla-ui` logo files. Where needed, it should be generated separately by code so the underlying logo asset remains clean and reusable.
+
 Regenerate the PNG exports after updating the logo source or preview layouts:
 
 ```bash
