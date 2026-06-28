@@ -1,6 +1,6 @@
 /*
   Synchronize the shared shell for top-level FNLLA UI docs pages.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
   - rebuild shared docs chrome from manifest metadata
@@ -77,7 +77,7 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
   const brandMarkHref = "./assets/brand/fnlla-ui.svg";
 
   return `<!DOCTYPE html>
-<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
 <html lang="en">
 <head>
   <!-- =========================================================================
@@ -123,7 +123,7 @@ ${renderRootDocsNavigation(rootPages, page.label)}
     ${contentHtml}
     <!-- Ownership footer required on every docs page. -->
     <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
-      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
     </footer>
   </main>
   <!-- Shared runtime for interactive demos used inside the docs. -->

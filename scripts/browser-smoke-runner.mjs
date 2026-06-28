@@ -1,6 +1,6 @@
 /*
   FNLLA UI browser smoke runner.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
   - serve the repository locally without an external dev server

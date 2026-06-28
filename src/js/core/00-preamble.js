@@ -1,13 +1,13 @@
 /*
   ============================================================================
   FNLLA UI SOURCE MODULE: PREAMBLE AND SHARED STATE
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */
 
 /*
   FNLLA UI runtime script.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   Produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
   Public runtime asset names and enhancement markers define the supported runtime contract.
 */
@@ -22,7 +22,7 @@
   "use strict";
 
   /* Public version marker exposed through the runtime API. */
-  var fnllaUiVersion = "1.0.3";
+  var fnllaUiVersion = "1.0.4";
   var openLayerStack = [];
   var openModalStack = [];
   var openOffcanvasStack = [];

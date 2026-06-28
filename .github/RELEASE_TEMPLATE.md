@@ -5,7 +5,7 @@ Use plain ASCII in GitHub release notes so file paths and bullets stay stable ac
 Template:
 
 ```md
-FNLLA UI <version> is the current stable release of the internal FNLLA UI framework.
+FNLLA UI <version> is the current stable release of the maintained FNLLA UI framework.
 
 Highlights
 - Stable runtime contract: assets/css/fnlla-ui.css, assets/js/fnlla-ui.js and assets/icons/

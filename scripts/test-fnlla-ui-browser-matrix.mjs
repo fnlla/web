@@ -1,6 +1,6 @@
 /*
   FNLLA UI browser matrix smoke test.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
   - replay the same smoke flow across every detected supported local browser

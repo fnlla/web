@@ -1,14 +1,14 @@
 # FNLLA UI
 
-[![Release](https://img.shields.io/badge/release-v1.0.3-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.3)
+[![Release](https://img.shields.io/badge/release-v1.0.4-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.4)
 [![Hardening](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml)
-[![License](https://img.shields.io/badge/license-proprietary-111827?style=flat-square)](./LICENSE.md)
+[![License](https://img.shields.io/badge/license-MIT-111827?style=flat-square)](./LICENSE.md)
 [![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
 [![Docs](https://img.shields.io/badge/docs-12%20pages-c26d00?style=flat-square)](./docs/guides.html)
 
 ## What FNLLA UI is
 
-FNLLA UI is a standalone internal UI kit for static and server-rendered websites. It packages reusable layout, component and interaction patterns without coupling them to any specific client, brand or CMS.
+FNLLA UI is a standalone open-source UI kit for static and server-rendered websites. It packages reusable layout, component and interaction patterns without coupling them to any specific client, brand or CMS.
 
 The supported browser runtime contract is intentionally small:
 
@@ -20,7 +20,7 @@ That runtime can be consumed directly from the repository or copied as the gener
 
 FNLLA UI is produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
 
-Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
 ## Name origin
 
@@ -28,16 +28,22 @@ The name `FNLLA` comes from Finella, and more specifically from Finella Gardens 
 
 ## Ownership and license
 
-FNLLA UI is proprietary software owned by TechAyo LTD (techayo.co.uk).
+FNLLA UI is open-source software released under the MIT License by TechAyo LTD (techayo.co.uk).
 
-Its use is governed by `LICENSE.md`, which permits commercial use in productions executed by TechAyo LTD while prohibiting standalone redistribution, resale and unauthorized relicensing.
+Use of the source code is governed by `LICENSE.md`.
 
-The current repository identity is defined by four state files that should stay aligned:
+Support, maintenance and release-cadence expectations are documented in `SUPPORT.md`.
+
+Trademark and branding boundaries for the FNLLA product names and marks are documented in `TRADEMARKS.md`.
+
+The current repository identity is defined by state files that should stay aligned:
 
 - `MANIFEST.json`
 - `README.md`
 - `VERSION`
 - `LICENSE.md`
+- `SUPPORT.md`
+- `TRADEMARKS.md`
 
 Repository participation and disclosure rules also rely on:
 
@@ -62,6 +68,16 @@ Use FNLLA UI when a project needs:
 - reusable marketing and service-oriented components
 - a token-based design system that can be re-themed quickly
 - simple JavaScript for common UI interactions
+
+## Support and release expectations
+
+Anyone may use FNLLA UI under the MIT License, including for self-service and commercial work.
+
+TechAyo LTD does not promise support, maintenance, SLA coverage or a fixed release cadence for third-party projects built on FNLLA UI.
+
+Public updates are shipped when TechAyo LTD decides they are appropriate.
+
+Use `SUPPORT.md` for the exact support boundary and `TRADEMARKS.md` for branding rules.
 
 ## Documentation routes
 
@@ -142,7 +158,7 @@ Use the repository-level GitHub templates when work moves from implementation in
 
 For releases, keep the flow lightweight and repeatable:
 
-1. Align `README.md`, `VERSION` and `LICENSE.md`.
+1. Align `README.md`, `VERSION`, `LICENSE.md`, `SUPPORT.md` and `TRADEMARKS.md`.
 2. Publish runtime files and generated docs.
 3. Validate runtime assets, docs parity and browser behavior.
 4. Publish the release commit to `main`.
@@ -163,9 +179,11 @@ Authoritative maintainer scripts:
 - `scripts/validate-fnlla-ui.mjs` checks repository structure, docs sync, runtime export generation and release metadata.
 - `scripts/test-fnlla-ui-browser.mjs` runs the real browser smoke test against the published runtime.
 - `scripts/test-fnlla-ui-browser-matrix.mjs` replays the smoke flow across every detected supported local browser, including Firefox when available.
-- `.github/CONTRIBUTING.md` defines contribution expectations for this proprietary repository.
+- `.github/CONTRIBUTING.md` defines contribution expectations for this maintainer-led public repository.
 - `CODE_OF_CONDUCT.md` defines the professional behavior standard for repository collaboration.
 - `SECURITY.md` defines the private vulnerability reporting route and response expectations.
+- `SUPPORT.md` defines the no-SLA support boundary and release-cadence expectations for third-party use.
+- `TRADEMARKS.md` defines the branding and endorsement boundary for the FNLLA product names and marks.
 - `.github/SUPPORT.md` routes support, licensing and repository-governance questions.
 
 Recommended maintainer sequence:
@@ -218,7 +236,9 @@ The docs shell is documentation-specific, but component demos should still rende
 - Browser smoke test: `scripts/test-fnlla-ui-browser.mjs` for published runtime behavior checks
 - Code of Conduct: `CODE_OF_CONDUCT.md` for collaboration and moderation standards
 - Contributing guide: `.github/CONTRIBUTING.md` for repository workflow and scope expectations
-- License: `LICENSE.md` for proprietary commercial usage terms
+- License: `LICENSE.md` for MIT usage terms
+- Support policy: `SUPPORT.md` for the public no-support and no-fixed-cadence boundary
+- Trademark notice: `TRADEMARKS.md` for branding and endorsement rules
 - Release template: `.github/RELEASE_TEMPLATE.md` for ASCII-safe GitHub release notes
 - Security policy: `SECURITY.md` for vulnerability reporting and disclosure handling
 - Support routing: `.github/SUPPORT.md` for issue, licensing and contact guidance

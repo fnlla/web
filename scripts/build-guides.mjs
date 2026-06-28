@@ -1,6 +1,6 @@
 /*
   Build browser-facing HTML guide pages from maintainers' markdown sources.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
   - transform guide markdown into docs-shell HTML pages
@@ -272,7 +272,7 @@ ${toc.map((item) => `              <a class="doc-guide-toc-link doc-guide-toc-le
     : "";
 
   return `<!DOCTYPE html>
-<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved. -->
+<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -326,7 +326,7 @@ ${tocMarkup}
     </section>
 
     <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
-      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). All rights reserved.</p>
+      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
     </footer>
   </main>
   <script src="${escapeHtml(runtimeJsHref)}"></script>

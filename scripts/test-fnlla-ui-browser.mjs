@@ -1,6 +1,6 @@
 /*
   FNLLA UI browser smoke test entrypoint.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
   - expose a small CLI around the shared browser smoke runner

@@ -1,6 +1,6 @@
 /*
   FNLLA UI maintainer manifest.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
   - define the authoritative repository contract for publish and validation
@@ -10,7 +10,7 @@
 export function getFnllaUiManifest() {
   const cssRuntimeBanner = `/*
   FNLLA UI runtime stylesheet.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   Produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
   Published from readable source modules in src/css/ via scripts/publish-fnlla-ui.mjs.
 */`;
@@ -40,6 +40,8 @@ export function getFnllaUiManifest() {
       distStaticFiles: [
         "MANIFEST.json",
         "LICENSE.md",
+        "SUPPORT.md",
+        "TRADEMARKS.md",
         "VERSION"
       ],
       requiredIconPaths: [
@@ -76,7 +78,7 @@ export function getFnllaUiManifest() {
         kicker: "Blueprint documentation",
         overline: "Framework blueprint",
         displayTitle: "Documentation",
-        lead: "Runtime contract, component system and delivery guidance for TechAyo projects that need a no-build, production-ready UI layer."
+        lead: "Runtime contract, component system and delivery guidance for teams that need a no-build, production-ready UI layer."
       },
       rootPages: [
         { href: "./index.html", label: "Overview", title: "Overview - FNLLA UI Documentation" },
@@ -187,7 +189,9 @@ export function getFnllaUiManifest() {
         "MANIFEST.json",
         "README.md",
         "VERSION",
-        "LICENSE.md"
+        "LICENSE.md",
+        "SUPPORT.md",
+        "TRADEMARKS.md"
       ]
     }
   };

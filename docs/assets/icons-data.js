@@ -1,7 +1,7 @@
 /*
   ============================================================================
   FNLLA Icons catalogue data for the documentation preview page.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   Source glyphs are distributed locally under assets/icons/.
 
   Compact catalogue format:

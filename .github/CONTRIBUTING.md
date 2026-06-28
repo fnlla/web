@@ -2,14 +2,16 @@
 
 ## First, understand the repository
 
-FNLLA UI is a proprietary framework owned and maintained by TechAyo LTD (techayo.co.uk).
+FNLLA UI is an MIT-licensed framework maintained by TechAyo LTD (techayo.co.uk).
 
-This repository is not run as a general-purpose public open source project. Contributions are reviewed against business scope, product direction, maintenance cost, client impact and licensing constraints.
+This repository is public and contributions are welcome, but it remains maintainer-led. Proposed changes are reviewed against framework scope, product direction, maintenance cost, client impact, security posture and long-term coherence.
 
 Before opening work, read:
 
 - [`README.md`](../README.md)
 - [`LICENSE.md`](../LICENSE.md)
+- [`SUPPORT.md`](../SUPPORT.md)
+- [`TRADEMARKS.md`](../TRADEMARKS.md)
 - [`SECURITY.md`](../SECURITY.md)
 - [`docs/api.html`](../docs/api.html)
 - [`docs/team-usage-and-maintenance.html`](../docs/team-usage-and-maintenance.html)
@@ -30,7 +32,7 @@ The following are commonly declined or redirected:
 
 - one-off project customizations that belong in a downstream website
 - broad redesigns without agreed scope
-- changes that conflict with the proprietary licensing boundary
+- changes that conflict with the documented runtime boundary
 - contributions that introduce unclear ownership or third-party IP risk
 - large unsolicited pull requests that were not discussed first
 
@@ -93,10 +95,10 @@ By submitting a contribution, you represent that:
 
 - you have the right to submit the material
 - the material does not knowingly violate another party's IP or confidentiality rights
-- the contribution may be reviewed, modified, rejected or incorporated by TechAyo LTD under the repository's proprietary licensing model
+- the contribution may be reviewed, modified, rejected or incorporated by TechAyo LTD under the repository's MIT licensing model
 
-Submitting a contribution does not transfer ownership of FNLLA UI or change the repository license.
+Submitting a contribution does not transfer ownership of FNLLA UI branding or change the repository license.
 
 ## Support and contact
 
-For general repository help, usage routing and business-boundary questions, use the guidance in [`.github/SUPPORT.md`](./SUPPORT.md).
+For general repository help, usage routing and business-boundary questions, use the guidance in [`SUPPORT.md`](../SUPPORT.md).

@@ -1,7 +1,7 @@
 /*
   ============================================================================
   Documentation-only behavior for the FNLLA UI docs experience.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Responsibilities:
   - highlight inline and block code without an external syntax library

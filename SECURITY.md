@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-FNLLA UI is maintained as a proprietary internal framework. Security review and remediation focus on the latest maintained repository state and the current stable release line.
+FNLLA UI is maintained as a public MIT-licensed framework. Security review and remediation focus on the latest maintained repository state and the current stable release line.
 
 | Version or branch | Supported |
 | --- | --- |
@@ -56,4 +56,4 @@ The following are usually not treated as security issues unless they create a re
 
 Please give TechAyo LTD a reasonable opportunity to investigate and remediate before public disclosure.
 
-Uncoordinated public disclosure may increase risk for clients, maintainers and downstream deployments.
+Uncoordinated public disclosure may increase risk for maintainers and downstream deployments.

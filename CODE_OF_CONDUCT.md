@@ -50,7 +50,7 @@ TechAyo LTD and repository maintainers may:
 - reject participation that conflicts with this Code of Conduct, repository scope or business obligations
 - restrict or remove access where necessary to protect people, clients, operations or the integrity of the project
 
-Moderation decisions will aim to be proportionate, practical and fair, while recognizing that this is a proprietary business repository rather than an open public commons.
+Moderation decisions will aim to be proportionate, practical and fair, while recognizing that this is a maintainer-led business repository rather than a general community governance commons.
 
 ## Reporting
 
@@ -77,4 +77,4 @@ Depending on severity and context, responses may include:
 
 ## Attribution
 
-This document is informed by the structure and intent of the Contributor Covenant and adapted for a proprietary repository operated by a UK limited company.
+This document is informed by the structure and intent of the Contributor Covenant and adapted for a maintainer-led repository operated by a UK limited company.

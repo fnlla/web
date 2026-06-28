@@ -1,6 +1,6 @@
 /*
   Shared maintainer tooling helpers for FNLLA UI.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
   - centralize path, text and filesystem helpers for publish and validation

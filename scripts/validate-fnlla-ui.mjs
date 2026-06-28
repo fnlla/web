@@ -1,6 +1,6 @@
 /*
   FNLLA UI structural validator.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
   - verify repository structure, release metadata and docs sync
@@ -614,7 +614,7 @@ export function validateFramework(options = {}) {
     errors.push("LICENSE.md: missing file");
   } else {
     const license = readText(licensePath);
-    [expectedProject, expectedOwner, "productions executed by TechAyo LTD"].forEach((requiredText) => {
+    ["MIT License", "Permission is hereby granted", "THE SOFTWARE IS PROVIDED \"AS IS\""].forEach((requiredText) => {
       if (!license.includes(requiredText)) {
         errors.push(`LICENSE.md: missing required text '${requiredText}'`);
       }
@@ -695,6 +695,42 @@ export function validateFramework(options = {}) {
     ].forEach((requiredText) => {
       if (!support.includes(requiredText)) {
         errors.push(`.github/SUPPORT.md: missing required text '${requiredText}'`);
+      }
+    });
+  }
+
+  const rootSupportPath = path.join(repoRoot, "SUPPORT.md");
+  const rootTrademarksPath = path.join(repoRoot, "TRADEMARKS.md");
+
+  if (!pathExists(rootSupportPath)) {
+    errors.push("SUPPORT.md: missing file");
+  } else {
+    const supportPolicy = readText(rootSupportPath);
+    [
+      "Support Policy",
+      "MIT License",
+      "TechAyo LTD",
+      "does not promise",
+      "release cadence"
+    ].forEach((requiredText) => {
+      if (!supportPolicy.includes(requiredText)) {
+        errors.push(`SUPPORT.md: missing required text '${requiredText}'`);
+      }
+    });
+  }
+
+  if (!pathExists(rootTrademarksPath)) {
+    errors.push("TRADEMARKS.md: missing file");
+  } else {
+    const trademarks = readText(rootTrademarksPath);
+    [
+      "Trademark Notice",
+      "TechAyo LTD",
+      "does not grant trademark rights",
+      "official FNLLA UI project"
+    ].forEach((requiredText) => {
+      if (!trademarks.includes(requiredText)) {
+        errors.push(`TRADEMARKS.md: missing required text '${requiredText}'`);
       }
     });
   }
@@ -947,7 +983,7 @@ function runCli() {
 
   console.log("FNLLA UI validation passed.");
   console.log(`Validated docs pages: ${result.docCount}`);
-  console.log("Validated README, release metadata, guide publication, runtime export generation, proprietary license and runtime syntax.");
+  console.log("Validated README, release metadata, guide publication, runtime export generation, MIT license/support/trademark files and runtime syntax.");
 }
 
 if (isDirectExecution(import.meta.url)) {

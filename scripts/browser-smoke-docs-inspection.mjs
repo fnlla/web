@@ -1,6 +1,6 @@
 /*
   Shared browser-side docs inspections for the FNLLA UI smoke runner.
-  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). All rights reserved.
+  Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 */
 
 import { setTimeout as delay } from "node:timers/promises";
