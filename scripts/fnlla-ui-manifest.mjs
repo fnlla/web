@@ -22,7 +22,7 @@ export function getFnllaUiManifest() {
       slug: "fnlla-ui",
       owner: "TechAyo LTD (techayo.co.uk)",
       origin: "Finella Gardens in Dundee, UK",
-      repository: "https://github.com/fnlla/ui.git",
+      repository: "https://github.com/fnlla/web.git",
       sourceOfTruth: "github"
     },
     /*
