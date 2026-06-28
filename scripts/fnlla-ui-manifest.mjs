@@ -82,19 +82,16 @@ export function getFnllaUiManifest() {
       },
       rootPages: [
         { href: "./index.html", label: "Overview", title: "Overview - FNLLA UI Documentation" },
-        { href: "./distribution.html", label: "Distribution", title: "Distribution - FNLLA UI Documentation" },
+        { href: "./contract.html", label: "Contract", title: "Contract - FNLLA UI Documentation" },
         { href: "./layout.html", label: "Layout", title: "Layout - FNLLA UI Documentation" },
         { href: "./components.html", label: "Components", title: "Components - FNLLA UI Documentation" },
         { href: "./sections.html", label: "Sections", title: "Sections - FNLLA UI Documentation" },
-        { href: "./forms.html", label: "Forms", title: "Forms - FNLLA UI Documentation" },
-        { href: "./utilities.html", label: "Utilities", title: "Utilities - FNLLA UI Documentation" },
         {
-          href: "./icons.html",
-          label: "Icons",
-          title: "Icons - FNLLA UI Documentation",
+          href: "./utilities.html",
+          label: "Utilities",
+          title: "Utilities - FNLLA UI Documentation",
           extraScripts: ["./assets/icons-data.js"]
         },
-        { href: "./api.html", label: "API", title: "API - FNLLA UI Documentation" },
         {
           href: "./guides.html",
           label: "Guides",

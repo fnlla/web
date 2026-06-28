@@ -201,7 +201,7 @@ export function validateFramework(options = {}) {
   const licensePath = path.join(repoRoot, "LICENSE.md");
   const codeOfConductPath = path.join(repoRoot, "CODE_OF_CONDUCT.md");
   const securityPath = path.join(repoRoot, "SECURITY.md");
-  const apiDocPath = path.join(docsDir, "api.html");
+  const contractDocPath = path.join(docsDir, "contract.html");
   const componentClassificationPath = path.join(repoRoot, manifest.docs.guidePages[0].source);
   const cssEntrypointPath = path.join(repoRoot, manifest.runtime.cssOutput);
   const runtimeScriptPath = path.join(repoRoot, manifest.runtime.jsOutput);
@@ -785,10 +785,10 @@ export function validateFramework(options = {}) {
     });
   }
 
-  if (!pathExists(apiDocPath)) {
-    errors.push("docs/api.html: missing file");
+  if (!pathExists(contractDocPath)) {
+    errors.push("docs/contract.html: missing file");
   } else {
-    const apiDoc = readText(apiDocPath);
+    const contractDoc = readText(contractDocPath);
     [
       expectedOwner,
       "window.FNLLAUI.init(root)",
@@ -807,13 +807,13 @@ export function validateFramework(options = {}) {
       "data-fnlla-scrollspy-nav",
       "Accordion behavior without a real <code>aria-controls</code> target"
     ].forEach((requiredText) => {
-      if (!apiDoc.includes(requiredText)) {
-        errors.push(`docs/api.html: missing required text '${requiredText}'`);
+      if (!contractDoc.includes(requiredText)) {
+        errors.push(`docs/contract.html: missing required text '${requiredText}'`);
       }
     });
 
-    if (version && !apiDoc.includes(`<code>${version}</code>`)) {
-      errors.push(`docs/api.html: version '${version}' is not reflected in the API document`);
+    if (version && !contractDoc.includes(`<code>${version}</code>`)) {
+      errors.push(`docs/contract.html: version '${version}' is not reflected in the API document`);
     }
   }
 

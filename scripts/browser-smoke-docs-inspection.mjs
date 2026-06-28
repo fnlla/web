@@ -299,7 +299,7 @@ export async function inspectLoadingDocsPage(client, url) {
   return failures;
 }
 
-export async function inspectFormsLayoutPage(client, url) {
+export async function inspectComponentsLayoutPage(client, url) {
   await client.send("Page.navigate", { url });
   await waitForDocumentReady(client, 10000);
   await delay(200);
@@ -340,8 +340,8 @@ export async function inspectFormsLayoutPage(client, url) {
     return failures;
   }
 
-  if (payload.currentLabel !== "Forms") {
-    failures.push(`${url}: current docs navigation label should be 'Forms'.`);
+  if (payload.currentLabel !== "Components") {
+    failures.push(`${url}: current docs navigation label should be 'Components'.`);
   }
 
   if (payload.showcaseDisplay !== "grid" || payload.showcaseGap === "0px") {

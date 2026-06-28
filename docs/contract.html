@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1A4137">
-  <title>API - FNLLA UI Documentation</title>
+  <title>Contract - FNLLA UI Documentation</title>
   <link rel="icon" href="./assets/brand/fnlla-ui.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
   <link rel="stylesheet" href="./assets/docs.css">
@@ -23,7 +23,7 @@
     <header class="doc-header" aria-label="FNLLA UI documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Blueprint documentation</span>
-        <span class="doc-status">Stable 1.0.5</span>
+        <span class="doc-status">Stable 1.0.6</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Framework blueprint</p>
@@ -55,14 +55,11 @@
       </div>
       <div class="doc-nav-panel" id="doc-nav-panel" data-doc-nav-panel>
       <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
-      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-outline btn-sm" href="./contract.html" aria-current="page">Contract</a>
       <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
       <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
       <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
-      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
       <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
-      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
-      <a class="btn btn-outline btn-sm" href="./api.html" aria-current="page">API</a>
       <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
         <div class="doc-nav-controls">
           <label class="switch doc-theme-toggle">
@@ -76,8 +73,8 @@
 
     <section class="section pt-1">
       <div class="section-header">
-        <h2 class="section-title">FNLLA UI API and support contract</h2>
-        <p class="section-text">This page defines the supported public surface for the stable FNLLA UI release: runtime files, documented class families, JavaScript hooks and helper methods. Maintainer-only checks and private repository details appear later and are not consumer dependencies.</p>
+        <h2 class="section-title">FNLLA UI contract and support boundary</h2>
+        <p class="section-text">This page combines the stable FNLLA UI packaging boundary and browser-facing contract: runtime files, handoff rules, documented class families, JavaScript hooks and helper methods. Maintainer-only checks and private repository details appear later and are not consumer dependencies.</p>
       </div>
 
       <div class="grid">
@@ -86,7 +83,7 @@
           <div class="doc-meta-list">
             <div>
               <p class="content-title mb-1">Version</p>
-              <p class="content-text"><code>1.0.5</code> is the stable public release target for this repository snapshot.</p>
+              <p class="content-text"><code>1.0.6</code> is the stable public release target for this repository snapshot.</p>
             </div>
             <div>
               <p class="content-title mb-1">Support model</p>
@@ -126,8 +123,8 @@
             <li><code>assets/js/fnlla-ui.js</code> is the supported runtime script for dropdowns, mobile navigation, tabs, accordions, modals, toasts, offcanvas panels, popovers, tooltips, cookie consent flows and scrollspy.</li>
             <li><code>assets/icons/</code> is the supported local <code>FNLLA Icons</code> bundle for offline icon usage, including root-level SVG files, <code>sprite.svg</code>, the Lucide license file and the FNLLA notice.</li>
             <li>The stable CSS API uses prefix-free class names such as <code>wrapper</code>, <code>section</code>, <code>container</code>, <code>grid</code>, <code>btn</code>, <code>card</code> and <code>navbar</code>.</li>
-            <li><a href="./distribution.html"><code>distribution.html</code></a> defines how this runtime is packaged and when downstream projects should consume <code>dist/fnlla-ui/</code>.</li>
-            <li><a href="./layout.html"><code>layout.html</code></a> and the reference pages for components, sections and forms define the documented authoring model that this API expects.</li>
+            <li><a href="./contract.html"><code>contract.html</code></a> defines how this runtime is packaged and when downstream projects should consume <code>dist/fnlla-ui/</code>.</li>
+            <li><a href="./layout.html"><code>layout.html</code></a> and the reference pages for components and sections define the documented authoring model that this contract expects.</li>
           </ul>
         </article>
 
@@ -142,6 +139,142 @@
         </article>
       </div>
     </section>
+
+    <!-- Distribution and handoff guidance merged into the contract reference. -->
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Choose the handoff</h2>
+        <p class="section-text">Distribution is mostly a decision about what another project should copy. The safe default is the generated runtime export, while the raw repository runtime files are mainly for framework maintainers working in-place.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h2 class="card-title">Default: copy <code>dist/fnlla-ui/</code></h2>
+          <p class="card-text">Use the generated export when another project or another team needs FNLLA UI as a vendored dependency. It contains the runtime tree plus the minimal release files needed for version and license tracking.</p>
+          <pre><code>dist/
+  fnlla-ui/
+    assets/
+      css/
+        fnlla-ui.css
+      js/
+        fnlla-ui.js
+      icons/
+    LICENSE.md
+    README.md
+    VERSION</code></pre>
+        </article>
+
+        <article class="card doc-handoff-conditions">
+          <h2 class="card-title">Use raw <code>assets/</code> only when</h2>
+          <ul class="doc-checklist">
+            <li>You are working directly inside the FNLLA UI repository.</li>
+            <li>You need the live published runtime next to <code>src/</code>, scripts and docs while maintaining the framework.</li>
+            <li>You are validating that publish output, docs and browser behavior all describe the same current snapshot.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Runtime boundary</h2>
+        <p class="section-text">The supported runtime API is intentionally narrow. If a consumer page only depends on FNLLA UI, these are the files it should know about.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h3 class="card-title">What belongs to runtime</h3>
+          <ul class="doc-path-list">
+            <li><strong><code>assets/css/fnlla-ui.css</code></strong> is the published stylesheet that pages should link.</li>
+            <li><strong><code>assets/js/fnlla-ui.js</code></strong> is the published script that pages should load for documented behaviors.</li>
+            <li><strong><code>assets/icons/</code></strong> holds the offline icon bundle, including root SVG files, <code>sprite.svg</code>, notice and license files.</li>
+            <li><strong><code>dist/fnlla-ui/</code></strong> is the clean handoff form of the same runtime contract.</li>
+          </ul>
+          <pre><code>&lt;link rel="stylesheet" href="fnlla-ui/assets/css/fnlla-ui.css"&gt;
+&lt;script src="fnlla-ui/assets/js/fnlla-ui.js"&gt;&lt;/script&gt;</code></pre>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">What stays outside runtime</h3>
+          <ul class="doc-checklist">
+            <li><strong>Do not link <code>src/css/...</code> or <code>src/js/...</code>.</strong> Those are maintainer source files, not consumer dependencies.</li>
+            <li><strong>Do not link <code>docs/assets/docs.css</code> or <code>docs/assets/docs.js</code>.</strong> They style and enhance the documentation product only.</li>
+            <li><strong>Do not point production pages at docs-relative paths.</strong> Consumer pages should stay on runtime paths such as <code>assets/css/fnlla-ui.css</code> and <code>assets/icons/search.svg</code>.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Repository zones</h2>
+        <p class="section-text">FNLLA UI has a source-to-runtime pipeline. Each zone has a distinct job and should stay on that side of the boundary.</p>
+      </div>
+
+      <div class="doc-card-grid doc-card-grid-2">
+        <article class="card">
+          <h3 class="card-title">Published runtime</h3>
+          <p class="card-text"><code>assets/css/</code>, <code>assets/js/</code> and <code>assets/icons/</code> are the stable browser-facing product surface inside the repository.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Runtime export</h3>
+          <p class="card-text"><code>dist/fnlla-ui/</code> is the downstream handoff package. It is generated, not hand-maintained.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Maintainer source</h3>
+          <p class="card-text"><code>src/css/</code> and <code>src/js/</code> are where maintainers change tokens, components and behavior modules before republishing readable runtime files.</p>
+        </article>
+        <article class="card">
+          <h3 class="card-title">Documentation product</h3>
+          <p class="card-text"><code>docs/</code> proves and explains the framework contract, but <code>docs/assets/</code> remains documentation-only support code.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Release discipline</h2>
+        <p class="section-text">Packaging stays trustworthy only when source, published runtime, generated docs and validation all move together.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3 class="card-title">Maintainer flow</h3>
+          <ol class="doc-flow-list">
+            <li><strong>Edit source modules</strong><p>Change tokens, components or interaction code under <code>src/</code> first.</p></li>
+            <li><strong>Republish runtime and docs</strong><p>Run <code>node .\scripts\publish-fnlla-ui.mjs</code> so runtime files, generated guides and <code>dist/fnlla-ui/</code> all match source.</p></li>
+            <li><strong>Smoke-test browser behavior</strong><p>Run <code>node .\scripts\test-fnlla-ui-browser.mjs</code> when runtime behavior or packaging changed.</p></li>
+            <li><strong>Validate the repository contract</strong><p>Run <code>node .\scripts\validate-fnlla-ui.mjs</code> to confirm docs shell sync, release files and generated outputs.</p></li>
+          </ol>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Downstream project structure</h3>
+          <pre><code>my-site/
+  fnlla-ui/
+    assets/
+      css/
+        fnlla-ui.css
+      js/
+        fnlla-ui.js
+      icons/
+    LICENSE.md
+    README.md
+    VERSION
+  assets/
+    css/
+      site.css
+    js/
+      site.js
+  index.html
+  about.html
+  contact.html</code></pre>
+          <p class="card-text">This keeps FNLLA UI as one vendored runtime layer while project-specific CSS, JS and templates stay in local project files instead of drifting back into the framework package.</p>
+        </article>
+      </div>
+    </section>
+    <!-- Ownership footer required on every docs page. -->
 
     <!-- Baseline authoring model for consumer pages. -->
     <section class="section">

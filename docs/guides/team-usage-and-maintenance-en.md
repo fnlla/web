@@ -196,9 +196,9 @@ Before writing new markup, check these references first:
 - `docs/layout.html`
 - `docs/components.html`
 - `docs/sections.html`
-- `docs/forms.html`
+- `docs/components.html`
 - `docs/utilities.html`
-- `docs/api.html`
+- `docs/contract.html`
 - `docs/component-classification.html`
 
 Recommended build loop:
@@ -273,7 +273,7 @@ Working rules:
 - treat the framework as a runtime dependency, not as a place for quick project hotfixes
 - keep project-specific fixes in `site.css`, `site.js` and project templates
 - change the framework itself only when the change makes sense for more than one project
-- keep interactive work aligned with `docs/api.html`
+- keep interactive work aligned with `docs/contract.html`
 - check layout behavior on mobile, tablet and desktop before review
 
 Typical frontend loop:
@@ -326,7 +326,7 @@ Use this path for small branding or spacing changes.
 
 Use this path when a component behaves incorrectly on the website.
 
-1. Check the markup against `docs/api.html`.
+1. Check the markup against `docs/contract.html`.
 2. Confirm the `data-fnlla-*` hook is correct.
 3. Confirm `aria-controls`, `aria-labelledby` and target `id` values exist.
 4. Confirm the framework JS is actually loaded on the page.
@@ -339,7 +339,7 @@ Use this path when the downstream site upgrades its vendored FNLLA UI runtime.
 1. Create an update branch.
 2. Replace the project `fnlla-ui/` folder with a fresh `dist/fnlla-ui/` export from the framework repository.
 3. Check `VERSION`.
-4. Read `README.md`, `docs/api.html` and `docs/distribution.html` to confirm the current contract.
+4. Read `README.md` and `docs/contract.html` to confirm the current contract.
 5. Search the project for legacy patterns such as `data-ui-*`, `ui-*` and outdated token overrides.
 6. Re-test navigation, dropdowns, tabs, accordions, modals, forms and any local overrides.
 7. Re-test on mobile, tablet and desktop.
@@ -378,13 +378,11 @@ Do not start with manual edits to:
 If the change affects public usage, update the relevant reference surface in the same pull request.
 
 - `README.md`
-- `docs/api.html`
-- `docs/distribution.html`
+- `docs/contract.html`
 - `docs/layout.html`
 - `docs/components.html`
 - `docs/sections.html`
-- `docs/forms.html`
-- `docs/icons.html`
+- `docs/utilities.html`
 - `docs/component-classification.html`
 - `docs/team-usage-and-maintenance.html` and its markdown source when workflow guidance changed
 - `docs/assets/docs.js` indirectly through `src/docs/js/*.js` when documentation-only browser behavior changed
@@ -422,4 +420,4 @@ Before merging a framework change, confirm all of the following:
 - docs match the current behavior and naming
 - keyboard, focus and responsive behavior were checked
 - the packaging boundary still keeps `docs/assets/` outside the runtime contract
-- downstream projects would understand the change from `README.md`, `docs/api.html` and the relevant guide page
+- downstream projects would understand the change from `README.md`, `docs/contract.html` and the relevant guide page

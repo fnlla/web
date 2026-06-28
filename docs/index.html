@@ -23,7 +23,7 @@
     <header class="doc-header" aria-label="FNLLA UI documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Blueprint documentation</span>
-        <span class="doc-status">Stable 1.0.5</span>
+        <span class="doc-status">Stable 1.0.6</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Framework blueprint</p>
@@ -55,14 +55,11 @@
       </div>
       <div class="doc-nav-panel" id="doc-nav-panel" data-doc-nav-panel>
       <a class="btn btn-outline btn-sm" href="./index.html" aria-current="page">Overview</a>
-      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./contract.html">Contract</a>
       <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
       <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
       <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
-      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
       <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
-      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
-      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
       <a class="btn btn-ghost btn-sm" href="./guides.html">Guides</a>
         <div class="doc-nav-controls">
           <label class="switch doc-theme-toggle">
@@ -100,9 +97,9 @@
         <article class="card">
           <h2 class="card-title">Read next by task</h2>
           <ul class="doc-checklist">
-            <li><a href="./distribution.html"><code>distribution.html</code></a> for packaging and copy rules.</li>
+            <li><a href="./contract.html"><code>contract.html</code></a> for runtime handoff, packaging, hooks and stable CSS-family rules.</li>
             <li><a href="./layout.html"><code>layout.html</code></a> for page shells, containers and grid decisions.</li>
-            <li><a href="./api.html"><code>api.html</code></a> for hooks, helpers and stable CSS families.</li>
+            <li><a href="./components.html"><code>components.html</code></a> for component, form and interaction reference patterns.</li>
             <li><a href="./guides.html"><code>guides.html</code></a> for workflow and component-selection guidance.</li>
           </ul>
         </article>
@@ -112,14 +109,14 @@
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">Documentation routes</h2>
-        <p class="section-text">Use the shortest path to the answer you need. These pages split setup, structure, component usage and maintenance into clearer reading routes.</p>
+        <p class="section-text">Use the shortest path to the answer you need. These pages now group setup, structure, components, forms and maintenance into a tighter reading route.</p>
       </div>
 
       <div class="doc-link-grid">
-        <a class="doc-link-card" href="./distribution.html">
-          <span class="doc-link-label">Packaging</span>
-          <p class="doc-link-title">Distribution</p>
-          <p class="doc-link-text">What to copy, what belongs to runtime, what stays docs-only and when to use <code>dist/fnlla-ui/</code> instead of raw repo files.</p>
+        <a class="doc-link-card" href="./contract.html">
+          <span class="doc-link-label">Boundary</span>
+          <p class="doc-link-title">Contract</p>
+          <p class="doc-link-text">What to copy, what belongs to runtime, which hooks are public and where the supported browser contract ends.</p>
         </a>
         <a class="doc-link-card" href="./layout.html">
           <span class="doc-link-label">Structure</span>
@@ -129,32 +126,17 @@
         <a class="doc-link-card" href="./components.html">
           <span class="doc-link-label">Primitives</span>
           <p class="doc-link-title">Components</p>
-          <p class="doc-link-text">Reference for reusable UI surfaces such as buttons, cards, alerts, list groups, tables and interactive shells.</p>
+          <p class="doc-link-text">Reference for reusable UI surfaces such as buttons, cards, alerts, tables, form controls and interactive shells.</p>
         </a>
         <a class="doc-link-card" href="./sections.html">
           <span class="doc-link-label">Compositions</span>
           <p class="doc-link-title">Sections</p>
           <p class="doc-link-text">Reusable page-level compositions for hero bands, service blocks, stats, process sections, pricing and CTA layouts.</p>
         </a>
-        <a class="doc-link-card" href="./forms.html">
-          <span class="doc-link-label">Inputs</span>
-          <p class="doc-link-title">Forms</p>
-          <p class="doc-link-text">Reference for form shells, fields, validation states and contact-oriented patterns that need stable markup and accessible structure.</p>
-        </a>
         <a class="doc-link-card" href="./utilities.html">
           <span class="doc-link-label">Helpers</span>
           <p class="doc-link-title">Utilities</p>
-          <p class="doc-link-text">Quick runtime helpers for spacing, display, flex alignment, overflow, emphasis and small token-aware presentation adjustments.</p>
-        </a>
-        <a class="doc-link-card" href="./icons.html">
-          <span class="doc-link-label">Assets</span>
-          <p class="doc-link-title">Icons</p>
-          <p class="doc-link-text">Search the offline FNLLA Icons bundle, inspect categories and copy the stable runtime path under <code>assets/icons/</code>.</p>
-        </a>
-        <a class="doc-link-card" href="./api.html">
-          <span class="doc-link-label">Contract</span>
-          <p class="doc-link-title">API</p>
-          <p class="doc-link-text">Public runtime files, stable hooks, authoring rules and the line between supported browser API and private maintainer internals.</p>
+          <p class="doc-link-text">Quick runtime helpers for spacing, display, flex alignment, overflow, emphasis, token-aware presentation adjustments and the local icon catalogue.</p>
         </a>
         <a class="doc-link-card" href="./guides.html">
           <span class="doc-link-label">Workflow</span>

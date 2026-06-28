@@ -17,7 +17,7 @@
     <header class="doc-header" aria-label="FNLLA UI documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Guide library</span>
-        <span class="doc-status">Stable 1.0.5</span>
+        <span class="doc-status">Stable 1.0.6</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Team workflow</p>
@@ -48,14 +48,11 @@
       </div>
       <div class="doc-nav-panel" id="doc-nav-panel" data-doc-nav-panel>
       <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
-      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./contract.html">Contract</a>
       <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
       <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
       <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
-      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
       <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
-      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
-      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
       <a class="btn btn-outline btn-sm" href="./guides.html" aria-current="page">Guides</a>
         <div class="doc-nav-controls">
           <label class="switch doc-theme-toggle">
@@ -236,7 +233,7 @@
 
 <p>Before writing new markup, check these references first:</p>
 
-<ul><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/forms.html</code></li><li><code>docs/utilities.html</code></li><li><code>docs/api.html</code></li><li><code>docs/component-classification.html</code></li></ul>
+<ul><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/components.html</code></li><li><code>docs/utilities.html</code></li><li><code>docs/contract.html</code></li><li><code>docs/component-classification.html</code></li></ul>
 
 <p>Recommended build loop:</p>
 
@@ -286,7 +283,7 @@
 
 <p>Working rules:</p>
 
-<ul><li>treat the framework as a runtime dependency, not as a place for quick project hotfixes</li><li>keep project-specific fixes in <code>site.css</code>, <code>site.js</code> and project templates</li><li>change the framework itself only when the change makes sense for more than one project</li><li>keep interactive work aligned with <code>docs/api.html</code></li><li>check layout behavior on mobile, tablet and desktop before review</li></ul>
+<ul><li>treat the framework as a runtime dependency, not as a place for quick project hotfixes</li><li>keep project-specific fixes in <code>site.css</code>, <code>site.js</code> and project templates</li><li>change the framework itself only when the change makes sense for more than one project</li><li>keep interactive work aligned with <code>docs/contract.html</code></li><li>check layout behavior on mobile, tablet and desktop before review</li></ul>
 
 <p>Typical frontend loop:</p>
 
@@ -320,13 +317,13 @@
 
 <p>Use this path when a component behaves incorrectly on the website.</p>
 
-<ol><li>Check the markup against <code>docs/api.html</code>.</li><li>Confirm the <code>data-fnlla-*</code> hook is correct.</li><li>Confirm <code>aria-controls</code>, <code>aria-labelledby</code> and target <code>id</code> values exist.</li><li>Confirm the framework JS is actually loaded on the page.</li><li>If the markup is correct and the bug remains, raise it as a framework maintenance issue.</li></ol>
+<ol><li>Check the markup against <code>docs/contract.html</code>.</li><li>Confirm the <code>data-fnlla-*</code> hook is correct.</li><li>Confirm <code>aria-controls</code>, <code>aria-labelledby</code> and target <code>id</code> values exist.</li><li>Confirm the framework JS is actually loaded on the page.</li><li>If the markup is correct and the bug remains, raise it as a framework maintenance issue.</li></ol>
 
 <h3 id="framework-update-inside-a-website-project">Framework update inside a website project</h3>
 
 <p>Use this path when the downstream site upgrades its vendored FNLLA UI runtime.</p>
 
-<ol><li>Create an update branch.</li><li>Replace the project <code>fnlla-ui/</code> folder with a fresh <code>dist/fnlla-ui/</code> export from the framework repository.</li><li>Check <code>VERSION</code>.</li><li>Read <code>README.md</code>, <code>docs/api.html</code> and <code>docs/distribution.html</code> to confirm the current contract.</li><li>Search the project for legacy patterns such as <code>data-ui-*</code>, <code>ui-*</code> and outdated token overrides.</li><li>Re-test navigation, dropdowns, tabs, accordions, modals, forms and any local overrides.</li><li>Re-test on mobile, tablet and desktop.</li><li>Merge only after the downstream site passes its own review and QA checks.</li></ol>
+<ol><li>Create an update branch.</li><li>Replace the project <code>fnlla-ui/</code> folder with a fresh <code>dist/fnlla-ui/</code> export from the framework repository.</li><li>Check <code>VERSION</code>.</li><li>Read <code>README.md</code> and <code>docs/contract.html</code> to confirm the current contract.</li><li>Search the project for legacy patterns such as <code>data-ui-*</code>, <code>ui-*</code> and outdated token overrides.</li><li>Re-test navigation, dropdowns, tabs, accordions, modals, forms and any local overrides.</li><li>Re-test on mobile, tablet and desktop.</li><li>Merge only after the downstream site passes its own review and QA checks.</li></ol>
 
 <h2 id="maintain-fnlla-ui-itself">Maintain FNLLA UI itself</h2>
 
@@ -348,7 +345,7 @@
 
 <p>If the change affects public usage, update the relevant reference surface in the same pull request.</p>
 
-<ul><li><code>README.md</code></li><li><code>docs/api.html</code></li><li><code>docs/distribution.html</code></li><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/forms.html</code></li><li><code>docs/icons.html</code></li><li><code>docs/component-classification.html</code></li><li><code>docs/team-usage-and-maintenance.html</code> and its markdown source when workflow guidance changed</li><li><code>docs/assets/docs.js</code> indirectly through <code>src/docs/js/*.js</code> when documentation-only browser behavior changed</li></ul>
+<ul><li><code>README.md</code></li><li><code>docs/contract.html</code></li><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/utilities.html</code></li><li><code>docs/component-classification.html</code></li><li><code>docs/team-usage-and-maintenance.html</code> and its markdown source when workflow guidance changed</li><li><code>docs/assets/docs.js</code> indirectly through <code>src/docs/js/*.js</code> when documentation-only browser behavior changed</li></ul>
 
 <p>Rule:</p>
 
@@ -372,7 +369,7 @@
 
 <p>Before merging a framework change, confirm all of the following:</p>
 
-<ul><li>the change begins in <code>src/</code>, not in generated runtime files</li><li>runtime files and generated guide pages were republished</li><li>docs match the current behavior and naming</li><li>keyboard, focus and responsive behavior were checked</li><li>the packaging boundary still keeps <code>docs/assets/</code> outside the runtime contract</li><li>downstream projects would understand the change from <code>README.md</code>, <code>docs/api.html</code> and the relevant guide page</li></ul>
+<ul><li>the change begins in <code>src/</code>, not in generated runtime files</li><li>runtime files and generated guide pages were republished</li><li>docs match the current behavior and naming</li><li>keyboard, focus and responsive behavior were checked</li><li>the packaging boundary still keeps <code>docs/assets/</code> outside the runtime contract</li><li>downstream projects would understand the change from <code>README.md</code>, <code>docs/contract.html</code> and the relevant guide page</li></ul>
         </article>
         <aside class="doc-guide-sidebar scrollbar scrollbar-thin">
           <div class="card doc-guide-card">

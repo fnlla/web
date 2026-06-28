@@ -1,10 +1,10 @@
 # FNLLA UI
 
-[![Release](https://img.shields.io/badge/release-v1.0.5-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.5)
+[![Release](https://img.shields.io/badge/release-v1.0.6-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.6)
 [![Hardening](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml)
 [![License](https://img.shields.io/badge/license-MIT-111827?style=flat-square)](./LICENSE.md)
 [![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
-[![Docs](https://img.shields.io/badge/docs-12%20pages-c26d00?style=flat-square)](./docs/guides.html)
+[![Docs](https://img.shields.io/badge/docs-9%20pages-c26d00?style=flat-square)](./docs/guides.html)
 
 ## What FNLLA UI is
 
@@ -84,14 +84,11 @@ Use `SUPPORT.md` for the exact support boundary and `TRADEMARKS.md` for branding
 Use the browser docs based on the question you are answering:
 
 - `docs/index.html` for the overview and reading order
-- `docs/distribution.html` for packaging, handoff and runtime-boundary rules
+- `docs/contract.html` for packaging, handoff, hooks and runtime-boundary rules
 - `docs/layout.html` for page shells, containers, grids and anti-patterns
-- `docs/components.html` for reference markup and component demos
+- `docs/components.html` for reference markup, component demos and form patterns
 - `docs/sections.html` for composable page sections
-- `docs/forms.html` for field, validation and section-level form patterns
-- `docs/utilities.html` for utilities and helper classes
-- `docs/icons.html` for the shipped local FNLLA Icons catalogue
-- `docs/api.html` for the stable hook, helper and CSS-family contract
+- `docs/utilities.html` for utilities, helper classes and the shipped local FNLLA Icons catalogue
 - `docs/guides.html` for the guide index and reading order
 - `docs/component-classification.html` for component-selection rules
 - `docs/team-usage-and-maintenance.html` for workflow and maintenance guidance
@@ -103,7 +100,7 @@ Use the docs for detailed examples. README stays intentionally slimmer and focus
 1. Copy the entire `fnlla-ui` folder into the new project, or use the generated runtime-only export under `dist/fnlla-ui/` when you want a lean handoff.
 2. Keep the published `assets/` runtime tree together so relative paths stay simple.
 3. Link the runtime files from the page.
-4. Use the component patterns from `docs/components.html`, `docs/sections.html` and `docs/forms.html` rather than rebuilding examples from scratch.
+4. Use the component patterns from `docs/components.html` and `docs/sections.html` rather than rebuilding examples from scratch.
 5. If you maintain the framework itself, edit source files under `src/` and republish before shipping changes.
 
 The framework runs as plain static HTML, CSS and JavaScript. No npm, Composer, bundler or build step is required.
@@ -127,9 +124,9 @@ The stable browser API lives under `window.FNLLAUI`.
 - `window.FNLLAUI.getConsentState()`, `window.FNLLAUI.hasConsent(category)`, `window.FNLLAUI.openConsentSettings()`, `window.FNLLAUI.acceptConsent()`, `window.FNLLAUI.rejectConsent()`, `window.FNLLAUI.saveConsent(state)` and `window.FNLLAUI.resetConsent()` manage the documented first-party consent cookie flow.
 - `window.FNLLAUI.showToast(target)` and the matching hide helper support non-blocking notification flows.
 - `window.FNLLAUI.showOffcanvas(target)` and the matching hide helper support side-panel workflows.
-- Modal, dropdown, popover, tooltip and scrollspy helpers are documented in `docs/api.html`.
+- Modal, dropdown, popover, tooltip and scrollspy helpers are documented in `docs/contract.html`.
 
-The helper contract is intentionally small. For the full supported surface, use `docs/api.html` as the stable reference.
+The helper contract is intentionally small. For the full supported surface, use `docs/contract.html` as the stable reference.
 
 ## FNLLA Icons
 
@@ -146,7 +143,7 @@ Operational rules:
 
 - do not load icons from external hosts such as `lucide.dev`, `jsdelivr`, `unpkg` or other CDNs
 - keep icon usage local and offline
-- use `docs/icons.html` when you need to browse the shipped set
+- use `docs/utilities.html#utility-icons` when you need to browse the shipped set
 
 ## Issue and release workflow
 
@@ -225,7 +222,7 @@ The docs shell is documentation-specific, but component demos should still rende
 
 ## Included documentation
 
-- Docs: `docs/index.html`, `docs/distribution.html`, `docs/layout.html`, `docs/components.html`, `docs/sections.html`, `docs/forms.html`, `docs/utilities.html`, `docs/icons.html`, `docs/api.html`, `docs/guides.html`
+- Docs: `docs/index.html`, `docs/contract.html`, `docs/layout.html`, `docs/components.html`, `docs/sections.html`, `docs/utilities.html`, `docs/guides.html`
 - Component classification guide: `docs/component-classification.html`
 - Team usage and maintenance guide: `docs/team-usage-and-maintenance.html`
 - Docs stylesheet: `docs/assets/docs.css` for documentation-only shell and presentation helpers around the shared runtime

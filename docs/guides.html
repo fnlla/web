@@ -23,7 +23,7 @@
     <header class="doc-header" aria-label="FNLLA UI documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Blueprint documentation</span>
-        <span class="doc-status">Stable 1.0.5</span>
+        <span class="doc-status">Stable 1.0.6</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Guide library</p>
@@ -55,14 +55,11 @@
       </div>
       <div class="doc-nav-panel" id="doc-nav-panel" data-doc-nav-panel>
       <a class="btn btn-ghost btn-sm" href="./index.html">Overview</a>
-      <a class="btn btn-ghost btn-sm" href="./distribution.html">Distribution</a>
+      <a class="btn btn-ghost btn-sm" href="./contract.html">Contract</a>
       <a class="btn btn-ghost btn-sm" href="./layout.html">Layout</a>
       <a class="btn btn-ghost btn-sm" href="./components.html">Components</a>
       <a class="btn btn-ghost btn-sm" href="./sections.html">Sections</a>
-      <a class="btn btn-ghost btn-sm" href="./forms.html">Forms</a>
       <a class="btn btn-ghost btn-sm" href="./utilities.html">Utilities</a>
-      <a class="btn btn-ghost btn-sm" href="./icons.html">Icons</a>
-      <a class="btn btn-ghost btn-sm" href="./api.html">API</a>
       <a class="btn btn-outline btn-sm" href="./guides.html" aria-current="page">Guides</a>
         <div class="doc-nav-controls">
           <label class="switch doc-theme-toggle">
@@ -83,20 +80,11 @@
       <div class="doc-link-grid">
         <a class="doc-link-card" href="./component-classification.html">
           <span class="doc-link-label">Selection</span>
-          <div class="d-flex flex-wrap gap-2">
-            <span class="tag">For consumers</span>
-            <span class="tag">Decision guide</span>
-          </div>
           <p class="doc-link-title">Component classification</p>
           <p class="doc-link-text">Read this first when you need to choose the right surface, role and category before inventing a new card, panel, form shell or overlay pattern.</p>
         </a>
         <a class="doc-link-card" href="./team-usage-and-maintenance.html">
           <span class="doc-link-label">Workflow</span>
-          <div class="d-flex flex-wrap gap-2">
-            <span class="tag">For consumers</span>
-            <span class="tag">For maintainers</span>
-            <span class="tag">Workflow guide</span>
-          </div>
           <p class="doc-link-title">Team usage and maintenance</p>
           <p class="doc-link-text">Read this first when a project is starting, when a site updates FNLLA UI, or when the team needs a clear split between consumer-mode work and framework maintenance.</p>
         </a>
@@ -116,7 +104,7 @@
             <li>Start with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a> to understand the consumer-mode boundary.</li>
             <li>Move to <a href="./layout.html"><code>layout.html</code></a> when the page shell or structure is still undecided.</li>
             <li>Use <a href="./component-classification.html"><code>component-classification.html</code></a> before inventing a new reusable surface.</li>
-            <li>Open <a href="./components.html"><code>components.html</code></a>, <a href="./sections.html"><code>sections.html</code></a>, <a href="./forms.html"><code>forms.html</code></a> or <a href="./utilities.html"><code>utilities.html</code></a> only after the role is clear.</li>
+            <li>Open <a href="./components.html"><code>components.html</code></a>, <a href="./sections.html"><code>sections.html</code></a> or <a href="./utilities.html"><code>utilities.html</code></a> only after the role is clear.</li>
           </ul>
         </article>
 
@@ -124,8 +112,8 @@
           <h2 class="card-title">Maintainer path</h2>
           <ul class="doc-flow-list">
             <li>Start with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a> to separate runtime work from downstream website usage.</li>
-            <li>Check <a href="./api.html"><code>api.html</code></a> before changing hooks, selectors or supported runtime files.</li>
-            <li>Use <a href="./distribution.html"><code>distribution.html</code></a> when publish, runtime export or handoff packaging may be affected.</li>
+            <li>Check <a href="./contract.html"><code>contract.html</code></a> before changing hooks, selectors or supported runtime files.</li>
+            <li>Use <a href="./contract.html"><code>contract.html</code></a> when publish, runtime export, handoff packaging or public runtime hooks may be affected.</li>
             <li>Return to the reference pages only after the public contract and release boundary are understood.</li>
           </ul>
         </article>
@@ -141,19 +129,19 @@
       <div class="doc-card-grid doc-card-grid-2">
         <article class="card">
           <h2 class="card-title">Starting a new website</h2>
-          <p class="card-text">Begin with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a>, then use <a href="./distribution.html"><code>distribution.html</code></a> for packaging decisions and <a href="./layout.html"><code>layout.html</code></a> for the first page shell.</p>
+          <p class="card-text">Begin with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a>, then use <a href="./contract.html"><code>contract.html</code></a> for handoff and public-boundary decisions and <a href="./layout.html"><code>layout.html</code></a> for the first page shell.</p>
         </article>
         <article class="card">
           <h2 class="card-title">Choosing a reusable surface</h2>
-          <p class="card-text">Begin with <a href="./component-classification.html"><code>component-classification.html</code></a>, then open <a href="./components.html"><code>components.html</code></a>, <a href="./sections.html"><code>sections.html</code></a> or <a href="./forms.html"><code>forms.html</code></a> once the category is clear.</p>
+          <p class="card-text">Begin with <a href="./component-classification.html"><code>component-classification.html</code></a>, then open <a href="./components.html"><code>components.html</code></a> or <a href="./sections.html"><code>sections.html</code></a> once the category is clear.</p>
         </article>
         <article class="card">
           <h2 class="card-title">Reviewing a markup change</h2>
-          <p class="card-text">Use the guides for intent, then verify the stable contract in <a href="./api.html"><code>api.html</code></a> and the structural rules in <a href="./layout.html"><code>layout.html</code></a>.</p>
+          <p class="card-text">Use the guides for intent, then verify the stable contract in <a href="./contract.html"><code>contract.html</code></a> and the structural rules in <a href="./layout.html"><code>layout.html</code></a>.</p>
         </article>
         <article class="card">
           <h2 class="card-title">Updating the framework itself</h2>
-          <p class="card-text">Start with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a>, then use <a href="./api.html"><code>api.html</code></a> and <a href="./distribution.html"><code>distribution.html</code></a> to check what is public, generated and release-sensitive.</p>
+          <p class="card-text">Start with <a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a>, then use <a href="./contract.html"><code>contract.html</code></a> to check what is public, generated and release-sensitive.</p>
         </article>
       </div>
     </section>
@@ -177,22 +165,22 @@
             <tr>
               <td>Start a new downstream website on FNLLA UI</td>
               <td><a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a></td>
-              <td><a href="./distribution.html"><code>distribution.html</code></a>, <a href="./layout.html"><code>layout.html</code></a>, <a href="./sections.html"><code>sections.html</code></a></td>
+              <td><a href="./contract.html"><code>contract.html</code></a>, <a href="./layout.html"><code>layout.html</code></a>, <a href="./sections.html"><code>sections.html</code></a></td>
             </tr>
             <tr>
               <td>Choose the right reusable surface before writing markup</td>
               <td><a href="./component-classification.html"><code>component-classification.html</code></a></td>
-              <td><a href="./components.html"><code>components.html</code></a>, <a href="./sections.html"><code>sections.html</code></a>, <a href="./forms.html"><code>forms.html</code></a></td>
+              <td><a href="./components.html"><code>components.html</code></a>, <a href="./sections.html"><code>sections.html</code></a></td>
             </tr>
             <tr>
               <td>Review whether a markup change stays inside the public contract</td>
               <td><a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a></td>
-              <td><a href="./api.html"><code>api.html</code></a>, <a href="./layout.html"><code>layout.html</code></a>, <a href="./utilities.html"><code>utilities.html</code></a></td>
+              <td><a href="./contract.html"><code>contract.html</code></a>, <a href="./layout.html"><code>layout.html</code></a>, <a href="./utilities.html"><code>utilities.html</code></a></td>
             </tr>
             <tr>
               <td>Change the framework itself without blurring consumer and maintainer responsibilities</td>
               <td><a href="./team-usage-and-maintenance.html"><code>team-usage-and-maintenance.html</code></a></td>
-              <td><a href="./api.html"><code>api.html</code></a>, <a href="./distribution.html"><code>distribution.html</code></a>, <a href="./icons.html"><code>icons.html</code></a></td>
+              <td><a href="./contract.html"><code>contract.html</code></a>, <a href="./utilities.html#utility-icons"><code>utilities.html#utility-icons</code></a></td>
             </tr>
             <tr>
               <td>Decide whether a small presentational need should use utilities or a bigger pattern</td>
