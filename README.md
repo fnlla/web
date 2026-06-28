@@ -1,6 +1,6 @@
 # FNLLA UI
 
-[![Release](https://img.shields.io/badge/release-v1.0.2-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.2)
+[![Release](https://img.shields.io/badge/release-v1.0.3-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.3)
 [![Hardening](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml)
 [![License](https://img.shields.io/badge/license-proprietary-111827?style=flat-square)](./LICENSE.md)
 [![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
