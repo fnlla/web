@@ -15,11 +15,11 @@ FNLLA Web has two valid ways of working.
 
 ### Consumer mode
 
-Use the ready runtime from `dist/fnlla-ui/` or `assets/`, then build the website on top of that published contract.
+Use the ready runtime from `dist/fnlla-web/` or `assets/`, then build the website on top of that published contract.
 
 ### Maintainer mode
 
-Extend or fix the framework itself inside the `fnlla-ui` repository, then republish the runtime and revalidate the docs and release surface.
+Extend or fix the framework itself inside the `fnlla-web` repository, then republish the runtime and revalidate the docs and release surface.
 
 ### Default rule
 
@@ -47,16 +47,16 @@ Recommended ownership split:
 
 ### Deliver the framework
 
-The safest default is to copy `dist/fnlla-ui/` into the website repository and treat it as a vendored runtime dependency.
+The safest default is to copy `dist/fnlla-web/` into the website repository and treat it as a vendored runtime dependency.
 
 ```text
 my-site/
-  fnlla-ui/
+  fnlla-web/
     assets/
       css/
-        fnlla-ui.css
+        fnlla-web.css
       js/
-        fnlla-ui.js
+        fnlla-web.js
       icons/
     LICENSE.md
     README.md
@@ -72,29 +72,29 @@ my-site/
   contact.html
 ```
 
-If the project prefers another folder such as `vendor/fnlla-ui/`, keep that path consistent across HTML, CSS, JS and team documentation.
+If the project prefers another folder such as `vendor/fnlla-web/`, keep that path consistent across HTML, CSS, JS and team documentation.
 
 ### Include the runtime files
 
 Load the framework runtime on every page, then layer project-specific assets after it.
 
 ```html
-<link rel="stylesheet" href="fnlla-ui/assets/css/fnlla-ui.css">
+<link rel="stylesheet" href="fnlla-web/assets/css/fnlla-web.css">
 <link rel="stylesheet" href="assets/css/site.css">
 ```
 
 At the end of `body`:
 
 ```html
-<script src="fnlla-ui/assets/js/fnlla-ui.js"></script>
+<script src="fnlla-web/assets/js/fnlla-web.js"></script>
 <script src="assets/js/site.js"></script>
 ```
 
 The order matters:
 
-- first `fnlla-ui.css`
+- first `fnlla-web.css`
 - then project-level CSS such as `site.css`
-- first `fnlla-ui.js`
+- first `fnlla-web.js`
 - then project-level scripts
 
 ### Start from a stable page shell
@@ -108,7 +108,7 @@ The first page should establish structure before it chases styling detail.
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Site Name</title>
-  <link rel="stylesheet" href="fnlla-ui/assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="fnlla-web/assets/css/fnlla-web.css">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body data-fnlla-theme="default">
@@ -143,7 +143,7 @@ The first page should establish structure before it chases styling detail.
     </footer>
   </div>
 
-  <script src="fnlla-ui/assets/js/fnlla-ui.js"></script>
+  <script src="fnlla-web/assets/js/fnlla-web.js"></script>
   <script src="assets/js/site.js"></script>
 </body>
 </html>
@@ -210,7 +210,7 @@ Recommended build loop:
 
 ### Brand with tokens first
 
-Project branding should start in project CSS, not in manual edits to `fnlla-ui.css`.
+Project branding should start in project CSS, not in manual edits to `fnlla-web.css`.
 
 ```css
 :root {
@@ -246,7 +246,7 @@ Common examples:
 If the website injects HTML dynamically through AJAX, HTMX or custom JS, re-initialize the runtime on the new subtree.
 
 ```js
-window.FNLLAUI.init(rootElement);
+window.FNLLAWEB.init(rootElement);
 ```
 
 ### Keep icons local
@@ -255,14 +255,14 @@ Do not load icons from a CDN when the framework already ships the local bundle.
 
 Supported options:
 
-- local SVG files from `fnlla-ui/assets/icons/*.svg`
-- the local sprite from `fnlla-ui/assets/icons/sprite.svg`
+- local SVG files from `fnlla-web/assets/icons/*.svg`
+- the local sprite from `fnlla-web/assets/icons/sprite.svg`
 
 Example:
 
 ```html
 <span class="icon" aria-hidden="true">
-  <img src="fnlla-ui/assets/icons/search.svg" alt="">
+  <img src="fnlla-web/assets/icons/search.svg" alt="">
 </span>
 ```
 
@@ -288,7 +288,7 @@ Typical frontend loop:
 
 ## Decide when a change belongs in the framework
 
-Upstream a change into the `fnlla-ui` repository when:
+Upstream a change into the `fnlla-web` repository when:
 
 - the same pattern will be reused across multiple projects
 - the current component has a runtime bug or accessibility bug
@@ -319,7 +319,7 @@ Use this path for small branding or spacing changes.
 
 1. Try token overrides in `site.css` first.
 2. If tokens are not enough, add local project styles.
-3. Do not edit `fnlla-ui/assets/css/fnlla-ui.css` directly unless the project is intentionally forking the runtime.
+3. Do not edit `fnlla-web/assets/css/fnlla-web.css` directly unless the project is intentionally forking the runtime.
 4. Re-check contrast, focus states and dark-theme behavior if the project uses it.
 
 ### Interaction issue
@@ -337,7 +337,7 @@ Use this path when a component behaves incorrectly on the website.
 Use this path when the downstream site upgrades its vendored FNLLA Web runtime.
 
 1. Create an update branch.
-2. Replace the project `fnlla-ui/` folder with a fresh `dist/fnlla-ui/` export from the framework repository.
+2. Replace the project `fnlla-web/` folder with a fresh `dist/fnlla-web/` export from the framework repository.
 3. Check `VERSION`.
 4. Read `README.md` and `docs/contract.html` to confirm the current contract.
 5. Search the project for legacy patterns such as `data-ui-*`, `ui-*` and outdated token overrides.
@@ -368,10 +368,10 @@ For JS, work in:
 
 Do not start with manual edits to:
 
-- `assets/css/fnlla-ui.css`
-- `assets/js/fnlla-ui.js`
+- `assets/css/fnlla-web.css`
+- `assets/js/fnlla-web.js`
 - `docs/assets/docs.js`
-- `dist/fnlla-ui/`
+- `dist/fnlla-web/`
 
 ### Update docs when the public contract changes
 
@@ -396,19 +396,19 @@ Rule:
 After source changes, refresh the readable runtime and generated docs.
 
 ```bash
-node .\scripts\publish-fnlla-ui.mjs
+node .\scripts\publish-fnlla-web.mjs
 ```
 
 When behavior or packaging changed, run the browser smoke test.
 
 ```bash
-node .\scripts\test-fnlla-ui-browser.mjs
+node .\scripts\test-fnlla-web-browser.mjs
 ```
 
 Then confirm the repository contract.
 
 ```bash
-node .\scripts\validate-fnlla-ui.mjs
+node .\scripts\validate-fnlla-web.mjs
 ```
 
 ### Review checklist before merge

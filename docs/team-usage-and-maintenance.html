@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1A4137">
   <title>Team Usage and Maintenance Guide - FNLLA Web Documentation</title>
-  <link rel="icon" href="./assets/brand/fnlla-ui.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="icon" href="./assets/brand/fnlla-web.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/fnlla-web.css">
   <link rel="stylesheet" href="./assets/docs.css">
 </head>
 <body class="doc-guide-usage" data-fnlla-theme="default">
@@ -17,7 +17,7 @@
     <header class="doc-header" aria-label="FNLLA Web documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Guide library</span>
-        <span class="doc-status">Stable 1.0.6</span>
+        <span class="doc-status">Stable 1.0.7</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Team workflow</p>
@@ -79,11 +79,11 @@
 
 <h3 id="consumer-mode">Consumer mode</h3>
 
-<p>Use the ready runtime from <code>dist/fnlla-ui/</code> or <code>assets/</code>, then build the website on top of that published contract.</p>
+<p>Use the ready runtime from <code>dist/fnlla-web/</code> or <code>assets/</code>, then build the website on top of that published contract.</p>
 
 <h3 id="maintainer-mode">Maintainer mode</h3>
 
-<p>Extend or fix the framework itself inside the <code>fnlla-ui</code> repository, then republish the runtime and revalidate the docs and release surface.</p>
+<p>Extend or fix the framework itself inside the <code>fnlla-web</code> repository, then republish the runtime and revalidate the docs and release surface.</p>
 
 <h3 id="default-rule">Default rule</h3>
 
@@ -103,15 +103,15 @@
 
 <h3 id="deliver-the-framework">Deliver the framework</h3>
 
-<p>The safest default is to copy <code>dist/fnlla-ui/</code> into the website repository and treat it as a vendored runtime dependency.</p>
+<p>The safest default is to copy <code>dist/fnlla-web/</code> into the website repository and treat it as a vendored runtime dependency.</p>
 
 <pre><code class="language-text">my-site/
-  fnlla-ui/
+  fnlla-web/
     assets/
       css/
-        fnlla-ui.css
+        fnlla-web.css
       js/
-        fnlla-ui.js
+        fnlla-web.js
       icons/
     LICENSE.md
     README.md
@@ -126,23 +126,23 @@
   about.html
   contact.html</code></pre>
 
-<p>If the project prefers another folder such as <code>vendor/fnlla-ui/</code>, keep that path consistent across HTML, CSS, JS and team documentation.</p>
+<p>If the project prefers another folder such as <code>vendor/fnlla-web/</code>, keep that path consistent across HTML, CSS, JS and team documentation.</p>
 
 <h3 id="include-the-runtime-files">Include the runtime files</h3>
 
 <p>Load the framework runtime on every page, then layer project-specific assets after it.</p>
 
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;fnlla-ui/assets/css/fnlla-ui.css&quot;&gt;
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;fnlla-web/assets/css/fnlla-web.css&quot;&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/site.css&quot;&gt;</code></pre>
 
 <p>At the end of <code>body</code>:</p>
 
-<pre><code class="language-html">&lt;script src=&quot;fnlla-ui/assets/js/fnlla-ui.js&quot;&gt;&lt;/script&gt;
+<pre><code class="language-html">&lt;script src=&quot;fnlla-web/assets/js/fnlla-web.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;assets/js/site.js&quot;&gt;&lt;/script&gt;</code></pre>
 
 <p>The order matters:</p>
 
-<ul><li>first <code>fnlla-ui.css</code></li><li>then project-level CSS such as <code>site.css</code></li><li>first <code>fnlla-ui.js</code></li><li>then project-level scripts</li></ul>
+<ul><li>first <code>fnlla-web.css</code></li><li>then project-level CSS such as <code>site.css</code></li><li>first <code>fnlla-web.js</code></li><li>then project-level scripts</li></ul>
 
 <h3 id="start-from-a-stable-page-shell">Start from a stable page shell</h3>
 
@@ -154,7 +154,7 @@
   &lt;meta charset=&quot;UTF-8&quot;&gt;
   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
   &lt;title&gt;Site Name&lt;/title&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;fnlla-ui/assets/css/fnlla-ui.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;fnlla-web/assets/css/fnlla-web.css&quot;&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/site.css&quot;&gt;
 &lt;/head&gt;
 &lt;body data-fnlla-theme=&quot;default&quot;&gt;
@@ -189,7 +189,7 @@
     &lt;/footer&gt;
   &lt;/div&gt;
 
-  &lt;script src=&quot;fnlla-ui/assets/js/fnlla-ui.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;fnlla-web/assets/js/fnlla-web.js&quot;&gt;&lt;/script&gt;
   &lt;script src=&quot;assets/js/site.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -241,7 +241,7 @@
 
 <h3 id="brand-with-tokens-first">Brand with tokens first</h3>
 
-<p>Project branding should start in project CSS, not in manual edits to <code>fnlla-ui.css</code>.</p>
+<p>Project branding should start in project CSS, not in manual edits to <code>fnlla-web.css</code>.</p>
 
 <pre><code class="language-css">:root {
   --fnlla-color-primary: #0b3b35;
@@ -263,7 +263,7 @@
 
 <p>If the website injects HTML dynamically through AJAX, HTMX or custom JS, re-initialize the runtime on the new subtree.</p>
 
-<pre><code class="language-js">window.FNLLAUI.init(rootElement);</code></pre>
+<pre><code class="language-js">window.FNLLAWEB.init(rootElement);</code></pre>
 
 <h3 id="keep-icons-local">Keep icons local</h3>
 
@@ -271,12 +271,12 @@
 
 <p>Supported options:</p>
 
-<ul><li>local SVG files from <code>fnlla-ui/assets/icons/*.svg</code></li><li>the local sprite from <code>fnlla-ui/assets/icons/sprite.svg</code></li></ul>
+<ul><li>local SVG files from <code>fnlla-web/assets/icons/*.svg</code></li><li>the local sprite from <code>fnlla-web/assets/icons/sprite.svg</code></li></ul>
 
 <p>Example:</p>
 
 <pre><code class="language-html">&lt;span class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
-  &lt;img src=&quot;fnlla-ui/assets/icons/search.svg&quot; alt=&quot;&quot;&gt;
+  &lt;img src=&quot;fnlla-web/assets/icons/search.svg&quot; alt=&quot;&quot;&gt;
 &lt;/span&gt;</code></pre>
 
 <h2 id="day-to-day-website-workflow">Day-to-day website workflow</h2>
@@ -291,7 +291,7 @@
 
 <h2 id="decide-when-a-change-belongs-in-the-framework">Decide when a change belongs in the framework</h2>
 
-<p>Upstream a change into the <code>fnlla-ui</code> repository when:</p>
+<p>Upstream a change into the <code>fnlla-web</code> repository when:</p>
 
 <ul><li>the same pattern will be reused across multiple projects</li><li>the current component has a runtime bug or accessibility bug</li><li>tokens are not enough and a shared variant is missing</li><li>framework documentation is out of sync with the real runtime</li></ul>
 
@@ -311,7 +311,7 @@
 
 <p>Use this path for small branding or spacing changes.</p>
 
-<ol><li>Try token overrides in <code>site.css</code> first.</li><li>If tokens are not enough, add local project styles.</li><li>Do not edit <code>fnlla-ui/assets/css/fnlla-ui.css</code> directly unless the project is intentionally forking the runtime.</li><li>Re-check contrast, focus states and dark-theme behavior if the project uses it.</li></ol>
+<ol><li>Try token overrides in <code>site.css</code> first.</li><li>If tokens are not enough, add local project styles.</li><li>Do not edit <code>fnlla-web/assets/css/fnlla-web.css</code> directly unless the project is intentionally forking the runtime.</li><li>Re-check contrast, focus states and dark-theme behavior if the project uses it.</li></ol>
 
 <h3 id="interaction-issue">Interaction issue</h3>
 
@@ -323,7 +323,7 @@
 
 <p>Use this path when the downstream site upgrades its vendored FNLLA Web runtime.</p>
 
-<ol><li>Create an update branch.</li><li>Replace the project <code>fnlla-ui/</code> folder with a fresh <code>dist/fnlla-ui/</code> export from the framework repository.</li><li>Check <code>VERSION</code>.</li><li>Read <code>README.md</code> and <code>docs/contract.html</code> to confirm the current contract.</li><li>Search the project for legacy patterns such as <code>data-ui-*</code>, <code>ui-*</code> and outdated token overrides.</li><li>Re-test navigation, dropdowns, tabs, accordions, modals, forms and any local overrides.</li><li>Re-test on mobile, tablet and desktop.</li><li>Merge only after the downstream site passes its own review and QA checks.</li></ol>
+<ol><li>Create an update branch.</li><li>Replace the project <code>fnlla-web/</code> folder with a fresh <code>dist/fnlla-web/</code> export from the framework repository.</li><li>Check <code>VERSION</code>.</li><li>Read <code>README.md</code> and <code>docs/contract.html</code> to confirm the current contract.</li><li>Search the project for legacy patterns such as <code>data-ui-*</code>, <code>ui-*</code> and outdated token overrides.</li><li>Re-test navigation, dropdowns, tabs, accordions, modals, forms and any local overrides.</li><li>Re-test on mobile, tablet and desktop.</li><li>Merge only after the downstream site passes its own review and QA checks.</li></ol>
 
 <h2 id="maintain-fnlla-web-itself">Maintain FNLLA Web itself</h2>
 
@@ -339,7 +339,7 @@
 
 <p>Do not start with manual edits to:</p>
 
-<ul><li><code>assets/css/fnlla-ui.css</code></li><li><code>assets/js/fnlla-ui.js</code></li><li><code>docs/assets/docs.js</code></li><li><code>dist/fnlla-ui/</code></li></ul>
+<ul><li><code>assets/css/fnlla-web.css</code></li><li><code>assets/js/fnlla-web.js</code></li><li><code>docs/assets/docs.js</code></li><li><code>dist/fnlla-web/</code></li></ul>
 
 <h3 id="update-docs-when-the-public-contract-changes">Update docs when the public contract changes</h3>
 
@@ -355,15 +355,15 @@
 
 <p>After source changes, refresh the readable runtime and generated docs.</p>
 
-<pre><code class="language-bash">node .\scripts\publish-fnlla-ui.mjs</code></pre>
+<pre><code class="language-bash">node .\scripts\publish-fnlla-web.mjs</code></pre>
 
 <p>When behavior or packaging changed, run the browser smoke test.</p>
 
-<pre><code class="language-bash">node .\scripts\test-fnlla-ui-browser.mjs</code></pre>
+<pre><code class="language-bash">node .\scripts\test-fnlla-web-browser.mjs</code></pre>
 
 <p>Then confirm the repository contract.</p>
 
-<pre><code class="language-bash">node .\scripts\validate-fnlla-ui.mjs</code></pre>
+<pre><code class="language-bash">node .\scripts\validate-fnlla-web.mjs</code></pre>
 
 <h3 id="review-checklist-before-merge">Review checklist before merge</h3>
 
@@ -419,7 +419,7 @@
       <p class="content-text">FNLLA Web &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
     </footer>
   </main>
-  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="../assets/js/fnlla-web.js"></script>
   <script src="./assets/docs.js"></script>
 </body>
 </html>

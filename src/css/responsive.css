@@ -124,7 +124,7 @@
     gap: var(--fnlla-space-3);
   }
 
-  .fnlla-ui-js .navbar-panel[aria-hidden="true"] {
+  .fnlla-web-js .navbar-panel[aria-hidden="true"] {
     display: none;
   }
 

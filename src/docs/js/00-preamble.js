@@ -12,7 +12,7 @@
 
 (function () {
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var docsThemeStorageKey = "fnlla-ui-docs-theme";
+  var docsThemeStorageKey = "fnlla-web-docs-theme";
   var docsThemeColors = {
     default: "#1A4137",
     dark: "#0B1220"

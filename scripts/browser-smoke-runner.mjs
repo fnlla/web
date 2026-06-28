@@ -24,7 +24,7 @@ import {
   inspectSectionsLayoutPage,
   runSmokeFixture
 } from "./browser-smoke-docs-inspection.mjs";
-import { getFnllaUiManifest } from "./fnlla-ui-manifest.mjs";
+import { getFnllaWebManifest } from "./fnlla-web-manifest.mjs";
 import { getBrowserFamily } from "./tooling-support.mjs";
 
 const GECKODRIVER_VERSION = "0.36.0";
@@ -56,15 +56,15 @@ function guessContentType(filePath) {
 function getSmokeFixtureContent(rootDir, runtimeRootPath) {
   const templatePath = path.join(rootDir, "scripts", "test-fixtures", "browser-smoke.html");
   return fs.readFileSync(templatePath, "utf8")
-    .replace('../../assets/css/fnlla-ui.css', `${runtimeRootPath}/css/fnlla-ui.css`)
-    .replace('../../assets/js/fnlla-ui.js', `${runtimeRootPath}/js/fnlla-ui.js`);
+    .replace('../../assets/css/fnlla-web.css', `${runtimeRootPath}/css/fnlla-web.css`)
+    .replace('../../assets/js/fnlla-web.js', `${runtimeRootPath}/js/fnlla-web.js`);
 }
 
 /* Serve repository files over localhost for the browser smoke fixtures and docs pages. */
 function startStaticServer(rootDir, port) {
   const virtualFixtureMap = new Map([
     ["/__smoke__/source-runtime.html", getSmokeFixtureContent(rootDir, "/assets")],
-    ["/__smoke__/dist-runtime.html", getSmokeFixtureContent(rootDir, "/dist/fnlla-ui/assets")]
+    ["/__smoke__/dist-runtime.html", getSmokeFixtureContent(rootDir, "/dist/fnlla-web/assets")]
   ]);
 
   const server = http.createServer((request, response) => {
@@ -246,7 +246,7 @@ function downloadFile(url, targetPath, headers = {}) {
     const fetch = (currentUrl) => {
       const request = https.get(currentUrl, {
         headers: {
-          "User-Agent": "fnlla-ui-browser-smoke",
+          "User-Agent": "fnlla-web-browser-smoke",
           Accept: "application/vnd.github+json",
           ...headers
         }
@@ -310,7 +310,7 @@ async function ensureGeckodriverBinary() {
   const assetSuffix = getGeckodriverAssetName();
   const assetName = `geckodriver-v${GECKODRIVER_VERSION}-${assetSuffix}`;
   const downloadUrl = `https://github.com/mozilla/geckodriver/releases/download/v${GECKODRIVER_VERSION}/${assetName}`;
-  const cacheRoot = path.join(os.tmpdir(), "fnlla-ui-geckodriver", GECKODRIVER_VERSION);
+  const cacheRoot = path.join(os.tmpdir(), "fnlla-web-geckodriver", GECKODRIVER_VERSION);
   const archivePath = path.join(cacheRoot, assetName);
   const extractedBinaryPath = path.join(cacheRoot, binaryName);
 
@@ -324,23 +324,7 @@ async function ensureGeckodriverBinary() {
     }
 
     if (assetName.endsWith(".zip")) {
-      const extraction = spawnSync("powershell", [
-        "-NoLogo",
-        "-NoProfile",
-        "-Command",
-        "Expand-Archive",
-        "-LiteralPath",
-        archivePath,
-        "-DestinationPath",
-        cacheRoot,
-        "-Force"
-      ], {
-        encoding: "utf8"
-      });
-
-      if (extraction.status !== 0) {
-        throw new Error(`Could not extract geckodriver archive: ${(extraction.stderr || extraction.stdout || "").trim()}`);
-      }
+      extractZipArchive(archivePath, cacheRoot);
     } else {
       const extraction = spawnSync("tar", ["-xzf", archivePath, "-C", cacheRoot], {
         encoding: "utf8"
@@ -357,6 +341,33 @@ async function ensureGeckodriverBinary() {
   }
 
   return extractedBinaryPath;
+}
+
+function extractZipArchive(archivePath, destinationPath) {
+  const powershellExtraction = spawnSync("powershell", [
+    "-NoLogo",
+    "-NoProfile",
+    "-Command",
+    `Import-Module Microsoft.PowerShell.Archive; Expand-Archive -LiteralPath '${archivePath.replace(/'/g, "''")}' -DestinationPath '${destinationPath.replace(/'/g, "''")}' -Force`
+  ], {
+    encoding: "utf8"
+  });
+
+  if (powershellExtraction.status === 0) {
+    return;
+  }
+
+  const tarExtraction = spawnSync("tar", ["-xf", archivePath, "-C", destinationPath], {
+    encoding: "utf8"
+  });
+
+  if (tarExtraction.status === 0) {
+    return;
+  }
+
+  const powershellError = (powershellExtraction.stderr || powershellExtraction.stdout || "").trim();
+  const tarError = (tarExtraction.stderr || tarExtraction.stdout || "").trim();
+  throw new Error(`Could not extract geckodriver archive: ${powershellError || tarError}`);
 }
 
 async function startFirefoxDebugSession({ browserPath }) {
@@ -547,10 +558,10 @@ async function stopStaticServer(server) {
 
 /* Run the full browser smoke flow against runtime fixtures and docs pages. */
 export async function runBrowserSmokeTest({ repoRoot, browserPath, browserFamily = "" }) {
-  const manifest = getFnllaUiManifest();
+  const manifest = getFnllaWebManifest();
   const serverPort = getRandomPort(31000, 36000);
   const debugPort = getRandomPort(39001, 43000);
-  const userDataDir = path.join(os.tmpdir(), `fnlla-ui-browser-smoke-${Date.now()}-${Math.random().toString(16).slice(2)}`);
+  const userDataDir = path.join(os.tmpdir(), `fnlla-web-browser-smoke-${Date.now()}-${Math.random().toString(16).slice(2)}`);
   const sourceFixtureUrlPath = "/__smoke__/source-runtime.html";
   const distFixtureUrlPath = "/__smoke__/dist-runtime.html";
   const sourceFixtureUrl = `http://127.0.0.1:${serverPort}${sourceFixtureUrlPath}`;

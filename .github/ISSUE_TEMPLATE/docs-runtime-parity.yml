@@ -19,7 +19,7 @@ body:
     attributes:
       label: Runtime surface
       description: Identify the production CSS or JS surface that should match the docs.
-      placeholder: assets/css/fnlla-ui.css or assets/js/fnlla-ui.js
+      placeholder: assets/css/fnlla-web.css or assets/js/fnlla-web.js
     validations:
       required: true
   - type: textarea

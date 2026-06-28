@@ -16,7 +16,7 @@ If this change may be security-sensitive, stop and follow `SECURITY.md` instead 
 
 - [ ] Browser or smoke validation was run where behavior changed
 - [ ] Docs examples still match the shipped runtime contract
-- [ ] `dist/fnlla-ui/` stays aligned when runtime assets changed
+- [ ] `dist/fnlla-web/` stays aligned when runtime assets changed
 - [ ] Accessibility, focus and keyboard behavior were checked where relevant
 
 ## Release Notes

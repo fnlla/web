@@ -1,7 +1,7 @@
 # FNLLA Web
 
-[![Release](https://img.shields.io/badge/release-v1.0.6-2f65eb?style=flat-square)](https://github.com/fnlla/web/releases/tag/v1.0.6)
-[![Hardening](https://github.com/fnlla/web/actions/workflows/fnlla-ui-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/web/actions/workflows/fnlla-ui-hardening.yml)
+[![Release](https://img.shields.io/badge/release-v1.0.7-2f65eb?style=flat-square)](https://github.com/fnlla/web/releases/tag/v1.0.7)
+[![Hardening](https://github.com/fnlla/web/actions/workflows/fnlla-web-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/web/actions/workflows/fnlla-web-hardening.yml)
 [![License](https://img.shields.io/badge/license-MIT-111827?style=flat-square)](./LICENSE.md)
 [![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
 [![Docs](https://img.shields.io/badge/docs-9%20pages-c26d00?style=flat-square)](./docs/guides.html)
@@ -12,11 +12,11 @@ FNLLA Web is a standalone open-source UI kit for static and server-rendered webs
 
 The supported browser runtime contract is intentionally small:
 
-- `assets/css/fnlla-ui.css`
-- `assets/js/fnlla-ui.js`
+- `assets/css/fnlla-web.css`
+- `assets/js/fnlla-web.js`
 - `assets/icons/`
 
-That runtime can be consumed directly from the repository or copied as the generated runtime-only handoff under `dist/fnlla-ui/`.
+That runtime can be consumed directly from the repository or copied as the generated runtime-only handoff under `dist/fnlla-web/`.
 
 FNLLA Web is produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
 
@@ -55,8 +55,8 @@ Repository participation and disclosure rules also rely on:
 
 Repository identity assets also rely on:
 
-- `docs/assets/brand/fnlla-ui.svg`
-- `docs/assets/brand/fnlla-ui-dark.svg`
+- `docs/assets/brand/fnlla-web.svg`
+- `docs/assets/brand/fnlla-web-dark.svg`
 - `docs/assets/brand/fnlla-github.svg`
 - `docs/assets/brand/fnlla-github.png`
 
@@ -97,7 +97,7 @@ Use the docs for detailed examples. README stays intentionally slimmer and focus
 
 ## How to install it in another project
 
-1. Copy the entire `fnlla-ui` folder into the new project, or use the generated runtime-only export under `dist/fnlla-ui/` when you want a lean handoff.
+1. Copy the entire `fnlla-web` folder into the new project, or use the generated runtime-only export under `dist/fnlla-web/` when you want a lean handoff.
 2. Keep the published `assets/` runtime tree together so relative paths stay simple.
 3. Link the runtime files from the page.
 4. Use the component patterns from `docs/components.html` and `docs/sections.html` rather than rebuilding examples from scratch.
@@ -108,22 +108,22 @@ The framework runs as plain static HTML, CSS and JavaScript. No npm, Composer, b
 Basic runtime includes:
 
 ```html
-<link rel="stylesheet" href="fnlla-ui/assets/css/fnlla-ui.css">
-<script src="fnlla-ui/assets/js/fnlla-ui.js"></script>
+<link rel="stylesheet" href="fnlla-web/assets/css/fnlla-web.css">
+<script src="fnlla-web/assets/js/fnlla-web.js"></script>
 ```
 
-If the framework files sit at the site root instead, use `assets/css/fnlla-ui.css` and `assets/js/fnlla-ui.js`.
+If the framework files sit at the site root instead, use `assets/css/fnlla-web.css` and `assets/js/fnlla-web.js`.
 
 ## Public runtime helpers
 
-The stable browser API lives under `window.FNLLAUI`.
+The stable browser API lives under `window.FNLLAWEB`.
 
-- `window.FNLLAUI.init(root)` performs idempotent initialization for HTML injected after first page load.
-- `window.FNLLAUI.setTheme(theme, target)` applies the documented `default` or `dark` theme to `body` by default, or to a specific wrapper when a selector or element is provided.
-- `window.FNLLAUI.getDocumentTitle()`, `window.FNLLAUI.getDocumentTitleConfig()`, `window.FNLLAUI.syncDocumentTitle(config)` and `window.FNLLAUI.setDocumentTitle(config)` manage professional browser-tab titles from declarative HTML metadata or dynamic runtime state.
-- `window.FNLLAUI.getConsentState()`, `window.FNLLAUI.hasConsent(category)`, `window.FNLLAUI.openConsentSettings()`, `window.FNLLAUI.acceptConsent()`, `window.FNLLAUI.rejectConsent()`, `window.FNLLAUI.saveConsent(state)` and `window.FNLLAUI.resetConsent()` manage the documented first-party consent cookie flow.
-- `window.FNLLAUI.showToast(target)` and the matching hide helper support non-blocking notification flows.
-- `window.FNLLAUI.showOffcanvas(target)` and the matching hide helper support side-panel workflows.
+- `window.FNLLAWEB.init(root)` performs idempotent initialization for HTML injected after first page load.
+- `window.FNLLAWEB.setTheme(theme, target)` applies the documented `default` or `dark` theme to `body` by default, or to a specific wrapper when a selector or element is provided.
+- `window.FNLLAWEB.getDocumentTitle()`, `window.FNLLAWEB.getDocumentTitleConfig()`, `window.FNLLAWEB.syncDocumentTitle(config)` and `window.FNLLAWEB.setDocumentTitle(config)` manage professional browser-tab titles from declarative HTML metadata or dynamic runtime state.
+- `window.FNLLAWEB.getConsentState()`, `window.FNLLAWEB.hasConsent(category)`, `window.FNLLAWEB.openConsentSettings()`, `window.FNLLAWEB.acceptConsent()`, `window.FNLLAWEB.rejectConsent()`, `window.FNLLAWEB.saveConsent(state)` and `window.FNLLAWEB.resetConsent()` manage the documented first-party consent cookie flow.
+- `window.FNLLAWEB.showToast(target)` and the matching hide helper support non-blocking notification flows.
+- `window.FNLLAWEB.showOffcanvas(target)` and the matching hide helper support side-panel workflows.
 - Modal, dropdown, popover, tooltip and scrollspy helpers are documented in `docs/contract.html`.
 
 The helper contract is intentionally small. For the full supported surface, use `docs/contract.html` as the stable reference.
@@ -172,12 +172,12 @@ The docs browser behavior bundle under `docs/assets/docs.js` is generated during
 
 Authoritative maintainer scripts:
 
-- `scripts/fnlla-ui-manifest.mjs` defines source ordering, docs pages and the runtime export contract.
-- `scripts/publish-fnlla-ui.mjs` republishes runtime files, rebuilds generated guide HTML and refreshes `dist/fnlla-ui/`.
+- `scripts/fnlla-web-manifest.mjs` defines source ordering, docs pages and the runtime export contract.
+- `scripts/publish-fnlla-web.mjs` republishes runtime files, rebuilds generated guide HTML and refreshes `dist/fnlla-web/`.
 - `scripts/build-guides.mjs` turns maintainer-authored Markdown guides into published HTML pages.
-- `scripts/validate-fnlla-ui.mjs` checks repository structure, docs sync, runtime export generation and release metadata.
-- `scripts/test-fnlla-ui-browser.mjs` runs the real browser smoke test against the published runtime.
-- `scripts/test-fnlla-ui-browser-matrix.mjs` replays the smoke flow across every detected supported local browser, including Firefox when available.
+- `scripts/validate-fnlla-web.mjs` checks repository structure, docs sync, runtime export generation and release metadata.
+- `scripts/test-fnlla-web-browser.mjs` runs the real browser smoke test against the published runtime.
+- `scripts/test-fnlla-web-browser-matrix.mjs` replays the smoke flow across every detected supported local browser, including Firefox when available.
 - `.github/CONTRIBUTING.md` defines contribution expectations for this maintainer-led public repository.
 - `CODE_OF_CONDUCT.md` defines the professional behavior standard for repository collaboration.
 - `SECURITY.md` defines the private vulnerability reporting route and response expectations.
@@ -188,25 +188,25 @@ Authoritative maintainer scripts:
 Recommended maintainer sequence:
 
 ```bash
-node .\scripts\publish-fnlla-ui.mjs
-node .\scripts\test-fnlla-ui-browser.mjs
-node .\scripts\validate-fnlla-ui.mjs
+node .\scripts\publish-fnlla-web.mjs
+node .\scripts\test-fnlla-web-browser.mjs
+node .\scripts\validate-fnlla-web.mjs
 ```
 
 Use the browser matrix when you want a broader local sweep:
 
 ```bash
-node .\scripts\test-fnlla-ui-browser-matrix.mjs
+node .\scripts\test-fnlla-web-browser-matrix.mjs
 ```
 
 ## Runtime and docs boundary
 
 Treat these as public, supported outputs:
 
-- `assets/css/fnlla-ui.css`
-- `assets/js/fnlla-ui.js`
+- `assets/css/fnlla-web.css`
+- `assets/js/fnlla-web.js`
 - `assets/icons/`
-- `dist/fnlla-ui/`
+- `dist/fnlla-web/`
 
 Treat these as maintainer-only internals:
 
@@ -218,7 +218,7 @@ Treat these as maintainer-only internals:
 - `docs/assets/docs.js`
 - the docs shell around the runtime demos
 
-The docs shell is documentation-specific, but component demos should still render from the same shared runtime shipped in `assets/css/fnlla-ui.css` and `assets/js/fnlla-ui.js`.
+The docs shell is documentation-specific, but component demos should still render from the same shared runtime shipped in `assets/css/fnlla-web.css` and `assets/js/fnlla-web.js`.
 
 ## Included documentation
 
@@ -230,9 +230,9 @@ The docs shell is documentation-specific, but component demos should still rende
 - Brand assets: `docs/assets/brand/` for the committed FNLLA Web logo source and GitHub-ready preview exports
 - Guide sources: `docs/guides/*.md` for maintainer-authored content that publishes into the HTML guide set
 - Docs behavior sources: `src/docs/js/*.js` for maintainer-authored documentation-only JavaScript that publishes into `docs/assets/docs.js`
-- Runtime manifest: `scripts/fnlla-ui-manifest.mjs` for the shared source-ordering and export contract
-- Validator: `scripts/validate-fnlla-ui.mjs` for release-stage structural checks
-- Browser smoke test: `scripts/test-fnlla-ui-browser.mjs` for published runtime behavior checks
+- Runtime manifest: `scripts/fnlla-web-manifest.mjs` for the shared source-ordering and export contract
+- Validator: `scripts/validate-fnlla-web.mjs` for release-stage structural checks
+- Browser smoke test: `scripts/test-fnlla-web-browser.mjs` for published runtime behavior checks
 - Code of Conduct: `CODE_OF_CONDUCT.md` for collaboration and moderation standards
 - Contributing guide: `.github/CONTRIBUTING.md` for repository workflow and scope expectations
 - License: `LICENSE.md` for MIT usage terms

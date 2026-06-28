@@ -28,12 +28,12 @@ jobs:
 
       - name: Publish runtime and generated docs
         shell: pwsh
-        run: node .\scripts\publish-fnlla-ui.mjs
+        run: node .\scripts\publish-fnlla-web.mjs
 
       - name: Run browser smoke coverage
         shell: pwsh
-        run: node .\scripts\test-fnlla-ui-browser.mjs
+        run: node .\scripts\test-fnlla-web-browser.mjs
 
       - name: Validate release contract
         shell: pwsh
-        run: node .\scripts\validate-fnlla-ui.mjs
+        run: node .\scripts\validate-fnlla-web.mjs

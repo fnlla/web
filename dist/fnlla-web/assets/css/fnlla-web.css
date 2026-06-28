@@ -2,7 +2,7 @@
   FNLLA Web runtime stylesheet.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   Produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
-  Published from readable source modules in src/css/ via scripts/publish-fnlla-ui.mjs.
+  Published from readable source modules in src/css/ via scripts/publish-fnlla-web.mjs.
 */
 
 /*
@@ -1953,7 +1953,7 @@ textarea {
   color: var(--fnlla-color-placeholder);
 }
 
-.fnlla-ui-js .select-shell .select-native {
+.fnlla-web-js .select-shell .select-native {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -5278,7 +5278,7 @@ textarea {
     gap: var(--fnlla-space-3);
   }
 
-  .fnlla-ui-js .navbar-panel[aria-hidden="true"] {
+  .fnlla-web-js .navbar-panel[aria-hidden="true"] {
     display: none;
   }
 

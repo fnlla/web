@@ -9,8 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1A4137">
   <title>Overview - FNLLA Web Documentation</title>
-  <link rel="icon" href="./assets/brand/fnlla-ui.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="icon" href="./assets/brand/fnlla-web.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/fnlla-web.css">
   <link rel="stylesheet" href="./assets/docs.css">
 </head>
 <body data-fnlla-theme="default">
@@ -23,7 +23,7 @@
     <header class="doc-header" aria-label="FNLLA Web documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Blueprint documentation</span>
-        <span class="doc-status">Stable 1.0.6</span>
+        <span class="doc-status">Stable 1.0.7</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Framework blueprint</p>
@@ -80,15 +80,15 @@
       <div class="grid">
         <article class="card">
           <h2 class="card-title">Stable runtime contract</h2>
-          <pre><code>&lt;link rel="stylesheet" href="assets/css/fnlla-ui.css"&gt;
-&lt;script src="assets/js/fnlla-ui.js"&gt;&lt;/script&gt;</code></pre>
+          <pre><code>&lt;link rel="stylesheet" href="assets/css/fnlla-web.css"&gt;
+&lt;script src="assets/js/fnlla-web.js"&gt;&lt;/script&gt;</code></pre>
           <p class="card-text">The public runtime starts with one stylesheet, one script and the local <code>assets/icons/</code> bundle. The rest of the docs explain how to structure markup, choose components and keep that contract stable.</p>
         </article>
 
         <article class="card">
           <h2 class="card-title">Choose your working mode</h2>
           <ul class="doc-checklist">
-            <li><strong>Consumer mode:</strong> copy <code>dist/fnlla-ui/</code> or work directly from <code>assets/</code>, then build a website on top of it.</li>
+            <li><strong>Consumer mode:</strong> copy <code>dist/fnlla-web/</code> or work directly from <code>assets/</code>, then build a website on top of it.</li>
             <li><strong>Maintainer mode:</strong> change <code>src/</code>, republish runtime files and run validation before release.</li>
             <li><strong>Default rule:</strong> if a change only serves one website, keep it in the website project instead of pushing it into the framework.</li>
           </ul>
@@ -163,7 +163,7 @@
         </article>
         <article class="card">
           <h3 class="card-title">Hooks stay on the documented path</h3>
-          <p class="card-text">Use <code>data-fnlla-*</code> hooks, real <code>aria-controls</code> targets and <code>window.FNLLAUI.init(root)</code> for dynamic DOM insertion. Legacy <code>data-ui-*</code> patterns are outside the stable contract.</p>
+          <p class="card-text">Use <code>data-fnlla-*</code> hooks, real <code>aria-controls</code> targets and <code>window.FNLLAWEB.init(root)</code> for dynamic DOM insertion. Legacy <code>data-ui-*</code> patterns are outside the stable contract.</p>
         </article>
         <article class="card">
           <h3 class="card-title">Icons stay local</h3>
@@ -177,7 +177,7 @@
     </footer>
   </main>
   <!-- Shared runtime for interactive demos used inside the docs. -->
-  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="../assets/js/fnlla-web.js"></script>
   <script src="./assets/docs.js"></script>
 </body>
 </html>

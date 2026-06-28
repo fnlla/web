@@ -22,11 +22,11 @@
       initializationState.popover.add(popover);
 
       if (!trigger.id) {
-        trigger.id = createFnllaUiId(idPrefixes.popoverToggle);
+        trigger.id = createFnllaWebId(idPrefixes.popoverToggle);
       }
 
       if (!panel.id) {
-        panel.id = createFnllaUiId(idPrefixes.popoverPanel);
+        panel.id = createFnllaWebId(idPrefixes.popoverPanel);
       }
 
       trigger.setAttribute("aria-expanded", "false");

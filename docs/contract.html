@@ -9,8 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1A4137">
   <title>Contract - FNLLA Web Documentation</title>
-  <link rel="icon" href="./assets/brand/fnlla-ui.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="icon" href="./assets/brand/fnlla-web.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/fnlla-web.css">
   <link rel="stylesheet" href="./assets/docs.css">
 </head>
 <body data-fnlla-theme="default">
@@ -23,7 +23,7 @@
     <header class="doc-header" aria-label="FNLLA Web documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Blueprint documentation</span>
-        <span class="doc-status">Stable 1.0.6</span>
+        <span class="doc-status">Stable 1.0.7</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Framework blueprint</p>
@@ -83,7 +83,7 @@
           <div class="doc-meta-list">
             <div>
               <p class="content-title mb-1">Version</p>
-              <p class="content-text"><code>1.0.6</code> is the stable public release target for this repository snapshot.</p>
+              <p class="content-text"><code>1.0.7</code> is the stable public release target for this repository snapshot.</p>
             </div>
             <div>
               <p class="content-title mb-1">Support model</p>
@@ -119,11 +119,11 @@
         <article class="card">
           <h2 class="card-title">Public runtime contract</h2>
           <ul class="doc-contract-list">
-            <li><code>assets/css/fnlla-ui.css</code> is the supported runtime stylesheet for tokens, layout primitives, components, sections and utilities.</li>
-            <li><code>assets/js/fnlla-ui.js</code> is the supported runtime script for dropdowns, mobile navigation, tabs, accordions, modals, toasts, offcanvas panels, popovers, tooltips, cookie consent flows and scrollspy.</li>
+            <li><code>assets/css/fnlla-web.css</code> is the supported runtime stylesheet for tokens, layout primitives, components, sections and utilities.</li>
+            <li><code>assets/js/fnlla-web.js</code> is the supported runtime script for dropdowns, mobile navigation, tabs, accordions, modals, toasts, offcanvas panels, popovers, tooltips, cookie consent flows and scrollspy.</li>
             <li><code>assets/icons/</code> is the supported local <code>FNLLA Icons</code> bundle for offline icon usage, including root-level SVG files, <code>sprite.svg</code>, the Lucide license file and the FNLLA notice.</li>
             <li>The stable CSS API uses prefix-free class names such as <code>wrapper</code>, <code>section</code>, <code>container</code>, <code>grid</code>, <code>btn</code>, <code>card</code> and <code>navbar</code>.</li>
-            <li><a href="./contract.html"><code>contract.html</code></a> defines how this runtime is packaged and when downstream projects should consume <code>dist/fnlla-ui/</code>.</li>
+            <li><a href="./contract.html"><code>contract.html</code></a> defines how this runtime is packaged and when downstream projects should consume <code>dist/fnlla-web/</code>.</li>
             <li><a href="./layout.html"><code>layout.html</code></a> and the reference pages for components and sections define the documented authoring model that this contract expects.</li>
           </ul>
         </article>
@@ -132,7 +132,7 @@
           <h2 class="card-title">Private implementation details</h2>
           <ul class="doc-contract-list">
             <li><code>src/css/</code> and <code>src/js/</code> are maintainer source layers, not consumer runtime dependencies.</li>
-            <li><code>scripts/fnlla-ui-manifest.mjs</code> coordinates publish and validation, but it is not part of the browser runtime API.</li>
+            <li><code>scripts/fnlla-web-manifest.mjs</code> coordinates publish and validation, but it is not part of the browser runtime API.</li>
             <li><code>docs/assets/docs.css</code> and <code>docs/assets/docs.js</code> are documentation-only assets and should not be linked from production pages.</li>
             <li>Internal source-module ordering, source file names and docs helper selectors may change as long as the published runtime contract stays stable.</li>
           </ul>
@@ -150,15 +150,15 @@
 
       <div class="doc-card-grid doc-card-grid-2">
         <article class="card">
-          <h2 class="card-title">Default: copy <code>dist/fnlla-ui/</code></h2>
+          <h2 class="card-title">Default: copy <code>dist/fnlla-web/</code></h2>
           <p class="card-text">Use the generated export when another project or another team needs FNLLA Web as a vendored dependency. It contains the runtime tree plus the minimal release files needed for version and license tracking.</p>
           <pre><code>dist/
-  fnlla-ui/
+  fnlla-web/
     assets/
       css/
-        fnlla-ui.css
+        fnlla-web.css
       js/
-        fnlla-ui.js
+        fnlla-web.js
       icons/
     LICENSE.md
     README.md
@@ -186,13 +186,13 @@
         <article class="card">
           <h3 class="card-title">What belongs to runtime</h3>
           <ul class="doc-path-list">
-            <li><strong><code>assets/css/fnlla-ui.css</code></strong> is the published stylesheet that pages should link.</li>
-            <li><strong><code>assets/js/fnlla-ui.js</code></strong> is the published script that pages should load for documented behaviors.</li>
+            <li><strong><code>assets/css/fnlla-web.css</code></strong> is the published stylesheet that pages should link.</li>
+            <li><strong><code>assets/js/fnlla-web.js</code></strong> is the published script that pages should load for documented behaviors.</li>
             <li><strong><code>assets/icons/</code></strong> holds the offline icon bundle, including root SVG files, <code>sprite.svg</code>, notice and license files.</li>
-            <li><strong><code>dist/fnlla-ui/</code></strong> is the clean handoff form of the same runtime contract.</li>
+            <li><strong><code>dist/fnlla-web/</code></strong> is the clean handoff form of the same runtime contract.</li>
           </ul>
-          <pre><code>&lt;link rel="stylesheet" href="fnlla-ui/assets/css/fnlla-ui.css"&gt;
-&lt;script src="fnlla-ui/assets/js/fnlla-ui.js"&gt;&lt;/script&gt;</code></pre>
+          <pre><code>&lt;link rel="stylesheet" href="fnlla-web/assets/css/fnlla-web.css"&gt;
+&lt;script src="fnlla-web/assets/js/fnlla-web.js"&gt;&lt;/script&gt;</code></pre>
         </article>
 
         <article class="card">
@@ -200,7 +200,7 @@
           <ul class="doc-checklist">
             <li><strong>Do not link <code>src/css/...</code> or <code>src/js/...</code>.</strong> Those are maintainer source files, not consumer dependencies.</li>
             <li><strong>Do not link <code>docs/assets/docs.css</code> or <code>docs/assets/docs.js</code>.</strong> They style and enhance the documentation product only.</li>
-            <li><strong>Do not point production pages at docs-relative paths.</strong> Consumer pages should stay on runtime paths such as <code>assets/css/fnlla-ui.css</code> and <code>assets/icons/search.svg</code>.</li>
+            <li><strong>Do not point production pages at docs-relative paths.</strong> Consumer pages should stay on runtime paths such as <code>assets/css/fnlla-web.css</code> and <code>assets/icons/search.svg</code>.</li>
           </ul>
         </article>
       </div>
@@ -219,7 +219,7 @@
         </article>
         <article class="card">
           <h3 class="card-title">Runtime export</h3>
-          <p class="card-text"><code>dist/fnlla-ui/</code> is the downstream handoff package. It is generated, not hand-maintained.</p>
+          <p class="card-text"><code>dist/fnlla-web/</code> is the downstream handoff package. It is generated, not hand-maintained.</p>
         </article>
         <article class="card">
           <h3 class="card-title">Maintainer source</h3>
@@ -243,21 +243,21 @@
           <h3 class="card-title">Maintainer flow</h3>
           <ol class="doc-flow-list">
             <li><strong>Edit source modules</strong><p>Change tokens, components or interaction code under <code>src/</code> first.</p></li>
-            <li><strong>Republish runtime and docs</strong><p>Run <code>node .\scripts\publish-fnlla-ui.mjs</code> so runtime files, generated guides and <code>dist/fnlla-ui/</code> all match source.</p></li>
-            <li><strong>Smoke-test browser behavior</strong><p>Run <code>node .\scripts\test-fnlla-ui-browser.mjs</code> when runtime behavior or packaging changed.</p></li>
-            <li><strong>Validate the repository contract</strong><p>Run <code>node .\scripts\validate-fnlla-ui.mjs</code> to confirm docs shell sync, release files and generated outputs.</p></li>
+            <li><strong>Republish runtime and docs</strong><p>Run <code>node .\scripts\publish-fnlla-web.mjs</code> so runtime files, generated guides and <code>dist/fnlla-web/</code> all match source.</p></li>
+            <li><strong>Smoke-test browser behavior</strong><p>Run <code>node .\scripts\test-fnlla-web-browser.mjs</code> when runtime behavior or packaging changed.</p></li>
+            <li><strong>Validate the repository contract</strong><p>Run <code>node .\scripts\validate-fnlla-web.mjs</code> to confirm docs shell sync, release files and generated outputs.</p></li>
           </ol>
         </article>
 
         <article class="card">
           <h3 class="card-title">Downstream project structure</h3>
           <pre><code>my-site/
-  fnlla-ui/
+  fnlla-web/
     assets/
       css/
-        fnlla-ui.css
+        fnlla-web.css
       js/
-        fnlla-ui.js
+        fnlla-web.js
       icons/
     LICENSE.md
     README.md
@@ -334,7 +334,7 @@
 
         <article class="card">
           <h3 class="card-title">Programmatic helper contract</h3>
-          <p class="card-text">Use <code>window.FNLLAUI.getDocumentTitle()</code>, <code>window.FNLLAUI.getDocumentTitleConfig()</code>, <code>window.FNLLAUI.syncDocumentTitle(config)</code> and <code>window.FNLLAUI.setDocumentTitle(config)</code> when dynamic routes, injected content or runtime state need to adjust the browser tab label.</p>
+          <p class="card-text">Use <code>window.FNLLAWEB.getDocumentTitle()</code>, <code>window.FNLLAWEB.getDocumentTitleConfig()</code>, <code>window.FNLLAWEB.syncDocumentTitle(config)</code> and <code>window.FNLLAWEB.setDocumentTitle(config)</code> when dynamic routes, injected content or runtime state need to adjust the browser tab label.</p>
           <p class="card-text mb-0">The runtime composes a normalized <code>Page | Section | Site</code> title by default and de-duplicates repeated labels automatically.</p>
         </article>
       </div>
@@ -358,7 +358,7 @@
         </article>
         <article class="feature-card">
           <h3 class="card-title">Customization rule</h3>
-          <p class="card-text">Framework maintainers should change shared tokens in <code>src/css/tokens.css</code> and republish <code>assets/css/fnlla-ui.css</code>. Consumer projects that only use the published runtime should layer token overrides after <code>assets/css/fnlla-ui.css</code> instead of editing component selectors first.</p>
+          <p class="card-text">Framework maintainers should change shared tokens in <code>src/css/tokens.css</code> and republish <code>assets/css/fnlla-web.css</code>. Consumer projects that only use the published runtime should layer token overrides after <code>assets/css/fnlla-web.css</code> instead of editing component selectors first.</p>
         </article>
       </div>
     </section>
@@ -455,7 +455,7 @@
             </tr>
             <tr>
               <td>Runtime re-init</td>
-              <td><code>window.FNLLAUI.init(root)</code></td>
+              <td><code>window.FNLLAWEB.init(root)</code></td>
               <td>A document, element or injected subtree containing documented FNLLA Web markup</td>
               <td>The initializer is idempotent and is intended for progressive enhancement after dynamic DOM insertion.</td>
             </tr>
@@ -468,7 +468,7 @@
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">Public runtime helpers</h2>
-        <p class="section-text"><code>window.FNLLAUI</code> is the supported programmatic API. It is intended for progressive enhancement, dynamic content insertion and explicit open or close flows when markup alone is not enough.</p>
+        <p class="section-text"><code>window.FNLLAWEB</code> is the supported programmatic API. It is intended for progressive enhancement, dynamic content insertion and explicit open or close flows when markup alone is not enough.</p>
       </div>
 
       <div class="card doc-table-wrap">
@@ -482,7 +482,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>window.FNLLAUI.init(root)</code></td>
+              <td><code>window.FNLLAWEB.init(root)</code></td>
               <td>A document, element or injected subtree</td>
               <td>Initializes documented FNLLA Web markup inside the provided scope. Calls are idempotent.</td>
             </tr>
@@ -542,8 +542,8 @@
 
       <article class="card mt-4">
         <h3 class="card-title">Target resolution rule</h3>
-        <p class="card-text">Programmatic helpers accept either a selector string or a direct DOM element reference. If the target does not resolve to the documented FNLLA Web element type, the helper returns safely without throwing and keeps the chainable <code>window.FNLLAUI</code> object contract.</p>
-        <p class="card-text">The documented helper names are <code>window.FNLLAUI.setTheme(theme, target)</code>, <code>window.FNLLAUI.getDocumentTitle()</code>, <code>window.FNLLAUI.getDocumentTitleConfig()</code>, <code>window.FNLLAUI.syncDocumentTitle(config)</code>, <code>window.FNLLAUI.setDocumentTitle(config)</code>, <code>window.FNLLAUI.showModal(target)</code>, <code>window.FNLLAUI.openModal(target)</code>, <code>window.FNLLAUI.hideModal(target)</code>, <code>window.FNLLAUI.closeModal(target)</code>, <code>window.FNLLAUI.showToast(target)</code>, <code>window.FNLLAUI.hideToast(target)</code>, <code>window.FNLLAUI.showOffcanvas(target)</code>, <code>window.FNLLAUI.openOffcanvas(target)</code>, <code>window.FNLLAUI.hideOffcanvas(target)</code>, <code>window.FNLLAUI.closeOffcanvas(target)</code>, <code>window.FNLLAUI.openDropdown(target)</code>, <code>window.FNLLAUI.closeDropdown(target)</code>, <code>window.FNLLAUI.openPopover(target)</code>, <code>window.FNLLAUI.closePopover(target)</code>, <code>window.FNLLAUI.showTooltip(target)</code>, <code>window.FNLLAUI.hideTooltip(target)</code>, <code>window.FNLLAUI.refreshScrollspy(target)</code>, <code>window.FNLLAUI.getConsentState()</code>, <code>window.FNLLAUI.hasConsent(category)</code>, <code>window.FNLLAUI.openConsentSettings()</code>, <code>window.FNLLAUI.acceptConsent()</code>, <code>window.FNLLAUI.rejectConsent()</code>, <code>window.FNLLAUI.saveConsent(state)</code> and <code>window.FNLLAUI.resetConsent()</code>.</p>
+        <p class="card-text">Programmatic helpers accept either a selector string or a direct DOM element reference. If the target does not resolve to the documented FNLLA Web element type, the helper returns safely without throwing and keeps the chainable <code>window.FNLLAWEB</code> object contract.</p>
+        <p class="card-text">The documented helper names are <code>window.FNLLAWEB.setTheme(theme, target)</code>, <code>window.FNLLAWEB.getDocumentTitle()</code>, <code>window.FNLLAWEB.getDocumentTitleConfig()</code>, <code>window.FNLLAWEB.syncDocumentTitle(config)</code>, <code>window.FNLLAWEB.setDocumentTitle(config)</code>, <code>window.FNLLAWEB.showModal(target)</code>, <code>window.FNLLAWEB.openModal(target)</code>, <code>window.FNLLAWEB.hideModal(target)</code>, <code>window.FNLLAWEB.closeModal(target)</code>, <code>window.FNLLAWEB.showToast(target)</code>, <code>window.FNLLAWEB.hideToast(target)</code>, <code>window.FNLLAWEB.showOffcanvas(target)</code>, <code>window.FNLLAWEB.openOffcanvas(target)</code>, <code>window.FNLLAWEB.hideOffcanvas(target)</code>, <code>window.FNLLAWEB.closeOffcanvas(target)</code>, <code>window.FNLLAWEB.openDropdown(target)</code>, <code>window.FNLLAWEB.closeDropdown(target)</code>, <code>window.FNLLAWEB.openPopover(target)</code>, <code>window.FNLLAWEB.closePopover(target)</code>, <code>window.FNLLAWEB.showTooltip(target)</code>, <code>window.FNLLAWEB.hideTooltip(target)</code>, <code>window.FNLLAWEB.refreshScrollspy(target)</code>, <code>window.FNLLAWEB.getConsentState()</code>, <code>window.FNLLAWEB.hasConsent(category)</code>, <code>window.FNLLAWEB.openConsentSettings()</code>, <code>window.FNLLAWEB.acceptConsent()</code>, <code>window.FNLLAWEB.rejectConsent()</code>, <code>window.FNLLAWEB.saveConsent(state)</code> and <code>window.FNLLAWEB.resetConsent()</code>.</p>
       </article>
     </section>
 
@@ -596,17 +596,17 @@
         <article class="card">
           <h3 class="card-title">Release checks for maintainers</h3>
           <p class="card-text">Run the built-in publish, smoke-test and validation flow whenever runtime behavior, docs or packaging changed.</p>
-          <pre><code>node .\scripts\validate-fnlla-ui.mjs</code></pre>
+          <pre><code>node .\scripts\validate-fnlla-web.mjs</code></pre>
           <p class="card-text">When CSS or JavaScript source modules change, publish the readable runtime entrypoints with:</p>
-          <pre><code>node .\scripts\publish-fnlla-ui.mjs</code></pre>
-          <p class="card-text">That same publish flow now refreshes <code>dist/fnlla-ui/</code>, the runtime-only handoff package for downstream projects.</p>
+          <pre><code>node .\scripts\publish-fnlla-web.mjs</code></pre>
+          <p class="card-text">That same publish flow now refreshes <code>dist/fnlla-web/</code>, the runtime-only handoff package for downstream projects.</p>
           <p class="card-text">Use the browser smoke test when runtime behavior or runtime publishing changes:</p>
-          <pre><code>node .\scripts\test-fnlla-ui-browser.mjs</code></pre>
+          <pre><code>node .\scripts\test-fnlla-web-browser.mjs</code></pre>
           <p class="card-text">Use the local browser matrix when you want the same smoke flow replayed across every detected supported local browser, including Firefox when available:</p>
-          <pre><code>node .\scripts\test-fnlla-ui-browser-matrix.mjs</code></pre>
+          <pre><code>node .\scripts\test-fnlla-web-browser-matrix.mjs</code></pre>
           <p class="card-text">The browser smoke coverage now includes mixed modal or offcanvas stacking, programmatic lower-layer close flows, fallback focus targeting for CSS-hidden or fieldset-disabled preferred targets, docs shell checks and runtime API behavior.</p>
-          <p class="card-text">The repository also ships a GitHub Actions gate at <code>.github/workflows/fnlla-ui-hardening.yml</code> so publish, validation and browser hardening can run automatically on GitHub before release-oriented merges.</p>
-          <p class="card-text">Source-module ordering and the runtime-export boundary are centralized in <code>scripts/fnlla-ui-manifest.mjs</code> so publish and validation read the same repository contract.</p>
+          <p class="card-text">The repository also ships a GitHub Actions gate at <code>.github/workflows/fnlla-web-hardening.yml</code> so publish, validation and browser hardening can run automatically on GitHub before release-oriented merges.</p>
+          <p class="card-text">Source-module ordering and the runtime-export boundary are centralized in <code>scripts/fnlla-web-manifest.mjs</code> so publish and validation read the same repository contract.</p>
           <p class="card-text"><code>FNLLA Icons</code> usage is intentionally static and local in this repository. The supported offline contract is local SVG files or the local sprite, not remote icon APIs or CDN-hosted assets. Source attribution to Lucide remains embedded in the local icon bundle.</p>
         </article>
 
@@ -629,7 +629,7 @@
     </footer>
   </main>
   <!-- Shared runtime for interactive demos used inside the docs. -->
-  <script src="../assets/js/fnlla-ui.js"></script>
+  <script src="../assets/js/fnlla-web.js"></script>
   <script src="./assets/docs.js"></script>
 </body>
 </html>

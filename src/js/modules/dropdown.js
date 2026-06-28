@@ -22,11 +22,11 @@
       initializationState.dropdown.add(dropdown);
 
       if (!toggle.id) {
-        toggle.id = createFnllaUiId(idPrefixes.dropdownToggle);
+        toggle.id = createFnllaWebId(idPrefixes.dropdownToggle);
       }
 
       if (!menu.id) {
-        menu.id = createFnllaUiId(idPrefixes.dropdownMenu);
+        menu.id = createFnllaWebId(idPrefixes.dropdownMenu);
       }
 
       toggle.setAttribute("aria-expanded", "false");

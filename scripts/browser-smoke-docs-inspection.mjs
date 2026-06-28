@@ -153,7 +153,7 @@ export async function inspectDocsThemeToggle(client, url) {
         themeColor: themeMeta ? themeMeta.getAttribute("content") : "",
         storedTheme: (() => {
           try {
-            return window.localStorage.getItem("fnlla-ui-docs-theme") || "";
+            return window.localStorage.getItem("fnlla-web-docs-theme") || "";
           } catch (error) {
             return "";
           }

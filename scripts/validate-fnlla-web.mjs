@@ -13,8 +13,8 @@ import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { buildGuidePages } from "./build-guides.mjs";
-import { getFnllaUiManifest } from "./fnlla-ui-manifest.mjs";
-import { writeRuntimeExport } from "./publish-fnlla-ui.mjs";
+import { getFnllaWebManifest } from "./fnlla-web-manifest.mjs";
+import { writeRuntimeExport } from "./publish-fnlla-web.mjs";
 import { syncDocShells } from "./sync-doc-shells.mjs";
 import {
   compareNormalizedContent,
@@ -113,7 +113,7 @@ function getRelativeDocHref(fromOutput, targetPath) {
   return relativePath.startsWith(".") ? relativePath : `./${relativePath}`;
 }
 
-/* Verify the generated dist/fnlla-ui/ handoff matches the published runtime files. */
+/* Verify the generated dist/fnlla-web/ handoff matches the published runtime files. */
 function validateRuntimeExport(options) {
   const {
     exportRootPath,
@@ -136,7 +136,7 @@ function validateRuntimeExport(options) {
     errors.push(`${exportLabel}: missing README.md`);
   } else {
     const distReadme = readText(distReadmePath);
-    ["runtime-only FNLLA Web handoff", "scripts/publish-fnlla-ui.mjs", "README.md", "MANIFEST.json", "VERSION", "LICENSE.md"].forEach((requiredText) => {
+    ["runtime-only FNLLA Web handoff", "scripts/publish-fnlla-web.mjs", "README.md", "MANIFEST.json", "VERSION", "LICENSE.md"].forEach((requiredText) => {
       if (!distReadme.includes(requiredText)) {
         errors.push(`${exportLabel}/README.md: missing required text '${requiredText}'`);
       }
@@ -166,18 +166,18 @@ function validateRuntimeExport(options) {
 
   if (pathExists(distAssetsCssPath) && pathExists(cssEntrypointPath)) {
     if (!compareNormalizedContent(readText(distAssetsCssPath), readText(cssEntrypointPath))) {
-      errors.push(`${exportLabel}/assets/css/fnlla-ui.css: export is out of sync with assets/css/fnlla-ui.css`);
+      errors.push(`${exportLabel}/assets/css/fnlla-web.css: export is out of sync with assets/css/fnlla-web.css`);
     }
   } else {
-    errors.push(`${exportLabel}/assets/css/fnlla-ui.css: missing runtime export file`);
+    errors.push(`${exportLabel}/assets/css/fnlla-web.css: missing runtime export file`);
   }
 
   if (pathExists(distAssetsJsPath) && pathExists(runtimeScriptPath)) {
     if (!compareNormalizedContent(readText(distAssetsJsPath), readText(runtimeScriptPath))) {
-      errors.push(`${exportLabel}/assets/js/fnlla-ui.js: export is out of sync with assets/js/fnlla-ui.js`);
+      errors.push(`${exportLabel}/assets/js/fnlla-web.js: export is out of sync with assets/js/fnlla-web.js`);
     }
   } else {
-    errors.push(`${exportLabel}/assets/js/fnlla-ui.js: missing runtime export file`);
+    errors.push(`${exportLabel}/assets/js/fnlla-web.js: missing runtime export file`);
   }
 
   manifest.runtime.requiredIconPaths.forEach((requiredIconBundlePath) => {
@@ -190,7 +190,7 @@ function validateRuntimeExport(options) {
 /* Validate the current repository snapshot against the FNLLA Web contract. */
 export function validateFramework(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
-  const manifest = getFnllaUiManifest();
+  const manifest = getFnllaWebManifest();
   const expectedProject = manifest.project.name;
   const expectedOwner = manifest.project.owner;
   const expectedOrigin = manifest.project.origin;
@@ -206,22 +206,22 @@ export function validateFramework(options = {}) {
   const cssEntrypointPath = path.join(repoRoot, manifest.runtime.cssOutput);
   const runtimeScriptPath = path.join(repoRoot, manifest.runtime.jsOutput);
   const docsScriptPath = path.join(repoRoot, manifest.docs.assets.jsOutput);
-  const publishScriptPath = path.join(repoRoot, "scripts", "publish-fnlla-ui.mjs");
-  const validateScriptPath = path.join(repoRoot, "scripts", "validate-fnlla-ui.mjs");
+  const publishScriptPath = path.join(repoRoot, "scripts", "publish-fnlla-web.mjs");
+  const validateScriptPath = path.join(repoRoot, "scripts", "validate-fnlla-web.mjs");
   const buildGuidesScriptPath = path.join(repoRoot, "scripts", "build-guides.mjs");
   const syncDocShellsScriptPath = path.join(repoRoot, "scripts", "sync-doc-shells.mjs");
-  const manifestScriptPath = path.join(repoRoot, "scripts", "fnlla-ui-manifest.mjs");
-  const browserSmokeScriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser.mjs");
-  const browserMatrixScriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser-matrix.mjs");
+  const manifestScriptPath = path.join(repoRoot, "scripts", "fnlla-web-manifest.mjs");
+  const browserSmokeScriptPath = path.join(repoRoot, "scripts", "test-fnlla-web-browser.mjs");
+  const browserMatrixScriptPath = path.join(repoRoot, "scripts", "test-fnlla-web-browser-matrix.mjs");
   const browserSmokeDocsInspectionPath = path.join(repoRoot, "scripts", "browser-smoke-docs-inspection.mjs");
   const browserSmokeFixturePath = path.join(repoRoot, "scripts", "test-fixtures", "browser-smoke.html");
   const contributingPath = path.join(repoRoot, ".github", "CONTRIBUTING.md");
   const releaseTemplatePath = path.join(repoRoot, ".github", "RELEASE_TEMPLATE.md");
   const supportPath = path.join(repoRoot, ".github", "SUPPORT.md");
-  const githubWorkflowPath = path.join(repoRoot, ".github", "workflows", "fnlla-ui-hardening.yml");
+  const githubWorkflowPath = path.join(repoRoot, ".github", "workflows", "fnlla-web-hardening.yml");
   const brandAssetsDir = path.join(repoRoot, "docs", "assets", "brand");
-  const brandSvgPath = path.join(brandAssetsDir, "fnlla-ui.svg");
-  const brandDarkSvgPath = path.join(brandAssetsDir, "fnlla-ui-dark.svg");
+  const brandSvgPath = path.join(brandAssetsDir, "fnlla-web.svg");
+  const brandDarkSvgPath = path.join(brandAssetsDir, "fnlla-web-dark.svg");
   const brandGithubSvgPath = path.join(brandAssetsDir, "fnlla-github.svg");
   const brandReadmePath = path.join(brandAssetsDir, "README.md");
   const brandGithubPngPath = path.join(brandAssetsDir, "fnlla-github.png");
@@ -319,7 +319,7 @@ export function validateFramework(options = {}) {
 
   discoveredRootDocNames.forEach((name) => {
     if (!expectedRootDocNames.includes(name) && !expectedGuideDocNames.includes(name)) {
-      errors.push(`docs/${name}: unexpected top-level docs page not declared in scripts/fnlla-ui-manifest.mjs`);
+      errors.push(`docs/${name}: unexpected top-level docs page not declared in scripts/fnlla-web-manifest.mjs`);
     }
   });
 
@@ -338,7 +338,7 @@ export function validateFramework(options = {}) {
       }
     });
 
-    ["../assets/css/fnlla-ui.css", "./assets/docs.css", "../assets/js/fnlla-ui.js"].forEach((requiredAsset) => {
+    ["../assets/css/fnlla-web.css", "./assets/docs.css", "../assets/js/fnlla-web.js"].forEach((requiredAsset) => {
       if (!content.includes(requiredAsset)) {
         errors.push(`${file.name}: missing required asset reference '${requiredAsset}'`);
       }
@@ -540,29 +540,29 @@ export function validateFramework(options = {}) {
     });
 
     [
-      "scripts/validate-fnlla-ui.mjs",
-      "scripts/publish-fnlla-ui.mjs",
-      "scripts/fnlla-ui-manifest.mjs",
+      "scripts/validate-fnlla-web.mjs",
+      "scripts/publish-fnlla-web.mjs",
+      "scripts/fnlla-web-manifest.mjs",
       "scripts/build-guides.mjs",
-      "scripts/test-fnlla-ui-browser.mjs",
-      "scripts/test-fnlla-ui-browser-matrix.mjs",
+      "scripts/test-fnlla-web-browser.mjs",
+      "scripts/test-fnlla-web-browser-matrix.mjs",
       "LICENSE.md",
       "CODE_OF_CONDUCT.md",
       "SECURITY.md",
       ".github/CONTRIBUTING.md",
       ".github/RELEASE_TEMPLATE.md",
       ".github/SUPPORT.md",
-      "docs/assets/brand/fnlla-ui.svg",
-      "docs/assets/brand/fnlla-ui-dark.svg",
+      "docs/assets/brand/fnlla-web.svg",
+      "docs/assets/brand/fnlla-web-dark.svg",
       "docs/assets/brand/fnlla-github.svg",
       "docs/assets/brand/fnlla-github.png",
-      "dist/fnlla-ui/",
-      "window.FNLLAUI.init(root)",
-      "window.FNLLAUI.setTheme(theme, target)",
-      "window.FNLLAUI.setDocumentTitle(config)",
-      "window.FNLLAUI.getConsentState()",
-      "window.FNLLAUI.showToast(target)",
-      "window.FNLLAUI.showOffcanvas(target)",
+      "dist/fnlla-web/",
+      "window.FNLLAWEB.init(root)",
+      "window.FNLLAWEB.setTheme(theme, target)",
+      "window.FNLLAWEB.setDocumentTitle(config)",
+      "window.FNLLAWEB.getConsentState()",
+      "window.FNLLAWEB.showToast(target)",
+      "window.FNLLAWEB.showOffcanvas(target)",
       "docs/component-classification.html",
       "docs/team-usage-and-maintenance.html",
       "assets/icons/sprite.svg",
@@ -676,7 +676,7 @@ export function validateFramework(options = {}) {
     const releaseTemplate = readText(releaseTemplatePath);
     [
       "FNLLA Web Release Notes Template",
-      "Stable runtime contract: assets/css/fnlla-ui.css, assets/js/fnlla-ui.js and assets/icons/",
+      "Stable runtime contract: assets/css/fnlla-web.css, assets/js/fnlla-web.js and assets/icons/",
       "Use plain ASCII"
     ].forEach((requiredText) => {
       if (!releaseTemplate.includes(requiredText)) {
@@ -753,8 +753,8 @@ export function validateFramework(options = {}) {
     const brandReadme = readText(brandReadmePath);
     [
       "FNLLA Web brand assets",
-      "fnlla-ui.svg",
-      "fnlla-ui-dark.svg",
+      "fnlla-web.svg",
+      "fnlla-web-dark.svg",
       "fnlla-github.svg",
       "fnlla-github.png"
     ].forEach((requiredText) => {
@@ -771,7 +771,7 @@ export function validateFramework(options = {}) {
   });
 
   if (!pathExists(githubWorkflowPath)) {
-    errors.push(".github/workflows/fnlla-ui-hardening.yml: missing file");
+    errors.push(".github/workflows/fnlla-web-hardening.yml: missing file");
   } else {
     const githubWorkflow = readText(githubWorkflowPath);
     [
@@ -780,7 +780,7 @@ export function validateFramework(options = {}) {
       "package-manager-cache: false"
     ].forEach((requiredText) => {
       if (!githubWorkflow.includes(requiredText)) {
-        errors.push(`.github/workflows/fnlla-ui-hardening.yml: missing required text '${requiredText}'`);
+        errors.push(`.github/workflows/fnlla-web-hardening.yml: missing required text '${requiredText}'`);
       }
     });
   }
@@ -791,11 +791,11 @@ export function validateFramework(options = {}) {
     const contractDoc = readText(contractDocPath);
     [
       expectedOwner,
-      "window.FNLLAUI.init(root)",
-      "window.FNLLAUI.setTheme(theme, target)",
-      "window.FNLLAUI.setDocumentTitle(config)",
-      "window.FNLLAUI.getConsentState()",
-      "window.FNLLAUI.showOffcanvas(target)",
+      "window.FNLLAWEB.init(root)",
+      "window.FNLLAWEB.setTheme(theme, target)",
+      "window.FNLLAWEB.setDocumentTitle(config)",
+      "window.FNLLAWEB.getConsentState()",
+      "window.FNLLAWEB.showOffcanvas(target)",
       "assets/icons/",
       "FNLLA Icons",
       "data-fnlla-consent",
@@ -834,7 +834,7 @@ export function validateFramework(options = {}) {
   });
 
   if (!pathExists(githubWorkflowPath)) {
-    errors.push(".github/workflows/fnlla-ui-hardening.yml: missing file");
+    errors.push(".github/workflows/fnlla-web-hardening.yml: missing file");
   }
 
   if (pathExists(path.join(repoRoot, "css"))) {
@@ -846,7 +846,7 @@ export function validateFramework(options = {}) {
   }
 
   if (!pathExists(cssEntrypointPath)) {
-    errors.push("assets/css/fnlla-ui.css: missing file");
+    errors.push("assets/css/fnlla-web.css: missing file");
   } else {
     const missingCssSources = [];
     const expectedCssModules = [];
@@ -866,13 +866,13 @@ export function validateFramework(options = {}) {
     } else {
       const expectedCssRuntime = `${manifest.runtime.cssBanner.trimEnd()}\r\n\r\n${expectedCssModules.join("\r\n\r\n")}\r\n`;
       if (!compareNormalizedContent(readText(cssEntrypointPath), expectedCssRuntime)) {
-        errors.push("assets/css/fnlla-ui.css: public runtime is out of sync with src/css modules. Run scripts/publish-fnlla-ui.mjs");
+        errors.push("assets/css/fnlla-web.css: public runtime is out of sync with src/css modules. Run scripts/publish-fnlla-web.mjs");
       }
     }
   }
 
   if (!pathExists(runtimeScriptPath)) {
-    errors.push("assets/js/fnlla-ui.js: missing file");
+    errors.push("assets/js/fnlla-web.js: missing file");
   } else {
     const missingJsSources = [];
     const expectedRuntimeModules = [];
@@ -892,13 +892,13 @@ export function validateFramework(options = {}) {
     } else {
       const expectedRuntime = `${expectedRuntimeModules.join("\r\n\r\n")}\r\n`;
       if (!compareNormalizedContent(readText(runtimeScriptPath), expectedRuntime)) {
-        errors.push("assets/js/fnlla-ui.js: public runtime is out of sync with src/js modules. Run scripts/publish-fnlla-ui.mjs");
+        errors.push("assets/js/fnlla-web.js: public runtime is out of sync with src/js modules. Run scripts/publish-fnlla-web.mjs");
       }
     }
 
     const syntaxCheck = spawnSync(process.execPath, ["--check", runtimeScriptPath], { encoding: "utf8" });
     if (syntaxCheck.status !== 0) {
-      errors.push(`assets/js/fnlla-ui.js: node --check failed: ${(syntaxCheck.stderr || syntaxCheck.stdout || "").trim()}`);
+      errors.push(`assets/js/fnlla-web.js: node --check failed: ${(syntaxCheck.stderr || syntaxCheck.stdout || "").trim()}`);
     }
   }
 
@@ -923,7 +923,7 @@ export function validateFramework(options = {}) {
     } else {
       const expectedDocsRuntime = `${expectedDocsRuntimeModules.join("\r\n\r\n")}\r\n`;
       if (!compareNormalizedContent(readText(docsScriptPath), expectedDocsRuntime)) {
-        errors.push("docs/assets/docs.js: docs script is out of sync with src/docs/js modules. Run scripts/publish-fnlla-ui.mjs");
+        errors.push("docs/assets/docs.js: docs script is out of sync with src/docs/js modules. Run scripts/publish-fnlla-web.mjs");
       }
     }
 
@@ -934,10 +934,10 @@ export function validateFramework(options = {}) {
   }
 
   if (!errors.length) {
-    const exportTempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "fnlla-ui-export-"));
+    const exportTempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "fnlla-web-export-"));
 
     try {
-      const exportRootPath = path.join(exportTempRoot, "fnlla-ui");
+      const exportRootPath = path.join(exportTempRoot, "fnlla-web");
       writeRuntimeExport({ repoRoot, manifest, version, distRootPath: exportRootPath });
       validateRuntimeExport({
         exportRootPath,

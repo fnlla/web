@@ -35,7 +35,7 @@
         initializationState.modal.add(modal);
 
         if (!modal.id) {
-          modal.id = createFnllaUiId(idPrefixes.modal);
+          modal.id = createFnllaWebId(idPrefixes.modal);
         }
 
         if (!modal.hasAttribute("role")) {

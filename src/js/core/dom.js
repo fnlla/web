@@ -49,9 +49,9 @@
   }
 
   /* Generate readable unique IDs for components that need them. */
-  function createFnllaUiId(prefix) {
-    fnllaUiIdCounter += 1;
-    return prefix + "-" + fnllaUiIdCounter;
+  function createFnllaWebId(prefix) {
+    fnllaWebIdCounter += 1;
+    return prefix + "-" + fnllaWebIdCounter;
   }
 
   /* Apply or clear inert state used to remove hidden regions from focus flow. */

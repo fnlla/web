@@ -59,7 +59,7 @@ When a change is accepted for implementation:
 - edit source files under `src/` and maintainer sources under `src/docs/js/` where appropriate
 - do not hand-edit generated outputs as the primary source of truth
 - keep docs and runtime behavior aligned in the same change
-- preserve the documented runtime boundary under `assets/` and `dist/fnlla-ui/`
+- preserve the documented runtime boundary under `assets/` and `dist/fnlla-web/`
 - keep icon usage local and offline
 
 ## Maintainer workflow
@@ -67,15 +67,15 @@ When a change is accepted for implementation:
 Recommended local sequence:
 
 ```bash
-node .\scripts\publish-fnlla-ui.mjs
-node .\scripts\test-fnlla-ui-browser.mjs
-node .\scripts\validate-fnlla-ui.mjs
+node .\scripts\publish-fnlla-web.mjs
+node .\scripts\test-fnlla-web-browser.mjs
+node .\scripts\validate-fnlla-web.mjs
 ```
 
 Use the browser matrix when broader local coverage is needed:
 
 ```bash
-node .\scripts\test-fnlla-ui-browser-matrix.mjs
+node .\scripts\test-fnlla-web-browser-matrix.mjs
 ```
 
 ## Pull request expectations

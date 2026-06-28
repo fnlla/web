@@ -7,19 +7,19 @@
   - centralize runtime outputs, docs pages, guide sources and source-module order
 */
 
-export function getFnllaUiManifest() {
+export function getFnllaWebManifest() {
   const cssRuntimeBanner = `/*
   FNLLA Web runtime stylesheet.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   Produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
-  Published from readable source modules in src/css/ via scripts/publish-fnlla-ui.mjs.
+  Published from readable source modules in src/css/ via scripts/publish-fnlla-web.mjs.
 */`;
 
   return {
     /* Repository identity used by validation, docs copy and legal metadata. */
     project: {
       name: "FNLLA Web",
-      slug: "fnlla-ui",
+      slug: "fnlla-web",
       owner: "TechAyo LTD (techayo.co.uk)",
       origin: "Finella Gardens in Dundee, UK",
       repository: "https://github.com/fnlla/web.git",
@@ -34,9 +34,9 @@ export function getFnllaUiManifest() {
     */
     runtime: {
       cssBanner: cssRuntimeBanner,
-      cssOutput: "assets/css/fnlla-ui.css",
-      jsOutput: "assets/js/fnlla-ui.js",
-      distRoot: "dist/fnlla-ui",
+      cssOutput: "assets/css/fnlla-web.css",
+      jsOutput: "assets/js/fnlla-web.js",
+      distRoot: "dist/fnlla-web",
       distStaticFiles: [
         "MANIFEST.json",
         "LICENSE.md",

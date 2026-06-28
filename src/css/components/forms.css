@@ -279,7 +279,7 @@
   color: var(--fnlla-color-placeholder);
 }
 
-.fnlla-ui-js .select-shell .select-native {
+.fnlla-web-js .select-shell .select-native {
   position: absolute;
   width: 1px;
   height: 1px;

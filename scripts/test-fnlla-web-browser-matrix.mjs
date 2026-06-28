@@ -13,7 +13,7 @@ import { detectSmokeBrowsers, getRepoRoot, isDirectExecution } from "./tooling-s
 
 export function runBrowserMatrix(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
-  const scriptPath = path.join(repoRoot, "scripts", "test-fnlla-ui-browser.mjs");
+  const scriptPath = path.join(repoRoot, "scripts", "test-fnlla-web-browser.mjs");
   const browsers = detectSmokeBrowsers();
 
   if (!browsers.length) {

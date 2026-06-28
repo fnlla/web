@@ -15,14 +15,14 @@
 /*
   Runtime wrapper:
   - creates one private scope
-  - exposes only the public `window.FNLLAUI` API
+  - exposes only the public `window.FNLLAWEB` API
   - keeps shared state hidden from page-level scripts
 */
 (function () {
   "use strict";
 
   /* Public version marker exposed through the runtime API. */
-  var fnllaUiVersion = "1.0.6";
+  var fnllaWebVersion = "1.0.7";
   var openLayerStack = [];
   var openModalStack = [];
   var openOffcanvasStack = [];
@@ -34,15 +34,15 @@
   var scrollspyObserverMap = new WeakMap();
   var customSelectStateMap = new WeakMap();
   var scrollspyRegistry = [];
-  var fnllaUiIdCounter = 0;
+  var fnllaWebIdCounter = 0;
   var defaultConsentCategories = ["preferences", "analytics", "marketing"];
   var mobileNavQuery = window.matchMedia ? window.matchMedia("(max-width: 880px)") : null;
-  var runtimeEnhancementClass = "fnlla-ui-js";
+  var runtimeEnhancementClass = "fnlla-web-js";
 
   /*
     Initialization registry:
     every interactive node is marked after first binding so repeated
-    `FNLLAUI.init(root)` calls stay safe and idempotent.
+    `FNLLAWEB.init(root)` calls stay safe and idempotent.
   */
   var initializationState = {
     dropdown: new WeakSet(),
@@ -212,9 +212,9 @@
   }
 
   /* Generate readable unique IDs for components that need them. */
-  function createFnllaUiId(prefix) {
-    fnllaUiIdCounter += 1;
-    return prefix + "-" + fnllaUiIdCounter;
+  function createFnllaWebId(prefix) {
+    fnllaWebIdCounter += 1;
+    return prefix + "-" + fnllaWebIdCounter;
   }
 
   /* Apply or clear inert state used to remove hidden regions from focus flow. */
@@ -1040,7 +1040,7 @@
     }
 
     if (!toast.id) {
-      toast.id = createFnllaUiId(idPrefixes.toast);
+      toast.id = createFnllaWebId(idPrefixes.toast);
     }
 
     toast.hidden = false;
@@ -1291,7 +1291,7 @@
     if (!panel) {
       panel = document.createElement("div");
       panel.className = "tooltip-panel";
-      panel.id = createFnllaUiId(idPrefixes.tooltip);
+      panel.id = createFnllaWebId(idPrefixes.tooltip);
       panel.setAttribute("role", "tooltip");
       document.body.appendChild(panel);
       tooltipPanelMap.set(trigger, panel);
@@ -1826,11 +1826,11 @@
       initializationState.dropdown.add(dropdown);
 
       if (!toggle.id) {
-        toggle.id = createFnllaUiId(idPrefixes.dropdownToggle);
+        toggle.id = createFnllaWebId(idPrefixes.dropdownToggle);
       }
 
       if (!menu.id) {
-        menu.id = createFnllaUiId(idPrefixes.dropdownMenu);
+        menu.id = createFnllaWebId(idPrefixes.dropdownMenu);
       }
 
       toggle.setAttribute("aria-expanded", "false");
@@ -1991,7 +1991,7 @@
         }
 
         if (!button.id) {
-          button.id = createFnllaUiId(idPrefixes.tabButton);
+          button.id = createFnllaWebId(idPrefixes.tabButton);
         }
 
         button.setAttribute("role", "tab");
@@ -2059,7 +2059,7 @@
         initializationState.accordionButton.add(button);
 
         if (!button.id) {
-          button.id = createFnllaUiId(idPrefixes.accordionButton);
+          button.id = createFnllaWebId(idPrefixes.accordionButton);
         }
 
         panel.setAttribute("role", "region");
@@ -2150,7 +2150,7 @@
         initializationState.modal.add(modal);
 
         if (!modal.id) {
-          modal.id = createFnllaUiId(idPrefixes.modal);
+          modal.id = createFnllaWebId(idPrefixes.modal);
         }
 
         if (!modal.hasAttribute("role")) {
@@ -2207,7 +2207,7 @@
         initializationState.toast.add(toast);
 
         if (!toast.id) {
-          toast.id = createFnllaUiId(idPrefixes.toast);
+          toast.id = createFnllaWebId(idPrefixes.toast);
         }
 
         var startsVisible = toast.classList.contains("is-visible");
@@ -2297,7 +2297,7 @@
       initializationState.offcanvas.add(offcanvas);
 
       if (!offcanvas.id) {
-        offcanvas.id = createFnllaUiId(idPrefixes.offcanvas);
+        offcanvas.id = createFnllaWebId(idPrefixes.offcanvas);
       }
 
       if (!offcanvas.hasAttribute("role")) {
@@ -2363,11 +2363,11 @@
       initializationState.popover.add(popover);
 
       if (!trigger.id) {
-        trigger.id = createFnllaUiId(idPrefixes.popoverToggle);
+        trigger.id = createFnllaWebId(idPrefixes.popoverToggle);
       }
 
       if (!panel.id) {
-        panel.id = createFnllaUiId(idPrefixes.popoverPanel);
+        panel.id = createFnllaWebId(idPrefixes.popoverPanel);
       }
 
       trigger.setAttribute("aria-expanded", "false");
@@ -2843,18 +2843,18 @@
 
       toggle.type = "button";
       toggle.className = "select-control";
-      toggle.id = createFnllaUiId(idPrefixes.selectToggle);
+      toggle.id = createFnllaWebId(idPrefixes.selectToggle);
       toggle.setAttribute("data-fnlla-select-toggle", "");
       toggle.setAttribute("aria-haspopup", "listbox");
       toggle.setAttribute("aria-expanded", "false");
 
       valueLabel.className = "select-value";
-      valueLabel.id = createFnllaUiId("select-value");
+      valueLabel.id = createFnllaWebId("select-value");
       toggle.appendChild(valueLabel);
       shell.appendChild(toggle);
 
       menu.className = "select-menu scrollbar scrollbar-thin";
-      menu.id = createFnllaUiId(idPrefixes.selectMenu);
+      menu.id = createFnllaWebId(idPrefixes.selectMenu);
       menu.hidden = true;
       menu.setAttribute("role", "listbox");
       menu.setAttribute("aria-hidden", "true");
@@ -2878,7 +2878,7 @@
 
       associatedLabels.forEach(function (label) {
         if (!label.id) {
-          label.id = createFnllaUiId("select-label");
+          label.id = createFnllaWebId("select-label");
         }
 
         labelIds.push(label.id);
@@ -3405,7 +3405,7 @@
     first, then component families are bound in a predictable sequence, and only
     at the end do we reconcile responsive navigation state for the current scope.
   */
-  function initFnllaUi(root) {
+  function initFnllaWeb(root) {
     var scope = normalizeRoot(root);
 
     cleanupDetachedScrollspyInstances();
@@ -3428,7 +3428,7 @@
     initConsent(scope);
     syncNavigationMode(scope);
 
-    return fnllaUiApi;
+    return fnllaWebApi;
   }
 
   /* Keep the public theme API intentionally narrow and forward-compatible. */
@@ -3457,7 +3457,7 @@
     }
 
     runtimeBindings.autoInit = true;
-    initFnllaUi(document);
+    initFnllaWeb(document);
   }
 
   /*
@@ -3468,9 +3468,9 @@
     exposing internal state maps or event wiring details. That gives maintainers
     room to evolve internals without breaking downstream projects.
   */
-  var fnllaUiApi = {
-    version: fnllaUiVersion,
-    init: initFnllaUi,
+  var fnllaWebApi = {
+    version: fnllaWebVersion,
+    init: initFnllaWeb,
     getDocumentTitle: function () {
       return document.title;
     },
@@ -3479,11 +3479,11 @@
     },
     syncDocumentTitle: function (config) {
       syncDocumentTitle(config);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     setDocumentTitle: function (config) {
       syncDocumentTitle(config);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     setTheme: function (theme, target) {
       var themeTarget = resolveThemeTarget(target);
@@ -3492,7 +3492,7 @@
         themeTarget.setAttribute("data-fnlla-theme", normalizeThemeName(theme));
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     showModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
@@ -3501,7 +3501,7 @@
         openModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     openModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
@@ -3510,7 +3510,7 @@
         openModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     hideModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
@@ -3519,7 +3519,7 @@
         closeModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     closeModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
@@ -3528,7 +3528,7 @@
         closeModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     showToast: function (target) {
       var toast = resolveElementReference(target, selectors.toast);
@@ -3537,7 +3537,7 @@
         showToast(toast);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     hideToast: function (target) {
       var toast = resolveElementReference(target, selectors.toast);
@@ -3546,7 +3546,7 @@
         hideToast(toast);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     showOffcanvas: function (target) {
       var offcanvas = resolveElementReference(target, selectors.offcanvas);
@@ -3555,7 +3555,7 @@
         openOffcanvas(offcanvas);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     openOffcanvas: function (target) {
       var offcanvas = resolveElementReference(target, selectors.offcanvas);
@@ -3564,7 +3564,7 @@
         openOffcanvas(offcanvas);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     hideOffcanvas: function (target) {
       var offcanvas = resolveElementReference(target, selectors.offcanvas);
@@ -3573,7 +3573,7 @@
         closeOffcanvas(offcanvas);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     closeOffcanvas: function (target) {
       var offcanvas = resolveElementReference(target, selectors.offcanvas);
@@ -3582,7 +3582,7 @@
         closeOffcanvas(offcanvas);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     openDropdown: function (target) {
       var dropdown = resolveElementReference(target, selectors.dropdown);
@@ -3591,7 +3591,7 @@
         openDropdown(dropdown);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     closeDropdown: function (target) {
       var dropdown = resolveElementReference(target, selectors.dropdown);
@@ -3600,7 +3600,7 @@
         closeDropdown(dropdown);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     openPopover: function (target) {
       var popover = resolveElementReference(target, selectors.popover);
@@ -3609,7 +3609,7 @@
         openPopover(popover);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     closePopover: function (target) {
       var popover = resolveElementReference(target, selectors.popover);
@@ -3618,7 +3618,7 @@
         closePopover(popover);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     showTooltip: function (target) {
       var trigger = resolveElementReference(target, selectors.tooltipTrigger);
@@ -3627,7 +3627,7 @@
         showTooltip(trigger);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     hideTooltip: function (target) {
       var trigger = resolveElementReference(target, selectors.tooltipTrigger);
@@ -3636,7 +3636,7 @@
         hideTooltip(trigger);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     refreshScrollspy: function (target) {
       var container = resolveElementReference(target, selectors.scrollspy);
@@ -3646,7 +3646,7 @@
         state.update();
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     getConsentState: function () {
       return cloneConsentState(syncConsentState());
@@ -3669,7 +3669,7 @@
         openModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     acceptConsent: function () {
       var nextState = {};
@@ -3679,7 +3679,7 @@
       });
 
       saveConsentState(nextState);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     rejectConsent: function () {
       var nextState = {};
@@ -3689,20 +3689,20 @@
       });
 
       saveConsentState(nextState);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     saveConsent: function (state) {
       saveConsentState(state);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     resetConsent: function () {
       clearCookieValue(getConsentCookieName());
       syncConsentState();
-      return fnllaUiApi;
+      return fnllaWebApi;
     }
   };
 
-  window.FNLLAUI = fnllaUiApi;
+  window.FNLLAWEB = fnllaWebApi;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", autoInit);

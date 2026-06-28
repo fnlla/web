@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FNLLA Web Browser Smoke Test</title>
-  <link rel="stylesheet" href="../../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="../../assets/css/fnlla-web.css">
   <style>
     body {
       padding: 1rem;
@@ -195,7 +195,7 @@
       <div id="dynamic-root"></div>
     </section>
 
-    <aside class="consent-banner is-visible" id="smoke-consent-banner" data-fnlla-consent data-fnlla-consent-cookie="fnlla-ui-smoke-consent" data-fnlla-consent-settings="#smoke-consent-modal" aria-label="Cookie consent banner">
+    <aside class="consent-banner is-visible" id="smoke-consent-banner" data-fnlla-consent data-fnlla-consent-cookie="fnlla-web-smoke-consent" data-fnlla-consent-settings="#smoke-consent-modal" aria-label="Cookie consent banner">
       <div class="consent-banner-grid">
         <div class="consent-copy">
           <p class="consent-kicker">Cookie consent</p>
@@ -211,7 +211,7 @@
       </div>
     </aside>
 
-    <div class="modal" id="smoke-consent-modal" data-fnlla-modal data-fnlla-consent-modal data-fnlla-consent-cookie="fnlla-ui-smoke-consent" role="dialog" aria-modal="true" aria-labelledby="smoke-consent-modal-title" hidden>
+    <div class="modal" id="smoke-consent-modal" data-fnlla-modal data-fnlla-consent-modal data-fnlla-consent-cookie="fnlla-web-smoke-consent" role="dialog" aria-modal="true" aria-labelledby="smoke-consent-modal-title" hidden>
       <div class="modal-content">
         <div class="d-flex justify-between items-center mb-3">
           <h2 class="content-title mb-0" id="smoke-consent-modal-title">Cookie settings</h2>
@@ -370,7 +370,7 @@
     </section>
   </main>
 
-  <script src="../../assets/js/fnlla-ui.js"></script>
+  <script src="../../assets/js/fnlla-web.js"></script>
   <script>
     (function () {
       function wait(ms) {
@@ -398,34 +398,34 @@
         try {
           await wait(180);
 
-          assert(document.documentElement.classList.contains("fnlla-ui-js"), "Auto-init should add the fnlla-ui-js class to the root element.", failures);
-          assert(!!window.FNLLAUI && typeof window.FNLLAUI.init === "function", "window.FNLLAUI.init should be exposed as a public API.", failures);
-          assert(typeof window.FNLLAUI.setTheme === "function", "window.FNLLAUI.setTheme should be exposed as a public API.", failures);
-          assert(typeof window.FNLLAUI.setDocumentTitle === "function", "window.FNLLAUI.setDocumentTitle should be exposed as a public API.", failures);
-          assert(typeof window.FNLLAUI.getConsentState === "function", "window.FNLLAUI.getConsentState should be exposed as a public API.", failures);
+          assert(document.documentElement.classList.contains("fnlla-web-js"), "Auto-init should add the fnlla-web-js class to the root element.", failures);
+          assert(!!window.FNLLAWEB && typeof window.FNLLAWEB.init === "function", "window.FNLLAWEB.init should be exposed as a public API.", failures);
+          assert(typeof window.FNLLAWEB.setTheme === "function", "window.FNLLAWEB.setTheme should be exposed as a public API.", failures);
+          assert(typeof window.FNLLAWEB.setDocumentTitle === "function", "window.FNLLAWEB.setDocumentTitle should be exposed as a public API.", failures);
+          assert(typeof window.FNLLAWEB.getConsentState === "function", "window.FNLLAWEB.getConsentState should be exposed as a public API.", failures);
           assert(document.title === "Browser Smoke Test | Components | FNLLA Web", "Auto-init should build the document title from the declarative title attributes.", failures);
-          assert(window.FNLLAUI.getDocumentTitleConfig().site === "FNLLA Web", "Document title config should expose the configured site label.", failures);
-          window.FNLLAUI.setDocumentTitle({ page: "Consent Center", section: "Components", site: "FNLLA Web" });
+          assert(window.FNLLAWEB.getDocumentTitleConfig().site === "FNLLA Web", "Document title config should expose the configured site label.", failures);
+          window.FNLLAWEB.setDocumentTitle({ page: "Consent Center", section: "Components", site: "FNLLA Web" });
           await wait(40);
           assert(document.title === "Consent Center | Components | FNLLA Web", "setDocumentTitle should update document.title from the public API.", failures);
-          window.FNLLAUI.syncDocumentTitle({ site: "FNLLA Web", page: "Overview", section: "", home: true });
+          window.FNLLAWEB.syncDocumentTitle({ site: "FNLLA Web", page: "Overview", section: "", home: true });
           await wait(40);
           assert(document.title === "FNLLA Web", "syncDocumentTitle should support a compact home title state.", failures);
-          window.FNLLAUI.setDocumentTitle({ page: "Browser Smoke Test", section: "Components", site: "FNLLA Web", home: false });
+          window.FNLLAWEB.setDocumentTitle({ page: "Browser Smoke Test", section: "Components", site: "FNLLA Web", home: false });
           await wait(40);
           assert(document.title === "Browser Smoke Test | Components | FNLLA Web", "setDocumentTitle should restore the normal browser tab title pattern.", failures);
-          window.FNLLAUI.setTheme("dark");
+          window.FNLLAWEB.setTheme("dark");
           await wait(40);
-          assert(document.body.getAttribute("data-fnlla-theme") === "dark", "window.FNLLAUI.setTheme(theme) should apply the requested theme to body.", failures);
+          assert(document.body.getAttribute("data-fnlla-theme") === "dark", "window.FNLLAWEB.setTheme(theme) should apply the requested theme to body.", failures);
           var scopedThemeHost = document.createElement("div");
           scopedThemeHost.id = "smoke-theme-host";
           document.body.appendChild(scopedThemeHost);
-          window.FNLLAUI.setTheme("dark", scopedThemeHost);
+          window.FNLLAWEB.setTheme("dark", scopedThemeHost);
           await wait(40);
-          assert(scopedThemeHost.getAttribute("data-fnlla-theme") === "dark", "window.FNLLAUI.setTheme(theme, target) should support scoped theme wrappers.", failures);
-          window.FNLLAUI.setTheme("default");
+          assert(scopedThemeHost.getAttribute("data-fnlla-theme") === "dark", "window.FNLLAWEB.setTheme(theme, target) should support scoped theme wrappers.", failures);
+          window.FNLLAWEB.setTheme("default");
           await wait(40);
-          assert(document.body.getAttribute("data-fnlla-theme") === "default", "window.FNLLAUI.setTheme(theme) should restore the default theme.", failures);
+          assert(document.body.getAttribute("data-fnlla-theme") === "default", "window.FNLLAWEB.setTheme(theme) should restore the default theme.", failures);
 
           var consentBanner = document.getElementById("smoke-consent-banner");
           var consentModal = document.getElementById("smoke-consent-modal");
@@ -435,7 +435,7 @@
           var consentPreferencesToggle = document.getElementById("smoke-consent-preferences-toggle");
           var consentAnalyticsToggle = document.getElementById("smoke-consent-analytics-toggle");
           assert(consentBanner.hidden === false, "Consent banner should be visible before a stored choice exists.", failures);
-          assert(window.FNLLAUI.getConsentState().stored === false, "Consent state should report no stored choice before selection.", failures);
+          assert(window.FNLLAWEB.getConsentState().stored === false, "Consent state should report no stored choice before selection.", failures);
           consentOpenButton.click();
           await wait(120);
           assert(consentModal.hidden === false, "Consent settings modal should open from the public consent trigger.", failures);
@@ -444,15 +444,15 @@
           consentSaveButton.click();
           await wait(120);
           assert(consentBanner.hidden === true, "Saving consent choices should hide the banner.", failures);
-          assert(window.FNLLAUI.getConsentState().stored === true, "Saving consent choices should persist a stored state.", failures);
-          assert(window.FNLLAUI.hasConsent("analytics") === true, "hasConsent should return true for granted categories.", failures);
-          window.FNLLAUI.resetConsent();
+          assert(window.FNLLAWEB.getConsentState().stored === true, "Saving consent choices should persist a stored state.", failures);
+          assert(window.FNLLAWEB.hasConsent("analytics") === true, "hasConsent should return true for granted categories.", failures);
+          window.FNLLAWEB.resetConsent();
           await wait(80);
           assert(consentBanner.hidden === false, "resetConsent should show the banner again.", failures);
-          assert(window.FNLLAUI.getConsentState().stored === false, "resetConsent should clear the stored consent choice.", failures);
+          assert(window.FNLLAWEB.getConsentState().stored === false, "resetConsent should clear the stored consent choice.", failures);
           consentResetButton.click();
           await wait(40);
-          assert(window.FNLLAUI.getConsentState().stored === false, "Consent reset control should keep the consent state cleared.", failures);
+          assert(window.FNLLAWEB.getConsentState().stored === false, "Consent reset control should keep the consent state cleared.", failures);
 
           var navToggle = document.querySelector("[data-fnlla-nav-toggle]");
           var navPanel = document.getElementById("smoke-nav-panel");
@@ -527,11 +527,11 @@
           assert(offcanvas.hidden === false, "Offcanvas should become visible after opening.", failures);
           assert(document.activeElement === offcanvasClose, "Offcanvas should ignore controls disabled through a fieldset when choosing initial focus.", failures);
           assert(leadingSmokeBlock.getAttribute("aria-hidden") === "true", "Opening offcanvas should isolate sibling content from assistive navigation.", failures);
-          window.FNLLAUI.showModal("#smoke-modal");
+          window.FNLLAWEB.showModal("#smoke-modal");
           await wait(120);
           assert(modal.hidden === false, "Programmatic modal open should work while another overlay is already active.", failures);
           assert(document.activeElement === modalClose, "Top modal should take focus even when opened over an offcanvas panel.", failures);
-          window.FNLLAUI.hideOffcanvas("#smoke-offcanvas");
+          window.FNLLAWEB.hideOffcanvas("#smoke-offcanvas");
           await wait(120);
           assert(offcanvas.hidden === true, "Programmatic offcanvas close should work while a modal stays open above it.", failures);
           assert(document.body.style.overflow === "hidden", "Closing a lower layer should keep scroll lock while the top modal remains open.", failures);
@@ -646,12 +646,12 @@
                 '<option value="ready">Ready</option>' +
               '</select>' +
             '</div>';
-          window.FNLLAUI.init(dynamicRoot);
+          window.FNLLAWEB.init(dynamicRoot);
           var dynamicButton = dynamicRoot.querySelector("[data-fnlla-accordion-button]");
           var dynamicPanel = document.getElementById("dynamic-panel-1");
           dynamicButton.click();
           await wait(40);
-          assert(dynamicPanel.hidden === false, "window.FNLLAUI.init(root) should bind behavior inside injected markup.", failures);
+          assert(dynamicPanel.hidden === false, "window.FNLLAWEB.init(root) should bind behavior inside injected markup.", failures);
           var dynamicRangeInput = document.getElementById("dynamic-range");
           var dynamicRangeOutput = dynamicRoot.querySelector('[data-fnlla-range-output="dynamic-range"]');
           var dynamicSelect = document.getElementById("dynamic-select");
@@ -659,13 +659,13 @@
           dynamicRangeInput.value = "55";
           dynamicRangeInput.dispatchEvent(new Event("input", { bubbles: true }));
           await wait(40);
-          assert(dynamicRangeOutput.textContent.trim() === "55%", "window.FNLLAUI.init(root) should also bind declarative range outputs inside injected markup.", failures);
-          assert(!!dynamicSelectShell, "window.FNLLAUI.init(root) should also enhance select fields inside injected markup.", failures);
+          assert(dynamicRangeOutput.textContent.trim() === "55%", "window.FNLLAWEB.init(root) should also bind declarative range outputs inside injected markup.", failures);
+          assert(!!dynamicSelectShell, "window.FNLLAWEB.init(root) should also enhance select fields inside injected markup.", failures);
 
           assert(getCurrentScrollspyHref() === "#spy-section-1", "Scrollspy should mark the first section active at the top of the page.", failures);
           window.scrollTo(0, document.getElementById("spy-section-2").offsetTop + 24);
           await wait(160);
-          window.FNLLAUI.refreshScrollspy("#smoke-scrollspy");
+          window.FNLLAWEB.refreshScrollspy("#smoke-scrollspy");
           await wait(80);
           assert(getCurrentScrollspyHref() === "#spy-section-2", "refreshScrollspy should update the active section after scrolling.", failures);
           window.scrollTo(0, 0);

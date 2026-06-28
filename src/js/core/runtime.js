@@ -133,7 +133,7 @@
     first, then component families are bound in a predictable sequence, and only
     at the end do we reconcile responsive navigation state for the current scope.
   */
-  function initFnllaUi(root) {
+  function initFnllaWeb(root) {
     var scope = normalizeRoot(root);
 
     cleanupDetachedScrollspyInstances();
@@ -156,7 +156,7 @@
     initConsent(scope);
     syncNavigationMode(scope);
 
-    return fnllaUiApi;
+    return fnllaWebApi;
   }
 
   /* Keep the public theme API intentionally narrow and forward-compatible. */
@@ -185,7 +185,7 @@
     }
 
     runtimeBindings.autoInit = true;
-    initFnllaUi(document);
+    initFnllaWeb(document);
   }
 
   /*
@@ -196,9 +196,9 @@
     exposing internal state maps or event wiring details. That gives maintainers
     room to evolve internals without breaking downstream projects.
   */
-  var fnllaUiApi = {
-    version: fnllaUiVersion,
-    init: initFnllaUi,
+  var fnllaWebApi = {
+    version: fnllaWebVersion,
+    init: initFnllaWeb,
     getDocumentTitle: function () {
       return document.title;
     },
@@ -207,11 +207,11 @@
     },
     syncDocumentTitle: function (config) {
       syncDocumentTitle(config);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     setDocumentTitle: function (config) {
       syncDocumentTitle(config);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     setTheme: function (theme, target) {
       var themeTarget = resolveThemeTarget(target);
@@ -220,7 +220,7 @@
         themeTarget.setAttribute("data-fnlla-theme", normalizeThemeName(theme));
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     showModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
@@ -229,7 +229,7 @@
         openModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     openModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
@@ -238,7 +238,7 @@
         openModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     hideModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
@@ -247,7 +247,7 @@
         closeModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     closeModal: function (target) {
       var modal = resolveElementReference(target, selectors.modal);
@@ -256,7 +256,7 @@
         closeModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     showToast: function (target) {
       var toast = resolveElementReference(target, selectors.toast);
@@ -265,7 +265,7 @@
         showToast(toast);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     hideToast: function (target) {
       var toast = resolveElementReference(target, selectors.toast);
@@ -274,7 +274,7 @@
         hideToast(toast);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     showOffcanvas: function (target) {
       var offcanvas = resolveElementReference(target, selectors.offcanvas);
@@ -283,7 +283,7 @@
         openOffcanvas(offcanvas);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     openOffcanvas: function (target) {
       var offcanvas = resolveElementReference(target, selectors.offcanvas);
@@ -292,7 +292,7 @@
         openOffcanvas(offcanvas);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     hideOffcanvas: function (target) {
       var offcanvas = resolveElementReference(target, selectors.offcanvas);
@@ -301,7 +301,7 @@
         closeOffcanvas(offcanvas);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     closeOffcanvas: function (target) {
       var offcanvas = resolveElementReference(target, selectors.offcanvas);
@@ -310,7 +310,7 @@
         closeOffcanvas(offcanvas);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     openDropdown: function (target) {
       var dropdown = resolveElementReference(target, selectors.dropdown);
@@ -319,7 +319,7 @@
         openDropdown(dropdown);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     closeDropdown: function (target) {
       var dropdown = resolveElementReference(target, selectors.dropdown);
@@ -328,7 +328,7 @@
         closeDropdown(dropdown);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     openPopover: function (target) {
       var popover = resolveElementReference(target, selectors.popover);
@@ -337,7 +337,7 @@
         openPopover(popover);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     closePopover: function (target) {
       var popover = resolveElementReference(target, selectors.popover);
@@ -346,7 +346,7 @@
         closePopover(popover);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     showTooltip: function (target) {
       var trigger = resolveElementReference(target, selectors.tooltipTrigger);
@@ -355,7 +355,7 @@
         showTooltip(trigger);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     hideTooltip: function (target) {
       var trigger = resolveElementReference(target, selectors.tooltipTrigger);
@@ -364,7 +364,7 @@
         hideTooltip(trigger);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     refreshScrollspy: function (target) {
       var container = resolveElementReference(target, selectors.scrollspy);
@@ -374,7 +374,7 @@
         state.update();
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     getConsentState: function () {
       return cloneConsentState(syncConsentState());
@@ -397,7 +397,7 @@
         openModal(modal);
       }
 
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     acceptConsent: function () {
       var nextState = {};
@@ -407,7 +407,7 @@
       });
 
       saveConsentState(nextState);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     rejectConsent: function () {
       var nextState = {};
@@ -417,20 +417,20 @@
       });
 
       saveConsentState(nextState);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     saveConsent: function (state) {
       saveConsentState(state);
-      return fnllaUiApi;
+      return fnllaWebApi;
     },
     resetConsent: function () {
       clearCookieValue(getConsentCookieName());
       syncConsentState();
-      return fnllaUiApi;
+      return fnllaWebApi;
     }
   };
 
-  window.FNLLAUI = fnllaUiApi;
+  window.FNLLAWEB = fnllaWebApi;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", autoInit);

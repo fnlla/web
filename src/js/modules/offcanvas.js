@@ -35,7 +35,7 @@
       initializationState.offcanvas.add(offcanvas);
 
       if (!offcanvas.id) {
-        offcanvas.id = createFnllaUiId(idPrefixes.offcanvas);
+        offcanvas.id = createFnllaWebId(idPrefixes.offcanvas);
       }
 
       if (!offcanvas.hasAttribute("role")) {

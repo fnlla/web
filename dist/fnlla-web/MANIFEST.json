@@ -2,18 +2,18 @@
   "schema_version": 1,
   "product": {
     "name": "FNLLA Web",
-    "slug": "fnlla-ui",
-    "version": "1.0.6",
+    "slug": "fnlla-web",
+    "version": "1.0.7",
     "owner": "TechAyo LTD (techayo.co.uk)",
     "origin": "Finella Gardens in Dundee, UK",
     "repository": "https://github.com/fnlla/web.git",
     "source_of_truth": "github"
   },
   "runtime": {
-    "css_entrypoint": "assets/css/fnlla-ui.css",
-    "js_entrypoint": "assets/js/fnlla-ui.js",
+    "css_entrypoint": "assets/css/fnlla-web.css",
+    "js_entrypoint": "assets/js/fnlla-web.js",
     "icons_directory": "assets/icons",
-    "distribution_root": "dist/fnlla-ui",
+    "distribution_root": "dist/fnlla-web",
     "release_files": [
       "MANIFEST.json",
       "LICENSE.md",

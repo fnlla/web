@@ -34,18 +34,18 @@
 
       toggle.type = "button";
       toggle.className = "select-control";
-      toggle.id = createFnllaUiId(idPrefixes.selectToggle);
+      toggle.id = createFnllaWebId(idPrefixes.selectToggle);
       toggle.setAttribute("data-fnlla-select-toggle", "");
       toggle.setAttribute("aria-haspopup", "listbox");
       toggle.setAttribute("aria-expanded", "false");
 
       valueLabel.className = "select-value";
-      valueLabel.id = createFnllaUiId("select-value");
+      valueLabel.id = createFnllaWebId("select-value");
       toggle.appendChild(valueLabel);
       shell.appendChild(toggle);
 
       menu.className = "select-menu scrollbar scrollbar-thin";
-      menu.id = createFnllaUiId(idPrefixes.selectMenu);
+      menu.id = createFnllaWebId(idPrefixes.selectMenu);
       menu.hidden = true;
       menu.setAttribute("role", "listbox");
       menu.setAttribute("aria-hidden", "true");
@@ -69,7 +69,7 @@
 
       associatedLabels.forEach(function (label) {
         if (!label.id) {
-          label.id = createFnllaUiId("select-label");
+          label.id = createFnllaWebId("select-label");
         }
 
         labelIds.push(label.id);

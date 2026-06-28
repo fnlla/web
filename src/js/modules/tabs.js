@@ -36,7 +36,7 @@
         }
 
         if (!button.id) {
-          button.id = createFnllaUiId(idPrefixes.tabButton);
+          button.id = createFnllaWebId(idPrefixes.tabButton);
         }
 
         button.setAttribute("role", "tab");

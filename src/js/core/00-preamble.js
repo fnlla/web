@@ -15,14 +15,14 @@
 /*
   Runtime wrapper:
   - creates one private scope
-  - exposes only the public `window.FNLLAUI` API
+  - exposes only the public `window.FNLLAWEB` API
   - keeps shared state hidden from page-level scripts
 */
 (function () {
   "use strict";
 
   /* Public version marker exposed through the runtime API. */
-  var fnllaUiVersion = "1.0.6";
+  var fnllaWebVersion = "1.0.7";
   var openLayerStack = [];
   var openModalStack = [];
   var openOffcanvasStack = [];
@@ -34,15 +34,15 @@
   var scrollspyObserverMap = new WeakMap();
   var customSelectStateMap = new WeakMap();
   var scrollspyRegistry = [];
-  var fnllaUiIdCounter = 0;
+  var fnllaWebIdCounter = 0;
   var defaultConsentCategories = ["preferences", "analytics", "marketing"];
   var mobileNavQuery = window.matchMedia ? window.matchMedia("(max-width: 880px)") : null;
-  var runtimeEnhancementClass = "fnlla-ui-js";
+  var runtimeEnhancementClass = "fnlla-web-js";
 
   /*
     Initialization registry:
     every interactive node is marked after first binding so repeated
-    `FNLLAUI.init(root)` calls stay safe and idempotent.
+    `FNLLAWEB.init(root)` calls stay safe and idempotent.
   */
   var initializationState = {
     dropdown: new WeakSet(),

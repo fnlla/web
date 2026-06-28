@@ -12,7 +12,7 @@
         initializationState.toast.add(toast);
 
         if (!toast.id) {
-          toast.id = createFnllaUiId(idPrefixes.toast);
+          toast.id = createFnllaWebId(idPrefixes.toast);
         }
 
         var startsVisible = toast.classList.contains("is-visible");

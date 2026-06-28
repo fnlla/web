@@ -9,7 +9,7 @@
 
 import path from "node:path";
 import { renderDocBrandBadge, renderDocBrandMark } from "./doc-brand-mark.mjs";
-import { getFnllaUiManifest } from "./fnlla-ui-manifest.mjs";
+import { getFnllaWebManifest } from "./fnlla-web-manifest.mjs";
 import {
   compareNormalizedContent,
   escapeHtml,
@@ -61,7 +61,7 @@ function extractRootDocContent(content, relativePath) {
 
 /* Inject runtime, docs and page-specific support scripts in one stable order. */
 function renderRootDocScripts(page) {
-  const scriptPaths = ["../assets/js/fnlla-ui.js"]
+  const scriptPaths = ["../assets/js/fnlla-web.js"]
     .concat(Array.isArray(page.extraScripts) ? page.extraScripts : [])
     .concat("./assets/docs.js");
 
@@ -74,7 +74,7 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
   const displayTitle = page.displayTitle || shell.displayTitle;
   const lead = page.lead || shell.lead;
   const kicker = page.kicker || shell.kicker;
-  const brandMarkHref = "./assets/brand/fnlla-ui.svg";
+  const brandMarkHref = "./assets/brand/fnlla-web.svg";
 
   return `<!DOCTYPE html>
 <!-- FNLLA Web documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
@@ -88,7 +88,7 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
   <meta name="theme-color" content="${escapeHtml(shell.themeColor)}">
   <title>${escapeHtml(page.title)}</title>
   <link rel="icon" href="${escapeHtml(brandMarkHref)}" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
+  <link rel="stylesheet" href="../assets/css/fnlla-web.css">
   <link rel="stylesheet" href="./assets/docs.css">
 </head>
 <body data-fnlla-theme="default">
@@ -136,7 +136,7 @@ ${renderRootDocScripts(page)}
 export function syncDocShells(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const check = options.check === true;
-  const manifest = options.manifest || getFnllaUiManifest();
+  const manifest = options.manifest || getFnllaWebManifest();
   const version = readText(path.join(repoRoot, "VERSION")).split(/\r?\n/, 1)[0].trim();
   const updates = [];
 

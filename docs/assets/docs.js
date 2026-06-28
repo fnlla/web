@@ -12,7 +12,7 @@
 
 (function () {
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var docsThemeStorageKey = "fnlla-ui-docs-theme";
+  var docsThemeStorageKey = "fnlla-web-docs-theme";
   var docsThemeColors = {
     default: "#1A4137",
     dark: "#0B1220"
@@ -113,8 +113,8 @@
     var themeToggle = document.querySelector("[data-doc-theme-toggle]");
     var themeMeta = document.querySelector('meta[name="theme-color"]');
 
-    if (window.FNLLAUI && typeof window.FNLLAUI.setTheme === "function") {
-      window.FNLLAUI.setTheme(normalizedTheme);
+    if (window.FNLLAWEB && typeof window.FNLLAWEB.setTheme === "function") {
+      window.FNLLAWEB.setTheme(normalizedTheme);
     } else if (document.body) {
       document.body.setAttribute("data-fnlla-theme", normalizedTheme);
     }

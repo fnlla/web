@@ -46,7 +46,7 @@
     if (!panel) {
       panel = document.createElement("div");
       panel.className = "tooltip-panel";
-      panel.id = createFnllaUiId(idPrefixes.tooltip);
+      panel.id = createFnllaWebId(idPrefixes.tooltip);
       panel.setAttribute("role", "tooltip");
       document.body.appendChild(panel);
       tooltipPanelMap.set(trigger, panel);

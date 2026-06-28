@@ -1429,7 +1429,7 @@ body[data-fnlla-theme="dark"] .doc-wrapper pre code {
     color: var(--fnlla-color-secondary);
   }
 
-  html.fnlla-ui-js .doc-nav-toggle {
+  html.fnlla-web-js .doc-nav-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1447,7 +1447,7 @@ body[data-fnlla-theme="dark"] .doc-wrapper pre code {
     padding: 0.65rem;
   }
 
-  html.fnlla-ui-js .doc-nav-panel[hidden] {
+  html.fnlla-web-js .doc-nav-panel[hidden] {
     display: none;
   }
 

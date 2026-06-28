@@ -37,7 +37,7 @@
     }
 
     if (!toast.id) {
-      toast.id = createFnllaUiId(idPrefixes.toast);
+      toast.id = createFnllaWebId(idPrefixes.toast);
     }
 
     toast.hidden = false;

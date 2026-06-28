@@ -11,7 +11,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderDocBrandBadge, renderDocBrandMark } from "./doc-brand-mark.mjs";
-import { getFnllaUiManifest } from "./fnlla-ui-manifest.mjs";
+import { getFnllaWebManifest } from "./fnlla-web-manifest.mjs";
 import {
   compareNormalizedContent,
   escapeHtml,
@@ -247,11 +247,11 @@ function getRelativeDocHref(fromOutput, targetPath) {
 
 /* Wrap rendered guide prose in the shared docs shell and guide sidebar. */
 function renderGuidePage({ page, version, contentHtml, documentTitle, toc, rootPages, guidePages }) {
-  const runtimeCssHref = getRelativeDocHref(page.output, "assets/css/fnlla-ui.css");
+  const runtimeCssHref = getRelativeDocHref(page.output, "assets/css/fnlla-web.css");
   const docsCssHref = getRelativeDocHref(page.output, "docs/assets/docs.css");
   const docsJsHref = getRelativeDocHref(page.output, "docs/assets/docs.js");
-  const runtimeJsHref = getRelativeDocHref(page.output, "assets/js/fnlla-ui.js");
-  const brandMarkHref = getRelativeDocHref(page.output, "docs/assets/brand/fnlla-ui.svg");
+  const runtimeJsHref = getRelativeDocHref(page.output, "assets/js/fnlla-web.js");
+  const brandMarkHref = getRelativeDocHref(page.output, "docs/assets/brand/fnlla-web.svg");
   const rootNavPrefix = getRelativeDocHref(page.output, "docs/index.html").replace(/index\.html$/, "");
   const bodyClassAttribute = page.bodyClass ? ` class="${escapeHtml(page.bodyClass)}"` : "";
   const guideNavigation = guidePages.map((entry) => {
@@ -339,7 +339,7 @@ ${tocMarkup}
 export function buildGuidePages(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const check = options.check === true;
-  const manifest = getFnllaUiManifest();
+  const manifest = getFnllaWebManifest();
   const version = readText(path.join(repoRoot, "VERSION")).split(/\r?\n/, 1)[0].trim();
   const updates = [];
 
@@ -389,7 +389,7 @@ function runCli() {
   const updated = buildGuidePages({ repoRoot, check });
 
   if (check) {
-    console.log(`FNLLA Web guide HTML is in sync across ${getFnllaUiManifest().docs.guidePages.length} page(s).`);
+    console.log(`FNLLA Web guide HTML is in sync across ${getFnllaWebManifest().docs.guidePages.length} page(s).`);
     return;
   }
 

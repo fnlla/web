@@ -22,7 +22,7 @@
         initializationState.accordionButton.add(button);
 
         if (!button.id) {
-          button.id = createFnllaUiId(idPrefixes.accordionButton);
+          button.id = createFnllaWebId(idPrefixes.accordionButton);
         }
 
         panel.setAttribute("role", "region");

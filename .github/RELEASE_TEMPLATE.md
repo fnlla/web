@@ -8,10 +8,10 @@ Template:
 FNLLA Web <version> is the current stable release of the maintained FNLLA Web framework.
 
 Highlights
-- Stable runtime contract: assets/css/fnlla-ui.css, assets/js/fnlla-ui.js and assets/icons/
+- Stable runtime contract: assets/css/fnlla-web.css, assets/js/fnlla-web.js and assets/icons/
 - Updated docs coverage across overview, distribution, layout, components, sections, forms, utilities, icons, API and guides
 - Runtime and docs examples aligned with the shipped CSS and JS contract
-- Runtime-only handoff prepared under dist/fnlla-ui/
+- Runtime-only handoff prepared under dist/fnlla-web/
 
 Operational notes
 - README.md, MANIFEST.json, VERSION and LICENSE.md are aligned for the release line
