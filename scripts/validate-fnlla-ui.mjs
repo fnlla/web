@@ -119,12 +119,14 @@ function validateRuntimeExport(options) {
     exportRootPath,
     version,
     manifest,
+    repositoryManifestPath,
     cssEntrypointPath,
     runtimeScriptPath,
     errors
   } = options;
   const exportLabel = "runtime export";
   const distReadmePath = path.join(exportRootPath, "README.md");
+  const distManifestPath = path.join(exportRootPath, "MANIFEST.json");
   const distAssetsCssPath = path.join(exportRootPath, manifest.runtime.cssOutput);
   const distAssetsJsPath = path.join(exportRootPath, manifest.runtime.jsOutput);
   const distVersionPath = path.join(exportRootPath, "VERSION");
@@ -134,7 +136,7 @@ function validateRuntimeExport(options) {
     errors.push(`${exportLabel}: missing README.md`);
   } else {
     const distReadme = readText(distReadmePath);
-    ["runtime-only FNLLA UI handoff", "scripts/publish-fnlla-ui.mjs", "README.md", "VERSION", "LICENSE.md"].forEach((requiredText) => {
+    ["runtime-only FNLLA UI handoff", "scripts/publish-fnlla-ui.mjs", "README.md", "MANIFEST.json", "VERSION", "LICENSE.md"].forEach((requiredText) => {
       if (!distReadme.includes(requiredText)) {
         errors.push(`${exportLabel}/README.md: missing required text '${requiredText}'`);
       }
@@ -143,6 +145,14 @@ function validateRuntimeExport(options) {
 
   if (!pathExists(distLicensePath)) {
     errors.push(`${exportLabel}: missing LICENSE.md`);
+  }
+
+  if (!pathExists(distManifestPath)) {
+    errors.push(`${exportLabel}: missing MANIFEST.json`);
+  } else if (pathExists(repositoryManifestPath)) {
+    if (!compareNormalizedContent(readText(distManifestPath), readText(repositoryManifestPath))) {
+      errors.push(`${exportLabel}/MANIFEST.json: export is out of sync with repository MANIFEST.json`);
+    }
   }
 
   if (!pathExists(distVersionPath)) {
@@ -186,6 +196,7 @@ export function validateFramework(options = {}) {
   const expectedOrigin = manifest.project.origin;
   const docsDir = path.join(repoRoot, "docs");
   const readmePath = path.join(repoRoot, "README.md");
+  const manifestJsonPath = path.join(repoRoot, "MANIFEST.json");
   const versionPath = path.join(repoRoot, "VERSION");
   const licensePath = path.join(repoRoot, "LICENSE.md");
   const codeOfConductPath = path.join(repoRoot, "CODE_OF_CONDUCT.md");
@@ -238,6 +249,55 @@ export function validateFramework(options = {}) {
         errors.push(`VERSION: missing required text '${requiredText}'`);
       }
     });
+  }
+
+  if (!pathExists(manifestJsonPath)) {
+    errors.push("MANIFEST.json: missing file");
+  } else {
+    try {
+      const repositoryManifest = JSON.parse(readText(manifestJsonPath));
+      const product = repositoryManifest.product || {};
+      const runtime = repositoryManifest.runtime || {};
+      const release = repositoryManifest.release || {};
+
+      if (repositoryManifest.schema_version !== 1) {
+        errors.push(`MANIFEST.json: expected schema_version 1 but found '${repositoryManifest.schema_version}'`);
+      }
+
+      if (product.name !== expectedProject) {
+        errors.push(`MANIFEST.json: expected product.name '${expectedProject}' but found '${product.name}'`);
+      }
+
+      if (product.version !== version) {
+        errors.push(`MANIFEST.json: expected product.version '${version}' but found '${product.version}'`);
+      }
+
+      if (product.owner !== expectedOwner) {
+        errors.push(`MANIFEST.json: expected product.owner '${expectedOwner}' but found '${product.owner}'`);
+      }
+
+      if (product.repository !== manifest.project.repository) {
+        errors.push(`MANIFEST.json: expected product.repository '${manifest.project.repository}' but found '${product.repository}'`);
+      }
+
+      if (runtime.distribution_root !== manifest.runtime.distRoot) {
+        errors.push(`MANIFEST.json: expected runtime.distribution_root '${manifest.runtime.distRoot}' but found '${runtime.distribution_root}'`);
+      }
+
+      if (runtime.css_entrypoint !== manifest.runtime.cssOutput) {
+        errors.push(`MANIFEST.json: expected runtime.css_entrypoint '${manifest.runtime.cssOutput}' but found '${runtime.css_entrypoint}'`);
+      }
+
+      if (runtime.js_entrypoint !== manifest.runtime.jsOutput) {
+        errors.push(`MANIFEST.json: expected runtime.js_entrypoint '${manifest.runtime.jsOutput}' but found '${runtime.js_entrypoint}'`);
+      }
+
+      if (release.channel !== "stable") {
+        errors.push(`MANIFEST.json: expected release.channel 'stable' but found '${release.channel}'`);
+      }
+    } catch (error) {
+      errors.push(`MANIFEST.json: invalid JSON (${error && error.message ? error.message : String(error)})`);
+    }
   }
 
   const expectedRootDocNames = manifest.docs.rootPages.map((page) => path.basename(page.href));
@@ -841,6 +901,7 @@ export function validateFramework(options = {}) {
         exportRootPath,
         version,
         manifest,
+        repositoryManifestPath: manifestJsonPath,
         cssEntrypointPath,
         runtimeScriptPath,
         errors

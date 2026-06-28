@@ -19,8 +19,11 @@ export function getFnllaUiManifest() {
     /* Repository identity used by validation, docs copy and legal metadata. */
     project: {
       name: "FNLLA UI",
+      slug: "fnlla-ui",
       owner: "TechAyo LTD (techayo.co.uk)",
-      origin: "Finella Gardens in Dundee, UK"
+      origin: "Finella Gardens in Dundee, UK",
+      repository: "https://github.com/fnlla/ui.git",
+      sourceOfTruth: "github"
     },
     /*
       Stable published runtime contract.
@@ -35,6 +38,7 @@ export function getFnllaUiManifest() {
       jsOutput: "assets/js/fnlla-ui.js",
       distRoot: "dist/fnlla-ui",
       distStaticFiles: [
+        "MANIFEST.json",
         "LICENSE.md",
         "VERSION"
       ],
@@ -180,6 +184,7 @@ export function getFnllaUiManifest() {
     /* Release-state files that must stay aligned before publication. */
     release: {
       stateFiles: [
+        "MANIFEST.json",
         "README.md",
         "VERSION",
         "LICENSE.md"

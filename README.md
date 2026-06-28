@@ -32,8 +32,9 @@ FNLLA UI is proprietary software owned by TechAyo LTD (techayo.co.uk).
 
 Its use is governed by `LICENSE.md`, which permits commercial use in productions executed by TechAyo LTD while prohibiting standalone redistribution, resale and unauthorized relicensing.
 
-The current repository identity is defined by three state files that should stay aligned:
+The current repository identity is defined by four state files that should stay aligned:
 
+- `MANIFEST.json`
 - `README.md`
 - `VERSION`
 - `LICENSE.md`

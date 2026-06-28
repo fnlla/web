@@ -14,7 +14,7 @@ Highlights
 - Runtime-only handoff prepared under dist/fnlla-ui/
 
 Operational notes
-- README.md, VERSION and LICENSE.md are aligned for the release line
+- README.md, MANIFEST.json, VERSION and LICENSE.md are aligned for the release line
 - Follow-up cleanup and hardening work is tracked in GitHub after publication when needed
 ```
 
