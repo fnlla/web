@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: SCROLLSPY INITIALIZER
+  FNLLA Web SOURCE MODULE: SCROLLSPY INITIALIZER
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

@@ -1,8 +1,8 @@
 # FNLLA Icons Notice
 
-`FNLLA Icons` is the local icon distribution name used by `FNLLA UI`.
+`FNLLA Icons` is the local icon distribution name used by `FNLLA Web`.
 
-This bundle is produced for framework use by TechAyo LTD (techayo.co.uk) and downstream adopters of FNLLA UI.
+This bundle is produced for framework use by TechAyo LTD (techayo.co.uk) and downstream adopters of FNLLA Web.
 
 Source attribution:
 - based on the official `lucide-static` package
@@ -19,6 +19,6 @@ Licensing, provenance and rebrand rules for maintainers:
 - do not replace this local bundle with CDN-hosted icon assets
 - keep runtime usage on local paths such as `assets/icons/search.svg` and `assets/icons/sprite.svg`
 
-Branding rule for FNLLA UI:
+Branding rule for FNLLA Web:
 - public framework documentation may refer to this bundle as `FNLLA Icons`
 - legal attribution and provenance must continue to identify Lucide as the upstream icon source

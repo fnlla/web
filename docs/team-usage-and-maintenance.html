@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
+<!-- FNLLA Web documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1A4137">
-  <title>Team Usage and Maintenance Guide - FNLLA UI Documentation</title>
+  <title>Team Usage and Maintenance Guide - FNLLA Web Documentation</title>
   <link rel="icon" href="./assets/brand/fnlla-ui.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
   <link rel="stylesheet" href="./assets/docs.css">
@@ -14,7 +14,7 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <main class="doc-wrapper" id="main-content">
-    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+    <header class="doc-header" aria-label="FNLLA Web documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Guide library</span>
         <span class="doc-status">Stable 1.0.6</span>
@@ -31,15 +31,15 @@
   <rect class="doc-brand-mark-tile" x="143" y="267" width="82" height="82" rx="12"/>
   <rect class="doc-brand-mark-tile" x="143" y="363" width="82" height="82" rx="12"/>
 </svg>
-          <span class="doc-brand-badge" aria-hidden="true">UI</span>
+          <span class="doc-brand-badge" aria-hidden="true">WEB</span>
           <span class="doc-brand-separator" aria-hidden="true">-</span>
           <p class="doc-display">Guides</p>
         </div>
-        <p class="doc-lead">Playbook for building websites on FNLLA UI and maintaining the framework.</p>
+        <p class="doc-lead">Playbook for building websites on FNLLA Web and maintaining the framework.</p>
       </div>
     </header>
 
-    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+    <nav class="doc-nav" aria-label="FNLLA Web documentation">
       <div class="doc-nav-top">
         <p class="doc-nav-label">Docs Navigation</p>
         <button class="btn btn-ghost btn-sm doc-nav-toggle" type="button" data-doc-nav-toggle aria-expanded="false" aria-controls="doc-nav-panel">
@@ -67,15 +67,15 @@
     <section class="section pt-1">
       <div class="doc-guide-layout">
         <article class="card doc-guide-prose doc-guide-prose-numbered">
-<p>This guide belongs to <code>FNLLA UI</code>. It is maintained by <code>TechAyo LTD (techayo.co.uk)</code> and published from the framework repository for teams working from <code>Finella Gardens in Dundee, UK</code>.</p>
+<p>This guide belongs to <code>FNLLA Web</code>. It is maintained by <code>TechAyo LTD (techayo.co.uk)</code> and published from the framework repository for teams working from <code>Finella Gardens in Dundee, UK</code>.</p>
 
 <h2 id="use-this-guide-when">Use this guide when</h2>
 
-<ul><li>you are starting a new website on top of <code>FNLLA UI</code></li><li>you need to decide whether a change belongs to the website or the framework</li><li>you are updating the vendored runtime in a downstream project</li><li>you need a repeatable maintenance and review workflow</li></ul>
+<ul><li>you are starting a new website on top of <code>FNLLA Web</code></li><li>you need to decide whether a change belongs to the website or the framework</li><li>you are updating the vendored runtime in a downstream project</li><li>you need a repeatable maintenance and review workflow</li></ul>
 
 <h2 id="operating-modes">Operating modes</h2>
 
-<p>FNLLA UI has two valid ways of working.</p>
+<p>FNLLA Web has two valid ways of working.</p>
 
 <h3 id="consumer-mode">Consumer mode</h3>
 
@@ -99,7 +99,7 @@
 
 <ul><li><code>Tech lead</code>: decides whether a change belongs to the project or to the framework</li><li><code>Frontend developer</code>: builds pages with stable classes and <code>data-fnlla-*</code> hooks</li><li><code>Design or system owner</code>: approves tokens, spacing, typography and component reuse</li><li><code>Framework maintainer</code>: edits <code>src/</code>, republishes runtime files and runs validation</li><li><code>QA owner</code>: checks responsive behavior, accessibility and critical smoke flows</li></ul>
 
-<h2 id="build-a-new-website-on-fnlla-ui">Build a new website on FNLLA UI</h2>
+<h2 id="build-a-new-website-on-fnlla-web">Build a new website on FNLLA Web</h2>
 
 <h3 id="deliver-the-framework">Deliver the framework</h3>
 
@@ -321,11 +321,11 @@
 
 <h3 id="framework-update-inside-a-website-project">Framework update inside a website project</h3>
 
-<p>Use this path when the downstream site upgrades its vendored FNLLA UI runtime.</p>
+<p>Use this path when the downstream site upgrades its vendored FNLLA Web runtime.</p>
 
 <ol><li>Create an update branch.</li><li>Replace the project <code>fnlla-ui/</code> folder with a fresh <code>dist/fnlla-ui/</code> export from the framework repository.</li><li>Check <code>VERSION</code>.</li><li>Read <code>README.md</code> and <code>docs/contract.html</code> to confirm the current contract.</li><li>Search the project for legacy patterns such as <code>data-ui-*</code>, <code>ui-*</code> and outdated token overrides.</li><li>Re-test navigation, dropdowns, tabs, accordions, modals, forms and any local overrides.</li><li>Re-test on mobile, tablet and desktop.</li><li>Merge only after the downstream site passes its own review and QA checks.</li></ol>
 
-<h2 id="maintain-fnlla-ui-itself">Maintain FNLLA UI itself</h2>
+<h2 id="maintain-fnlla-web-itself">Maintain FNLLA Web itself</h2>
 
 <h3 id="work-in-source-not-runtime">Work in source, not runtime</h3>
 
@@ -388,7 +388,7 @@
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#maintainer-mode">Maintainer mode</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#default-rule">Default rule</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#before-a-project-starts">Before a project starts</a>
-              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#build-a-new-website-on-fnlla-ui">Build a new website on FNLLA UI</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#build-a-new-website-on-fnlla-web">Build a new website on FNLLA Web</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#deliver-the-framework">Deliver the framework</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#include-the-runtime-files">Include the runtime files</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#start-from-a-stable-page-shell">Start from a stable page shell</a>
@@ -404,7 +404,7 @@
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#visual-polish">Visual polish</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#interaction-issue">Interaction issue</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#framework-update-inside-a-website-project">Framework update inside a website project</a>
-              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#maintain-fnlla-ui-itself">Maintain FNLLA UI itself</a>
+              <a class="doc-guide-toc-link doc-guide-toc-level-2" href="#maintain-fnlla-web-itself">Maintain FNLLA Web itself</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#work-in-source-not-runtime">Work in source, not runtime</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#update-docs-when-the-public-contract-changes">Update docs when the public contract changes</a>
               <a class="doc-guide-toc-link doc-guide-toc-level-3" href="#republish-smoke-test-and-validate">Republish, smoke-test and validate</a>
@@ -415,8 +415,8 @@
       </div>
     </section>
 
-    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
-      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
+    <footer class="doc-footer" aria-label="FNLLA Web ownership notice">
+      <p class="content-text">FNLLA Web &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
     </footer>
   </main>
   <script src="../assets/js/fnlla-ui.js"></script>

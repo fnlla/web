@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-fnlla-title-site="FNLLA UI" data-fnlla-title-page="Browser Smoke Test" data-fnlla-title-section="Components">
+<html lang="en" data-fnlla-title-site="FNLLA Web" data-fnlla-title-page="Browser Smoke Test" data-fnlla-title-section="Components">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FNLLA UI Browser Smoke Test</title>
+  <title>FNLLA Web Browser Smoke Test</title>
   <link rel="stylesheet" href="../../assets/css/fnlla-ui.css">
   <style>
     body {
@@ -40,7 +40,7 @@
 <body data-fnlla-theme="default">
   <main class="smoke-shell" id="main-content">
     <section class="smoke-block">
-      <h1>FNLLA UI Browser Smoke Test</h1>
+      <h1>FNLLA Web Browser Smoke Test</h1>
       <p id="test-status" data-result="pending">Pending</p>
       <ul id="failure-list"></ul>
     </section>
@@ -201,7 +201,7 @@
           <p class="consent-kicker">Cookie consent</p>
           <h2 class="consent-title">Choose which optional cookies can run.</h2>
           <p class="consent-text">Necessary cookies keep the runtime shell working. Optional categories can be granted or denied per project.</p>
-          <p class="consent-meta">This banner is driven by the public FNLLA UI runtime only.</p>
+          <p class="consent-meta">This banner is driven by the public FNLLA Web runtime only.</p>
         </div>
         <div class="consent-actions">
           <button class="btn btn-primary btn-sm" id="smoke-consent-accept-all" type="button" data-fnlla-consent-accept="all">Accept all</button>
@@ -403,17 +403,17 @@
           assert(typeof window.FNLLAUI.setTheme === "function", "window.FNLLAUI.setTheme should be exposed as a public API.", failures);
           assert(typeof window.FNLLAUI.setDocumentTitle === "function", "window.FNLLAUI.setDocumentTitle should be exposed as a public API.", failures);
           assert(typeof window.FNLLAUI.getConsentState === "function", "window.FNLLAUI.getConsentState should be exposed as a public API.", failures);
-          assert(document.title === "Browser Smoke Test | Components | FNLLA UI", "Auto-init should build the document title from the declarative title attributes.", failures);
-          assert(window.FNLLAUI.getDocumentTitleConfig().site === "FNLLA UI", "Document title config should expose the configured site label.", failures);
-          window.FNLLAUI.setDocumentTitle({ page: "Consent Center", section: "Components", site: "FNLLA UI" });
+          assert(document.title === "Browser Smoke Test | Components | FNLLA Web", "Auto-init should build the document title from the declarative title attributes.", failures);
+          assert(window.FNLLAUI.getDocumentTitleConfig().site === "FNLLA Web", "Document title config should expose the configured site label.", failures);
+          window.FNLLAUI.setDocumentTitle({ page: "Consent Center", section: "Components", site: "FNLLA Web" });
           await wait(40);
-          assert(document.title === "Consent Center | Components | FNLLA UI", "setDocumentTitle should update document.title from the public API.", failures);
-          window.FNLLAUI.syncDocumentTitle({ site: "FNLLA UI", page: "Overview", section: "", home: true });
+          assert(document.title === "Consent Center | Components | FNLLA Web", "setDocumentTitle should update document.title from the public API.", failures);
+          window.FNLLAUI.syncDocumentTitle({ site: "FNLLA Web", page: "Overview", section: "", home: true });
           await wait(40);
-          assert(document.title === "FNLLA UI", "syncDocumentTitle should support a compact home title state.", failures);
-          window.FNLLAUI.setDocumentTitle({ page: "Browser Smoke Test", section: "Components", site: "FNLLA UI", home: false });
+          assert(document.title === "FNLLA Web", "syncDocumentTitle should support a compact home title state.", failures);
+          window.FNLLAUI.setDocumentTitle({ page: "Browser Smoke Test", section: "Components", site: "FNLLA Web", home: false });
           await wait(40);
-          assert(document.title === "Browser Smoke Test | Components | FNLLA UI", "setDocumentTitle should restore the normal browser tab title pattern.", failures);
+          assert(document.title === "Browser Smoke Test | Components | FNLLA Web", "setDocumentTitle should restore the normal browser tab title pattern.", failures);
           window.FNLLAUI.setTheme("dark");
           await wait(40);
           assert(document.body.getAttribute("data-fnlla-theme") === "dark", "window.FNLLAUI.setTheme(theme) should apply the requested theme to body.", failures);
@@ -612,7 +612,7 @@
           var smokeSelectShell = smokeSelect.closest("[data-fnlla-select-shell]");
           var smokeSelectToggle = smokeSelectShell ? smokeSelectShell.querySelector("[data-fnlla-select-toggle]") : null;
           var smokeSelectMenu = smokeSelectShell ? smokeSelectShell.querySelector(".select-menu") : null;
-          assert(!!smokeSelectShell, "Single-select fields should be enhanced into the custom FNLLA UI select shell.", failures);
+          assert(!!smokeSelectShell, "Single-select fields should be enhanced into the custom FNLLA Web select shell.", failures);
           assert(!!smokeSelectToggle, "Enhanced select fields should create a visible toggle control.", failures);
           assert(smokeSelectToggle && smokeSelectToggle.textContent.indexOf("Professional Services") !== -1, "Enhanced select toggle should render the current option label.", failures);
           smokeSelectToggle.click();

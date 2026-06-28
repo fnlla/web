@@ -1,5 +1,5 @@
 /*
-  FNLLA UI publish helper.
+  FNLLA Web publish helper.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
@@ -35,7 +35,7 @@ function resolveSourcePaths(repoRoot, relativePaths) {
 function assertSourceFilesExist(label, paths) {
   const missing = paths.filter((targetPath) => !pathExists(targetPath));
   if (missing.length) {
-    throw new Error(`Missing FNLLA UI ${label} source files: ${missing.join(", ")}`);
+    throw new Error(`Missing FNLLA Web ${label} source files: ${missing.join(", ")}`);
   }
 }
 
@@ -110,9 +110,9 @@ function getRepositoryManifestContent(version, manifest) {
   remains the source of truth for operational guidance and governance files.
 */
 function getDistReadmeContent(version) {
-  return `# FNLLA UI runtime export
+  return `# FNLLA Web runtime export
 
-This directory is the runtime-only FNLLA UI handoff for downstream projects.
+This directory is the runtime-only FNLLA Web handoff for downstream projects.
 
 It contains the same supported browser runtime contract that lives under the repository root \`assets/\` tree, but without maintainer source files, docs chrome or repository-only working materials.
 
@@ -227,11 +227,11 @@ export function publishFramework(options = {}) {
 /* Keep CLI output human-readable so local release work is easy to audit. */
 function runCli() {
   const result = publishFramework();
-  console.log(`Published FNLLA UI manifest: ${result.manifestTargetPath}`);
-  console.log(`Published FNLLA UI runtime CSS: ${result.cssTargetPath}`);
-  console.log(`Published FNLLA UI runtime JS: ${result.jsTargetPath}`);
-  console.log(`Published FNLLA UI docs JS: ${result.docsJsTargetPath}`);
-  console.log(`Refreshed FNLLA UI runtime export: ${result.distRootPath}`);
+  console.log(`Published FNLLA Web manifest: ${result.manifestTargetPath}`);
+  console.log(`Published FNLLA Web runtime CSS: ${result.cssTargetPath}`);
+  console.log(`Published FNLLA Web runtime JS: ${result.jsTargetPath}`);
+  console.log(`Published FNLLA Web docs JS: ${result.docsJsTargetPath}`);
+  console.log(`Refreshed FNLLA Web runtime export: ${result.distRootPath}`);
 }
 
 if (isDirectExecution(import.meta.url)) {

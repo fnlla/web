@@ -1,5 +1,5 @@
 /*
-  FNLLA UI browser smoke test entrypoint.
+  FNLLA Web browser smoke test entrypoint.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
@@ -46,7 +46,7 @@ export async function runCli(options = {}) {
   const browserFamily = options.browserFamily || getBrowserFamily(browser?.path || "");
 
   if (!browser?.path) {
-    throw new Error("A supported browser is required to run the FNLLA UI browser smoke test");
+    throw new Error("A supported browser is required to run the FNLLA Web browser smoke test");
   }
 
   const passed = await runBrowserSmokeTest({

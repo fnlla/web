@@ -1,4 +1,4 @@
-# FNLLA UI
+# FNLLA Web
 
 [![Release](https://img.shields.io/badge/release-v1.0.6-2f65eb?style=flat-square)](https://github.com/fnlla/web/releases/tag/v1.0.6)
 [![Hardening](https://github.com/fnlla/web/actions/workflows/fnlla-ui-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/web/actions/workflows/fnlla-ui-hardening.yml)
@@ -6,9 +6,9 @@
 [![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
 [![Docs](https://img.shields.io/badge/docs-9%20pages-c26d00?style=flat-square)](./docs/guides.html)
 
-## What FNLLA UI is
+## What FNLLA Web is
 
-FNLLA UI is a standalone open-source UI kit for static and server-rendered websites. It packages reusable layout, component and interaction patterns without coupling them to any specific client, brand or CMS.
+FNLLA Web is a standalone open-source UI kit for static and server-rendered websites. It packages reusable layout, component and interaction patterns without coupling them to any specific client, brand or CMS.
 
 The supported browser runtime contract is intentionally small:
 
@@ -18,17 +18,17 @@ The supported browser runtime contract is intentionally small:
 
 That runtime can be consumed directly from the repository or copied as the generated runtime-only handoff under `dist/fnlla-ui/`.
 
-FNLLA UI is produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
+FNLLA Web is produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
 
 Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
 ## Name origin
 
-The name `FNLLA` comes from Finella, and more specifically from Finella Gardens in Dundee, UK. That location is the origin point of the FNLLA UI name.
+The name `FNLLA` comes from Finella, and more specifically from Finella Gardens in Dundee, UK. That location is the origin point of the FNLLA Web name.
 
 ## Ownership and license
 
-FNLLA UI is open-source software released under the MIT License by TechAyo LTD (techayo.co.uk).
+FNLLA Web is open-source software released under the MIT License by TechAyo LTD (techayo.co.uk).
 
 Use of the source code is governed by `LICENSE.md`.
 
@@ -62,7 +62,7 @@ Repository identity assets also rely on:
 
 ## Who it is for
 
-Use FNLLA UI when a project needs:
+Use FNLLA Web when a project needs:
 
 - a lightweight front-end starter without a build step
 - reusable marketing and service-oriented components
@@ -71,9 +71,9 @@ Use FNLLA UI when a project needs:
 
 ## Support and release expectations
 
-Anyone may use FNLLA UI under the MIT License, including for self-service and commercial work.
+Anyone may use FNLLA Web under the MIT License, including for self-service and commercial work.
 
-TechAyo LTD does not promise support, maintenance, SLA coverage or a fixed release cadence for third-party projects built on FNLLA UI.
+TechAyo LTD does not promise support, maintenance, SLA coverage or a fixed release cadence for third-party projects built on FNLLA Web.
 
 Public updates are shipped when TechAyo LTD decides they are appropriate.
 
@@ -130,7 +130,7 @@ The helper contract is intentionally small. For the full supported surface, use 
 
 ## FNLLA Icons
 
-FNLLA UI ships a branded internal icon layer called `FNLLA Icons` under `assets/icons/`.
+FNLLA Web ships a branded internal icon layer called `FNLLA Icons` under `assets/icons/`.
 
 Important local paths:
 
@@ -227,7 +227,7 @@ The docs shell is documentation-specific, but component demos should still rende
 - Team usage and maintenance guide: `docs/team-usage-and-maintenance.html`
 - Docs stylesheet: `docs/assets/docs.css` for documentation-only shell and presentation helpers around the shared runtime
 - Docs behavior bundle: `docs/assets/docs.js` for documentation-only navigation, theme-toggle, code-highlighting and icon-catalogue behavior
-- Brand assets: `docs/assets/brand/` for the committed FNLLA UI logo source and GitHub-ready preview exports
+- Brand assets: `docs/assets/brand/` for the committed FNLLA Web logo source and GitHub-ready preview exports
 - Guide sources: `docs/guides/*.md` for maintainer-authored content that publishes into the HTML guide set
 - Docs behavior sources: `src/docs/js/*.js` for maintainer-authored documentation-only JavaScript that publishes into `docs/assets/docs.js`
 - Runtime manifest: `scripts/fnlla-ui-manifest.mjs` for the shared source-ordering and export contract

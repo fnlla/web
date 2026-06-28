@@ -1,11 +1,11 @@
-# FNLLA UI Release Notes Template
+# FNLLA Web Release Notes Template
 
 Use plain ASCII in GitHub release notes so file paths and bullets stay stable across shells, terminals and browsers.
 
 Template:
 
 ```md
-FNLLA UI <version> is the current stable release of the maintained FNLLA UI framework.
+FNLLA Web <version> is the current stable release of the maintained FNLLA Web framework.
 
 Highlights
 - Stable runtime contract: assets/css/fnlla-ui.css, assets/js/fnlla-ui.js and assets/icons/

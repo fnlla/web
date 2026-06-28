@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: DOM AND FOCUS HELPERS
+  FNLLA Web SOURCE MODULE: DOM AND FOCUS HELPERS
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

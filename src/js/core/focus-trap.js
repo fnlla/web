@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: FOCUS MANAGEMENT HELPERS
+  FNLLA Web SOURCE MODULE: FOCUS MANAGEMENT HELPERS
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

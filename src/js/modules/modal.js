@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: MODAL INITIALIZER
+  FNLLA Web SOURCE MODULE: MODAL INITIALIZER
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

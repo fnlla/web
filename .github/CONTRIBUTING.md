@@ -1,8 +1,8 @@
-# Contributing to FNLLA UI
+# Contributing to FNLLA Web
 
 ## First, understand the repository
 
-FNLLA UI is an MIT-licensed framework maintained by TechAyo LTD (techayo.co.uk).
+FNLLA Web is an MIT-licensed framework maintained by TechAyo LTD (techayo.co.uk).
 
 This repository is public and contributions are welcome, but it remains maintainer-led. Proposed changes are reviewed against framework scope, product direction, maintenance cost, client impact, security posture and long-term coherence.
 
@@ -82,7 +82,7 @@ node .\scripts\test-fnlla-ui-browser-matrix.mjs
 
 A good pull request should:
 
-- explain what changed and why it belongs in FNLLA UI
+- explain what changed and why it belongs in FNLLA Web
 - describe runtime, docs and dist impact
 - mention validation performed
 - call out any release-surface implications
@@ -97,7 +97,7 @@ By submitting a contribution, you represent that:
 - the material does not knowingly violate another party's IP or confidentiality rights
 - the contribution may be reviewed, modified, rejected or incorporated by TechAyo LTD under the repository's MIT licensing model
 
-Submitting a contribution does not transfer ownership of FNLLA UI branding or change the repository license.
+Submitting a contribution does not transfer ownership of FNLLA Web branding or change the repository license.
 
 ## Support and contact
 

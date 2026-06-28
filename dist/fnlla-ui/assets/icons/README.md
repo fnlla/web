@@ -1,6 +1,6 @@
 # FNLLA Icons
 
-This directory contains the internal `FNLLA Icons` bundle used by `FNLLA UI`.
+This directory contains the internal `FNLLA Icons` bundle used by `FNLLA Web`.
 
 `FNLLA Icons` is a branded local distribution based on the official Lucide static asset package.
 
@@ -11,7 +11,7 @@ Source package:
 
 Purpose:
 
-- keep FNLLA UI icon usage fully offline
+- keep FNLLA Web icon usage fully offline
 - avoid any external CDN, font or icon requests
 - provide both local individual SVG files and a local SVG sprite
 - preserve upstream licensing and attribution inside the vendored bundle
@@ -21,9 +21,9 @@ Contents:
 - individual SVG files in the root of this directory
 - `sprite.svg` local SVG sprite
 - `LICENSE` original Lucide ISC license plus embedded Feather/MIT notice where applicable
-- `NOTICE.md` FNLLA UI rebrand and attribution notice
+- `NOTICE.md` FNLLA Web rebrand and attribution notice
 
-Integration rule for FNLLA UI:
+Integration rule for FNLLA Web:
 
 - use only files from this directory when rendering FNLLA Icons
 - use runtime paths such as `assets/icons/search.svg` or `assets/icons/sprite.svg#settings-2` in project markup

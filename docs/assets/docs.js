@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  Documentation-only behavior for the FNLLA UI docs experience.
+  Documentation-only behavior for the FNLLA Web docs experience.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Responsibilities:

@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: TABS INITIALIZER
+  FNLLA Web SOURCE MODULE: TABS INITIALIZER
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

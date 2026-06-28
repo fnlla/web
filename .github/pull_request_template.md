@@ -1,6 +1,6 @@
 ## Summary
 
-Describe the change in a few direct sentences and explain why it belongs in FNLLA UI now.
+Describe the change in a few direct sentences and explain why it belongs in FNLLA Web now.
 
 If this change may be security-sensitive, stop and follow `SECURITY.md` instead of opening a normal PR.
 

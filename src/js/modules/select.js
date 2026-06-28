@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: CUSTOM SELECT INITIALIZER
+  FNLLA Web SOURCE MODULE: CUSTOM SELECT INITIALIZER
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

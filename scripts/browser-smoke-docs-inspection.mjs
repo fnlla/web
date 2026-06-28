@@ -1,5 +1,5 @@
 /*
-  Shared browser-side docs inspections for the FNLLA UI smoke runner.
+  Shared browser-side docs inspections for the FNLLA Web smoke runner.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 */
 

@@ -1,5 +1,5 @@
 /*
-  FNLLA UI structural validator.
+  FNLLA Web structural validator.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
@@ -136,7 +136,7 @@ function validateRuntimeExport(options) {
     errors.push(`${exportLabel}: missing README.md`);
   } else {
     const distReadme = readText(distReadmePath);
-    ["runtime-only FNLLA UI handoff", "scripts/publish-fnlla-ui.mjs", "README.md", "MANIFEST.json", "VERSION", "LICENSE.md"].forEach((requiredText) => {
+    ["runtime-only FNLLA Web handoff", "scripts/publish-fnlla-ui.mjs", "README.md", "MANIFEST.json", "VERSION", "LICENSE.md"].forEach((requiredText) => {
       if (!distReadme.includes(requiredText)) {
         errors.push(`${exportLabel}/README.md: missing required text '${requiredText}'`);
       }
@@ -187,7 +187,7 @@ function validateRuntimeExport(options) {
   });
 }
 
-/* Validate the current repository snapshot against the FNLLA UI contract. */
+/* Validate the current repository snapshot against the FNLLA Web contract. */
 export function validateFramework(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const manifest = getFnllaUiManifest();
@@ -629,7 +629,7 @@ export function validateFramework(options = {}) {
     const codeOfConduct = readText(codeOfConductPath);
     [
       "TechAyo LTD",
-      "FNLLA UI Code of Conduct",
+      "FNLLA Web Code of Conduct",
       "https://techayo.co.uk"
     ].forEach((requiredText) => {
       if (!codeOfConduct.includes(requiredText)) {
@@ -659,7 +659,7 @@ export function validateFramework(options = {}) {
   } else {
     const contributing = readText(contributingPath);
     [
-      "Contributing to FNLLA UI",
+      "Contributing to FNLLA Web",
       "TechAyo LTD",
       "SECURITY.md",
       "LICENSE.md"
@@ -675,7 +675,7 @@ export function validateFramework(options = {}) {
   } else {
     const releaseTemplate = readText(releaseTemplatePath);
     [
-      "FNLLA UI Release Notes Template",
+      "FNLLA Web Release Notes Template",
       "Stable runtime contract: assets/css/fnlla-ui.css, assets/js/fnlla-ui.js and assets/icons/",
       "Use plain ASCII"
     ].forEach((requiredText) => {
@@ -690,7 +690,7 @@ export function validateFramework(options = {}) {
   } else {
     const support = readText(supportPath);
     [
-      "FNLLA UI Support",
+      "FNLLA Web Support",
       "SECURITY.md",
       "CODE_OF_CONDUCT.md",
       "https://techayo.co.uk"
@@ -729,7 +729,7 @@ export function validateFramework(options = {}) {
       "Trademark Notice",
       "TechAyo LTD",
       "does not grant trademark rights",
-      "official FNLLA UI project"
+      "official FNLLA Web project"
     ].forEach((requiredText) => {
       if (!trademarks.includes(requiredText)) {
         errors.push(`TRADEMARKS.md: missing required text '${requiredText}'`);
@@ -752,7 +752,7 @@ export function validateFramework(options = {}) {
   if (pathExists(brandReadmePath)) {
     const brandReadme = readText(brandReadmePath);
     [
-      "FNLLA UI brand assets",
+      "FNLLA Web brand assets",
       "fnlla-ui.svg",
       "fnlla-ui-dark.svg",
       "fnlla-github.svg",
@@ -959,7 +959,7 @@ export function validateFramework(options = {}) {
     const browser = detectChromiumBrowsers()[0];
 
     if (!browser) {
-      errors.push("A Chromium-based browser is required to run the FNLLA UI browser smoke test");
+      errors.push("A Chromium-based browser is required to run the FNLLA Web browser smoke test");
     } else {
       const smokeResult = runNodeScript(browserSmokeScriptPath, ["--browser", browser.path, "--repo-root", repoRoot]);
       if (smokeResult.status !== 0) {
@@ -979,7 +979,7 @@ function runCli() {
   const result = validateFramework();
 
   if (!result.ok) {
-    console.log("FNLLA UI validation failed.");
+    console.log("FNLLA Web validation failed.");
     result.errors.forEach((error) => {
       console.log(`- ${error}`);
     });
@@ -987,7 +987,7 @@ function runCli() {
     return;
   }
 
-  console.log("FNLLA UI validation passed.");
+  console.log("FNLLA Web validation passed.");
   console.log(`Validated docs pages: ${result.docCount}`);
   console.log("Validated README, release metadata, guide publication, runtime export generation, MIT license/support/trademark files and runtime syntax.");
 }

@@ -1,5 +1,5 @@
 /*
-  Synchronize the shared shell for top-level FNLLA UI docs pages.
+  Synchronize the shared shell for top-level FNLLA Web docs pages.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
@@ -48,7 +48,7 @@ ${linksMarkup}
 
 /* Extract page-specific body content while preserving the shared shell boundary. */
 function extractRootDocContent(content, relativePath) {
-  const match = content.match(/<nav class="doc-nav" aria-label="FNLLA UI documentation">[\s\S]*?<\/nav>\s*([\s\S]*?)\s*<footer class="doc-footer" aria-label="FNLLA UI ownership notice">/i);
+  const match = content.match(/<nav class="doc-nav" aria-label="FNLLA Web documentation">[\s\S]*?<\/nav>\s*([\s\S]*?)\s*<footer class="doc-footer" aria-label="FNLLA Web ownership notice">/i);
 
   if (!match) {
     throw new Error(`${relativePath}: could not extract the body content between the docs navigation and footer`);
@@ -77,7 +77,7 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
   const brandMarkHref = "./assets/brand/fnlla-ui.svg";
 
   return `<!DOCTYPE html>
-<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
+<!-- FNLLA Web documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
 <html lang="en">
 <head>
   <!-- =========================================================================
@@ -98,7 +98,7 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
        DOCUMENT SHELL
        ========================================================================= -->
   <main class="doc-wrapper" id="main-content">
-    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+    <header class="doc-header" aria-label="FNLLA Web documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">${escapeHtml(kicker)}</span>
         <span class="doc-status">Stable ${escapeHtml(version)}</span>
@@ -116,14 +116,14 @@ function renderRootDocPage({ page, version, shell, rootPages, contentHtml }) {
     </header>
 
     <!-- Primary docs navigation shared across the reference set. -->
-    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+    <nav class="doc-nav" aria-label="FNLLA Web documentation">
 ${renderRootDocsNavigation(rootPages, page.label)}
     </nav>
 
     ${contentHtml}
     <!-- Ownership footer required on every docs page. -->
-    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
-      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
+    <footer class="doc-footer" aria-label="FNLLA Web ownership notice">
+      <p class="content-text">FNLLA Web &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
     </footer>
   </main>
   <!-- Shared runtime for interactive demos used inside the docs. -->
@@ -184,7 +184,7 @@ function runCli() {
     return;
   }
 
-  console.log("Top-level FNLLA UI docs shells are already in sync.");
+  console.log("Top-level FNLLA Web docs shells are already in sync.");
 }
 
 if (isDirectExecution(import.meta.url)) {

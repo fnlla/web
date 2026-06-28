@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: DOCUMENT TITLE HELPERS
+  FNLLA Web SOURCE MODULE: DOCUMENT TITLE HELPERS
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

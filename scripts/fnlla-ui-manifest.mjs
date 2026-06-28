@@ -1,5 +1,5 @@
 /*
-  FNLLA UI maintainer manifest.
+  FNLLA Web maintainer manifest.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
@@ -9,7 +9,7 @@
 
 export function getFnllaUiManifest() {
   const cssRuntimeBanner = `/*
-  FNLLA UI runtime stylesheet.
+  FNLLA Web runtime stylesheet.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   Produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
   Published from readable source modules in src/css/ via scripts/publish-fnlla-ui.mjs.
@@ -18,7 +18,7 @@ export function getFnllaUiManifest() {
   return {
     /* Repository identity used by validation, docs copy and legal metadata. */
     project: {
-      name: "FNLLA UI",
+      name: "FNLLA Web",
       slug: "fnlla-ui",
       owner: "TechAyo LTD (techayo.co.uk)",
       origin: "Finella Gardens in Dundee, UK",
@@ -81,21 +81,21 @@ export function getFnllaUiManifest() {
         lead: "Runtime contract, component system and delivery guidance for teams that need a no-build, production-ready UI layer."
       },
       rootPages: [
-        { href: "./index.html", label: "Overview", title: "Overview - FNLLA UI Documentation" },
-        { href: "./contract.html", label: "Contract", title: "Contract - FNLLA UI Documentation" },
-        { href: "./layout.html", label: "Layout", title: "Layout - FNLLA UI Documentation" },
-        { href: "./components.html", label: "Components", title: "Components - FNLLA UI Documentation" },
-        { href: "./sections.html", label: "Sections", title: "Sections - FNLLA UI Documentation" },
+        { href: "./index.html", label: "Overview", title: "Overview - FNLLA Web Documentation" },
+        { href: "./contract.html", label: "Contract", title: "Contract - FNLLA Web Documentation" },
+        { href: "./layout.html", label: "Layout", title: "Layout - FNLLA Web Documentation" },
+        { href: "./components.html", label: "Components", title: "Components - FNLLA Web Documentation" },
+        { href: "./sections.html", label: "Sections", title: "Sections - FNLLA Web Documentation" },
         {
           href: "./utilities.html",
           label: "Utilities",
-          title: "Utilities - FNLLA UI Documentation",
+          title: "Utilities - FNLLA Web Documentation",
           extraScripts: ["./assets/icons-data.js"]
         },
         {
           href: "./guides.html",
           label: "Guides",
-          title: "Guides - FNLLA UI Documentation",
+          title: "Guides - FNLLA Web Documentation",
           overline: "Guide library",
           displayTitle: "Guides",
           lead: "Published browser-facing guides for component selection, downstream website work and framework maintenance workflows."
@@ -105,20 +105,20 @@ export function getFnllaUiManifest() {
         {
           source: "docs/guides/component-classification.md",
           output: "docs/component-classification.html",
-          title: "Component Classification Guide - FNLLA UI Documentation",
+          title: "Component Classification Guide - FNLLA Web Documentation",
           navLabel: "Classification",
           heroLabel: "Component selection",
           bodyClass: "doc-guide-classification",
-          description: "A structured reference for choosing the right FNLLA UI component family and avoiding misuse patterns."
+          description: "A structured reference for choosing the right FNLLA Web component family and avoiding misuse patterns."
         },
         {
           source: "docs/guides/team-usage-and-maintenance-en.md",
           output: "docs/team-usage-and-maintenance.html",
-          title: "Team Usage and Maintenance Guide - FNLLA UI Documentation",
+          title: "Team Usage and Maintenance Guide - FNLLA Web Documentation",
           navLabel: "Usage",
           heroLabel: "Team workflow",
           bodyClass: "doc-guide-usage",
-          description: "Playbook for building websites on FNLLA UI and maintaining the framework."
+          description: "Playbook for building websites on FNLLA Web and maintaining the framework."
         }
       ]
     },

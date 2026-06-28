@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-FNLLA UI is maintained as a public MIT-licensed framework. Security review and remediation focus on the latest maintained repository state and the current stable release line.
+FNLLA Web is maintained as a public MIT-licensed framework. Security review and remediation focus on the latest maintained repository state and the current stable release line.
 
 | Version or branch | Supported |
 | --- | --- |
@@ -17,7 +17,7 @@ Do not open public GitHub issues for suspected security vulnerabilities.
 Use one of these private routes instead:
 
 1. GitHub private vulnerability reporting for this repository, when available.
-2. TechAyo LTD's contact route at `https://techayo.co.uk`, clearly marked `FNLLA UI SECURITY`.
+2. TechAyo LTD's contact route at `https://techayo.co.uk`, clearly marked `FNLLA Web SECURITY`.
 
 Include:
 

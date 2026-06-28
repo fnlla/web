@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: RANGE OUTPUT INITIALIZER
+  FNLLA Web SOURCE MODULE: RANGE OUTPUT INITIALIZER
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

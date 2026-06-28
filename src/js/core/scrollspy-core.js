@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: SCROLLSPY STATE HELPERS
+  FNLLA Web SOURCE MODULE: SCROLLSPY STATE HELPERS
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

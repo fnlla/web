@@ -1,12 +1,12 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: PREAMBLE AND SHARED STATE
+  FNLLA Web SOURCE MODULE: PREAMBLE AND SHARED STATE
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */
 
 /*
-  FNLLA UI runtime script.
+  FNLLA Web runtime script.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   Produced, maintained and distributed by TechAyo LTD (techayo.co.uk).
   Public runtime asset names and enhancement markers define the supported runtime contract.

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
+<!-- FNLLA Web documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
 <html lang="en">
 <head>
   <!-- =========================================================================
@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1A4137">
-  <title>Contract - FNLLA UI Documentation</title>
+  <title>Contract - FNLLA Web Documentation</title>
   <link rel="icon" href="./assets/brand/fnlla-ui.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/fnlla-ui.css">
   <link rel="stylesheet" href="./assets/docs.css">
@@ -20,7 +20,7 @@
        DOCUMENT SHELL
        ========================================================================= -->
   <main class="doc-wrapper" id="main-content">
-    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+    <header class="doc-header" aria-label="FNLLA Web documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Blueprint documentation</span>
         <span class="doc-status">Stable 1.0.6</span>
@@ -37,7 +37,7 @@
   <rect class="doc-brand-mark-tile" x="143" y="267" width="82" height="82" rx="12"/>
   <rect class="doc-brand-mark-tile" x="143" y="363" width="82" height="82" rx="12"/>
 </svg>
-          <span class="doc-brand-badge" aria-hidden="true">UI</span>
+          <span class="doc-brand-badge" aria-hidden="true">WEB</span>
           <span class="doc-brand-separator" aria-hidden="true">-</span>
           <p class="doc-display">Documentation</p>
         </div>
@@ -46,7 +46,7 @@
     </header>
 
     <!-- Primary docs navigation shared across the reference set. -->
-    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+    <nav class="doc-nav" aria-label="FNLLA Web documentation">
       <div class="doc-nav-top">
         <p class="doc-nav-label">Docs Navigation</p>
         <button class="btn btn-ghost btn-sm doc-nav-toggle" type="button" data-doc-nav-toggle aria-expanded="false" aria-controls="doc-nav-panel">
@@ -73,8 +73,8 @@
 
     <section class="section pt-1">
       <div class="section-header">
-        <h2 class="section-title">FNLLA UI contract and support boundary</h2>
-        <p class="section-text">This page combines the stable FNLLA UI packaging boundary and browser-facing contract: runtime files, handoff rules, documented class families, JavaScript hooks and helper methods. Maintainer-only checks and private repository details appear later and are not consumer dependencies.</p>
+        <h2 class="section-title">FNLLA Web contract and support boundary</h2>
+        <p class="section-text">This page combines the stable FNLLA Web packaging boundary and browser-facing contract: runtime files, handoff rules, documented class families, JavaScript hooks and helper methods. Maintainer-only checks and private repository details appear later and are not consumer dependencies.</p>
       </div>
 
       <div class="grid">
@@ -107,7 +107,7 @@
             </div>
             <div>
               <p class="content-title mb-1">Framework family</p>
-              <p class="content-text">FNLLA UI is a standalone browser-facing UI runtime for static and server-rendered websites.</p>
+              <p class="content-text">FNLLA Web is a standalone browser-facing UI runtime for static and server-rendered websites.</p>
             </div>
             <div>
               <p class="content-title mb-1">Copyright</p>
@@ -151,7 +151,7 @@
       <div class="doc-card-grid doc-card-grid-2">
         <article class="card">
           <h2 class="card-title">Default: copy <code>dist/fnlla-ui/</code></h2>
-          <p class="card-text">Use the generated export when another project or another team needs FNLLA UI as a vendored dependency. It contains the runtime tree plus the minimal release files needed for version and license tracking.</p>
+          <p class="card-text">Use the generated export when another project or another team needs FNLLA Web as a vendored dependency. It contains the runtime tree plus the minimal release files needed for version and license tracking.</p>
           <pre><code>dist/
   fnlla-ui/
     assets/
@@ -168,7 +168,7 @@
         <article class="card doc-handoff-conditions">
           <h2 class="card-title">Use raw <code>assets/</code> only when</h2>
           <ul class="doc-checklist">
-            <li>You are working directly inside the FNLLA UI repository.</li>
+            <li>You are working directly inside the FNLLA Web repository.</li>
             <li>You need the live published runtime next to <code>src/</code>, scripts and docs while maintaining the framework.</li>
             <li>You are validating that publish output, docs and browser behavior all describe the same current snapshot.</li>
           </ul>
@@ -179,7 +179,7 @@
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">Runtime boundary</h2>
-        <p class="section-text">The supported runtime API is intentionally narrow. If a consumer page only depends on FNLLA UI, these are the files it should know about.</p>
+        <p class="section-text">The supported runtime API is intentionally narrow. If a consumer page only depends on FNLLA Web, these are the files it should know about.</p>
       </div>
 
       <div class="doc-card-grid doc-card-grid-2">
@@ -209,7 +209,7 @@
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">Repository zones</h2>
-        <p class="section-text">FNLLA UI has a source-to-runtime pipeline. Each zone has a distinct job and should stay on that side of the boundary.</p>
+        <p class="section-text">FNLLA Web has a source-to-runtime pipeline. Each zone has a distinct job and should stay on that side of the boundary.</p>
       </div>
 
       <div class="doc-card-grid doc-card-grid-2">
@@ -270,7 +270,7 @@
   index.html
   about.html
   contact.html</code></pre>
-          <p class="card-text">This keeps FNLLA UI as one vendored runtime layer while project-specific CSS, JS and templates stay in local project files instead of drifting back into the framework package.</p>
+          <p class="card-text">This keeps FNLLA Web as one vendored runtime layer while project-specific CSS, JS and templates stay in local project files instead of drifting back into the framework package.</p>
         </article>
       </div>
     </section>
@@ -456,7 +456,7 @@
             <tr>
               <td>Runtime re-init</td>
               <td><code>window.FNLLAUI.init(root)</code></td>
-              <td>A document, element or injected subtree containing documented FNLLA UI markup</td>
+              <td>A document, element or injected subtree containing documented FNLLA Web markup</td>
               <td>The initializer is idempotent and is intended for progressive enhancement after dynamic DOM insertion.</td>
             </tr>
           </tbody>
@@ -484,7 +484,7 @@
             <tr>
               <td><code>window.FNLLAUI.init(root)</code></td>
               <td>A document, element or injected subtree</td>
-              <td>Initializes documented FNLLA UI markup inside the provided scope. Calls are idempotent.</td>
+              <td>Initializes documented FNLLA Web markup inside the provided scope. Calls are idempotent.</td>
             </tr>
             <tr>
               <td><code>setTheme</code></td>
@@ -542,7 +542,7 @@
 
       <article class="card mt-4">
         <h3 class="card-title">Target resolution rule</h3>
-        <p class="card-text">Programmatic helpers accept either a selector string or a direct DOM element reference. If the target does not resolve to the documented FNLLA UI element type, the helper returns safely without throwing and keeps the chainable <code>window.FNLLAUI</code> object contract.</p>
+        <p class="card-text">Programmatic helpers accept either a selector string or a direct DOM element reference. If the target does not resolve to the documented FNLLA Web element type, the helper returns safely without throwing and keeps the chainable <code>window.FNLLAUI</code> object contract.</p>
         <p class="card-text">The documented helper names are <code>window.FNLLAUI.setTheme(theme, target)</code>, <code>window.FNLLAUI.getDocumentTitle()</code>, <code>window.FNLLAUI.getDocumentTitleConfig()</code>, <code>window.FNLLAUI.syncDocumentTitle(config)</code>, <code>window.FNLLAUI.setDocumentTitle(config)</code>, <code>window.FNLLAUI.showModal(target)</code>, <code>window.FNLLAUI.openModal(target)</code>, <code>window.FNLLAUI.hideModal(target)</code>, <code>window.FNLLAUI.closeModal(target)</code>, <code>window.FNLLAUI.showToast(target)</code>, <code>window.FNLLAUI.hideToast(target)</code>, <code>window.FNLLAUI.showOffcanvas(target)</code>, <code>window.FNLLAUI.openOffcanvas(target)</code>, <code>window.FNLLAUI.hideOffcanvas(target)</code>, <code>window.FNLLAUI.closeOffcanvas(target)</code>, <code>window.FNLLAUI.openDropdown(target)</code>, <code>window.FNLLAUI.closeDropdown(target)</code>, <code>window.FNLLAUI.openPopover(target)</code>, <code>window.FNLLAUI.closePopover(target)</code>, <code>window.FNLLAUI.showTooltip(target)</code>, <code>window.FNLLAUI.hideTooltip(target)</code>, <code>window.FNLLAUI.refreshScrollspy(target)</code>, <code>window.FNLLAUI.getConsentState()</code>, <code>window.FNLLAUI.hasConsent(category)</code>, <code>window.FNLLAUI.openConsentSettings()</code>, <code>window.FNLLAUI.acceptConsent()</code>, <code>window.FNLLAUI.rejectConsent()</code>, <code>window.FNLLAUI.saveConsent(state)</code> and <code>window.FNLLAUI.resetConsent()</code>.</p>
       </article>
     </section>
@@ -624,8 +624,8 @@
       </div>
     </section>
     <!-- Ownership footer required on every docs page. -->
-    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
-      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
+    <footer class="doc-footer" aria-label="FNLLA Web ownership notice">
+      <p class="content-text">FNLLA Web &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
     </footer>
   </main>
   <!-- Shared runtime for interactive demos used inside the docs. -->

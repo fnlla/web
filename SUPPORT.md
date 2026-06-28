@@ -1,14 +1,14 @@
-# FNLLA UI Support Policy
+# FNLLA Web Support Policy
 
 ## Support boundary
 
-FNLLA UI is released publicly under the MIT License, so anyone may use it, fork it and build self-service projects on top of it.
+FNLLA Web is released publicly under the MIT License, so anyone may use it, fork it and build self-service projects on top of it.
 
 That permission does not create any obligation for TechAyo LTD to provide support, maintenance, implementation help, security review, custom development or release work for third-party projects.
 
 ## What TechAyo does and does not promise
 
-TechAyo LTD may continue to maintain, extend, harden or publish FNLLA UI when TechAyo decides it is useful or necessary.
+TechAyo LTD may continue to maintain, extend, harden or publish FNLLA Web when TechAyo decides it is useful or necessary.
 
 TechAyo LTD does not promise:
 
@@ -21,9 +21,9 @@ TechAyo LTD does not promise:
 
 ## Deployment and security responsibility
 
-If a third party deploys, extends, modifies or operates a project built on FNLLA UI, that third party is responsible for the resulting application, hosting, browser integrations, cookie usage, security controls, secret handling, monitoring, backups, patching and incident response.
+If a third party deploys, extends, modifies or operates a project built on FNLLA Web, that third party is responsible for the resulting application, hosting, browser integrations, cookie usage, security controls, secret handling, monitoring, backups, patching and incident response.
 
-That remains true even when the deployment uses FNLLA UI exactly as published.
+That remains true even when the deployment uses FNLLA Web exactly as published.
 
 TechAyo LTD does not operate, audit, monitor or secure third-party deployments by default and does not accept responsibility for intrusions, data loss, compliance failures, outages or downstream damages affecting those separate deployments.
 
@@ -42,6 +42,6 @@ Without such an agreement, the public repository, issues and documentation shoul
 
 ## Release cadence
 
-FNLLA UI is updated when TechAyo LTD decides that an update is appropriate.
+FNLLA Web is updated when TechAyo LTD decides that an update is appropriate.
 
 Releases are not guaranteed to follow a regular public schedule.

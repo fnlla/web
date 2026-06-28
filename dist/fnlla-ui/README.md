@@ -1,6 +1,6 @@
-# FNLLA UI runtime export
+# FNLLA Web runtime export
 
-This directory is the runtime-only FNLLA UI handoff for downstream projects.
+This directory is the runtime-only FNLLA Web handoff for downstream projects.
 
 It contains the same supported browser runtime contract that lives under the repository root `assets/` tree, but without maintainer source files, docs chrome or repository-only working materials.
 

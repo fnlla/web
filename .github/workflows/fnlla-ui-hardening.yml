@@ -1,4 +1,4 @@
-name: FNLLA UI Hardening
+name: FNLLA Web Hardening
 
 on:
   pull_request:

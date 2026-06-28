@@ -1,20 +1,20 @@
 blank_issues_enabled: false
 contact_links:
-  - name: FNLLA UI Contributing Guide
+  - name: FNLLA Web Contributing Guide
     url: https://github.com/fnlla/ui/blob/main/.github/CONTRIBUTING.md
     about: Review repository scope, contribution expectations and maintainer workflow before opening implementation work.
-  - name: FNLLA UI Security Policy
+  - name: FNLLA Web Security Policy
     url: https://github.com/fnlla/ui/blob/main/SECURITY.md
     about: Use this private route for vulnerabilities instead of opening a public issue.
-  - name: FNLLA UI Support
+  - name: FNLLA Web Support
     url: https://github.com/fnlla/ui/blob/main/.github/SUPPORT.md
     about: Find the right support, licensing or conduct route for non-bug requests.
-  - name: FNLLA UI Trademark Notice
+  - name: FNLLA Web Trademark Notice
     url: https://github.com/fnlla/ui/blob/main/TRADEMARKS.md
     about: Review branding and endorsement rules before presenting a fork, derivative or integration as official FNLLA work.
-  - name: FNLLA UI README
+  - name: FNLLA Web README
     url: https://github.com/fnlla/ui/blob/main/README.md
     about: Review the runtime contract, docs routes and repository structure before opening an issue.
-  - name: FNLLA UI v1.0.4 release notes
+  - name: FNLLA Web v1.0.4 release notes
     url: https://github.com/fnlla/ui/releases/tag/v1.0.4
     about: Check the current stable release scope before reporting a regression or release gap.

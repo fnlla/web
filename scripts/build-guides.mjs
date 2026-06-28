@@ -272,7 +272,7 @@ ${toc.map((item) => `              <a class="doc-guide-toc-link doc-guide-toc-le
     : "";
 
   return `<!DOCTYPE html>
-<!-- FNLLA UI documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
+<!-- FNLLA Web documentation page. Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -287,7 +287,7 @@ ${toc.map((item) => `              <a class="doc-guide-toc-link doc-guide-toc-le
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <main class="doc-wrapper" id="main-content">
-    <header class="doc-header" aria-label="FNLLA UI documentation shell">
+    <header class="doc-header" aria-label="FNLLA Web documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Guide library</span>
         <span class="doc-status">Stable ${escapeHtml(version)}</span>
@@ -304,7 +304,7 @@ ${toc.map((item) => `              <a class="doc-guide-toc-link doc-guide-toc-le
       </div>
     </header>
 
-    <nav class="doc-nav" aria-label="FNLLA UI documentation">
+    <nav class="doc-nav" aria-label="FNLLA Web documentation">
 ${renderRootDocsNavigation(rootPages, { currentLabel: "Guides", hrefPrefix: rootNavPrefix || "./" })}
     </nav>
 
@@ -325,8 +325,8 @@ ${tocMarkup}
       </div>
     </section>
 
-    <footer class="doc-footer" aria-label="FNLLA UI ownership notice">
-      <p class="content-text">FNLLA UI &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
+    <footer class="doc-footer" aria-label="FNLLA Web ownership notice">
+      <p class="content-text">FNLLA Web &copy; 2026 TechAyo LTD (<a href="https://techayo.co.uk">techayo.co.uk</a>). Released under the MIT License.</p>
     </footer>
   </main>
   <script src="${escapeHtml(runtimeJsHref)}"></script>
@@ -335,7 +335,7 @@ ${tocMarkup}
 </html>`;
 }
 
-/* Build or verify every guide page declared in the FNLLA UI manifest. */
+/* Build or verify every guide page declared in the FNLLA Web manifest. */
 export function buildGuidePages(options = {}) {
   const repoRoot = options.repoRoot || getRepoRoot(import.meta.url);
   const check = options.check === true;
@@ -389,11 +389,11 @@ function runCli() {
   const updated = buildGuidePages({ repoRoot, check });
 
   if (check) {
-    console.log(`FNLLA UI guide HTML is in sync across ${getFnllaUiManifest().docs.guidePages.length} page(s).`);
+    console.log(`FNLLA Web guide HTML is in sync across ${getFnllaUiManifest().docs.guidePages.length} page(s).`);
     return;
   }
 
-  console.log(`Built FNLLA UI guide HTML pages: ${updated.join(", ")}`);
+  console.log(`Built FNLLA Web guide HTML pages: ${updated.join(", ")}`);
 }
 
 if (isDirectExecution(import.meta.url)) {

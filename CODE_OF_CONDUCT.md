@@ -1,12 +1,12 @@
-# FNLLA UI Code of Conduct
+# FNLLA Web Code of Conduct
 
 ## Our standard
 
-FNLLA UI is maintained as a professional working environment by TechAyo LTD (techayo.co.uk).
+FNLLA Web is maintained as a professional working environment by TechAyo LTD (techayo.co.uk).
 
 Everyone participating in this repository, its issue tracker, pull requests, release discussions and related collaboration spaces is expected to act with respect, professionalism and care for other people.
 
-We want FNLLA UI to remain a place where maintainers, collaborators, contractors, clients and invited contributors can work productively without harassment, hostility or needless friction.
+We want FNLLA Web to remain a place where maintainers, collaborators, contractors, clients and invited contributors can work productively without harassment, hostility or needless friction.
 
 ## Expected behavior
 
@@ -38,8 +38,8 @@ This Code of Conduct applies in:
 - GitHub issues, pull requests and reviews
 - commit messages and proposed patches
 - release and maintenance discussions
-- direct collaboration carried out as part of FNLLA UI work
-- other spaces where someone is representing FNLLA UI or TechAyo LTD in relation to this repository
+- direct collaboration carried out as part of FNLLA Web work
+- other spaces where someone is representing FNLLA Web or TechAyo LTD in relation to this repository
 
 ## Maintainer responsibilities
 
@@ -54,7 +54,7 @@ Moderation decisions will aim to be proportionate, practical and fair, while rec
 
 ## Reporting
 
-If you need to report unacceptable behavior, use TechAyo LTD's contact route at `https://techayo.co.uk` and clearly label the message `FNLLA UI Code of Conduct`.
+If you need to report unacceptable behavior, use TechAyo LTD's contact route at `https://techayo.co.uk` and clearly label the message `FNLLA Web Code of Conduct`.
 
 Include:
 

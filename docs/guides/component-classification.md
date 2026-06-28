@@ -1,6 +1,6 @@
 # Component Classification
 
-This guide belongs to `FNLLA UI`. It is maintained by `TechAyo LTD (techayo.co.uk)` from `Finella Gardens in Dundee, UK`.
+This guide belongs to `FNLLA Web`. It is maintained by `TechAyo LTD (techayo.co.uk)` from `Finella Gardens in Dundee, UK`.
 
 ## Use this guide when
 
@@ -347,4 +347,4 @@ Each component family is described through the same lenses.
 
 ## Maintenance note
 
-When a new component family is added to `FNLLA UI`, extend this file immediately so selection logic, documentation language and validation expectations do not drift apart.
+When a new component family is added to `FNLLA Web`, extend this file immediately so selection logic, documentation language and validation expectations do not drift apart.

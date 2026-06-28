@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: CUSTOM SELECT MENU BUILDERS
+  FNLLA Web SOURCE MODULE: CUSTOM SELECT MENU BUILDERS
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

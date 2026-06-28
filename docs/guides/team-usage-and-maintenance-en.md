@@ -1,17 +1,17 @@
 # Team Usage and Maintenance
 
-This guide belongs to `FNLLA UI`. It is maintained by `TechAyo LTD (techayo.co.uk)` and published from the framework repository for teams working from `Finella Gardens in Dundee, UK`.
+This guide belongs to `FNLLA Web`. It is maintained by `TechAyo LTD (techayo.co.uk)` and published from the framework repository for teams working from `Finella Gardens in Dundee, UK`.
 
 ## Use this guide when
 
-- you are starting a new website on top of `FNLLA UI`
+- you are starting a new website on top of `FNLLA Web`
 - you need to decide whether a change belongs to the website or the framework
 - you are updating the vendored runtime in a downstream project
 - you need a repeatable maintenance and review workflow
 
 ## Operating modes
 
-FNLLA UI has two valid ways of working.
+FNLLA Web has two valid ways of working.
 
 ### Consumer mode
 
@@ -43,7 +43,7 @@ Recommended ownership split:
 - `Framework maintainer`: edits `src/`, republishes runtime files and runs validation
 - `QA owner`: checks responsive behavior, accessibility and critical smoke flows
 
-## Build a new website on FNLLA UI
+## Build a new website on FNLLA Web
 
 ### Deliver the framework
 
@@ -334,7 +334,7 @@ Use this path when a component behaves incorrectly on the website.
 
 ### Framework update inside a website project
 
-Use this path when the downstream site upgrades its vendored FNLLA UI runtime.
+Use this path when the downstream site upgrades its vendored FNLLA Web runtime.
 
 1. Create an update branch.
 2. Replace the project `fnlla-ui/` folder with a fresh `dist/fnlla-ui/` export from the framework repository.
@@ -345,7 +345,7 @@ Use this path when the downstream site upgrades its vendored FNLLA UI runtime.
 7. Re-test on mobile, tablet and desktop.
 8. Merge only after the downstream site passes its own review and QA checks.
 
-## Maintain FNLLA UI itself
+## Maintain FNLLA Web itself
 
 ### Work in source, not runtime
 

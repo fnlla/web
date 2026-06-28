@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  FNLLA UI SOURCE MODULE: RUNTIME BINDING AND PUBLIC API
+  FNLLA Web SOURCE MODULE: RUNTIME BINDING AND PUBLIC API
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
   ============================================================================
 */

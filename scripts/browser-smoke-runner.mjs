@@ -1,5 +1,5 @@
 /*
-  FNLLA UI browser smoke runner.
+  FNLLA Web browser smoke runner.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
@@ -561,7 +561,7 @@ export async function runBrowserSmokeTest({ repoRoot, browserPath, browserFamily
   const resolvedBrowserFamily = browserFamily || getBrowserFamily(browserPath);
 
   if (!browserPath) {
-    throw new Error("Missing browser path for FNLLA UI browser smoke runner.");
+    throw new Error("Missing browser path for FNLLA Web browser smoke runner.");
   }
 
   if (!fs.existsSync(fixturePath)) {
@@ -625,11 +625,11 @@ export async function runBrowserSmokeTest({ repoRoot, browserPath, browserFamily
     const docsFailures = [];
 
     if (sourceResult.result === "pass" && distResult.result === "pass") {
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/index.html`, "Overview - FNLLA UI Documentation", "Overview", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`, "Components - FNLLA UI Documentation", "Components", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/contract.html`, "Contract - FNLLA UI Documentation", "Contract", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/sections.html`, "Sections - FNLLA UI Documentation", "Sections", minimumRootNavLinks));
-      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/guides.html`, "Guides - FNLLA UI Documentation", "Guides", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/index.html`, "Overview - FNLLA Web Documentation", "Overview", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`, "Components - FNLLA Web Documentation", "Components", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/contract.html`, "Contract - FNLLA Web Documentation", "Contract", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/sections.html`, "Sections - FNLLA Web Documentation", "Sections", minimumRootNavLinks));
+      docsFailures.push(...await inspectDocsPage(client, `http://127.0.0.1:${serverPort}/docs/guides.html`, "Guides - FNLLA Web Documentation", "Guides", minimumRootNavLinks));
       docsFailures.push(...await inspectDocsThemeToggle(client, `http://127.0.0.1:${serverPort}/docs/index.html`));
       docsFailures.push(...await inspectLoadingDocsPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`));
       docsFailures.push(...await inspectComponentsLayoutPage(client, `http://127.0.0.1:${serverPort}/docs/components.html`));
@@ -648,11 +648,11 @@ export async function runBrowserSmokeTest({ repoRoot, browserPath, browserFamily
     }
 
     if (sourceResult.result === "pass" && distResult.result === "pass" && docsFailures.length === 0) {
-      console.log("FNLLA UI browser smoke test passed.");
+      console.log("FNLLA Web browser smoke test passed.");
       return true;
     }
 
-    console.log("FNLLA UI browser smoke test failed.");
+    console.log("FNLLA Web browser smoke test failed.");
     [...sourceResult.failures, ...distResult.failures].forEach((failure) => {
       console.log(`- ${failure}`);
     });

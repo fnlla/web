@@ -1,5 +1,5 @@
 /*
-  FNLLA UI browser matrix smoke test.
+  FNLLA Web browser matrix smoke test.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:
@@ -17,13 +17,13 @@ export function runBrowserMatrix(options = {}) {
   const browsers = detectSmokeBrowsers();
 
   if (!browsers.length) {
-    throw new Error("No supported local browsers were found for the FNLLA UI browser matrix smoke test");
+    throw new Error("No supported local browsers were found for the FNLLA Web browser matrix smoke test");
   }
 
   const failures = [];
 
   browsers.forEach((browser) => {
-    console.log(`Running FNLLA UI smoke test in ${browser.name}: ${browser.path}`);
+    console.log(`Running FNLLA Web smoke test in ${browser.name}: ${browser.path}`);
     const result = spawnSync(process.execPath, [scriptPath, "--browser", browser.path, "--browser-family", browser.family, "--repo-root", repoRoot], {
       encoding: "utf8",
       cwd: repoRoot
@@ -43,14 +43,14 @@ export function runBrowserMatrix(options = {}) {
   });
 
   if (failures.length) {
-    console.log("FNLLA UI browser matrix smoke test failed.");
+    console.log("FNLLA Web browser matrix smoke test failed.");
     failures.forEach((failure) => {
       console.log(`- ${failure}`);
     });
     return false;
   }
 
-  console.log(`FNLLA UI browser matrix smoke test passed across ${browsers.length} detected browser(s).`);
+  console.log(`FNLLA Web browser matrix smoke test passed across ${browsers.length} detected browser(s).`);
   return true;
 }
 

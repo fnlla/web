@@ -1,5 +1,5 @@
 /*
-  Shared maintainer tooling helpers for FNLLA UI.
+  Shared maintainer tooling helpers for FNLLA Web.
   Copyright (c) 2026 TechAyo LTD (techayo.co.uk). Released under the MIT License.
 
   Purpose:

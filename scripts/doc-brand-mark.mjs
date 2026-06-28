@@ -1,6 +1,6 @@
 /*
-  Shared inline FNLLA UI brand primitives used inside docs headers.
-  The logo stays clean while the small UI badge is generated as a separate element.
+  Shared inline FNLLA Web brand primitives used inside docs headers.
+  The logo stays clean while the small WEB badge is generated as a separate element.
 */
 
 export function renderDocBrandMark() {
@@ -16,5 +16,5 @@ export function renderDocBrandMark() {
 }
 
 export function renderDocBrandBadge() {
-  return `<span class="doc-brand-badge" aria-hidden="true">UI</span>`;
+  return `<span class="doc-brand-badge" aria-hidden="true">WEB</span>`;
 }
