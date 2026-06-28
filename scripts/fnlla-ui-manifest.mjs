@@ -166,6 +166,8 @@ export function getFnllaUiManifest() {
         "src/js/core/tooltip-core.js",
         "src/js/core/scrollspy-core.js",
         "src/js/core/select-core.js",
+        "src/js/core/title-core.js",
+        "src/js/core/consent-core.js",
         "src/js/modules/dropdown.js",
         "src/js/modules/navigation.js",
         "src/js/modules/tabs.js",
@@ -180,6 +182,7 @@ export function getFnllaUiManifest() {
         "src/js/modules/select.js",
         "src/js/modules/range.js",
         "src/js/modules/scrollspy.js",
+        "src/js/modules/consent.js",
         "src/js/core/runtime.js"
       ]
     },

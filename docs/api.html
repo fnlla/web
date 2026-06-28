@@ -23,7 +23,7 @@
     <header class="doc-header" aria-label="FNLLA UI documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Blueprint documentation</span>
-        <span class="doc-status">Stable 1.0.4</span>
+        <span class="doc-status">Stable 1.0.5</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Framework blueprint</p>
@@ -86,7 +86,7 @@
           <div class="doc-meta-list">
             <div>
               <p class="content-title mb-1">Version</p>
-              <p class="content-text"><code>1.0.4</code> is the stable public release target for this repository snapshot.</p>
+              <p class="content-text"><code>1.0.5</code> is the stable public release target for this repository snapshot.</p>
             </div>
             <div>
               <p class="content-title mb-1">Support model</p>
@@ -123,7 +123,7 @@
           <h2 class="card-title">Public runtime contract</h2>
           <ul class="doc-contract-list">
             <li><code>assets/css/fnlla-ui.css</code> is the supported runtime stylesheet for tokens, layout primitives, components, sections and utilities.</li>
-            <li><code>assets/js/fnlla-ui.js</code> is the supported runtime script for dropdowns, mobile navigation, tabs, accordions, modals, toasts, offcanvas panels, popovers, tooltips and scrollspy.</li>
+            <li><code>assets/js/fnlla-ui.js</code> is the supported runtime script for dropdowns, mobile navigation, tabs, accordions, modals, toasts, offcanvas panels, popovers, tooltips, cookie consent flows and scrollspy.</li>
             <li><code>assets/icons/</code> is the supported local <code>FNLLA Icons</code> bundle for offline icon usage, including root-level SVG files, <code>sprite.svg</code>, the Lucide license file and the FNLLA notice.</li>
             <li>The stable CSS API uses prefix-free class names such as <code>wrapper</code>, <code>section</code>, <code>container</code>, <code>grid</code>, <code>btn</code>, <code>card</code> and <code>navbar</code>.</li>
             <li><a href="./distribution.html"><code>distribution.html</code></a> defines how this runtime is packaged and when downstream projects should consume <code>dist/fnlla-ui/</code>.</li>
@@ -176,6 +176,33 @@
   &lt;/main&gt;
   &lt;footer&gt;...&lt;/footer&gt;
 &lt;/div&gt;</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Document title contract</h2>
+        <p class="section-text">Professional browser-tab titles are supported through declarative HTML attributes and the shared runtime helper API.</p>
+      </div>
+
+      <div class="grid grid-2 gap-md">
+        <article class="card">
+          <h3 class="card-title">Declarative HTML contract</h3>
+          <p class="card-text">Set title metadata on the root <code>html</code> element so the runtime can keep <code>document.title</code> consistent without page-specific scripts.</p>
+          <pre><code>&lt;html
+  lang="en"
+  data-fnlla-title-site="FNLLA"
+  data-fnlla-title-page="Cookie Settings"
+  data-fnlla-title-section="Docs"
+&gt;</code></pre>
+          <p class="card-text mb-0">Use <code>data-fnlla-title-home="true"</code> when the home page should collapse to the site name only.</p>
+        </article>
+
+        <article class="card">
+          <h3 class="card-title">Programmatic helper contract</h3>
+          <p class="card-text">Use <code>window.FNLLAUI.getDocumentTitle()</code>, <code>window.FNLLAUI.getDocumentTitleConfig()</code>, <code>window.FNLLAUI.syncDocumentTitle(config)</code> and <code>window.FNLLAUI.setDocumentTitle(config)</code> when dynamic routes, injected content or runtime state need to adjust the browser tab label.</p>
+          <p class="card-text mb-0">The runtime composes a normalized <code>Page | Section | Site</code> title by default and de-duplicates repeated labels automatically.</p>
         </article>
       </div>
     </section>
@@ -276,6 +303,12 @@
               <td>Focus and hover both reveal the tooltip. Use optional <code>data-fnlla-tooltip-position</code> for top, right, bottom or left.</td>
             </tr>
             <tr>
+              <td>Cookie consent</td>
+              <td><code>data-fnlla-consent</code>, <code>data-fnlla-consent-open</code>, <code>data-fnlla-consent-accept</code>, <code>data-fnlla-consent-save</code>, <code>data-fnlla-consent-category</code></td>
+              <td>Optional settings modal should use one documented modal shell and each category toggle should carry a supported consent category value</td>
+              <td>The runtime stores the state in one first-party consent cookie and dispatches a <code>fnlla:consentchange</code> document event when choices change.</td>
+            </tr>
+            <tr>
               <td>Scrollspy</td>
               <td><code>data-fnlla-scrollspy</code>, <code>data-fnlla-scrollspy-nav</code></td>
               <td>Each nav link should point to one real section <code>id</code> on the same page</td>
@@ -326,6 +359,11 @@
               <td>Applies the selected documented theme to <code>body</code> by default or to one explicit theme wrapper.</td>
             </tr>
             <tr>
+              <td><code>getDocumentTitle</code>, <code>getDocumentTitleConfig</code>, <code>syncDocumentTitle</code>, <code>setDocumentTitle</code></td>
+              <td>A config object or string page label when the title should be updated</td>
+              <td>Reads or composes the supported browser-tab title from the FNLLA title metadata contract.</td>
+            </tr>
+            <tr>
               <td><code>showModal</code>, <code>openModal</code>, <code>hideModal</code>, <code>closeModal</code></td>
               <td>A selector string such as <code>#example-modal</code> or the modal element itself</td>
               <td>Opens or closes a documented modal overlay.</td>
@@ -360,6 +398,11 @@
               <td>A selector string pointing to the scrollspy wrapper or the wrapper element itself</td>
               <td>Refreshes active-link state for a documented scrollspy instance.</td>
             </tr>
+            <tr>
+              <td><code>getConsentState</code>, <code>hasConsent</code>, <code>openConsentSettings</code>, <code>acceptConsent</code>, <code>rejectConsent</code>, <code>saveConsent</code>, <code>resetConsent</code></td>
+              <td>An optional consent state object for save flows</td>
+              <td>Reads or updates the documented first-party cookie-consent state without needing page-specific storage code.</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -367,7 +410,7 @@
       <article class="card mt-4">
         <h3 class="card-title">Target resolution rule</h3>
         <p class="card-text">Programmatic helpers accept either a selector string or a direct DOM element reference. If the target does not resolve to the documented FNLLA UI element type, the helper returns safely without throwing and keeps the chainable <code>window.FNLLAUI</code> object contract.</p>
-        <p class="card-text">The documented helper names are <code>window.FNLLAUI.setTheme(theme, target)</code>, <code>window.FNLLAUI.showModal(target)</code>, <code>window.FNLLAUI.openModal(target)</code>, <code>window.FNLLAUI.hideModal(target)</code>, <code>window.FNLLAUI.closeModal(target)</code>, <code>window.FNLLAUI.showToast(target)</code>, <code>window.FNLLAUI.hideToast(target)</code>, <code>window.FNLLAUI.showOffcanvas(target)</code>, <code>window.FNLLAUI.openOffcanvas(target)</code>, <code>window.FNLLAUI.hideOffcanvas(target)</code>, <code>window.FNLLAUI.closeOffcanvas(target)</code>, <code>window.FNLLAUI.openDropdown(target)</code>, <code>window.FNLLAUI.closeDropdown(target)</code>, <code>window.FNLLAUI.openPopover(target)</code>, <code>window.FNLLAUI.closePopover(target)</code>, <code>window.FNLLAUI.showTooltip(target)</code>, <code>window.FNLLAUI.hideTooltip(target)</code> and <code>window.FNLLAUI.refreshScrollspy(target)</code>.</p>
+        <p class="card-text">The documented helper names are <code>window.FNLLAUI.setTheme(theme, target)</code>, <code>window.FNLLAUI.getDocumentTitle()</code>, <code>window.FNLLAUI.getDocumentTitleConfig()</code>, <code>window.FNLLAUI.syncDocumentTitle(config)</code>, <code>window.FNLLAUI.setDocumentTitle(config)</code>, <code>window.FNLLAUI.showModal(target)</code>, <code>window.FNLLAUI.openModal(target)</code>, <code>window.FNLLAUI.hideModal(target)</code>, <code>window.FNLLAUI.closeModal(target)</code>, <code>window.FNLLAUI.showToast(target)</code>, <code>window.FNLLAUI.hideToast(target)</code>, <code>window.FNLLAUI.showOffcanvas(target)</code>, <code>window.FNLLAUI.openOffcanvas(target)</code>, <code>window.FNLLAUI.hideOffcanvas(target)</code>, <code>window.FNLLAUI.closeOffcanvas(target)</code>, <code>window.FNLLAUI.openDropdown(target)</code>, <code>window.FNLLAUI.closeDropdown(target)</code>, <code>window.FNLLAUI.openPopover(target)</code>, <code>window.FNLLAUI.closePopover(target)</code>, <code>window.FNLLAUI.showTooltip(target)</code>, <code>window.FNLLAUI.hideTooltip(target)</code>, <code>window.FNLLAUI.refreshScrollspy(target)</code>, <code>window.FNLLAUI.getConsentState()</code>, <code>window.FNLLAUI.hasConsent(category)</code>, <code>window.FNLLAUI.openConsentSettings()</code>, <code>window.FNLLAUI.acceptConsent()</code>, <code>window.FNLLAUI.rejectConsent()</code>, <code>window.FNLLAUI.saveConsent(state)</code> and <code>window.FNLLAUI.resetConsent()</code>.</p>
       </article>
     </section>
 

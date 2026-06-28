@@ -45,6 +45,8 @@ Security reports are appropriate for issues such as:
 - security-sensitive packaging or distribution mistakes
 - vulnerabilities in the documentation shell if they could affect maintainers, reviewers or downstream use
 
+Downstream hosting, application code, third-party scripts, analytics wiring, cookie-classification decisions, server hardening, secret management and operational monitoring remain the responsibility of the team operating that separate deployment.
+
 The following are usually not treated as security issues unless they create a real exploit path:
 
 - purely visual bugs

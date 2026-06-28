@@ -138,6 +138,7 @@
 
     cleanupDetachedScrollspyInstances();
     document.documentElement.classList.add(runtimeEnhancementClass);
+    syncDocumentTitle();
     bindRuntimeHandlers();
     initDropdowns(scope);
     initNavigation(scope);
@@ -152,6 +153,7 @@
     initSelects(scope);
     initRanges(scope);
     initScrollspy(scope);
+    initConsent(scope);
     syncNavigationMode(scope);
 
     return fnllaUiApi;
@@ -197,6 +199,20 @@
   var fnllaUiApi = {
     version: fnllaUiVersion,
     init: initFnllaUi,
+    getDocumentTitle: function () {
+      return document.title;
+    },
+    getDocumentTitleConfig: function () {
+      return readDocumentTitleConfig();
+    },
+    syncDocumentTitle: function (config) {
+      syncDocumentTitle(config);
+      return fnllaUiApi;
+    },
+    setDocumentTitle: function (config) {
+      syncDocumentTitle(config);
+      return fnllaUiApi;
+    },
     setTheme: function (theme, target) {
       var themeTarget = resolveThemeTarget(target);
 
@@ -358,6 +374,58 @@
         state.update();
       }
 
+      return fnllaUiApi;
+    },
+    getConsentState: function () {
+      return cloneConsentState(syncConsentState());
+    },
+    hasConsent: function (category) {
+      var state = syncConsentState();
+
+      if (category === "necessary") {
+        return true;
+      }
+
+      return defaultConsentCategories.indexOf(category) !== -1 ? state[category] === true : false;
+    },
+    openConsentSettings: function () {
+      var modal = getConsentModalElement();
+
+      syncConsentInputs(modal || document, getStoredConsentSnapshot());
+
+      if (modal) {
+        openModal(modal);
+      }
+
+      return fnllaUiApi;
+    },
+    acceptConsent: function () {
+      var nextState = {};
+
+      defaultConsentCategories.forEach(function (category) {
+        nextState[category] = true;
+      });
+
+      saveConsentState(nextState);
+      return fnllaUiApi;
+    },
+    rejectConsent: function () {
+      var nextState = {};
+
+      defaultConsentCategories.forEach(function (category) {
+        nextState[category] = false;
+      });
+
+      saveConsentState(nextState);
+      return fnllaUiApi;
+    },
+    saveConsent: function (state) {
+      saveConsentState(state);
+      return fnllaUiApi;
+    },
+    resetConsent: function () {
+      clearCookieValue(getConsentCookieName());
+      syncConsentState();
       return fnllaUiApi;
     }
   };

@@ -22,7 +22,7 @@
   "use strict";
 
   /* Public version marker exposed through the runtime API. */
-  var fnllaUiVersion = "1.0.4";
+  var fnllaUiVersion = "1.0.5";
   var openLayerStack = [];
   var openModalStack = [];
   var openOffcanvasStack = [];
@@ -35,6 +35,7 @@
   var customSelectStateMap = new WeakMap();
   var scrollspyRegistry = [];
   var fnllaUiIdCounter = 0;
+  var defaultConsentCategories = ["preferences", "analytics", "marketing"];
   var mobileNavQuery = window.matchMedia ? window.matchMedia("(max-width: 880px)") : null;
   var runtimeEnhancementClass = "fnlla-ui-js";
 
@@ -63,7 +64,12 @@
     tooltipTrigger: new WeakSet(),
     select: new WeakSet(),
     rangeInput: new WeakSet(),
-    scrollspy: new WeakSet()
+    scrollspy: new WeakSet(),
+    consent: new WeakSet(),
+    consentOpen: new WeakSet(),
+    consentAccept: new WeakSet(),
+    consentSave: new WeakSet(),
+    consentReset: new WeakSet()
   };
   /*
     Global runtime bindings:
@@ -87,7 +93,10 @@
     rangePrefix: "data-fnlla-range-prefix",
     rangeSuffix: "data-fnlla-range-suffix",
     tooltip: "data-fnlla-tooltip",
-    tooltipPosition: "data-fnlla-tooltip-position"
+    tooltipPosition: "data-fnlla-tooltip-position",
+    consentCategory: "data-fnlla-consent-category",
+    consentCookie: "data-fnlla-consent-cookie",
+    consentExpiryDays: "data-fnlla-consent-expiry-days"
   };
   /* Shared selectors used across all modules. */
   var selectors = {
@@ -125,7 +134,14 @@
     popoverClose: "[data-fnlla-popover-close]",
     tooltipTrigger: "[data-fnlla-tooltip]",
     scrollspy: "[data-fnlla-scrollspy]",
-    scrollspyNav: "[data-fnlla-scrollspy-nav]"
+    scrollspyNav: "[data-fnlla-scrollspy-nav]",
+    consent: "[data-fnlla-consent]",
+    consentModal: "[data-fnlla-consent-modal]",
+    consentOpen: "[data-fnlla-consent-open]",
+    consentAccept: "[data-fnlla-consent-accept]",
+    consentSave: "[data-fnlla-consent-save]",
+    consentReset: "[data-fnlla-consent-reset]",
+    consentCategory: "[data-fnlla-consent-category]"
   };
   /* Shared ID prefixes used when markup does not provide explicit IDs. */
   var idPrefixes = {

@@ -23,7 +23,7 @@
     <header class="doc-header" aria-label="FNLLA UI documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Blueprint documentation</span>
-        <span class="doc-status">Stable 1.0.4</span>
+        <span class="doc-status">Stable 1.0.5</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Framework blueprint</p>
@@ -449,6 +449,93 @@
               <p class="content-text" id="demo-modal-description">Use this pattern for confirmations, announcements or compact forms. Press Escape or click the backdrop to close.</p>
             </div>
           </div></article>
+
+        <article class="card">
+          <h2 class="card-title">Cookie consent banner and settings</h2>
+          <div class="consent-banner consent-banner-inline is-visible" data-fnlla-consent data-fnlla-consent-cookie="fnlla-ui-docs-consent-demo" data-fnlla-consent-settings="#demo-consent-modal" aria-label="Cookie consent example">
+            <div class="consent-banner-grid">
+              <div class="consent-copy">
+                <p class="consent-kicker">Consent pattern</p>
+                <h3 class="consent-title">Offer clear optional-cookie choices without custom project JavaScript.</h3>
+                <p class="consent-text">Necessary cookies stay on, while preferences, analytics and marketing can be granted or denied through the shared runtime.</p>
+                <p class="consent-meta">Use this pattern only when the project genuinely introduces non-essential cookies or scripts.</p>
+              </div>
+              <div class="consent-actions">
+                <button class="btn btn-primary btn-sm" type="button" data-fnlla-consent-accept="all">Accept all</button>
+                <button class="btn btn-outline btn-sm" type="button" data-fnlla-consent-open>Cookie settings</button>
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-consent-accept="necessary">Necessary only</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal" id="demo-consent-modal" data-fnlla-modal data-fnlla-consent-modal data-fnlla-consent-cookie="fnlla-ui-docs-consent-demo" role="dialog" aria-modal="true" aria-labelledby="demo-consent-modal-title" hidden>
+            <div class="modal-content">
+              <div class="d-flex justify-between items-center mb-3">
+                <h3 class="content-title mb-0" id="demo-consent-modal-title">Cookie settings</h3>
+                <button class="btn btn-ghost btn-sm" type="button" data-fnlla-modal-close data-fnlla-modal-initial-focus>Close</button>
+              </div>
+              <div class="consent-preferences">
+                <ul class="consent-switch-list" aria-label="Cookie categories">
+                  <li class="consent-switch-item">
+                    <div class="consent-switch-head">
+                      <div class="consent-switch-copy">
+                        <p class="consent-switch-title">Necessary cookies</p>
+                        <p class="consent-switch-text">Required for routing, forms, session security and runtime state.</p>
+                      </div>
+                      <label class="switch">
+                        <input class="switch-input" type="checkbox" data-fnlla-consent-category="necessary" checked disabled>
+                        <span class="switch-slider" aria-hidden="true"></span>
+                        <span class="switch-label">Always on</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="consent-switch-item">
+                    <div class="consent-switch-head">
+                      <div class="consent-switch-copy">
+                        <p class="consent-switch-title">Preferences</p>
+                        <p class="consent-switch-text">Remember visitor-facing UI choices like optional personalization.</p>
+                      </div>
+                      <label class="switch">
+                        <input class="switch-input" type="checkbox" data-fnlla-consent-category="preferences">
+                        <span class="switch-slider" aria-hidden="true"></span>
+                        <span class="switch-label">Allow</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="consent-switch-item">
+                    <div class="consent-switch-head">
+                      <div class="consent-switch-copy">
+                        <p class="consent-switch-title">Analytics</p>
+                        <p class="consent-switch-text">Reserve this only for usage measurement that the project explicitly adds.</p>
+                      </div>
+                      <label class="switch">
+                        <input class="switch-input" type="checkbox" data-fnlla-consent-category="analytics">
+                        <span class="switch-slider" aria-hidden="true"></span>
+                        <span class="switch-label">Allow</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="consent-switch-item">
+                    <div class="consent-switch-head">
+                      <div class="consent-switch-copy">
+                        <p class="consent-switch-title">Marketing</p>
+                        <p class="consent-switch-text">Keep this off unless the project truly needs campaign or advertising tooling.</p>
+                      </div>
+                      <label class="switch">
+                        <input class="switch-input" type="checkbox" data-fnlla-consent-category="marketing">
+                        <span class="switch-slider" aria-hidden="true"></span>
+                        <span class="switch-label">Allow</span>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+                <div class="d-flex flex-wrap gap-md">
+                  <button class="btn btn-primary" type="button" data-fnlla-consent-save>Save choices</button>
+                  <button class="btn btn-outline" type="button" data-fnlla-consent-reset>Reset stored choice</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
 
         <article class="card">
           <h2 class="card-title">Toast notifications</h2>

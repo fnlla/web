@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-fnlla-title-site="FNLLA UI" data-fnlla-title-page="Browser Smoke Test" data-fnlla-title-section="Components">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,6 +195,91 @@
       <div id="dynamic-root"></div>
     </section>
 
+    <aside class="consent-banner is-visible" id="smoke-consent-banner" data-fnlla-consent data-fnlla-consent-cookie="fnlla-ui-smoke-consent" data-fnlla-consent-settings="#smoke-consent-modal" aria-label="Cookie consent banner">
+      <div class="consent-banner-grid">
+        <div class="consent-copy">
+          <p class="consent-kicker">Cookie consent</p>
+          <h2 class="consent-title">Choose which optional cookies can run.</h2>
+          <p class="consent-text">Necessary cookies keep the runtime shell working. Optional categories can be granted or denied per project.</p>
+          <p class="consent-meta">This banner is driven by the public FNLLA UI runtime only.</p>
+        </div>
+        <div class="consent-actions">
+          <button class="btn btn-primary btn-sm" id="smoke-consent-accept-all" type="button" data-fnlla-consent-accept="all">Accept all</button>
+          <button class="btn btn-outline btn-sm" id="smoke-consent-open" type="button" data-fnlla-consent-open>Cookie settings</button>
+          <button class="btn btn-ghost btn-sm" id="smoke-consent-necessary" type="button" data-fnlla-consent-accept="necessary">Necessary only</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="modal" id="smoke-consent-modal" data-fnlla-modal data-fnlla-consent-modal data-fnlla-consent-cookie="fnlla-ui-smoke-consent" role="dialog" aria-modal="true" aria-labelledby="smoke-consent-modal-title" hidden>
+      <div class="modal-content">
+        <div class="d-flex justify-between items-center mb-3">
+          <h2 class="content-title mb-0" id="smoke-consent-modal-title">Cookie settings</h2>
+          <button class="btn btn-ghost btn-sm" type="button" data-fnlla-modal-close data-fnlla-modal-initial-focus>Close</button>
+        </div>
+        <div class="consent-preferences">
+          <ul class="consent-switch-list" aria-label="Consent categories">
+            <li class="consent-switch-item">
+              <div class="consent-switch-head">
+                <div class="consent-switch-copy">
+                  <p class="consent-switch-title">Necessary cookies</p>
+                  <p class="consent-switch-text">Required for the runtime and always on.</p>
+                </div>
+                <label class="switch">
+                  <input class="switch-input" id="smoke-consent-necessary-toggle" type="checkbox" data-fnlla-consent-category="necessary" checked disabled>
+                  <span class="switch-slider" aria-hidden="true"></span>
+                  <span class="switch-label">Always on</span>
+                </label>
+              </div>
+            </li>
+            <li class="consent-switch-item">
+              <div class="consent-switch-head">
+                <div class="consent-switch-copy">
+                  <p class="consent-switch-title">Preferences</p>
+                  <p class="consent-switch-text">Remember UI-level visitor choices.</p>
+                </div>
+                <label class="switch">
+                  <input class="switch-input" id="smoke-consent-preferences-toggle" type="checkbox" data-fnlla-consent-category="preferences">
+                  <span class="switch-slider" aria-hidden="true"></span>
+                  <span class="switch-label">Allow</span>
+                </label>
+              </div>
+            </li>
+            <li class="consent-switch-item">
+              <div class="consent-switch-head">
+                <div class="consent-switch-copy">
+                  <p class="consent-switch-title">Analytics</p>
+                  <p class="consent-switch-text">Measure usage when the project explicitly enables it.</p>
+                </div>
+                <label class="switch">
+                  <input class="switch-input" id="smoke-consent-analytics-toggle" type="checkbox" data-fnlla-consent-category="analytics">
+                  <span class="switch-slider" aria-hidden="true"></span>
+                  <span class="switch-label">Allow</span>
+                </label>
+              </div>
+            </li>
+            <li class="consent-switch-item">
+              <div class="consent-switch-head">
+                <div class="consent-switch-copy">
+                  <p class="consent-switch-title">Marketing</p>
+                  <p class="consent-switch-text">Reserved for optional campaign tooling.</p>
+                </div>
+                <label class="switch">
+                  <input class="switch-input" id="smoke-consent-marketing-toggle" type="checkbox" data-fnlla-consent-category="marketing">
+                  <span class="switch-slider" aria-hidden="true"></span>
+                  <span class="switch-label">Allow</span>
+                </label>
+              </div>
+            </li>
+          </ul>
+          <div class="d-flex flex-wrap gap-md">
+            <button class="btn btn-primary" id="smoke-consent-save" type="button" data-fnlla-consent-save>Save choices</button>
+            <button class="btn btn-outline" id="smoke-consent-reset" type="button" data-fnlla-consent-reset>Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <section class="smoke-block">
       <h2>Loading</h2>
       <div class="loading-showcase" id="smoke-loading-showcase">
@@ -316,6 +401,19 @@
           assert(document.documentElement.classList.contains("fnlla-ui-js"), "Auto-init should add the fnlla-ui-js class to the root element.", failures);
           assert(!!window.FNLLAUI && typeof window.FNLLAUI.init === "function", "window.FNLLAUI.init should be exposed as a public API.", failures);
           assert(typeof window.FNLLAUI.setTheme === "function", "window.FNLLAUI.setTheme should be exposed as a public API.", failures);
+          assert(typeof window.FNLLAUI.setDocumentTitle === "function", "window.FNLLAUI.setDocumentTitle should be exposed as a public API.", failures);
+          assert(typeof window.FNLLAUI.getConsentState === "function", "window.FNLLAUI.getConsentState should be exposed as a public API.", failures);
+          assert(document.title === "Browser Smoke Test | Components | FNLLA UI", "Auto-init should build the document title from the declarative title attributes.", failures);
+          assert(window.FNLLAUI.getDocumentTitleConfig().site === "FNLLA UI", "Document title config should expose the configured site label.", failures);
+          window.FNLLAUI.setDocumentTitle({ page: "Consent Center", section: "Components", site: "FNLLA UI" });
+          await wait(40);
+          assert(document.title === "Consent Center | Components | FNLLA UI", "setDocumentTitle should update document.title from the public API.", failures);
+          window.FNLLAUI.syncDocumentTitle({ site: "FNLLA UI", page: "Overview", section: "", home: true });
+          await wait(40);
+          assert(document.title === "FNLLA UI", "syncDocumentTitle should support a compact home title state.", failures);
+          window.FNLLAUI.setDocumentTitle({ page: "Browser Smoke Test", section: "Components", site: "FNLLA UI", home: false });
+          await wait(40);
+          assert(document.title === "Browser Smoke Test | Components | FNLLA UI", "setDocumentTitle should restore the normal browser tab title pattern.", failures);
           window.FNLLAUI.setTheme("dark");
           await wait(40);
           assert(document.body.getAttribute("data-fnlla-theme") === "dark", "window.FNLLAUI.setTheme(theme) should apply the requested theme to body.", failures);
@@ -328,6 +426,33 @@
           window.FNLLAUI.setTheme("default");
           await wait(40);
           assert(document.body.getAttribute("data-fnlla-theme") === "default", "window.FNLLAUI.setTheme(theme) should restore the default theme.", failures);
+
+          var consentBanner = document.getElementById("smoke-consent-banner");
+          var consentModal = document.getElementById("smoke-consent-modal");
+          var consentOpenButton = document.getElementById("smoke-consent-open");
+          var consentSaveButton = document.getElementById("smoke-consent-save");
+          var consentResetButton = document.getElementById("smoke-consent-reset");
+          var consentPreferencesToggle = document.getElementById("smoke-consent-preferences-toggle");
+          var consentAnalyticsToggle = document.getElementById("smoke-consent-analytics-toggle");
+          assert(consentBanner.hidden === false, "Consent banner should be visible before a stored choice exists.", failures);
+          assert(window.FNLLAUI.getConsentState().stored === false, "Consent state should report no stored choice before selection.", failures);
+          consentOpenButton.click();
+          await wait(120);
+          assert(consentModal.hidden === false, "Consent settings modal should open from the public consent trigger.", failures);
+          consentPreferencesToggle.checked = true;
+          consentAnalyticsToggle.checked = true;
+          consentSaveButton.click();
+          await wait(120);
+          assert(consentBanner.hidden === true, "Saving consent choices should hide the banner.", failures);
+          assert(window.FNLLAUI.getConsentState().stored === true, "Saving consent choices should persist a stored state.", failures);
+          assert(window.FNLLAUI.hasConsent("analytics") === true, "hasConsent should return true for granted categories.", failures);
+          window.FNLLAUI.resetConsent();
+          await wait(80);
+          assert(consentBanner.hidden === false, "resetConsent should show the banner again.", failures);
+          assert(window.FNLLAUI.getConsentState().stored === false, "resetConsent should clear the stored consent choice.", failures);
+          consentResetButton.click();
+          await wait(40);
+          assert(window.FNLLAUI.getConsentState().stored === false, "Consent reset control should keep the consent state cleared.", failures);
 
           var navToggle = document.querySelector("[data-fnlla-nav-toggle]");
           var navPanel = document.getElementById("smoke-nav-panel");

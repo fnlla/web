@@ -1,6 +1,6 @@
 # FNLLA UI
 
-[![Release](https://img.shields.io/badge/release-v1.0.4-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.4)
+[![Release](https://img.shields.io/badge/release-v1.0.5-2f65eb?style=flat-square)](https://github.com/fnlla/ui/releases/tag/v1.0.5)
 [![Hardening](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/ui/actions/workflows/fnlla-ui-hardening.yml)
 [![License](https://img.shields.io/badge/license-MIT-111827?style=flat-square)](./LICENSE.md)
 [![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
@@ -123,6 +123,8 @@ The stable browser API lives under `window.FNLLAUI`.
 
 - `window.FNLLAUI.init(root)` performs idempotent initialization for HTML injected after first page load.
 - `window.FNLLAUI.setTheme(theme, target)` applies the documented `default` or `dark` theme to `body` by default, or to a specific wrapper when a selector or element is provided.
+- `window.FNLLAUI.getDocumentTitle()`, `window.FNLLAUI.getDocumentTitleConfig()`, `window.FNLLAUI.syncDocumentTitle(config)` and `window.FNLLAUI.setDocumentTitle(config)` manage professional browser-tab titles from declarative HTML metadata or dynamic runtime state.
+- `window.FNLLAUI.getConsentState()`, `window.FNLLAUI.hasConsent(category)`, `window.FNLLAUI.openConsentSettings()`, `window.FNLLAUI.acceptConsent()`, `window.FNLLAUI.rejectConsent()`, `window.FNLLAUI.saveConsent(state)` and `window.FNLLAUI.resetConsent()` manage the documented first-party consent cookie flow.
 - `window.FNLLAUI.showToast(target)` and the matching hide helper support non-blocking notification flows.
 - `window.FNLLAUI.showOffcanvas(target)` and the matching hide helper support side-panel workflows.
 - Modal, dropdown, popover, tooltip and scrollspy helpers are documented in `docs/api.html`.
