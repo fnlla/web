@@ -15,6 +15,6 @@ contact_links:
   - name: FNLLA Web README
     url: https://github.com/fnlla/web/blob/main/README.md
     about: Review the runtime contract, docs routes and repository structure before opening an issue.
-  - name: FNLLA Web v1.0.7 release notes
-    url: https://github.com/fnlla/web/releases/tag/v1.0.7
+  - name: FNLLA Web v1.0.8 release notes
+    url: https://github.com/fnlla/web/releases/tag/v1.0.8
     about: Check the current stable release scope before reporting a regression or release gap.

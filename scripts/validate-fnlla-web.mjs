@@ -102,6 +102,58 @@ function runNodeScript(scriptPath, args = []) {
   });
 }
 
+function addMissingTextErrors(content, requiredTexts, label, errors) {
+  requiredTexts.forEach((requiredText) => {
+    if (!content.includes(requiredText)) {
+      errors.push(`${label}: missing required text '${requiredText}'`);
+    }
+  });
+}
+
+function addForbiddenTextErrors(content, forbiddenTexts, label, errors) {
+  forbiddenTexts.forEach((forbiddenText) => {
+    if (content.includes(forbiddenText)) {
+      errors.push(`${label}: legacy text '${forbiddenText}' is no longer supported`);
+    }
+  });
+}
+
+function validateNodeSyntaxFiles(repoRoot, targetPaths, errors) {
+  targetPaths.forEach((targetPath) => {
+    if (!pathExists(targetPath)) {
+      return;
+    }
+
+    const syntaxCheck = spawnSync(process.execPath, ["--check", targetPath], {
+      encoding: "utf8",
+      cwd: repoRoot
+    });
+
+    if (syntaxCheck.status !== 0) {
+      const relativePath = getRelativePath(path.relative(repoRoot, targetPath));
+      errors.push(`${relativePath}: node --check failed: ${(syntaxCheck.stderr || syntaxCheck.stdout || "").trim()}`);
+    }
+  });
+}
+
+function validateNodeSyntaxContent(label, content, errors) {
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "fnlla-web-syntax-"));
+  const tempPath = path.join(tempRoot, "syntax-check.js");
+
+  try {
+    fs.writeFileSync(tempPath, content, "utf8");
+    const syntaxCheck = spawnSync(process.execPath, ["--check", tempPath], {
+      encoding: "utf8"
+    });
+
+    if (syntaxCheck.status !== 0) {
+      errors.push(`${label}: node --check failed: ${(syntaxCheck.stderr || syntaxCheck.stdout || "").trim()}`);
+    }
+  } finally {
+    fs.rmSync(tempRoot, { recursive: true, force: true });
+  }
+}
+
 function getRelativePath(value) {
   return value.replace(/\\/g, "/");
 }
@@ -202,7 +254,10 @@ export function validateFramework(options = {}) {
   const codeOfConductPath = path.join(repoRoot, "CODE_OF_CONDUCT.md");
   const securityPath = path.join(repoRoot, "SECURITY.md");
   const contractDocPath = path.join(docsDir, "contract.html");
+  const layoutDocPath = path.join(docsDir, "layout.html");
+  const componentsDocPath = path.join(docsDir, "components.html");
   const componentClassificationPath = path.join(repoRoot, manifest.docs.guidePages[0].source);
+  const teamUsageGuidePath = path.join(repoRoot, manifest.docs.guidePages[1].source);
   const cssEntrypointPath = path.join(repoRoot, manifest.runtime.cssOutput);
   const runtimeScriptPath = path.join(repoRoot, manifest.runtime.jsOutput);
   const docsScriptPath = path.join(repoRoot, manifest.docs.assets.jsOutput);
@@ -539,7 +594,7 @@ export function validateFramework(options = {}) {
       }
     });
 
-    [
+    addMissingTextErrors(readme, [
       "scripts/validate-fnlla-web.mjs",
       "scripts/publish-fnlla-web.mjs",
       "scripts/fnlla-web-manifest.mjs",
@@ -568,13 +623,10 @@ export function validateFramework(options = {}) {
       "assets/icons/sprite.svg",
       "assets/icons/search.svg",
       "assets/icons/NOTICE.md",
+      "headings, paragraphs, lists, fenced code blocks and inline code",
       expectedOwner,
       expectedOrigin
-    ].forEach((requiredReference) => {
-      if (!readme.includes(requiredReference)) {
-        errors.push(`README.md: missing required reference '${requiredReference}'`);
-      }
-    });
+    ], "README.md", errors);
 
     getReadmeFolderTreeGuideSources(readme).forEach((guideSourceName) => {
       if (!pathExists(path.join(repoRoot, "docs", "guides", guideSourceName))) {
@@ -593,11 +645,52 @@ export function validateFramework(options = {}) {
     errors.push("docs/guides/component-classification.md: missing file");
   } else {
     const componentClassification = readText(componentClassificationPath);
-    [expectedProject, expectedOwner, expectedOrigin, "Buttons", "Forms", "Modal", "Toast", "Offcanvas", "Scrollspy", "Popover"].forEach((requiredText) => {
-      if (!componentClassification.includes(requiredText)) {
-        errors.push(`docs/guides/component-classification.md: missing required text '${requiredText}'`);
-      }
-    });
+    addMissingTextErrors(componentClassification, [expectedProject, expectedOwner, expectedOrigin, "Buttons", "Forms", "Modal", "Toast", "Offcanvas", "Scrollspy", "Popover"], "docs/guides/component-classification.md", errors);
+  }
+
+  if (!pathExists(teamUsageGuidePath)) {
+    errors.push("docs/guides/team-usage-and-maintenance-en.md: missing file");
+  } else {
+    const teamUsageGuide = readText(teamUsageGuidePath);
+    addMissingTextErrors(teamUsageGuide, [
+      "MANIFEST.json",
+      "SUPPORT.md",
+      "TRADEMARKS.md",
+      "--fnlla-font-base",
+      "--fnlla-font-heading"
+    ], "docs/guides/team-usage-and-maintenance-en.md", errors);
+    addForbiddenTextErrors(teamUsageGuide, [
+      "--fnlla-font-family-base",
+      "--fnlla-font-family-heading"
+    ], "docs/guides/team-usage-and-maintenance-en.md", errors);
+  }
+
+  if (pathExists(layoutDocPath)) {
+    const layoutDoc = readText(layoutDocPath);
+    addMissingTextErrors(layoutDoc, [
+      "Layout responsibility map",
+      "<code>wrapper</code> owns the page shell",
+      "container-sm",
+      "grid grid-4 gap-md",
+      "Do not use cards as the page shell"
+    ], "docs/layout.html", errors);
+  }
+
+  if (pathExists(componentsDocPath)) {
+    const componentsDoc = readText(componentsDocPath);
+    addMissingTextErrors(componentsDoc, [
+      "Page-level sections",
+      "Open sections library",
+      "data-fnlla-nav-toggle",
+      "data-fnlla-dropdown",
+      "data-fnlla-modal",
+      "data-fnlla-toast",
+      "data-fnlla-offcanvas",
+      "data-fnlla-popover",
+      "data-fnlla-tooltip",
+      "data-fnlla-scrollspy",
+      "FNLLA Icons quick use"
+    ], "docs/components.html", errors);
   }
 
   try {
@@ -789,8 +882,11 @@ export function validateFramework(options = {}) {
     errors.push("docs/contract.html: missing file");
   } else {
     const contractDoc = readText(contractDocPath);
-    [
+    addMissingTextErrors(contractDoc, [
       expectedOwner,
+      "MANIFEST.json",
+      "SUPPORT.md",
+      "TRADEMARKS.md",
       "window.FNLLAWEB.init(root)",
       "window.FNLLAWEB.setTheme(theme, target)",
       "window.FNLLAWEB.setDocumentTitle(config)",
@@ -806,11 +902,7 @@ export function validateFramework(options = {}) {
       "data-fnlla-tooltip",
       "data-fnlla-scrollspy-nav",
       "Accordion behavior without a real <code>aria-controls</code> target"
-    ].forEach((requiredText) => {
-      if (!contractDoc.includes(requiredText)) {
-        errors.push(`docs/contract.html: missing required text '${requiredText}'`);
-      }
-    });
+    ], "docs/contract.html", errors);
 
     if (version && !contractDoc.includes(`<code>${version}</code>`)) {
       errors.push(`docs/contract.html: version '${version}' is not reflected in the API document`);
@@ -891,6 +983,7 @@ export function validateFramework(options = {}) {
       errors.push(`js source modules missing: ${missingJsSources.join(", ")}`);
     } else {
       const expectedRuntime = `${expectedRuntimeModules.join("\r\n\r\n")}\r\n`;
+      validateNodeSyntaxContent("src/js modules (assembled runtime)", expectedRuntime, errors);
       if (!compareNormalizedContent(readText(runtimeScriptPath), expectedRuntime)) {
         errors.push("assets/js/fnlla-web.js: public runtime is out of sync with src/js modules. Run scripts/publish-fnlla-web.mjs");
       }
@@ -922,6 +1015,7 @@ export function validateFramework(options = {}) {
       errors.push(`docs js source modules missing: ${missingDocsJsSources.join(", ")}`);
     } else {
       const expectedDocsRuntime = `${expectedDocsRuntimeModules.join("\r\n\r\n")}\r\n`;
+      validateNodeSyntaxContent("src/docs/js modules (assembled docs runtime)", expectedDocsRuntime, errors);
       if (!compareNormalizedContent(readText(docsScriptPath), expectedDocsRuntime)) {
         errors.push("docs/assets/docs.js: docs script is out of sync with src/docs/js modules. Run scripts/publish-fnlla-web.mjs");
       }
@@ -932,6 +1026,19 @@ export function validateFramework(options = {}) {
       errors.push(`docs/assets/docs.js: node --check failed: ${(docsSyntaxCheck.stderr || docsSyntaxCheck.stdout || "").trim()}`);
     }
   }
+
+  validateNodeSyntaxFiles(repoRoot, [
+    publishScriptPath,
+    validateScriptPath,
+    buildGuidesScriptPath,
+    syncDocShellsScriptPath,
+    manifestScriptPath,
+    browserSmokeScriptPath,
+    browserMatrixScriptPath,
+    browserSmokeDocsInspectionPath,
+    path.join(repoRoot, "scripts", "doc-brand-mark.mjs"),
+    path.join(repoRoot, "scripts", "tooling-support.mjs")
+  ], errors);
 
   if (!errors.length) {
     const exportTempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "fnlla-web-export-"));

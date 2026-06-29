@@ -58,8 +58,11 @@ my-site/
       js/
         fnlla-web.js
       icons/
+    MANIFEST.json
     LICENSE.md
     README.md
+    SUPPORT.md
+    TRADEMARKS.md
     VERSION
   assets/
     css/
@@ -196,7 +199,6 @@ Before writing new markup, check these references first:
 - `docs/layout.html`
 - `docs/components.html`
 - `docs/sections.html`
-- `docs/components.html`
 - `docs/utilities.html`
 - `docs/contract.html`
 - `docs/component-classification.html`
@@ -217,8 +219,8 @@ Project branding should start in project CSS, not in manual edits to `fnlla-web.
   --fnlla-color-primary: #0b3b35;
   --fnlla-color-text: #10211d;
   --fnlla-color-surface: #f6fbf8;
-  --fnlla-font-family-base: "Manrope", sans-serif;
-  --fnlla-font-family-heading: "Fraunces", serif;
+  --fnlla-font-base: "Manrope", sans-serif;
+  --fnlla-font-heading: "Fraunces", serif;
 }
 ```
 

@@ -1,6 +1,6 @@
 # FNLLA Web
 
-[![Release](https://img.shields.io/badge/release-v1.0.7-2f65eb?style=flat-square)](https://github.com/fnlla/web/releases/tag/v1.0.7)
+[![Release](https://img.shields.io/badge/release-v1.0.8-2f65eb?style=flat-square)](https://github.com/fnlla/web/releases/tag/v1.0.8)
 [![Hardening](https://github.com/fnlla/web/actions/workflows/fnlla-web-hardening.yml/badge.svg?branch=main)](https://github.com/fnlla/web/actions/workflows/fnlla-web-hardening.yml)
 [![License](https://img.shields.io/badge/license-MIT-111827?style=flat-square)](./LICENSE.md)
 [![Runtime](https://img.shields.io/badge/runtime-css%20%2B%20js%20%2B%20icons-0f766e?style=flat-square)](./docs/index.html)
@@ -174,7 +174,7 @@ Authoritative maintainer scripts:
 
 - `scripts/fnlla-web-manifest.mjs` defines source ordering, docs pages and the runtime export contract.
 - `scripts/publish-fnlla-web.mjs` republishes runtime files, rebuilds generated guide HTML and refreshes `dist/fnlla-web/`.
-- `scripts/build-guides.mjs` turns maintainer-authored Markdown guides into published HTML pages.
+- `scripts/build-guides.mjs` turns maintainer-authored Markdown guides into published HTML pages. The supported authoring subset is intentionally small: headings, paragraphs, lists, fenced code blocks and inline code.
 - `scripts/validate-fnlla-web.mjs` checks repository structure, docs sync, runtime export generation and release metadata.
 - `scripts/test-fnlla-web-browser.mjs` runs the real browser smoke test against the published runtime.
 - `scripts/test-fnlla-web-browser-matrix.mjs` replays the smoke flow across every detected supported local browser, including Firefox when available.

@@ -17,7 +17,7 @@
     <header class="doc-header" aria-label="FNLLA Web documentation shell">
       <div class="doc-header-bar">
         <span class="doc-kicker">Guide library</span>
-        <span class="doc-status">Stable 1.0.7</span>
+        <span class="doc-status">Stable 1.0.8</span>
       </div>
       <div class="doc-header-grid">
         <p class="doc-overline">Team workflow</p>
@@ -113,8 +113,11 @@
       js/
         fnlla-web.js
       icons/
+    MANIFEST.json
     LICENSE.md
     README.md
+    SUPPORT.md
+    TRADEMARKS.md
     VERSION
   assets/
     css/
@@ -233,7 +236,7 @@
 
 <p>Before writing new markup, check these references first:</p>
 
-<ul><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/components.html</code></li><li><code>docs/utilities.html</code></li><li><code>docs/contract.html</code></li><li><code>docs/component-classification.html</code></li></ul>
+<ul><li><code>docs/layout.html</code></li><li><code>docs/components.html</code></li><li><code>docs/sections.html</code></li><li><code>docs/utilities.html</code></li><li><code>docs/contract.html</code></li><li><code>docs/component-classification.html</code></li></ul>
 
 <p>Recommended build loop:</p>
 
@@ -247,8 +250,8 @@
   --fnlla-color-primary: #0b3b35;
   --fnlla-color-text: #10211d;
   --fnlla-color-surface: #f6fbf8;
-  --fnlla-font-family-base: &quot;Manrope&quot;, sans-serif;
-  --fnlla-font-family-heading: &quot;Fraunces&quot;, serif;
+  --fnlla-font-base: &quot;Manrope&quot;, sans-serif;
+  --fnlla-font-heading: &quot;Fraunces&quot;, serif;
 }</code></pre>
 
 <p>Change colors, typography, spacing and radius through tokens before reaching for component-selector overrides.</p>

@@ -37,3 +37,36 @@ jobs:
       - name: Validate release contract
         shell: pwsh
         run: node .\scripts\validate-fnlla-web.mjs
+
+  firefox-smoke:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          package-manager-cache: false
+
+      - name: Install Mozilla Firefox
+        shell: pwsh
+        run: choco install firefox --no-progress
+
+      - name: Publish runtime and generated docs
+        shell: pwsh
+        run: node .\scripts\publish-fnlla-web.mjs
+
+      - name: Run Firefox smoke coverage
+        shell: pwsh
+        run: |
+          $firefox = if (Test-Path 'C:\Program Files\Mozilla Firefox\firefox.exe') {
+            'C:\Program Files\Mozilla Firefox\firefox.exe'
+          } elseif (Test-Path 'C:\Program Files (x86)\Mozilla Firefox\firefox.exe') {
+            'C:\Program Files (x86)\Mozilla Firefox\firefox.exe'
+          } else {
+            throw 'Firefox executable not found after installation.'
+          }
+          node .\scripts\test-fnlla-web-browser.mjs --browser $firefox --browser-family firefox
