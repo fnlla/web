@@ -38,6 +38,44 @@ jobs:
         shell: pwsh
         run: node .\scripts\validate-fnlla-web.mjs
 
+  organization-branding:
+    runs-on: windows-latest
+
+    steps:
+      - name: Clone FNLLA organization defaults
+        shell: pwsh
+        run: git clone --depth 1 https://github.com/fnlla/.github.git "$env:RUNNER_TEMP\\fnlla-org-github"
+
+      - name: Check organization branding drift
+        shell: pwsh
+        run: |
+          $repo = Join-Path $env:RUNNER_TEMP 'fnlla-org-github'
+          $targets = @(
+            'README.md',
+            'CONTRIBUTING.md',
+            'CODE_OF_CONDUCT.md',
+            'profile\README.md',
+            '.github\ISSUE_TEMPLATE\bug-report.yml',
+            '.github\ISSUE_TEMPLATE\feature-request.yml'
+          )
+          $legacyPattern = 'FNLLA UI|fnlla/ui|fnlla-ui'
+          $failures = New-Object System.Collections.Generic.List[string]
+          foreach ($target in $targets) {
+            $path = Join-Path $repo $target
+            $matches = Select-String -Path $path -Pattern $legacyPattern
+            foreach ($match in $matches) {
+              $failures.Add(('{0}:{1}' -f $target, $match.LineNumber)) | Out-Null
+            }
+          }
+          if ($failures.Count -gt 0) {
+            Write-Host 'FNLLA organization defaults still contain legacy FNLLA UI naming.'
+            foreach ($failure in $failures) {
+              Write-Host ('- ' + $failure)
+            }
+            exit 1
+          }
+          Write-Host 'FNLLA organization defaults use current FNLLA Web naming.'
+
   firefox-smoke:
     runs-on: windows-latest
 
